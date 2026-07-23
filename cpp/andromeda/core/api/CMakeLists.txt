@@ -24,12 +24,12 @@ set(COMPONENTS_HEADERS
     andromeda/components/graphics_backend.hpp
 )
 
-# ==== Engine ====
+# ==== engine ====
 set(ENGINE_HEADERS
     andromeda/engine/i_engine.hpp
 )
 
-# ==== GraphicsContext ====
+# ==== graphics_context ====
 set(GRAPHICS_CONTEXT_HEADERS
     andromeda/graphics_context/i_graphics_context.hpp
 )
@@ -61,7 +61,7 @@ set(OBJECTS_HEADERS
     andromeda/space/objects/i_surface_object.hpp
 )
 
-# ==== Platform ====
+# ==== platform ====
 set(PLATFORM_HEADERS
     andromeda/platform/i_platform.hpp
 )
@@ -102,7 +102,7 @@ set(TRANSFORMATION_HEADERS
     andromeda/space/transformations/transformation_types.hpp
 )
 
-# ==== Vertices ====
+# ==== vertices ====
 set(VERTICES_HEADERS
     andromeda/space/vertices/vertex.hpp
 )
@@ -148,7 +148,7 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
     INTERFACE
-        Math
+        math
 )
 
 # ===== Visual Studio filters (Solution Explorer groups) =====
@@ -184,7 +184,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/graphics_context
     PREFIX
-        "GraphicsContext"
+        "graphics_context"
     FILES
         ${GRAPHICS_CONTEXT_HEADERS}
 )
@@ -193,7 +193,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/engine
     PREFIX
-        "Engine"
+        "engine"
     FILES
         ${ENGINE_HEADERS}
 )
@@ -229,7 +229,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/platform
     PREFIX
-        "Platform"
+        "platform"
     FILES
         ${PLATFORM_HEADERS}
 )
@@ -274,7 +274,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/space/vertices
     PREFIX
-        "Vertices"
+        "vertices"
     FILES
         ${VERTICES_HEADERS}
 )
