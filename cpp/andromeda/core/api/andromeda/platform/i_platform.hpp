@@ -2,10 +2,11 @@
 #define API__PLATFORM__I_PLATFORM__HPP
 
 
-#include "../MacroExports/MacroExports.hpp"
-#include "../Components/GraphicsBackend.hpp"
-#include "../GraphicsContext/IGraphicsContext.hpp"
-#include "../Window/Window/IWindow.hpp"
+#include "../macro_exports/macro_exports.hpp"
+#include "../components/graphics_backend.hpp"
+#include "../graphics_context/i_graphics_context.hpp"
+#include "../window/window/i_window.hpp"
+
 #include <memory>
 #include <string>
 

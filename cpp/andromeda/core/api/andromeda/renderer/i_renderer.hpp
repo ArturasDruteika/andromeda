@@ -2,12 +2,12 @@
 #define API__RENDERER__I_RENDERER__HPP
 
 
-#include "IGridControl.hpp"
-#include "IIlluminationControl.hpp"
-#include "ISizeControl.hpp"
-#include "../Space/Scene/IScene.hpp"
-#include "../MacroExports/MacroExports.hpp"
-#include "../Components/GraphicsBackend.hpp"
+#include "i_grid_control.hpp"
+#include "i_illumination_control.hpp"
+#include "i_size_control.hpp"
+#include "../space/scene/i_scene.hpp"
+#include "../macro_exports/macro_exports.hpp"
+#include "../components/graphics_backend.hpp"
 
 
 namespace Andromeda

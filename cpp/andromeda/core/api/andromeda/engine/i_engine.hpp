@@ -2,11 +2,12 @@
 #define API__ENGINE__I_ENGINE__HPP
 
 
-#include "../MacroExports/MacroExports.hpp"
-#include "../Components/GraphicsBackend.hpp"
-#include "../Renderer/IRenderer.hpp"
-#include "../Space/Scene/IScene.hpp"
-#include "Andromeda/window/events/i_event.hpp"
+#include "../macro_exports/macro_exports.hpp"
+#include "../components/graphics_backend.hpp"
+#include "../renderer/i_renderer.hpp"
+#include "../space/scene/i_scene.hpp"
+#include "../window/window/events/i_event.hpp"
+
 #include <memory>
 
 

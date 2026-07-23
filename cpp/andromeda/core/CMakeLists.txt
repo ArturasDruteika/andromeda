@@ -4,7 +4,7 @@ project(AndromedaModules)
 
 add_subdirectory(PrecompiledHeaders)
 add_subdirectory(Math)
-add_subdirectory(Api)
+add_subdirectory(api)
 add_subdirectory(Utils)
 add_subdirectory(Space)
 add_subdirectory(Window)

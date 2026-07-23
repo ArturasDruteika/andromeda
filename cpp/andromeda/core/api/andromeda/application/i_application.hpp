@@ -2,10 +2,10 @@
 #define API__APPLICATION__I_APPLICATION__HPP
 
 
-#include "../Components/GraphicsBackend.hpp"
-#include "../MacroExports/MacroExports.hpp"
-#include "../Renderer/IRenderer.hpp"
-#include "../Space/Scene/IScene.hpp"
+#include "../components/graphics_backend.hpp"
+#include "../macro_exports/macro_exports.hpp"
+#include "../renderer/i_renderer.hpp"
+#include "../space/scene/i_scene.hpp"
 
 #include <memory>
 
