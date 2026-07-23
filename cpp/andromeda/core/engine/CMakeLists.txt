@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(Engine)
+project(engine)
 
 set(CMAKE_BUILD_PARALLEL_LEVEL)
 set(CMAKE_CXX_STANDARD 23)
@@ -11,18 +11,18 @@ add_definitions(-DENGINECORE_EXPORT)
 # SPDLog
 
 
-# ==== Engine ====
+# ==== engine ====
 set(ENGINE_HEADERS
-    Engine/Engine/include/Engine.hpp
+    engine/engine/include/engine.hpp
 )
 
 set(ENGINE_SOURCES
-    Engine/Engine/src/Engine.cpp
+    engine/engine/src/engine.cpp
 )
 
 # ==== Macro Exports ====
 set(MACRO_EXPORTS_HEADERS
-    Engine/MacroExports/include/MacroExports.hpp
+    engine/macro_exports/include/macro_exports.hpp
 )
 
 # ==== Target ====
@@ -48,19 +48,19 @@ target_compile_definitions(${PROJECT_NAME}
 # Link libraries (alphabetical)
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        Rendering
+        rendering
         spdlog::spdlog
     PUBLIC
-        PrecompiledHeaders
-        Math
+        precompiled_headers
+        math
         Api
 
 )
 
 # Explicit build ordering (alphabetical)
 add_dependencies(${PROJECT_NAME}
-    Math
-    Rendering
+    math
+    rendering
     Utils
     Window
 )
@@ -94,9 +94,9 @@ endif()
 # ==== IDE Organization ====
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Engine
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/engine
     PREFIX
-        "Engine"
+        "engine"
     FILES
         ${ENGINE_HEADERS}
         ${ENGINE_SOURCES}
@@ -104,9 +104,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/MacroExports
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/macro_exports
     PREFIX
-        "MacroExports"
+        "macro_exports"
     FILES
         ${MACRO_EXPORTS_HEADERS}
 )
