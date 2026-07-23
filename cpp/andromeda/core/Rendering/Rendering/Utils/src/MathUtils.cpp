@@ -1,38 +1,38 @@
-#include "../include/MathUtils.hpp"
+#include "../include/mathUtils.hpp"
 
 namespace andromeda::Rendering
 {
-	glm::vec2 MathUtils::ToGLM(const Math::Vec2& vec)
+	glm::vec2 mathUtils::ToGLM(const math::Vec2& vec)
 	{
 		return glm::vec2(vec[0], vec[1]);
 	}
 
-	Math::Vec2 MathUtils::FromGLM(const glm::vec2& glmVec)
+	math::Vec2 mathUtils::FromGLM(const glm::vec2& glmVec)
 	{
-		return Math::Vec2{ glmVec.x, glmVec.y };
+		return math::Vec2{ glmVec.x, glmVec.y };
 	}
 
-	glm::vec3 MathUtils::ToGLM(const Math::Vec3& vec)
+	glm::vec3 mathUtils::ToGLM(const math::Vec3& vec)
 	{
 		return glm::vec3(vec[0], vec[1], vec[2]);
 	}
 
-	Math::Vec3 MathUtils::FromGLM(const glm::vec3& glmVec)
+	math::Vec3 mathUtils::FromGLM(const glm::vec3& glmVec)
 	{
-		return Math::Vec3{ glmVec.x, glmVec.y, glmVec.z };
+		return math::Vec3{ glmVec.x, glmVec.y, glmVec.z };
 	}
 
-	glm::vec4 MathUtils::ToGLM(const Math::Vec4& vec)
+	glm::vec4 mathUtils::ToGLM(const math::Vec4& vec)
 	{
 		return glm::vec4(vec[0], vec[1], vec[2], vec[3]);
 	}
 
-	Math::Vec4 MathUtils::FromGLM(const glm::vec4& glmVec)
+	math::Vec4 mathUtils::FromGLM(const glm::vec4& glmVec)
 	{
-		return Math::Vec4{ glmVec.x, glmVec.y, glmVec.z, glmVec.w };
+		return math::Vec4{ glmVec.x, glmVec.y, glmVec.z, glmVec.w };
 	}
 
-	glm::mat2 MathUtils::ToGLM(const Math::Mat2& mat)
+	glm::mat2 mathUtils::ToGLM(const math::Mat2& mat)
 	{
 		glm::mat2 glmMat;
 		for (int col = 0; col < 2; ++col)
@@ -45,9 +45,9 @@ namespace andromeda::Rendering
 		return glmMat;
 	}
 
-	Math::Mat2 MathUtils::FromGLM(const glm::mat2& glmMat)
+	math::Mat2 mathUtils::FromGLM(const glm::mat2& glmMat)
 	{
-		Math::Mat2 mat;
+		math::Mat2 mat;
 		for (int col = 0; col < 2; ++col)
 		{
 			for (int row = 0; row < 2; ++row)
@@ -58,7 +58,7 @@ namespace andromeda::Rendering
 		return mat;
 	}
 
-	glm::mat3 MathUtils::ToGLM(const Math::Mat3& mat)
+	glm::mat3 mathUtils::ToGLM(const math::Mat3& mat)
 	{
 		glm::mat3 glmMat{};
 		for (int col = 0; col < 3; ++col)
@@ -71,9 +71,9 @@ namespace andromeda::Rendering
 		return glmMat;
 	}
 
-	Math::Mat3 MathUtils::FromGLM(const glm::mat3& glmMat)
+	math::Mat3 mathUtils::FromGLM(const glm::mat3& glmMat)
 	{
-		Math::Mat3 mat;
+		math::Mat3 mat;
 		for (int col = 0; col < 3; ++col)
 		{
 			for (int row = 0; row < 3; ++row)
@@ -84,7 +84,7 @@ namespace andromeda::Rendering
 		return mat;
 	}
 
-	glm::mat4 MathUtils::ToGLM(const Math::Mat4& mat)
+	glm::mat4 mathUtils::ToGLM(const math::Mat4& mat)
 	{
 		glm::mat4 glmMat;
 		for (int col = 0; col < 4; ++col)
@@ -97,9 +97,9 @@ namespace andromeda::Rendering
 		return glmMat;
 	}
 
-	Math::Mat4 MathUtils::FromGLM(const glm::mat4& glmMat)
+	math::Mat4 mathUtils::FromGLM(const glm::mat4& glmMat)
 	{
-		Math::Mat4 mat;
+		math::Mat4 mat;
 		for (int col = 0; col < 4; ++col)
 		{
 			for (int row = 0; row < 4; ++row)

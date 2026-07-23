@@ -5,7 +5,7 @@ namespace andromeda::Space
 {
 	SceneEnvironment::SceneEnvironment()
 		: m_ambientStrength{ 0.1f }
-		, m_backgroundColor{ Math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f } }
+		, m_backgroundColor{ math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f } }
 	{
 	}
 
@@ -16,7 +16,7 @@ namespace andromeda::Space
 		return m_ambientStrength;
 	}
 
-	const Math::Vec4& SceneEnvironment::GetBackgroundColor() const
+	const math::Vec4& SceneEnvironment::GetBackgroundColor() const
 	{
 		return m_backgroundColor;
 	}
@@ -26,7 +26,7 @@ namespace andromeda::Space
 		m_ambientStrength = ambientStrength;
 	}
 
-	void SceneEnvironment::SetBackgroundColor(const Math::Vec4& backroundColor)
+	void SceneEnvironment::SetBackgroundColor(const math::Vec4& backroundColor)
 	{
 		m_backgroundColor = backroundColor;
 	}

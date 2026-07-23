@@ -4,11 +4,11 @@
 namespace andromeda::Space
 {
 	Light::Light(
-		const Math::Vec3& color, 
+		const math::Vec3& color, 
 		float intensity, 
-		const Math::Vec3& ambient, 
-		const Math::Vec3& diffuse,
-		const Math::Vec3& specular
+		const math::Vec3& ambient, 
+		const math::Vec3& diffuse,
+		const math::Vec3& specular
 	)
 		: m_intensity{ intensity }
 		, m_color{ color }
@@ -25,22 +25,22 @@ namespace andromeda::Space
 		return m_intensity;
 	}
 
-	Math::Vec3 Light::GetColor() const
+	math::Vec3 Light::GetColor() const
 	{
 		return m_color;
 	}
 
-	Math::Vec3 Light::GeAmbient() const
+	math::Vec3 Light::GeAmbient() const
 	{
 		return m_ambient;
 	}
 
-	Math::Vec3 Light::GetDiffuse() const
+	math::Vec3 Light::GetDiffuse() const
 	{
 		return m_diffuse;
 	}
 
-	Math::Vec3 Light::GetSpecular() const
+	math::Vec3 Light::GetSpecular() const
 	{
 		return m_specular;
 	}
@@ -50,22 +50,22 @@ namespace andromeda::Space
 		m_intensity = intensity;
 	}
 
-	void Light::SetColor(const Math::Vec3& color)
+	void Light::SetColor(const math::Vec3& color)
 	{
 		m_color = color;
 	}
 
-	void Light::SetAmbient(const Math::Vec3& ambient)
+	void Light::SetAmbient(const math::Vec3& ambient)
 	{
 		m_ambient = ambient;
 	}
 
-	void Light::SetDiffuse(const Math::Vec3& diffuse)
+	void Light::SetDiffuse(const math::Vec3& diffuse)
 	{
 		m_diffuse = diffuse;
 	}
 
-	void Light::SetSpecular(const Math::Vec3& specular)
+	void Light::SetSpecular(const math::Vec3& specular)
 	{
 		m_specular = specular;
 	}

@@ -7,7 +7,7 @@
 #include "../../Transformations/include/Rotatable.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/light/i_directional_light.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space
@@ -21,12 +21,12 @@ namespace andromeda::Space
 	{
 	public:
 		DirectionalLight(
-			const Math::Vec3& direction,
-			const Math::Vec3& color = Math::Vec3{ 1.0f, 1.0f, 1.0f },
+			const math::Vec3& direction,
+			const math::Vec3& color = math::Vec3{ 1.0f, 1.0f, 1.0f },
 			float intensity = 1.0f,
-			const Math::Vec3& ambient = Math::Vec3{ 0.1f, 0.1f, 0.1f },
-			const Math::Vec3& diffuse = Math::Vec3{ 0.4f, 0.4f, 0.4f },
-			const Math::Vec3& specular = Math::Vec3{ 0.4f, 0.4f, 0.4f },
+			const math::Vec3& ambient = math::Vec3{ 0.1f, 0.1f, 0.1f },
+			const math::Vec3& diffuse = math::Vec3{ 0.4f, 0.4f, 0.4f },
+			const math::Vec3& specular = math::Vec3{ 0.4f, 0.4f, 0.4f },
 			float orthographicHalfSize = 10.0f,
 			float nearPlane = 1.0f,
 			float farPlane = 30.0f
@@ -37,18 +37,18 @@ namespace andromeda::Space
 		float GetLightOrthographicHalfSize() const override;
 		float GetLightNearPlane() const override;
 		float GetLightFarPlane() const override;
-		const Math::Vec3& GetDirection() const override;
+		const math::Vec3& GetDirection() const override;
 		// Setters
 		void SetLightOrthographicHalfSize(float halfSize) override;
 		void SetLightNearPlane(float nearPlane) override;
 		void SetLightFarPlane(float farPlane) override;
-		void SetDirection(const Math::Vec3& direction) override;
+		void SetDirection(const math::Vec3& direction) override;
 
 	private:
 		float m_orthographicHalfSize;
 		float m_nearPlane;
 		float m_farPlane;
-		Math::Vec3 m_direction;
+		math::Vec3 m_direction;
 	};
 }
 

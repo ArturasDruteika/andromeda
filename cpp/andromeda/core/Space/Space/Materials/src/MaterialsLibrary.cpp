@@ -195,9 +195,9 @@ namespace andromeda::Space
 		{
 			const Material& m = material;
 			nlohmann::json entry;
-			Math::Vec3 ambient = m.GetAmbient();
-			Math::Vec3 diffuse = m.GetDiffuse();
-			Math::Vec3 specular = m.GetSpecular();
+			math::Vec3 ambient = m.GetAmbient();
+			math::Vec3 diffuse = m.GetDiffuse();
+			math::Vec3 specular = m.GetSpecular();
 			entry["name"] = m.GetName();
 			entry["ambient"] = { ambient[0], ambient[1], ambient[2] };
 			entry["diffuse"] = { diffuse[0],  diffuse[1],  diffuse[2] };

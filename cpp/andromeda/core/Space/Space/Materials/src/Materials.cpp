@@ -27,17 +27,17 @@ namespace andromeda::Space
 		return m_name;
 	}
 
-	const Math::Vec3& Material::GetAmbient() const
+	const math::Vec3& Material::GetAmbient() const
 	{
 		return m_ambient;
 	}
 
-	const Math::Vec3& Material::GetDiffuse() const
+	const math::Vec3& Material::GetDiffuse() const
 	{
 		return m_diffuse;
 	}
 
-	const Math::Vec3& Material::GetSpecular() const
+	const math::Vec3& Material::GetSpecular() const
 	{
 		return m_specular;
 	}
@@ -52,7 +52,7 @@ namespace andromeda::Space
 		m_name = name;
 	}
 
-	void Material::SetAmbient(const Math::Vec3& ambient)
+	void Material::SetAmbient(const math::Vec3& ambient)
 	{
 		if (ValidateVec3Components(ambient))
 			m_ambient = ambient;
@@ -60,7 +60,7 @@ namespace andromeda::Space
 			spdlog::error("There are elements in ambient vector that are not in the range of [ 0.0f, 1.0f ]");
 	}
 
-	void Material::SetDiffuse(const Math::Vec3& diffuse)
+	void Material::SetDiffuse(const math::Vec3& diffuse)
 	{
 		if (ValidateVec3Components(diffuse))
 			m_diffuse = diffuse;
@@ -68,7 +68,7 @@ namespace andromeda::Space
 			spdlog::error("There are elements in diffuse vector that are not in the range of [ 0.0f, 1.0f ]");
 	}
 
-	void Material::SetSpecular(const Math::Vec3& specular)
+	void Material::SetSpecular(const math::Vec3& specular)
 	{
 		if (ValidateVec3Components(specular))
 			m_specular = specular;
@@ -76,7 +76,7 @@ namespace andromeda::Space
 			spdlog::error("There are elements in specular vector that are not in the range of [ 0.0f, 1.0f ]");
 	}
 
-	bool Material::ValidateVec3Components(const Math::Vec3& vector)
+	bool Material::ValidateVec3Components(const math::Vec3& vector)
 	{
 		return (vector[0] >= 0.0f && vector[0] <= 1.0f)
 			&& (vector[1] >= 0.0f && vector[1] <= 1.0f)

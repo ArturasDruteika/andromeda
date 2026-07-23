@@ -4,7 +4,7 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/light/i_light.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space
@@ -14,33 +14,33 @@ namespace andromeda::Space
 	{
 	public:
 		Light(
-			const Math::Vec3& color,
+			const math::Vec3& color,
 			float intensity,
-			const Math::Vec3& ambient,
-			const Math::Vec3& diffuse,
-			const Math::Vec3& specular
+			const math::Vec3& ambient,
+			const math::Vec3& diffuse,
+			const math::Vec3& specular
 		);
 		~Light() override;
 
 		// Getters
 		float GetIntensity() const override;
-		Math::Vec3 GetColor() const override;
-		Math::Vec3 GeAmbient() const override;
-		Math::Vec3 GetDiffuse() const override;
-		Math::Vec3 GetSpecular() const override;
+		math::Vec3 GetColor() const override;
+		math::Vec3 GeAmbient() const override;
+		math::Vec3 GetDiffuse() const override;
+		math::Vec3 GetSpecular() const override;
 		// Setters
 		void SetIntensity(float intensity) override;
-		void SetColor(const Math::Vec3& color) override;
-		void SetAmbient(const Math::Vec3& ambient) override;
-		void SetDiffuse(const Math::Vec3& diffuse) override;
-		void SetSpecular(const Math::Vec3& specular) override;
+		void SetColor(const math::Vec3& color) override;
+		void SetAmbient(const math::Vec3& ambient) override;
+		void SetDiffuse(const math::Vec3& diffuse) override;
+		void SetSpecular(const math::Vec3& specular) override;
 
 	private:
 		float m_intensity;
-		Math::Vec3 m_color;
-		Math::Vec3 m_ambient;
-		Math::Vec3 m_diffuse;
-		Math::Vec3 m_specular;
+		math::Vec3 m_color;
+		math::Vec3 m_ambient;
+		math::Vec3 m_diffuse;
+		math::Vec3 m_specular;
 	};
 }
 

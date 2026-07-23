@@ -1,16 +1,16 @@
 #include "../include/DirectionalLight.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_operations.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_operations.hpp"
 
 
 namespace andromeda::Space
 {
 	DirectionalLight::DirectionalLight(
-		const Math::Vec3& direction,
-		const Math::Vec3& color,
+		const math::Vec3& direction,
+		const math::Vec3& color,
 		float intensity,
-		const Math::Vec3& ambient,
-		const Math::Vec3& diffuse,
-		const Math::Vec3& specular,
+		const math::Vec3& ambient,
+		const math::Vec3& diffuse,
+		const math::Vec3& specular,
 		float orthographicHalfSize,
 		float nearPlane,
 		float farPlane
@@ -26,7 +26,7 @@ namespace andromeda::Space
 		, m_orthographicHalfSize{ orthographicHalfSize }
 		, m_nearPlane{ nearPlane }
 		, m_farPlane{ farPlane }
-		, m_direction{ Math::LinAlgOps::Normalize(direction) }
+		, m_direction{ math::LinAlgOps::Normalize(direction) }
 	{
 	}
 
@@ -47,7 +47,7 @@ namespace andromeda::Space
 		return m_farPlane;
 	}
 
-	const Math::Vec3& DirectionalLight::GetDirection() const
+	const math::Vec3& DirectionalLight::GetDirection() const
 	{
 		return m_direction;
 	}
@@ -70,8 +70,8 @@ namespace andromeda::Space
 			m_farPlane = farPlane;
 	}
 
-	void DirectionalLight::SetDirection(const Math::Vec3& direction)
+	void DirectionalLight::SetDirection(const math::Vec3& direction)
 	{
-		m_direction = Math::LinAlgOps::Normalize(direction);
+		m_direction = math::LinAlgOps::Normalize(direction);
 	}
 }

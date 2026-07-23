@@ -1,5 +1,5 @@
 #include "../include/Translatable.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_operations.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_operations.hpp"
 
 
 namespace andromeda
@@ -11,7 +11,7 @@ namespace andromeda
 	{
 	}
 
-	Translatable::Translatable(const Math::Vec3& position)
+	Translatable::Translatable(const math::Vec3& position)
 		: m_stateChanged{ false }
 		, m_position{ position }
 	{
@@ -25,12 +25,12 @@ namespace andromeda
 		return m_stateChanged;
 	}
 
-	const Math::Vec3& Translatable::GetPosition() const
+	const math::Vec3& Translatable::GetPosition() const
 	{
 		return m_position;
 	}
 
-	const Math::Mat4& Translatable::GetTranslationMatrix() const
+	const math::Mat4& Translatable::GetTranslationMatrix() const
 	{
 		return m_translationMatrix;
 	}
@@ -40,14 +40,14 @@ namespace andromeda
 		m_stateChanged = false;
 	}
 
-	void Translatable::SetPosition(const Math::Vec3& position)
+	void Translatable::SetPosition(const math::Vec3& position)
 	{
 		m_position = position;
 		UpdateTranslationMatrix();
 		m_stateChanged = true;
 	}
 
-	void Translatable::Translate(const Math::Vec3& translation)
+	void Translatable::Translate(const math::Vec3& translation)
 	{
 		m_position += translation;
 		UpdateTranslationMatrix();
@@ -56,6 +56,6 @@ namespace andromeda
 
 	void Translatable::UpdateTranslationMatrix()
 	{
-		m_translationMatrix = Math::LinAlgOps::Translate(m_position);
+		m_translationMatrix = math::LinAlgOps::Translate(m_position);
 	}
 }

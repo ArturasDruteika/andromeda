@@ -4,7 +4,7 @@
 #include "i_light.hpp"
 #include "../objects/i_light_object.hpp"
 #include "../transformations/i_rotatable.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 namespace andromeda
 {
@@ -26,8 +26,8 @@ namespace andromeda
         virtual void set_light_far_plane(float far_plane) = 0;
 
         // Direction of the light in world space (should be normalized)
-        virtual const Math::Vec3& get_direction() const = 0;
-        virtual void set_direction(const Math::Vec3& direction) = 0;
+        virtual const math::Vec3& get_direction() const = 0;
+        virtual void set_direction(const math::Vec3& direction) = 0;
     };
 }
 

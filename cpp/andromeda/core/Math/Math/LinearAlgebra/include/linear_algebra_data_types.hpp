@@ -5,7 +5,7 @@
 #include <array>
 
 
-namespace andromeda::Math
+namespace andromeda::math
 {
     struct Vec2
     {
@@ -558,6 +558,6 @@ namespace andromeda::Math
         return a;
     }
 
-} // namespace andromeda::Math
+} // namespace andromeda::math
 
 #endif // MATH__MATH_DATA_TYPES__HPP

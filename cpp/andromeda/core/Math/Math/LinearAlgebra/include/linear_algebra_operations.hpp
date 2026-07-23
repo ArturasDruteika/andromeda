@@ -8,7 +8,7 @@
 
 namespace andromeda
 {
-	namespace Math
+	namespace math
 	{
 		class MATH_API LinAlgOps
 		{

@@ -19,21 +19,21 @@ namespace andromeda
 	{
 	public:
 		Transformable();
-		Transformable(const Math::Vec3& position);
+		Transformable(const math::Vec3& position);
 		~Transformable() override;
 
 		// Getters
 		bool StateChanged() const override;
-		Math::Mat4 GetModelMatrix() override;
+		math::Mat4 GetModelMatrix() override;
 		// Setters
-		void SetModelMatrix(const Math::Mat4& modelMatrix) override;
+		void SetModelMatrix(const math::Mat4& modelMatrix) override;
 
 		void UpdateModelMatrix() override;
 		void ResetState() override;
 
 	private:
 		bool m_stateChanged;
-		Math::Mat4 m_modelMatrix;
+		math::Mat4 m_modelMatrix;
 	};
 }
 

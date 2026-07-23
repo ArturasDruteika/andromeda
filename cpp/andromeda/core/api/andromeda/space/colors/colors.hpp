@@ -2,12 +2,12 @@
 #define API__SPACE__COLORS__COLORS__HPP
 
 
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda
 {
-    // TODO: consider using Math::Vec4 vector to store data for speed
+    // TODO: consider using math::Vec4 vector to store data for speed
     struct Color
     {
         float r = 1.0f;
@@ -25,7 +25,7 @@ namespace andromeda
             return r == other.r && g == other.g && b == other.b && a == other.a;
         }
 
-        Math::Vec4 return_as_vec4() const
+        math::Vec4 return_as_vec4() const
 		{
             return { r, g, b, a };
 		}

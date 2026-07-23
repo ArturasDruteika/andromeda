@@ -2,7 +2,7 @@
 #define SPACE__SPOT_LIGHT__HPP
 
 
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space

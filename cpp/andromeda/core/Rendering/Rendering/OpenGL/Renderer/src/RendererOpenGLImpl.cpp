@@ -1,6 +1,6 @@
 #include "../include/RendererOpenGLImpl.hpp"
 #include "../../Support/include/ShadowRendererOpenGL.hpp"
-#include "../../../Utils/include/MathUtils.hpp"
+#include "../../../Utils/include/mathUtils.hpp"
 #include "../../../Shaders/Shaders/include/ShaderOpenGL.hpp"
 #include "../../../Shaders/Support/include/ShaderOpenGLTypes.hpp"
 #include "andromeda/space/objects/i_light_object.hpp"
@@ -31,8 +31,8 @@ namespace andromeda::Rendering
         m_defaultVertexLayout = VertexLayout(
             {
                 { VertexSemantic::Position, ComponentType::Float32, 3, false, 0 },
-                { VertexSemantic::Color0,   ComponentType::Float32, 4, true, sizeof(Math::Vec3) },
-                { VertexSemantic::Normal,   ComponentType::Float32, 3, true, sizeof(Math::Vec3) + sizeof(Math::Vec4) }
+                { VertexSemantic::Color0,   ComponentType::Float32, 4, true, sizeof(math::Vec3) },
+                { VertexSemantic::Normal,   ComponentType::Float32, 3, true, sizeof(math::Vec3) + sizeof(math::Vec4) }
             }
         );
     }
@@ -117,7 +117,7 @@ namespace andromeda::Rendering
 
         m_meshCache.Sync(scene.GetObjects(), m_defaultVertexLayout);
 
-        SetBackgroundColor(MathUtils::ToGLM(scene.GetBackgroundColor()));
+        SetBackgroundColor(mathUtils::ToGLM(scene.GetBackgroundColor()));
         BeginFrame();
 
         if (m_isIlluminationMode)
@@ -155,9 +155,9 @@ namespace andromeda::Rendering
         ShaderOpenGL* shader = m_pShaderManager->GetShader(ShaderOpenGLTypes::RenderableObjectsNonLuminous);
         shader->Bind();
 
-        shader->SetUniform("u_view", MathUtils::ToGLM(rCamera.GetViewMatrix()));
-        shader->SetUniform("u_projection", glm::transpose(MathUtils::ToGLM(rCamera.GetProjection())));
-        shader->SetUniform("u_cameraPosWS", MathUtils::ToGLM(rCamera.GetPosition()));
+        shader->SetUniform("u_view", mathUtils::ToGLM(rCamera.GetViewMatrix()));
+        shader->SetUniform("u_projection", glm::transpose(mathUtils::ToGLM(rCamera.GetProjection())));
+        shader->SetUniform("u_cameraPosWS", mathUtils::ToGLM(rCamera.GetPosition()));
 
         if (hasDir)
         {
@@ -185,8 +185,8 @@ namespace andromeda::Rendering
     {
         ShaderOpenGL* lumShader = m_pShaderManager->GetShader(ShaderOpenGLTypes::RenderableObjectsLuminous);
         lumShader->Bind();
-        lumShader->SetUniform("u_view", MathUtils::ToGLM(rCamera.GetViewMatrix()));
-        lumShader->SetUniform("u_projection", MathUtils::ToGLM(rCamera.GetProjection()));
+        lumShader->SetUniform("u_view", mathUtils::ToGLM(rCamera.GetViewMatrix()));
+        lumShader->SetUniform("u_projection", mathUtils::ToGLM(rCamera.GetProjection()));
 
         for (const auto& [id, obj] : objects)
         {
@@ -214,7 +214,7 @@ namespace andromeda::Rendering
                 continue;
             }
 
-            lumShader->SetUniform("u_model", MathUtils::ToGLM(transformIt->second->GetModelMatrix()));
+            lumShader->SetUniform("u_model", mathUtils::ToGLM(transformIt->second->GetModelMatrix()));
             glBindVertexArray(mesh->GetVAO());
             glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh->GetIndexCount()), GL_UNSIGNED_INT, nullptr);
         }
@@ -232,8 +232,8 @@ namespace andromeda::Rendering
         ShaderOpenGL* shader = m_pShaderManager->GetShader(ShaderOpenGLTypes::RenderableObjects); 
         shader->Bind(); 
 
-        shader->SetUniform("u_view", MathUtils::ToGLM(rCamera.GetViewMatrix()));
-        shader->SetUniform("u_projection", glm::transpose(MathUtils::ToGLM(rCamera.GetProjection())));
+        shader->SetUniform("u_view", mathUtils::ToGLM(rCamera.GetViewMatrix()));
+        shader->SetUniform("u_projection", glm::transpose(mathUtils::ToGLM(rCamera.GetProjection())));
 
         for (const auto& [id, obj] : objects) 
         { 
@@ -255,8 +255,8 @@ namespace andromeda::Rendering
             if (!mesh) 
                 continue;
 
-            const Math::Mat4& modelMatrix = transformIt->second->GetModelMatrix(); 
-            shader->SetUniform("u_model", MathUtils::ToGLM(modelMatrix)); 
+            const math::Mat4& modelMatrix = transformIt->second->GetModelMatrix(); 
+            shader->SetUniform("u_model", mathUtils::ToGLM(modelMatrix)); 
             glBindVertexArray(mesh->GetVAO()); 
             glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh->GetIndexCount()), GL_UNSIGNED_INT, nullptr); 
         } 
@@ -276,8 +276,8 @@ namespace andromeda::Rendering
         //ShaderOpenGL* shader = m_pShaderManager->GetShader(ShaderOpenGLTypes::Grid);
         //shader->Bind();
 
-        //shader->SetUniform("u_view", MathUtils::ToGLM(m_pCamera->GetViewMatrix()));
-        //shader->SetUniform("u_projection", MathUtils::ToGLM(m_pCamera->GetProjection()));
+        //shader->SetUniform("u_view", mathUtils::ToGLM(m_pCamera->GetViewMatrix()));
+        //shader->SetUniform("u_projection", mathUtils::ToGLM(m_pCamera->GetProjection()));
 
         //glBindVertexArray(mesh.GetVAO());
         //glDrawElements(GL_LINES, static_cast<GLsizei>(mesh.GetIndexCount()), GL_UNSIGNED_INT, nullptr);
@@ -474,15 +474,15 @@ namespace andromeda::Rendering
 
                 const IMaterial* material = surfaceObj->GetMaterial();
                 glm::mat3 normalMatrix = glm::inverseTranspose(
-                    MathUtils::ToGLM(transformIt->second->GetModelMatrix())
+                    mathUtils::ToGLM(transformIt->second->GetModelMatrix())
                 );
 
-                shader.SetUniform("u_materialAmbient", MathUtils::ToGLM(material->GetAmbient()));
-                shader.SetUniform("u_materialDiffuse", MathUtils::ToGLM(material->GetDiffuse()));
-                shader.SetUniform("u_materialSpecular", MathUtils::ToGLM(material->GetSpecular()));
+                shader.SetUniform("u_materialAmbient", mathUtils::ToGLM(material->GetAmbient()));
+                shader.SetUniform("u_materialDiffuse", mathUtils::ToGLM(material->GetDiffuse()));
+                shader.SetUniform("u_materialSpecular", mathUtils::ToGLM(material->GetSpecular()));
                 shader.SetUniform("u_materialShininess", material->GetShininess());
 
-                shader.SetUniform("u_model", MathUtils::ToGLM(transformIt->second->GetModelMatrix()));
+                shader.SetUniform("u_model", mathUtils::ToGLM(transformIt->second->GetModelMatrix()));
                 shader.SetUniform("u_normalMatrix", normalMatrix);
 
                 const int objId = obj->GetID();
@@ -545,7 +545,7 @@ namespace andromeda::Rendering
         if (hasPoint)
         {
             const IPointLight* pl = pointLights.begin()->second;
-            const glm::vec3 lightPos = MathUtils::ToGLM(pl->GetPosition());
+            const glm::vec3 lightPos = mathUtils::ToGLM(pl->GetPosition());
             const float nearPlane = pl->GetShadowNearPlane();
             const float farPlane = pl->GetShadowFarPlane();
 

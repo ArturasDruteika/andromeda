@@ -1,5 +1,5 @@
 #include "../include/LightData.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_operations.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_operations.hpp"
 #include "spdlog/spdlog.h"
 
 
@@ -13,11 +13,11 @@ namespace andromeda::Space
         float attenuationConstant,
         float attenuationLinear,
         float attenuationQuadratic,
-        const Math::Vec3& diffuseIntensity,
-        const Math::Vec3& specularIntensity,
-        const Math::Vec3& position,
-        const Math::Vec3& color,
-        const Math::Vec3& direction,
+        const math::Vec3& diffuseIntensity,
+        const math::Vec3& specularIntensity,
+        const math::Vec3& position,
+        const math::Vec3& color,
+        const math::Vec3& direction,
         const LightType& lightType
     )
         : m_intensity{ intensity }
@@ -32,7 +32,7 @@ namespace andromeda::Space
         , m_lightType{ lightType }
         , m_position{ position }
         , m_color{ color }
-        , m_direction{ Math::LinAlgOps::Normalize(direction) }
+        , m_direction{ math::LinAlgOps::Normalize(direction) }
     {
     }
 
@@ -73,12 +73,12 @@ namespace andromeda::Space
         return m_attenuationQuadratic;
     }
 
-    Math::Vec3 LightData::GetDiffuseIntensity() const
+    math::Vec3 LightData::GetDiffuseIntensity() const
     {
         return m_diffuseIntensity;
     }
 
-    Math::Vec3 LightData::GetSpecularIntensity() const
+    math::Vec3 LightData::GetSpecularIntensity() const
     {
         return m_specularIntensity;
     }
@@ -88,17 +88,17 @@ namespace andromeda::Space
         return m_lightType;
     }
 
-    Math::Vec3 LightData::GetPosition() const
+    math::Vec3 LightData::GetPosition() const
     {
         return m_position;
     }
 
-    Math::Vec3 LightData::GetColor() const
+    math::Vec3 LightData::GetColor() const
     {
         return m_color;
     }
 
-    Math::Vec3 LightData::GetDirection() const
+    math::Vec3 LightData::GetDirection() const
     {
         return m_direction;
     }
@@ -167,12 +167,12 @@ namespace andromeda::Space
         m_attenuationQuadratic = quadratic;
     }
 
-    void LightData::SetDiffuseIntensity(const Math::Vec3& diffuseIntensity)
+    void LightData::SetDiffuseIntensity(const math::Vec3& diffuseIntensity)
     {
         m_diffuseIntensity = diffuseIntensity;
     }
 
-    void LightData::SetSpecularIntensity(const Math::Vec3& specularIntensity)
+    void LightData::SetSpecularIntensity(const math::Vec3& specularIntensity)
     {
         m_specularIntensity = specularIntensity;
     }
@@ -182,24 +182,24 @@ namespace andromeda::Space
         m_lightType = lightType;
     }
 
-    void LightData::SetPosition(const Math::Vec3& position)
+    void LightData::SetPosition(const math::Vec3& position)
     {
         m_position = position;
     }
 
-    void LightData::SetColor(const Math::Vec3& color)
+    void LightData::SetColor(const math::Vec3& color)
     {
         m_color = color;
     }
 
-    void LightData::SetDirection(const Math::Vec3& direction)
+    void LightData::SetDirection(const math::Vec3& direction)
     {
-        float len2 = Math::LinAlgOps::DotProd(direction, direction);
+        float len2 = math::LinAlgOps::DotProd(direction, direction);
         if (len2 < 1e-6f)
         {
             spdlog::error("Direction vector must be non-zero");
             return;
         }
-        m_direction = Math::LinAlgOps::Normalize(direction);
+        m_direction = math::LinAlgOps::Normalize(direction);
     }
 }

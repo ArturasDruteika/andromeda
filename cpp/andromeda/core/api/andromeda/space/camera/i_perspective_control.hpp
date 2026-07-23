@@ -2,7 +2,7 @@
 #define API__CAMERA__I_PERSPECTIVE_CONTROL__HPP
 
 
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda
@@ -17,7 +17,7 @@ namespace andromeda
 		virtual float get_near_plane() const = 0;
 		virtual float get_far_plane() const = 0;
 		virtual float get_aspect() const = 0;
-		virtual const Math::Mat4& get_projection() const = 0;
+		virtual const math::Mat4& get_projection() const = 0;
 		// Setters
 		virtual void set_field_of_view_degrees(float fov_deg, bool update_projection = true) = 0;
 		virtual void set_near_plane(float near_plane, bool update_projection = true) = 0;

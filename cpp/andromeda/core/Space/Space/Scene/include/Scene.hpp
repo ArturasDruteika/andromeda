@@ -31,14 +31,14 @@ namespace andromeda::Space
 		~Scene() override;
 
 		// Getters
-		const Math::Vec3& GetSceneCenter() const override;
+		const math::Vec3& GetSceneCenter() const override;
 
 		void ClearScene() override;
 		void ResetSceneState() override;
 		void Update(float deltaTime) override;
 
 	private:
-		Math::Vec3 m_sceneCenter;
+		math::Vec3 m_sceneCenter;
 	};
 }
 

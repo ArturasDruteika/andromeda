@@ -1,7 +1,7 @@
 #include "../include/ShadowRendererOpenGL.hpp"
 #include "../../../Shaders/Shaders/include/ShaderOpenGL.hpp"
 #include "../../../Shaders/Support/include/ShaderOpenGLTypes.hpp"
-#include "../../../Utils/include/MathUtils.hpp"
+#include "../../../Utils/include/mathUtils.hpp"
 #include "andromeda/space/objects/i_light_object.hpp"
 
 #include "glad/gl.h"
@@ -59,7 +59,7 @@ namespace andromeda::Rendering
                 continue;
             }
 
-            depthShader->SetUniform("u_model", MathUtils::ToGLM(transformIt->second->GetModelMatrix()));
+            depthShader->SetUniform("u_model", mathUtils::ToGLM(transformIt->second->GetModelMatrix()));
             glBindVertexArray(mesh->GetVAO());
             glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh->GetIndexCount()), GL_UNSIGNED_INT, nullptr);
         }
@@ -152,7 +152,7 @@ namespace andromeda::Rendering
                 continue;
             }
 
-            shader->SetUniform("u_model", MathUtils::ToGLM(transformIt->second->GetModelMatrix()));
+            shader->SetUniform("u_model", mathUtils::ToGLM(transformIt->second->GetModelMatrix()));
             glBindVertexArray(mesh->GetVAO());
             glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh->GetIndexCount()), GL_UNSIGNED_INT, nullptr);
         }
@@ -164,17 +164,17 @@ namespace andromeda::Rendering
 
     glm::mat4 ShadowRendererOpenGL::ComputeLightSpaceMatrix(
         const std::unordered_map<int, const IDirectionalLight*>& directionalLights,
-        const Math::Vec3& sceneCenter
+        const math::Vec3& sceneCenter
     )
     {
         const IDirectionalLight* light = directionalLights.begin()->second;
 
-        glm::vec3 direction = MathUtils::ToGLM(light->GetDirection());
+        glm::vec3 direction = mathUtils::ToGLM(light->GetDirection());
         glm::vec3 up(0.0f, 1.0f, 0.0f);
 
-        glm::vec3 lightPos = MathUtils::ToGLM(sceneCenter) - direction * 20.0f;
+        glm::vec3 lightPos = mathUtils::ToGLM(sceneCenter) - direction * 20.0f;
 
-        glm::mat4 view = glm::lookAt(lightPos, MathUtils::ToGLM(sceneCenter), up);
+        glm::mat4 view = glm::lookAt(lightPos, mathUtils::ToGLM(sceneCenter), up);
 
         glm::mat4 proj = glm::ortho(
             -light->GetLightOrthographicHalfSize(),
@@ -200,10 +200,10 @@ namespace andromeda::Rendering
 
         for (const auto& [id, light] : dirLights)
         {
-            directions.push_back(MathUtils::ToGLM(light->GetDirection()));
+            directions.push_back(mathUtils::ToGLM(light->GetDirection()));
             ambient.push_back(glm::vec3(0.9f));
-            diffuse.push_back(MathUtils::ToGLM(light->GetDiffuse()));
-            specular.push_back(MathUtils::ToGLM(light->GetSpecular()));
+            diffuse.push_back(mathUtils::ToGLM(light->GetDiffuse()));
+            specular.push_back(mathUtils::ToGLM(light->GetSpecular()));
         }
 
         shader.SetUniform("u_numDirLights", static_cast<int>(directions.size()));
@@ -223,10 +223,10 @@ namespace andromeda::Rendering
 
         for (const auto& [id, pl] : pointLights)
         {
-            positions.push_back(MathUtils::ToGLM(pl->GetPosition()));
-            ambient.push_back(MathUtils::ToGLM(pl->GeAmbient()));
-            diffuse.push_back(MathUtils::ToGLM(pl->GetDiffuse()));
-            specular.push_back(MathUtils::ToGLM(pl->GetSpecular()));
+            positions.push_back(mathUtils::ToGLM(pl->GetPosition()));
+            ambient.push_back(mathUtils::ToGLM(pl->GeAmbient()));
+            diffuse.push_back(mathUtils::ToGLM(pl->GetDiffuse()));
+            specular.push_back(mathUtils::ToGLM(pl->GetSpecular()));
 
             intensity.push_back(pl->GetIntensity());
             constant.push_back(pl->GetAttenuationConstant());

@@ -59,7 +59,7 @@ int AddSphereObject(
     int id,
     float radius,
     const andromeda::Color& color,
-    const andromeda::Math::Vec3& position
+    const andromeda::math::Vec3& position
 )
 {
     andromeda::Space::Sphere* pSphere = new andromeda::Space::Sphere(radius, color);
@@ -104,7 +104,7 @@ SolarSystem AddSolarSystem(
         system.sunId,
         1.5f,
         andromeda::Color{ 1.0f, 0.8f, 0.2f, 1.0f },
-        andromeda::Math::Vec3{ 0.0f, 0.0f, 0.0f }
+        andromeda::math::Vec3{ 0.0f, 0.0f, 0.0f }
     );
 
     auto addPlanet = [&](int& outId,
@@ -122,7 +122,7 @@ SolarSystem AddSolarSystem(
             outId,
             radius,
             color,
-            andromeda::Math::Vec3{ orbitRadius, 0.0f, 0.0f }
+            andromeda::math::Vec3{ orbitRadius, 0.0f, 0.0f }
         );
         system.planets.push_back(OrbitalBody{ outId, system.sunId, orbitRadius, orbitSpeed });
     };
@@ -162,7 +162,7 @@ SolarSystem AddSolarSystem(
             moonId,
             radius,
             color,
-            andromeda::Math::Vec3{ parentOrbitRadius + orbitRadius, 0.0f, 0.0f }
+            andromeda::math::Vec3{ parentOrbitRadius + orbitRadius, 0.0f, 0.0f }
         );
         system.moons.push_back(OrbitalBody{ moonId, parentId, orbitRadius, orbitSpeed });
     };
@@ -212,8 +212,8 @@ void UpdateSolarSystem(
         return;
     }
 
-    std::unordered_map<int, andromeda::Math::Vec3> positions;
-    const andromeda::Math::Vec3 sunPos = sunIt->second->GetPosition();
+    std::unordered_map<int, andromeda::math::Vec3> positions;
+    const andromeda::math::Vec3 sunPos = sunIt->second->GetPosition();
     positions[system.sunId] = sunPos;
 
     for (const auto& planet : system.planets)
@@ -224,9 +224,9 @@ void UpdateSolarSystem(
             continue;
         }
 
-        const andromeda::Math::Vec3 parentPos = positions[planet.parentId];
+        const andromeda::math::Vec3 parentPos = positions[planet.parentId];
         const float angle = state.time * planet.orbitSpeed;
-        const andromeda::Math::Vec3 planetPos{
+        const andromeda::math::Vec3 planetPos{
             parentPos[0] + std::cos(angle) * planet.orbitRadius,
             parentPos[1],
             parentPos[2] + std::sin(angle) * planet.orbitRadius
@@ -248,9 +248,9 @@ void UpdateSolarSystem(
         {
             continue;
         }
-        const andromeda::Math::Vec3 parentPos = parentPosIt->second;
+        const andromeda::math::Vec3 parentPos = parentPosIt->second;
         const float angle = state.time * moon.orbitSpeed;
-        const andromeda::Math::Vec3 moonPos{
+        const andromeda::math::Vec3 moonPos{
             parentPos[0] + std::cos(angle) * moon.orbitRadius,
             parentPos[1],
             parentPos[2] + std::sin(angle) * moon.orbitRadius
@@ -278,10 +278,10 @@ int main(void)
 
     andromeda::Space::Scene* pScene = new andromeda::Space::Scene();
     andromeda::Space::Camera* pCamera = new andromeda::Space::Camera(
-        andromeda::Math::Vec3{ 0.0f, 40.0f, 220.0f }
+        andromeda::math::Vec3{ 0.0f, 40.0f, 220.0f }
     );
     pScene->SetActiveCamera(pCamera);
-    pScene->SetBackgroundColor(andromeda::Math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f });
+    pScene->SetBackgroundColor(andromeda::math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f });
 
     const SolarSystem solarSystem = AddSolarSystem(*pScene, materialLibrary);
 

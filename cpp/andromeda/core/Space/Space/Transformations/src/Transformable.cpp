@@ -9,7 +9,7 @@ namespace andromeda
 	{
 	}
 
-	Transformable::Transformable(const Math::Vec3& position)
+	Transformable::Transformable(const math::Vec3& position)
 		: Translatable{ position }
 		, m_stateChanged{ false }
 	{
@@ -28,7 +28,7 @@ namespace andromeda
 		return stateChanged;
 	}
 
-	Math::Mat4 Transformable::GetModelMatrix()
+	math::Mat4 Transformable::GetModelMatrix()
 	{
 		if (StateChanged())
 		{
@@ -42,7 +42,7 @@ namespace andromeda
 		return m_modelMatrix;
 	}
 
-	void Transformable::SetModelMatrix(const Math::Mat4& modelMatrix)
+	void Transformable::SetModelMatrix(const math::Mat4& modelMatrix)
 	{
 		m_modelMatrix = modelMatrix;
 		m_stateChanged = true;

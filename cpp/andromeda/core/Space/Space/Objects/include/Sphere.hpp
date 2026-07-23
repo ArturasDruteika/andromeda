@@ -7,7 +7,7 @@
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/colors/colors.hpp"
 #include "andromeda/space/objects/i_sphere.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space
@@ -43,7 +43,7 @@ namespace andromeda::Space
             std::vector<unsigned int>& outIndices
         ) const;
 
-        static Math::Vec3 ComputeSphereNormal(float x, float y, float z);
+        static math::Vec3 ComputeSphereNormal(float x, float y, float z);
 
     private:
         float m_radius;

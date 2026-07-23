@@ -6,7 +6,7 @@
 #include "../../Objects/include/LightObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/light/i_point_light.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space
@@ -18,12 +18,12 @@ namespace andromeda::Space
 	{
 	public:
 		PointLight(
-			const Math::Vec3& position, 
-			const Math::Vec3& color = Math::Vec3{ 1.0f, 1.0f, 1.0f },
+			const math::Vec3& position, 
+			const math::Vec3& color = math::Vec3{ 1.0f, 1.0f, 1.0f },
 			float intensity = 1.0f,
-			const Math::Vec3& ambient = Math::Vec3{ 0.1f, 0.1f, 0.1f },
-			const Math::Vec3& diffuse = Math::Vec3{ 1.0f, 1.0f, 1.0f },
-			const Math::Vec3& specular = Math::Vec3{ 1.0f, 1.0f, 1.0f },
+			const math::Vec3& ambient = math::Vec3{ 0.1f, 0.1f, 0.1f },
+			const math::Vec3& diffuse = math::Vec3{ 1.0f, 1.0f, 1.0f },
+			const math::Vec3& specular = math::Vec3{ 1.0f, 1.0f, 1.0f },
 			float attenuationConstant = 1.0f,
 			float attenuationLinear = 0.1f,
 			float attenuationQuadratic = 0.01f,
@@ -38,14 +38,14 @@ namespace andromeda::Space
 		float GetAttenuationQuadratic() const override;
 		float GetShadowNearPlane() const override;
 		float GetShadowFarPlane() const override;
-		const Math::Vec3& GetPosition() const override;
+		const math::Vec3& GetPosition() const override;
 		// Setters
 		void SetAttenuationConstant(float attenuationConstant) override;
 		void SetAttenuationLinear(float attenuationLinear) override;
 		void SetAttenuationQuadratic(float attenuationQuadratic) override;
 		void SetShadowNearPlane(float shadowNearPlane) override;
 		void SetShadowFarPlane(float shadowFarPlane) override;
-		void SetPosition(const Math::Vec3& position) override;
+		void SetPosition(const math::Vec3& position) override;
 
 	private:
 		float m_attenuationConstant;
@@ -53,7 +53,7 @@ namespace andromeda::Space
 		float m_attenuationQuadratic;
 		float m_shadowNearPlane;
 		float m_shadowFarPlane;
-		Math::Vec3 m_position;
+		math::Vec3 m_position;
 	};
 }
 

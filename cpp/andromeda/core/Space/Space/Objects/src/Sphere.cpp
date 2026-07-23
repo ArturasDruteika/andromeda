@@ -1,5 +1,5 @@
 #include "../include/Sphere.hpp"
-#include "Math/Constants/include/constants.hpp"
+#include "math/Constants/include/constants.hpp"
 #include "pch.hpp"
 #include "spdlog/spdlog.h"
 
@@ -80,12 +80,12 @@ namespace andromeda::Space
         std::vector<Vertex>& outVertices
     ) const
     {
-        const float sectorStep = 2.0f * Math::PI / static_cast<float>(sectorCount);
-        const float stackStep = Math::PI / static_cast<float>(stackCount);
+        const float sectorStep = 2.0f * math::PI / static_cast<float>(sectorCount);
+        const float stackStep = math::PI / static_cast<float>(stackCount);
 
         for (int i = 0; i <= stackCount; ++i)
         {
-            const float stackAngle = (Math::PI / 2.0f) - (static_cast<float>(i) * stackStep);
+            const float stackAngle = (math::PI / 2.0f) - (static_cast<float>(i) * stackStep);
             const float xy = radius * std::cos(stackAngle);
             const float z = radius * std::sin(stackAngle);
 
@@ -96,10 +96,10 @@ namespace andromeda::Space
                 const float x = xy * std::cos(sectorAngle);
                 const float y = xy * std::sin(sectorAngle);
 
-                const Math::Vec3 normal = ComputeSphereNormal(x, y, z);
+                const math::Vec3 normal = ComputeSphereNormal(x, y, z);
 
                 outVertices.emplace_back(
-                    Math::Vec3(x, y, z),
+                    math::Vec3(x, y, z),
                     color,
                     normal
                 );
@@ -137,17 +137,17 @@ namespace andromeda::Space
         }
     }
 
-    Math::Vec3 Sphere::ComputeSphereNormal(float x, float y, float z)
+    math::Vec3 Sphere::ComputeSphereNormal(float x, float y, float z)
     {
         const float lenSq = (x * x) + (y * y) + (z * z);
 
         if (lenSq <= 0.0f)
         {
-            return Math::Vec3(0.0f, 0.0f, 0.0f);
+            return math::Vec3(0.0f, 0.0f, 0.0f);
         }
 
         const float invLen = 1.0f / std::sqrt(lenSq);
-        return Math::Vec3(x * invLen, y * invLen, z * invLen);
+        return math::Vec3(x * invLen, y * invLen, z * invLen);
     }
 }
 

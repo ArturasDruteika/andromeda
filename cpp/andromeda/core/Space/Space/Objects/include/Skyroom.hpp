@@ -5,7 +5,7 @@
 #include "GeometricObject.hpp"
 #include "SurfaceObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 #include "andromeda/space/objects/i_skyroom.hpp"
 #include "andromeda/space/colors/colors.hpp"
 #include "pch.hpp"
@@ -15,8 +15,8 @@ namespace andromeda::Space
 {
     struct SkyroomFaceData
     {
-        Math::Vec3 normal;
-        std::array<Math::Vec3, 4> vertices;
+        math::Vec3 normal;
+        std::array<math::Vec3, 4> vertices;
     };
 
     class SPACE_API Skyroom

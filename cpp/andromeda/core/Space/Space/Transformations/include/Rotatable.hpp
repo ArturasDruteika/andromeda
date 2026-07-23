@@ -4,8 +4,8 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/transformations/i_rotatable.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
-#include "Math/LinearAlgebra/include/quaternions.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/quaternions.hpp"
 
 
 namespace andromeda
@@ -19,15 +19,15 @@ namespace andromeda
 
         // Getters
         bool StateChanged() const override;
-        const Math::Vec3& GetRotation() const override; // Euler radians (derived)
-        const Math::Mat4& GetRotationMatrix() const override;
-        const Math::Quaternion& GetOrientation() const override;
+        const math::Vec3& GetRotation() const override; // Euler radians (derived)
+        const math::Mat4& GetRotationMatrix() const override;
+        const math::Quaternion& GetOrientation() const override;
 
         // Setters
         void ResetState() override;
-        void SetRotation(const Math::Vec3& rotation) override;
-        void Rotate(const Math::Vec3& rotation) override;
-        void Rotate(const Math::Quaternion& delta) override;
+        void SetRotation(const math::Vec3& rotation) override;
+        void Rotate(const math::Vec3& rotation) override;
+        void Rotate(const math::Quaternion& delta) override;
         void RotateX(float angle) override;
         void RotateY(float angle) override;
         void RotateZ(float angle) override;
@@ -37,9 +37,9 @@ namespace andromeda
 
     private:
         bool m_stateChanged;
-        Math::Vec3 m_rotation;
-        Math::Mat4 m_rotationMatrix;
-        Math::Quaternion m_orientation;
+        math::Vec3 m_rotation;
+        math::Mat4 m_rotationMatrix;
+        math::Quaternion m_orientation;
     };
 }
 

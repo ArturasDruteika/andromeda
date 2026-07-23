@@ -5,7 +5,7 @@
 #include "i_rotatable.hpp"
 #include "i_scalable.hpp"
 #include "i_translatable.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda
@@ -20,9 +20,9 @@ namespace andromeda
 
         // Getters
 		virtual bool state_changed() const = 0;
-        virtual Math::Mat4 get_model_matrix() = 0;
+        virtual math::Mat4 get_model_matrix() = 0;
 		// Setters
-        virtual void set_model_matrix(const Math::Mat4& model_matrix) = 0;
+        virtual void set_model_matrix(const math::Mat4& model_matrix) = 0;
 
         virtual void update_model_matrix() = 0;
 		virtual void reset_state() = 0;

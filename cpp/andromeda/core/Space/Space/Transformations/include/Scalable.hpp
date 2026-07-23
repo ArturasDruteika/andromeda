@@ -17,13 +17,13 @@ namespace andromeda
 
 		// Getters
 		bool StateChanged() const override;
-		const Math::Vec3& GetScale() const override;
-		const Math::Mat4& GetScaleMatrix() const override;
+		const math::Vec3& GetScale() const override;
+		const math::Mat4& GetScaleMatrix() const override;
 		// Setters
 		void ResetState() override;
-		void SetScale(const Math::Vec3& scale) override;
+		void SetScale(const math::Vec3& scale) override;
 
-		void Scale(const Math::Vec3& scale) override;
+		void Scale(const math::Vec3& scale) override;
 		void Scale(float uniformScale) override;
 
 	protected:
@@ -31,8 +31,8 @@ namespace andromeda
 
 	private:
 		bool m_stateChanged;
-		Math::Vec3 m_scale;
-		Math::Mat4 m_scaleMatrix;
+		math::Vec3 m_scale;
+		math::Mat4 m_scaleMatrix;
 	};
 }
 

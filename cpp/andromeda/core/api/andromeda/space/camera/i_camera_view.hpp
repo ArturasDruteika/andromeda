@@ -3,7 +3,7 @@
 
 
 #include "i_perspective_control.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda
@@ -15,12 +15,12 @@ namespace andromeda
         virtual ~ICameraView() = default;
 
         // Getters
-        virtual const Math::Vec3& get_position() const = 0;
-        virtual const Math::Vec3& get_target_coords() const = 0;
-        virtual const Math::Vec3& get_forward() const = 0;
-        virtual const Math::Vec3& get_right() const = 0;
-        virtual const Math::Vec3& get_up() const = 0;
-        virtual const Math::Mat4& get_view_matrix() const = 0;
+        virtual const math::Vec3& get_position() const = 0;
+        virtual const math::Vec3& get_target_coords() const = 0;
+        virtual const math::Vec3& get_forward() const = 0;
+        virtual const math::Vec3& get_right() const = 0;
+        virtual const math::Vec3& get_up() const = 0;
+        virtual const math::Mat4& get_view_matrix() const = 0;
     };
 }
 

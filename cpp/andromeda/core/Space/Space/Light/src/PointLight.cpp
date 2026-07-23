@@ -5,12 +5,12 @@
 namespace andromeda::Space
 {
     PointLight::PointLight(
-        const Math::Vec3& position, 
-        const Math::Vec3& color, 
+        const math::Vec3& position, 
+        const math::Vec3& color, 
         float intensity, 
-        const Math::Vec3& ambient,
-        const Math::Vec3& diffuse,
-        const Math::Vec3& specular,
+        const math::Vec3& ambient,
+        const math::Vec3& diffuse,
+        const math::Vec3& specular,
         float attenuationConstant, 
         float attenuationLinear, 
         float attenuationQuadratic,
@@ -61,7 +61,7 @@ namespace andromeda::Space
         return m_shadowFarPlane;
     }
 
-    const Math::Vec3& PointLight::GetPosition() const
+    const math::Vec3& PointLight::GetPosition() const
     {
         return m_position;
     }
@@ -106,7 +106,7 @@ namespace andromeda::Space
         m_shadowFarPlane = shadowFarPlane;
     }
 
-    void PointLight::SetPosition(const Math::Vec3& position)
+    void PointLight::SetPosition(const math::Vec3& position)
     {
         m_position = position;
     }

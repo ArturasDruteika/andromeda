@@ -45,7 +45,7 @@ namespace andromeda::Rendering
         // TODO: consider making it a void and calculating ONLY when the scene state has been changed
         static glm::mat4 ComputeLightSpaceMatrix(
             const std::unordered_map<int, const IDirectionalLight*>& directionalLights,
-            const Math::Vec3& sceneCenter
+            const math::Vec3& sceneCenter
         );
 
         static void PopulateDirectionalLightUniforms(

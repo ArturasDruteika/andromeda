@@ -1,7 +1,7 @@
 #include "../include/PerspectiveControl.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_operations.hpp"
-#include "Math/Trigonometry/include/trigonometry.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_operations.hpp"
+#include "math/Trigonometry/include/trigonometry.hpp"
 
 
 namespace andromeda::Space
@@ -47,7 +47,7 @@ namespace andromeda::Space
 		return m_aspect;
 	}
 
-	const Math::Mat4& PerspectiveControl::GetProjection() const
+	const math::Mat4& PerspectiveControl::GetProjection() const
 	{
 		return m_projection;
 	}
@@ -82,8 +82,8 @@ namespace andromeda::Space
 
 	void PerspectiveControl::UpdateProjection()
 	{
-		m_projection = Math::LinAlgOps::Perspective(
-			Math::Trigonometry::Deg2Rad(m_fovDeg), 
+		m_projection = math::LinAlgOps::Perspective(
+			math::Trigonometry::Deg2Rad(m_fovDeg), 
 			m_aspect, 
 			m_nearPlane, 
 			m_farPlane

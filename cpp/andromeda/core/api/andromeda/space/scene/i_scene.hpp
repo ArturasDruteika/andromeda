@@ -19,7 +19,7 @@ namespace andromeda
 	public:
 		virtual ~IScene() = default;
 
-		virtual const Math::Vec3& get_scene_center() const = 0;
+		virtual const math::Vec3& get_scene_center() const = 0;
 
 		virtual void clear_scene() = 0;
 		virtual void reset_scene_state() = 0;

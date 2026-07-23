@@ -72,67 +72,67 @@ namespace andromeda::Space
         {
             SkyroomFaceData
             {
-                Math::Vec3(0.0f, 0.0f, 1.0f), // inward for back (-Z)
+                math::Vec3(0.0f, 0.0f, 1.0f), // inward for back (-Z)
                 {
-                    Math::Vec3(-halfExtent, -halfExtent, -halfExtent),
-                    Math::Vec3(halfExtent, -halfExtent, -halfExtent),
-                    Math::Vec3(halfExtent,  halfExtent, -halfExtent),
-                    Math::Vec3(-halfExtent,  halfExtent, -halfExtent)
+                    math::Vec3(-halfExtent, -halfExtent, -halfExtent),
+                    math::Vec3(halfExtent, -halfExtent, -halfExtent),
+                    math::Vec3(halfExtent,  halfExtent, -halfExtent),
+                    math::Vec3(-halfExtent,  halfExtent, -halfExtent)
                 }
             },
 
             SkyroomFaceData
             {
-                Math::Vec3(0.0f, 0.0f, -1.0f), // inward for front (+Z)
+                math::Vec3(0.0f, 0.0f, -1.0f), // inward for front (+Z)
                 {
-                    Math::Vec3(-halfExtent, -halfExtent,  halfExtent),
-                    Math::Vec3(-halfExtent,  halfExtent,  halfExtent),
-                    Math::Vec3(halfExtent,  halfExtent,  halfExtent),
-                    Math::Vec3(halfExtent, -halfExtent,  halfExtent)
+                    math::Vec3(-halfExtent, -halfExtent,  halfExtent),
+                    math::Vec3(-halfExtent,  halfExtent,  halfExtent),
+                    math::Vec3(halfExtent,  halfExtent,  halfExtent),
+                    math::Vec3(halfExtent, -halfExtent,  halfExtent)
                 }
             },
 
             SkyroomFaceData
             {
-                Math::Vec3(1.0f, 0.0f, 0.0f), // inward for left (-X)
+                math::Vec3(1.0f, 0.0f, 0.0f), // inward for left (-X)
                 {
-                    Math::Vec3(-halfExtent, -halfExtent, -halfExtent),
-                    Math::Vec3(-halfExtent,  halfExtent, -halfExtent),
-                    Math::Vec3(-halfExtent,  halfExtent,  halfExtent),
-                    Math::Vec3(-halfExtent, -halfExtent,  halfExtent)
+                    math::Vec3(-halfExtent, -halfExtent, -halfExtent),
+                    math::Vec3(-halfExtent,  halfExtent, -halfExtent),
+                    math::Vec3(-halfExtent,  halfExtent,  halfExtent),
+                    math::Vec3(-halfExtent, -halfExtent,  halfExtent)
                 }
             },
 
             SkyroomFaceData
             {
-                Math::Vec3(-1.0f, 0.0f, 0.0f), // inward for right (+X)
+                math::Vec3(-1.0f, 0.0f, 0.0f), // inward for right (+X)
                 {
-                    Math::Vec3(halfExtent, -halfExtent, -halfExtent),
-                    Math::Vec3(halfExtent, -halfExtent,  halfExtent),
-                    Math::Vec3(halfExtent,  halfExtent,  halfExtent),
-                    Math::Vec3(halfExtent,  halfExtent, -halfExtent)
+                    math::Vec3(halfExtent, -halfExtent, -halfExtent),
+                    math::Vec3(halfExtent, -halfExtent,  halfExtent),
+                    math::Vec3(halfExtent,  halfExtent,  halfExtent),
+                    math::Vec3(halfExtent,  halfExtent, -halfExtent)
                 }
             },
 
             SkyroomFaceData
             {
-                Math::Vec3(0.0f, 1.0f, 0.0f), // inward for bottom (-Y)
+                math::Vec3(0.0f, 1.0f, 0.0f), // inward for bottom (-Y)
                 {
-                    Math::Vec3(-halfExtent, -halfExtent, -halfExtent),
-                    Math::Vec3(-halfExtent, -halfExtent,  halfExtent),
-                    Math::Vec3(halfExtent, -halfExtent,  halfExtent),
-                    Math::Vec3(halfExtent, -halfExtent, -halfExtent)
+                    math::Vec3(-halfExtent, -halfExtent, -halfExtent),
+                    math::Vec3(-halfExtent, -halfExtent,  halfExtent),
+                    math::Vec3(halfExtent, -halfExtent,  halfExtent),
+                    math::Vec3(halfExtent, -halfExtent, -halfExtent)
                 }
             },
 
             SkyroomFaceData
             {
-                Math::Vec3(0.0f, -1.0f, 0.0f), // inward for top (+Y)
+                math::Vec3(0.0f, -1.0f, 0.0f), // inward for top (+Y)
                 {
-                    Math::Vec3(-halfExtent,  halfExtent, -halfExtent),
-                    Math::Vec3(halfExtent,  halfExtent, -halfExtent),
-                    Math::Vec3(halfExtent,  halfExtent,  halfExtent),
-                    Math::Vec3(-halfExtent,  halfExtent,  halfExtent)
+                    math::Vec3(-halfExtent,  halfExtent, -halfExtent),
+                    math::Vec3(halfExtent,  halfExtent, -halfExtent),
+                    math::Vec3(halfExtent,  halfExtent,  halfExtent),
+                    math::Vec3(-halfExtent,  halfExtent,  halfExtent)
                 }
             }
         };
@@ -152,7 +152,7 @@ namespace andromeda::Space
         unsigned int& indexOffset
     )
     {
-        for (const Math::Vec3& pos : face.vertices)
+        for (const math::Vec3& pos : face.vertices)
         {
             outVertices.emplace_back(pos, color, face.normal);
         }

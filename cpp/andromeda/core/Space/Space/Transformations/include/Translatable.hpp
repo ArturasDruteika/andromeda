@@ -13,26 +13,26 @@ namespace andromeda
 	{
 	public:
 		Translatable();
-		Translatable(const Math::Vec3& position);
+		Translatable(const math::Vec3& position);
 		~Translatable() override;
 
 		// Getters
 		bool StateChanged() const override;
-		const Math::Vec3& GetPosition() const override;
-		const Math::Mat4& GetTranslationMatrix() const override;
+		const math::Vec3& GetPosition() const override;
+		const math::Mat4& GetTranslationMatrix() const override;
 		// Setters
 		void ResetState() override;
-		void SetPosition(const Math::Vec3& position) override;
+		void SetPosition(const math::Vec3& position) override;
 
-		void Translate(const Math::Vec3& translation) override;
+		void Translate(const math::Vec3& translation) override;
 
 	protected:
 		void UpdateTranslationMatrix();
 
 	private:
 		bool m_stateChanged;
-		Math::Vec3 m_position;
-		Math::Mat4 m_translationMatrix;
+		math::Vec3 m_position;
+		math::Mat4 m_translationMatrix;
 	};
 }
 

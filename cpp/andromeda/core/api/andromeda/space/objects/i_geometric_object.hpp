@@ -5,7 +5,7 @@
 #include "i_object.hpp"
 #include "i_mesh.hpp"
 #include "../colors/colors.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda

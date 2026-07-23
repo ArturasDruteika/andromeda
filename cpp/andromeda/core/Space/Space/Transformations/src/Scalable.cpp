@@ -1,5 +1,5 @@
 #include "../include/Scalable.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_operations.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_operations.hpp"
 
 
 namespace andromeda
@@ -18,12 +18,12 @@ namespace andromeda
 		return m_stateChanged;
 	}
 
-	const Math::Vec3& Scalable::GetScale() const
+	const math::Vec3& Scalable::GetScale() const
 	{
 		return m_scale;
 	}
 
-	const Math::Mat4& Scalable::GetScaleMatrix() const
+	const math::Mat4& Scalable::GetScaleMatrix() const
 	{
 		return m_scaleMatrix;
 	}
@@ -33,14 +33,14 @@ namespace andromeda
 		m_stateChanged = false;
 	}
 
-	void Scalable::SetScale(const Math::Vec3& scale)
+	void Scalable::SetScale(const math::Vec3& scale)
 	{
 		m_scale = scale;
 		UpdateScaleMatrix();
 		m_stateChanged = true;
 	}
 
-	void Scalable::Scale(const Math::Vec3& scale)
+	void Scalable::Scale(const math::Vec3& scale)
 	{
 		m_scale = scale;
 		UpdateScaleMatrix();
@@ -49,13 +49,13 @@ namespace andromeda
 
 	void Scalable::Scale(float uniformScale)
 	{
-		m_scale = Math::Vec3{ uniformScale };
+		m_scale = math::Vec3{ uniformScale };
 		UpdateScaleMatrix();
 		m_stateChanged = true;
 	}
 
 	void Scalable::UpdateScaleMatrix()
 	{
-		m_scaleMatrix = Math::LinAlgOps::Scale(Math::Mat4(), m_scale);
+		m_scaleMatrix = math::LinAlgOps::Scale(math::Mat4(), m_scale);
 	}
 }

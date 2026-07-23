@@ -4,7 +4,7 @@
 
 #include "CameraView.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Math/LinearAlgebra/include/quaternions.hpp"
+#include "math/LinearAlgebra/include/quaternions.hpp"
 #include "andromeda/space/camera/i_camera_controller.hpp"
 
 
@@ -15,7 +15,7 @@ namespace andromeda::Space
 		, public CameraView
 	{
 	public:
-		CameraController(const Math::Vec3& position, const Math::Vec3& targetCoords = Math::Vec3(0.0f, 0.0f, 0.0f));
+		CameraController(const math::Vec3& position, const math::Vec3& targetCoords = math::Vec3(0.0f, 0.0f, 0.0f));
 		~CameraController();
 
 		void Rotate(float yaw, float pitch, float roll) override;
@@ -28,7 +28,7 @@ namespace andromeda::Space
 
 	protected:
 		float m_distance;
-		Math::Quaternion m_orientation;
+		math::Quaternion m_orientation;
 	};
 }
 

@@ -5,7 +5,7 @@ namespace andromeda::Space
 		: CameraHandler{}
 		, SceneEnvironment{}
 		, SceneState{}
-		, m_sceneCenter{ Math::Vec3{ 0.0f } }
+		, m_sceneCenter{ math::Vec3{ 0.0f } }
 	{
 	}
 
@@ -14,7 +14,7 @@ namespace andromeda::Space
 		ClearScene();
 	}
 
-	const Math::Vec3& Scene::GetSceneCenter() const
+	const math::Vec3& Scene::GetSceneCenter() const
 	{
 		return m_sceneCenter;
 	}

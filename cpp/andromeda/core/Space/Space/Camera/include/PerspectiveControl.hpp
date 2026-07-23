@@ -4,7 +4,7 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/camera/i_perspective_control.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space
@@ -22,7 +22,7 @@ namespace andromeda::Space
 		float GetNearPlane() const override;
 		float GetFarPlane() const override;
 		float GetAspect() const override;
-		const Math::Mat4& GetProjection() const override;
+		const math::Mat4& GetProjection() const override;
 		// Setters
 		void SetFieldOfViewDegrees(float fovDeg, bool updateProjection = true) override;
 		void SetNearPlane(float nearPlane, bool updateProjection = true) override;
@@ -37,7 +37,7 @@ namespace andromeda::Space
 		float m_nearPlane;
 		float m_farPlane;
 		float m_aspect;
-		Math::Mat4 m_projection;
+		math::Mat4 m_projection;
 	};
 }
 

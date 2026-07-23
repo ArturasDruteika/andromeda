@@ -64,67 +64,67 @@ namespace andromeda::Space
 		{
 			CubeFaceData
 			{
-				Math::Vec3(0.0f, 0.0f, -1.0f),
+				math::Vec3(0.0f, 0.0f, -1.0f),
 				{
-					Math::Vec3(-halfExtent, -halfExtent, -halfExtent),
-					Math::Vec3(-halfExtent,  halfExtent, -halfExtent),
-					Math::Vec3(halfExtent,  halfExtent, -halfExtent),
-					Math::Vec3(halfExtent, -halfExtent, -halfExtent)
+					math::Vec3(-halfExtent, -halfExtent, -halfExtent),
+					math::Vec3(-halfExtent,  halfExtent, -halfExtent),
+					math::Vec3(halfExtent,  halfExtent, -halfExtent),
+					math::Vec3(halfExtent, -halfExtent, -halfExtent)
 				}
 			}, // Back (-Z)
 
 				CubeFaceData
 			{
-				Math::Vec3(0.0f, 0.0f,  1.0f),
+				math::Vec3(0.0f, 0.0f,  1.0f),
 				{
-					Math::Vec3(-halfExtent, -halfExtent,  halfExtent),
-					Math::Vec3(halfExtent, -halfExtent,  halfExtent),
-					Math::Vec3(halfExtent,  halfExtent,  halfExtent),
-					Math::Vec3(-halfExtent,  halfExtent,  halfExtent)
+					math::Vec3(-halfExtent, -halfExtent,  halfExtent),
+					math::Vec3(halfExtent, -halfExtent,  halfExtent),
+					math::Vec3(halfExtent,  halfExtent,  halfExtent),
+					math::Vec3(-halfExtent,  halfExtent,  halfExtent)
 				}
 			}, // Front (+Z)
 
 				CubeFaceData
 			{
-				Math::Vec3(-1.0f, 0.0f, 0.0f),
+				math::Vec3(-1.0f, 0.0f, 0.0f),
 				{
-					Math::Vec3(-halfExtent, -halfExtent, -halfExtent),
-					Math::Vec3(-halfExtent, -halfExtent,  halfExtent),
-					Math::Vec3(-halfExtent,  halfExtent,  halfExtent),
-					Math::Vec3(-halfExtent,  halfExtent, -halfExtent)
+					math::Vec3(-halfExtent, -halfExtent, -halfExtent),
+					math::Vec3(-halfExtent, -halfExtent,  halfExtent),
+					math::Vec3(-halfExtent,  halfExtent,  halfExtent),
+					math::Vec3(-halfExtent,  halfExtent, -halfExtent)
 				}
 			}, // Left (-X)
 
 				CubeFaceData
 			{
-				Math::Vec3(1.0f, 0.0f, 0.0f),
+				math::Vec3(1.0f, 0.0f, 0.0f),
 				{
-					Math::Vec3(halfExtent, -halfExtent, -halfExtent),
-					Math::Vec3(halfExtent,  halfExtent, -halfExtent),
-					Math::Vec3(halfExtent,  halfExtent,  halfExtent),
-					Math::Vec3(halfExtent, -halfExtent,  halfExtent)
+					math::Vec3(halfExtent, -halfExtent, -halfExtent),
+					math::Vec3(halfExtent,  halfExtent, -halfExtent),
+					math::Vec3(halfExtent,  halfExtent,  halfExtent),
+					math::Vec3(halfExtent, -halfExtent,  halfExtent)
 				}
 			}, // Right (+X)
 
 				CubeFaceData
 			{
-				Math::Vec3(0.0f, -1.0f, 0.0f),
+				math::Vec3(0.0f, -1.0f, 0.0f),
 				{
-					Math::Vec3(-halfExtent, -halfExtent, -halfExtent),
-					Math::Vec3(halfExtent, -halfExtent, -halfExtent),
-					Math::Vec3(halfExtent, -halfExtent,  halfExtent),
-					Math::Vec3(-halfExtent, -halfExtent,  halfExtent)
+					math::Vec3(-halfExtent, -halfExtent, -halfExtent),
+					math::Vec3(halfExtent, -halfExtent, -halfExtent),
+					math::Vec3(halfExtent, -halfExtent,  halfExtent),
+					math::Vec3(-halfExtent, -halfExtent,  halfExtent)
 				}
 			}, // Bottom (-Y)
 
 				CubeFaceData
 			{
-				Math::Vec3(0.0f,  1.0f, 0.0f),
+				math::Vec3(0.0f,  1.0f, 0.0f),
 				{
-					Math::Vec3(-halfExtent,  halfExtent,  halfExtent),
-					Math::Vec3(halfExtent,  halfExtent,  halfExtent),
-					Math::Vec3(halfExtent,  halfExtent, -halfExtent),
-					Math::Vec3(-halfExtent,  halfExtent, -halfExtent)
+					math::Vec3(-halfExtent,  halfExtent,  halfExtent),
+					math::Vec3(halfExtent,  halfExtent,  halfExtent),
+					math::Vec3(halfExtent,  halfExtent, -halfExtent),
+					math::Vec3(-halfExtent,  halfExtent, -halfExtent)
 				}
 			}  // Top (+Y)
 		};
@@ -146,7 +146,7 @@ namespace andromeda::Space
 		unsigned int& indexOffset
 	)
 	{
-		for (const Math::Vec3& pos : face.vertices)
+		for (const math::Vec3& pos : face.vertices)
 		{
 			outVertices.emplace_back(
 				pos,

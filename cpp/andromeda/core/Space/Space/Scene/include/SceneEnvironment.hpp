@@ -4,7 +4,7 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/scene/i_scene_environment.hpp"
-#include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space
@@ -18,16 +18,16 @@ namespace andromeda::Space
 
 		// Getters
 		float GetAmbientStrength() const override;
-		const Math::Vec4& GetBackgroundColor() const override;
+		const math::Vec4& GetBackgroundColor() const override;
 		// Setters
 		void SetAmbientStrength(float ambientStrength) override;
-		void SetBackgroundColor(const Math::Vec4& backroundColor) override;
+		void SetBackgroundColor(const math::Vec4& backroundColor) override;
 
 		void ResizeGrid(float resizeFactor) override;
 
 	protected:
 		float m_ambientStrength;
-		Math::Vec4 m_backgroundColor;
+		math::Vec4 m_backgroundColor;
 	};
 }
 

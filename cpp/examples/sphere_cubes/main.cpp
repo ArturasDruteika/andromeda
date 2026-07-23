@@ -40,15 +40,15 @@ void PopulateSceneWithDummyObjects(
 
     // Sun
     andromeda::Space::DirectionalLight* pSun = new andromeda::Space::DirectionalLight(
-        andromeda::Math::Vec3{ 10.0f, 10.0f, 10.0f },
-        andromeda::Math::Vec3{ 1.0f, 1.0f, 1.0f },
+        andromeda::math::Vec3{ 10.0f, 10.0f, 10.0f },
+        andromeda::math::Vec3{ 1.0f, 1.0f, 1.0f },
         1.0f
     );
 
     {
         std::unique_ptr<andromeda::Space::SceneNode> sunNode =
             std::make_unique<andromeda::Space::SceneNode>(
-                std::make_unique<andromeda::Transformable>(andromeda::Math::Vec3{ 10.0f, 10.0f, 10.0f })
+                std::make_unique<andromeda::Transformable>(andromeda::math::Vec3{ 10.0f, 10.0f, 10.0f })
             );
         sunNode->AddComponent(std::make_unique<andromeda::Space::LightComponent>(0, pSun));
         scene.AttachNode(std::move(sunNode));
@@ -61,7 +61,7 @@ void PopulateSceneWithDummyObjects(
     {
         std::unique_ptr<andromeda::Space::SceneNode> centerNode =
             std::make_unique<andromeda::Space::SceneNode>(
-                std::make_unique<andromeda::Transformable>(andromeda::Math::Vec3{ 0.0f, 0.0f, 0.0f })
+                std::make_unique<andromeda::Transformable>(andromeda::math::Vec3{ 0.0f, 0.0f, 0.0f })
             );
         centerNode->AddComponent(std::make_unique<andromeda::Space::ObjectComponent>(1, pCenterSphere));
         scene.AttachNode(std::move(centerNode));
@@ -82,7 +82,7 @@ void PopulateSceneWithDummyObjects(
 
     for (int i = 2; i < kSphereCount; ++i)
     {
-        andromeda::Math::Vec3 pos{
+        andromeda::math::Vec3 pos{
             dist(rng),
             dist(rng),
             dist(rng)
@@ -141,10 +141,10 @@ int main(void)
 
     andromeda::Space::Scene* pScene = new andromeda::Space::Scene();
     andromeda::Space::Camera* pCamera = new andromeda::Space::Camera(
-        andromeda::Math::Vec3{ 0.0f, 0.0f, 10.0f }
+        andromeda::math::Vec3{ 0.0f, 0.0f, 10.0f }
     );
     pScene->SetActiveCamera(pCamera);
-    pScene->SetBackgroundColor(andromeda::Math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f });
+    pScene->SetBackgroundColor(andromeda::math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f });
 
     PopulateSceneWithDummyObjects(*pScene, materialLibrary);
 
