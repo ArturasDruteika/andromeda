@@ -12,27 +12,27 @@ namespace andromeda::math
 {
     namespace
     {
-        inline glm::quat ToGlm(const Quaternion& q)
+        inline glm::quat to_glm(const Quaternion& q)
         {
             return glm::quat(q.w, q.x, q.y, q.z);
         }
 
-        inline Quaternion FromGlm(const glm::quat& gq)
+        inline Quaternion from_glm(const glm::quat& gq)
         {
             return Quaternion(gq.w, gq.x, gq.y, gq.z);
         }
 
-        inline glm::vec3 ToGlm(const Vec3& v)
+        inline glm::vec3 to_glm(const Vec3& v)
         {
             return glm::vec3(v.data[0], v.data[1], v.data[2]);
         }
 
-        inline Vec3 FromGlm(const glm::vec3& gv)
+        inline Vec3 from_glm(const glm::vec3& gv)
         {
             return Vec3(gv.x, gv.y, gv.z);
         }
 
-        inline glm::mat4 ToGlm(const Mat4& m)
+        inline glm::mat4 to_glm(const Mat4& m)
         {
             glm::mat4 gm(1.0f);
             for (int c = 0; c < 4; ++c)
@@ -45,7 +45,7 @@ namespace andromeda::math
             return gm;
         }
 
-        inline Mat4 FromGlm(const glm::mat4& gm)
+        inline Mat4 from_glm(const glm::mat4& gm)
         {
             Mat4 m(1.0f);
             for (int c = 0; c < 4; ++c)
@@ -66,9 +66,9 @@ namespace andromeda::math
 
     Quaternion QuaternionOps::from_axis_angle(const Vec3& axis, float angle_radians)
     {
-        glm::vec3 gAxis = ToGlm(axis);
+        glm::vec3 gAxis = to_glm(axis);
         glm::quat gq = glm::angleAxis(angle_radians, glm::normalize(gAxis));
-        return FromGlm(gq);
+        return from_glm(gq);
     }
 
     float QuaternionOps::length(const Quaternion& q)
@@ -83,7 +83,7 @@ namespace andromeda::math
 
     Quaternion QuaternionOps::normalize(const Quaternion& q, float epsilon)
     {
-        glm::quat g = ToGlm(q);
+        glm::quat g = to_glm(q);
         float lenSq = glm::dot(g, g);
 
         if (lenSq <= epsilon * epsilon)
@@ -92,7 +92,7 @@ namespace andromeda::math
         }
 
         g = glm::normalize(g);
-        return FromGlm(g);
+        return from_glm(g);
     }
 
     Quaternion QuaternionOps::conjugate(const Quaternion& q)
@@ -102,7 +102,7 @@ namespace andromeda::math
 
     Quaternion QuaternionOps::inverse(const Quaternion& q, float epsilon)
     {
-        glm::quat g = ToGlm(q);
+        glm::quat g = to_glm(q);
         float lenSq = glm::dot(g, g);
 
         if (lenSq <= epsilon * epsilon)
@@ -111,15 +111,15 @@ namespace andromeda::math
         }
 
         g = glm::inverse(g);
-        return FromGlm(g);
+        return from_glm(g);
     }
 
     Quaternion QuaternionOps::multiply(const Quaternion& a, const Quaternion& b)
     {
-        glm::quat ga = ToGlm(a);
-        glm::quat gb = ToGlm(b);
+        glm::quat ga = to_glm(a);
+        glm::quat gb = to_glm(b);
         glm::quat gr = ga * gb;
-        return FromGlm(gr);
+        return from_glm(gr);
     }
 
     Quaternion QuaternionOps::add(const Quaternion& a, const Quaternion& b)
@@ -157,8 +157,8 @@ namespace andromeda::math
             return b;
         }
 
-        glm::quat ga = ToGlm(a);
-        glm::quat gb = ToGlm(b);
+        glm::quat ga = to_glm(a);
+        glm::quat gb = to_glm(b);
 
         glm::quat gRes = glm::slerp(ga, gb, t);
 
@@ -168,15 +168,15 @@ namespace andromeda::math
             gRes = glm::normalize(gRes);
         }
 
-        return FromGlm(gRes);
+        return from_glm(gRes);
     }
 
     Vec3 QuaternionOps::rotate_vector(const Quaternion& q, const Vec3& v)
     {
-        glm::quat gq = ToGlm(q);
-        glm::vec3 gv = ToGlm(v);
+        glm::quat gq = to_glm(q);
+        glm::vec3 gv = to_glm(v);
         glm::vec3 gvRot = glm::rotate(gq, gv);
-        return FromGlm(gvRot);
+        return from_glm(gvRot);
     }
 
     Quaternion QuaternionOps::angle_axis(float angle_radians, const Vec3& axis)
@@ -194,23 +194,23 @@ namespace andromeda::math
         // Build rotation matrix from Euler XYZ, then convert to quaternion.
         glm::mat4 R = glm::eulerAngleXYZ(x_radians, y_radians, z_radians);
         glm::quat q = glm::quat_cast(R);
-        return FromGlm(q);
+        return from_glm(q);
     }
 
     Vec3 QuaternionOps::to_euler_xyz(const Quaternion& q)
     {
-        glm::quat gq = ToGlm(q);
+        glm::quat gq = to_glm(q);
 
         // glm::eulerAngles returns a vec3 of Euler angles (in radians).
         // Interpretation corresponds to the chosen extraction convention.
         glm::vec3 e = glm::eulerAngles(gq);
-        return FromGlm(e);
+        return from_glm(e);
     }
 
     Mat4 QuaternionOps::to_mat4(const Quaternion& q)
     {
-        glm::quat gq = ToGlm(q);
+        glm::quat gq = to_glm(q);
         glm::mat4 gm = glm::toMat4(gq);
-        return FromGlm(gm);
+        return from_glm(gm);
     }
 }

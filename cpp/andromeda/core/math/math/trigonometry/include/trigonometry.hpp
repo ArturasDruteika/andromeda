@@ -13,8 +13,8 @@ namespace andromeda::math
 	class MATH_API Trigonometry
 	{
 	public:
-		static float deg2_rad(float deg);
-		static float rad2_deg(float rad);
+		static float deg_2_rad(float deg);
+		static float rad_2_deg(float rad);
 	};
 }
 

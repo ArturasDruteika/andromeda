@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(Math)
+project(math)
 
 set(CMAKE_BUILD_PARALLEL_LEVEL)
 set(CMAKE_CXX_STANDARD 23)
@@ -13,33 +13,33 @@ add_definitions(-DMATH_EXPORT)
 
 # ==== Constants ====
 set(CONSTANTS_HEADERS
-    Math/Constants/include/constants.hpp
+    math/Constants/include/constants.hpp
 )
 
 # ==== Linear Algebra ====
 set(LINEAR_ALGEBRA_HEADERS
-    Math/LinearAlgebra/include/linear_algebra_data_types.hpp
-    Math/LinearAlgebra/include/linear_algebra_operations.hpp
-    Math/LinearAlgebra/include/quaternions.hpp
+    math/linear_algebra/include/linear_algebra_data_types.hpp
+    math/linear_algebra/include/linear_algebra_operations.hpp
+    math/linear_algebra/include/quaternions.hpp
 )
 
 set(LINEAR_ALGEBRA_SOURCES
-    Math/LinearAlgebra/src/linear_algebra_operations.cpp
-    Math/LinearAlgebra/src/quaternions.cpp
+    math/linear_algebra/src/linear_algebra_operations.cpp
+    math/linear_algebra/src/quaternions.cpp
 )
 
 # ==== Macro Exports ====
 set(MACRO_EXPORTS_HEADERS
-    Math/MacroExports/include/macro_exports.hpp
+    math/macro_exports/include/macro_exports.hpp
 )
 
 # ==== Trigonometry ====
 set(TRIGONOMETRY_HEADERS
-    Math/Trigonometry/include/trigonometry.hpp
+    math/Trigonometry/include/trigonometry.hpp
 )
 
 set(TRIGONOMETRY_SOURCES
-    Math/Trigonometry/src/trigonometry.cpp
+    math/Trigonometry/src/trigonometry.cpp
 )
 
 
@@ -62,7 +62,7 @@ target_include_directories(${PROJECT_NAME}
 # ==== Link Libraries ====
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        PrecompiledHeaders
+        precompiled_headers
         spdlog::spdlog
         glm::glm
 )
@@ -80,9 +80,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/LinearAlgebra
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/linear_algebra
     PREFIX
-        "LinearAlgebra"
+        "linear_algebra"
     FILES
         ${LINEAR_ALGEBRA_HEADERS}
         ${LINEAR_ALGEBRA_SOURCES}
@@ -90,9 +90,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/MacroExports
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/macro_exports
     PREFIX
-        "MacroExports"
+        "macro_exports"
     FILES
         ${MACRO_EXPORTS_HEADERS}
 )

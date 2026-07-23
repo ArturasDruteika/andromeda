@@ -4,12 +4,12 @@
 
 namespace andromeda::math
 {
-	float Trigonometry::deg2_rad(float deg)
+	float Trigonometry::deg_2_rad(float deg)
 	{
 		return deg * (math::PI / 180.0f);
 	}
 
-	float Trigonometry::rad2_deg(float rad)
+	float Trigonometry::rad_2_deg(float rad)
 	{
 		return rad * (180.0f / math::PI);
 	}
