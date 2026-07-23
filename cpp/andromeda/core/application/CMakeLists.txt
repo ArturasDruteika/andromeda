@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(Application)
+project(application)
 
 set(CMAKE_BUILD_PARALLEL_LEVEL)
 set(CMAKE_CXX_STANDARD 23)
@@ -12,13 +12,13 @@ add_definitions(-DAPPLICATION_EXPORT)
 # SPDLog
 
 
-# ==== ApplicationGLFW ====
+# ==== applicationGLFW ====
 set(APPLICATION_HEADERS
-    Application/include/Application.hpp
+    application/include/application.hpp
 )
 
 set(APPLICATION_SOURCES
-    Application/src/Application.cpp
+    application/src/application.cpp
 )
 
 add_library(${PROJECT_NAME} 
@@ -42,11 +42,11 @@ target_compile_definitions(${PROJECT_NAME}
 # Link GLFW and OpenGL to the executable
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
-        PrecompiledHeaders
+        precompiled_headers
         spdlog::spdlog
     PUBLIC
-        Engine
-        Platform
+        engine
+        platform
         Api
 )
 
@@ -56,7 +56,7 @@ source_group(
     TREE 
         ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}
     PREFIX 
-        "Application" 
+        "application" 
     FILES
         ${APPLICATION_HEADERS}
         ${APPLICATION_SOURCES}

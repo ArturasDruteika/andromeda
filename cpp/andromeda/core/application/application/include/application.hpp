@@ -2,15 +2,15 @@
 #define APPLICATION__APPLICATION__HPP
 
 
-#include "andromeda/Components/GraphicsBackend.hpp"
-#include "andromeda/Application/IApplication.hpp"
-#include "andromeda/Engine/IEngine.hpp"
-#include "andromeda/Platform/IPlatform.hpp"
+#include "andromeda/components/graphics_backend.hpp"
+#include "andromeda/application/i_application.hpp"
+#include "andromeda/engine/i_engine.hpp"
+#include "andromeda/platform/i_platform.hpp"
 #include "andromeda/space/scene/i_scene.hpp"
 #include "pch.hpp"
 
 
-namespace andromeda::Application
+namespace andromeda::application
 {
     class Application
         : public virtual IApplication
@@ -41,28 +41,32 @@ namespace andromeda::Application
         int Run() override;
 
     private:
-        bool InitPlatform(unsigned int width, unsigned int height, const std::string& title);
-        bool InitEngine();
-        bool InitRenderer(int width, int height);
-        bool InitInternal(
+        bool init_platform(
             unsigned int width, 
             unsigned int height, 
             const std::string& title
         );
-        void ConnectEvents();
+        bool init_engine();
+        bool init_renderer(int width, int height);
+        bool init_internal(
+            unsigned int width, 
+            unsigned int height, 
+            const std::string& title
+        );
+        void connect_events();
         void RenderLoop();
 
     private:
         bool m_initialized;
         GraphicsBackend m_graphicsBackend;
 
-        std::unique_ptr<IPlatform> m_pPlatform;
-        std::unique_ptr<IEngine> m_pEngine;
+        std::unique_ptr<IPlatform> m_p_platform;
+        std::unique_ptr<IEngine> m_p_engine;
 
-        IScene* m_pScene;
-        IWindow* m_pWindow;
-        IGraphicsContext* m_pContext;
-        IRenderer* m_pRenderer;
+        IScene* m_p_scene;
+        IWindow* m_p_window;
+        IGraphicsContext* m_p_context;
+        IRenderer* m_p_renderer;
     };
 }
 
