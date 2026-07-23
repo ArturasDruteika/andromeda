@@ -2,7 +2,7 @@
 #define API__SPACE__TRANSFORMATIONS__I_TRANSLATABLE__HPP
 
 
-#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda

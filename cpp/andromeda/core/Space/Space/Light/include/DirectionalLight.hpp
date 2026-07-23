@@ -7,7 +7,7 @@
 #include "../../Transformations/include/Rotatable.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/light/i_directional_light.hpp"
-#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space

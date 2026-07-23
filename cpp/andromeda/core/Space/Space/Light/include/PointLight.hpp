@@ -6,7 +6,7 @@
 #include "../../Objects/include/LightObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/light/i_point_light.hpp"
-#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space

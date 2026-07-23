@@ -1,5 +1,5 @@
 #include "../include/Rotatable.hpp"
-#include "math/LinearAlgebra/include/quaternions.hpp"
+#include "math/linear_algebra/include/quaternions.hpp"
 
 
 namespace andromeda

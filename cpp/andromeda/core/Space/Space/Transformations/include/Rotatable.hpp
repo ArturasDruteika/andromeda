@@ -4,8 +4,8 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/transformations/i_rotatable.hpp"
-#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
-#include "math/LinearAlgebra/include/quaternions.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/include/quaternions.hpp"
 
 
 namespace andromeda

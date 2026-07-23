@@ -4,7 +4,7 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "andromeda/space/camera/i_perspective_control.hpp"
-#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::Space

@@ -5,7 +5,7 @@
 #include "i_rotatable.hpp"
 #include "i_scalable.hpp"
 #include "i_translatable.hpp"
-#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda

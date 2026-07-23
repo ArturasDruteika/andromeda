@@ -2,7 +2,7 @@
 #define API__SCENE__I_SCENE_API__SCENE__HPP
 
 
-#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 
 
 namespace andromeda

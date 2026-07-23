@@ -2,7 +2,7 @@
 #define MATH__CONSTANTS__HPP
 
 
-#include "../../LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "../../linear_algebra/include/linear_algebra_data_types.hpp"
 #include <limits>
 
 

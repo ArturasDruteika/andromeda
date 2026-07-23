@@ -1,5 +1,5 @@
 #include "../include/Scalable.hpp"
-#include "math/LinearAlgebra/include/linear_algebra_operations.hpp"
+#include "math/linear_algebra/include/linear_algebra_operations.hpp"
 
 
 namespace andromeda

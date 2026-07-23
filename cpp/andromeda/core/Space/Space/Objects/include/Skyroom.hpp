@@ -5,7 +5,7 @@
 #include "GeometricObject.hpp"
 #include "SurfaceObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "math/LinearAlgebra/include/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 #include "andromeda/space/objects/i_skyroom.hpp"
 #include "andromeda/space/colors/colors.hpp"
 #include "pch.hpp"
