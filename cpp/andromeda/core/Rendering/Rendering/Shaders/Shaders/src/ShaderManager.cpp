@@ -3,7 +3,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	ShaderManager::ShaderManager(bool initShaders)
 		: m_isInitialized{ false }

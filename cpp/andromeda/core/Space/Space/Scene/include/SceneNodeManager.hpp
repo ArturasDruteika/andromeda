@@ -6,13 +6,13 @@
 #include "../../SceneGraph/include/SceneNode.hpp"
 #include "SceneLighting.hpp"
 #include "SceneObjects.hpp"
-#include "Andromeda/space/scene/i_scene_node_manager.hpp"
+#include "andromeda/space/scene/i_scene_node_manager.hpp"
 #include "pch.hpp"
 
 #include <memory>
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API SceneNodeManager
 		: public virtual ISceneNodeManager

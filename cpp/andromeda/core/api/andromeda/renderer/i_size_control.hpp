@@ -2,7 +2,7 @@
 #define API__RENDERER__I_SIZE__HPP
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ISizeControl
 	{

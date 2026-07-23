@@ -3,11 +3,11 @@
 
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/scene_graph/i_scene_node.hpp"
+#include "andromeda/space/scene_graph/i_scene_node.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     class SPACE_API SceneNode
         : public ISceneNode

@@ -1,7 +1,7 @@
 #include "../include/IShader.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	IShader::~IShader() = default;
 }

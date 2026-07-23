@@ -3,10 +3,10 @@
 
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/scene_graph/i_scene_component.hpp"
+#include "andromeda/space/scene_graph/i_scene_component.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     class SPACE_API SceneComponent
         : public ISceneComponent

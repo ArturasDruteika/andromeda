@@ -2,7 +2,7 @@
 #define RENDERING__RENDERERS__ABSTRACTS__MESH_CACHE__HPP__HPP
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class SizeControl
 	{

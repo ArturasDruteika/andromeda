@@ -2,7 +2,7 @@
 #include "glad/gl.h"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	FaceCullingControlOpenGL::FaceCullingControlOpenGL()
 		: m_isFaceCullingEnabled{ false }

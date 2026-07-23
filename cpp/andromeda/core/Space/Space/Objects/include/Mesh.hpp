@@ -4,11 +4,11 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "pch.hpp"
-#include "Andromeda/space/vertices/vertex.hpp"
-#include "Andromeda/space/objects/i_mesh.hpp"
+#include "andromeda/space/vertices/vertex.hpp"
+#include "andromeda/space/objects/i_mesh.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API Mesh
 		: public IMesh

@@ -5,7 +5,7 @@
 #include "../materials/i_material.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     class ISurfaceObject
     {

@@ -8,7 +8,7 @@
 #include "i_scene_state.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class IScene
 		: public virtual ICameraHandler

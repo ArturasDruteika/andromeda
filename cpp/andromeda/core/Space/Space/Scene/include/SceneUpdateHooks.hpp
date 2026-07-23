@@ -3,11 +3,11 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "../../UpdateHooks/include/UpdateHooks.hpp"
-#include "Andromeda/space/scene/i_scene_update_hooks.hpp"
+#include "andromeda/space/scene/i_scene_update_hooks.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API SceneUpdateHooksManager
 	{

@@ -2,7 +2,7 @@
 #include "Math/LinearAlgebra/include/linear_algebra_operations.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	DirectionalLight::DirectionalLight(
 		const Math::Vec3& direction,

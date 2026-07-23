@@ -8,7 +8,7 @@
 #include <map>
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ISceneObjects
 	{

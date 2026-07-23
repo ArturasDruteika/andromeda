@@ -2,7 +2,7 @@
 #include <sstream>
 
 
-namespace Andromeda::Window
+namespace andromeda::Window
 {
     // WindowResizeEvent
 
@@ -24,14 +24,14 @@ namespace Andromeda::Window
         return m_height;
     }
 
-    bool WindowResizeEvent::IsInCategory(Andromeda::EventCategory category)
+    bool WindowResizeEvent::IsInCategory(andromeda::EventCategory category)
     {
         return (GetCategoryFlags() & category) != 0;
     }
 
     int WindowResizeEvent::GetCategoryFlags() const
     {
-        return Andromeda::EventCategoryApplication;
+        return andromeda::EventCategoryApplication;
     }
 
     std::string WindowResizeEvent::GetName() const
@@ -46,9 +46,9 @@ namespace Andromeda::Window
         return ss.str();
     }
 
-    Andromeda::EventType WindowResizeEvent::GetEventType() const
+    andromeda::EventType WindowResizeEvent::GetEventType() const
     {
-        return Andromeda::EventType::WindowResize;
+        return andromeda::EventType::WindowResize;
     }
 
     // WindowCloseEvent
@@ -57,14 +57,14 @@ namespace Andromeda::Window
 
     WindowCloseEvent::~WindowCloseEvent() = default;
 
-    bool WindowCloseEvent::IsInCategory(Andromeda::EventCategory category)
+    bool WindowCloseEvent::IsInCategory(andromeda::EventCategory category)
     {
         return (GetCategoryFlags() & category) != 0;
     }
 
     int WindowCloseEvent::GetCategoryFlags() const
     {
-        return Andromeda::EventCategoryApplication;
+        return andromeda::EventCategoryApplication;
     }
 
     std::string WindowCloseEvent::GetName() const
@@ -77,9 +77,9 @@ namespace Andromeda::Window
         return "WindowCloseEvent";
     }
 
-    Andromeda::EventType WindowCloseEvent::GetEventType() const
+    andromeda::EventType WindowCloseEvent::GetEventType() const
     {
-        return Andromeda::EventType::WindowClose;
+        return andromeda::EventType::WindowClose;
     }
 
     // FramebufferResizeEvent
@@ -102,14 +102,14 @@ namespace Andromeda::Window
         return m_height;
     }
 
-    bool FramebufferResizeEvent::IsInCategory(Andromeda::EventCategory category)
+    bool FramebufferResizeEvent::IsInCategory(andromeda::EventCategory category)
     {
         return (GetCategoryFlags() & category) != 0;
     }
 
     int FramebufferResizeEvent::GetCategoryFlags() const
     {
-        return Andromeda::EventCategoryApplication;
+        return andromeda::EventCategoryApplication;
     }
 
     std::string FramebufferResizeEvent::GetName() const

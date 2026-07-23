@@ -6,14 +6,14 @@
 #include "FaceCullingControlOpenGL.hpp"
 #include "../../../Shaders/Shaders/include/ShaderManager.hpp"
 #include "../../Support/include/MeshCacheOpenGL.hpp"
-#include "Andromeda/space/light/i_directional_light.hpp"
-#include "Andromeda/space/light/i_point_light.hpp"
-#include "Andromeda/space/objects/i_geometric_object.hpp"
-#include "Andromeda/space/transformations/i_transformable.hpp"
+#include "andromeda/space/light/i_directional_light.hpp"
+#include "andromeda/space/light/i_point_light.hpp"
+#include "andromeda/space/objects/i_geometric_object.hpp"
+#include "andromeda/space/transformations/i_transformable.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     class ShadowRendererOpenGL
     {

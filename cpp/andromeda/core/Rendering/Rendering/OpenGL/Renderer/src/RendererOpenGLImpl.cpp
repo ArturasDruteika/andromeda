@@ -3,9 +3,9 @@
 #include "../../../Utils/include/MathUtils.hpp"
 #include "../../../Shaders/Shaders/include/ShaderOpenGL.hpp"
 #include "../../../Shaders/Support/include/ShaderOpenGLTypes.hpp"
-#include "Andromeda/space/objects/i_light_object.hpp"
-#include "Andromeda/space/objects/i_surface_object.hpp"
-#include "Andromeda/space/materials/i_material.hpp"
+#include "andromeda/space/objects/i_light_object.hpp"
+#include "andromeda/space/objects/i_surface_object.hpp"
+#include "andromeda/space/materials/i_material.hpp"
 #include "pch.hpp"
 
 #include "glad/gl.h"
@@ -15,7 +15,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     RendererOpenGL::RendererOpenGLImpl::RendererOpenGLImpl()
         : m_isInitialized{ false }

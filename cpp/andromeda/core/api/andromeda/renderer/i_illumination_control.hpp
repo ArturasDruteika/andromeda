@@ -2,7 +2,7 @@
 #define API__RENDERER__I_ILLUMINATION_CONTROL__HPP
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class IIlluminationControl
 	{

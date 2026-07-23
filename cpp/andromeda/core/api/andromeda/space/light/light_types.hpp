@@ -2,7 +2,7 @@
 #define ANDROMEDA__LIGHT__LIGHT_TYPES__HPP
 
 
-namespace Andromeda
+namespace andromeda
 {
 	enum class LightType : int
 	{

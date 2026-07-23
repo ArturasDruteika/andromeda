@@ -2,7 +2,7 @@
 #define RENDERER__ILLUMINATION_CONTROL__HPP
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class IlluminationControl
 	{

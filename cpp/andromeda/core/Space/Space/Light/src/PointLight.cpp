@@ -2,7 +2,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     PointLight::PointLight(
         const Math::Vec3& position, 

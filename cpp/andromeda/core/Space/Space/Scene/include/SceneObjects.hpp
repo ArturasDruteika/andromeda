@@ -5,12 +5,12 @@
 #include "../../Objects/include/GeometricObject.hpp"
 #include "../../Objects/include/LightObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/scene/i_scene_objects.hpp"
-#include "Andromeda/space/transformations/i_transformable.hpp"
+#include "andromeda/space/scene/i_scene_objects.hpp"
+#include "andromeda/space/transformations/i_transformable.hpp"
 #include <map>
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API SceneObjects
 		: public virtual ISceneObjects

@@ -1,7 +1,7 @@
 #include "../include/SceneEnvironment.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	SceneEnvironment::SceneEnvironment()
 		: m_ambientStrength{ 0.1f }

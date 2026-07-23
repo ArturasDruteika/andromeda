@@ -1,7 +1,7 @@
 #include "../include/SceneState.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	SceneState::SceneState() = default;
 

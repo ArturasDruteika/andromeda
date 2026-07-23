@@ -6,7 +6,7 @@
 #include "glm/glm.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class UniformSetterOpenGL
 	{

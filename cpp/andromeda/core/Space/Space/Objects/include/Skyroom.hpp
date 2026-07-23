@@ -6,12 +6,12 @@
 #include "SurfaceObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
-#include "Andromeda/space/objects/i_skyroom.hpp"
-#include "Andromeda/space/colors/colors.hpp"
+#include "andromeda/space/objects/i_skyroom.hpp"
+#include "andromeda/space/colors/colors.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     struct SkyroomFaceData
     {

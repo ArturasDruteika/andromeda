@@ -4,7 +4,7 @@
 #include "../../SceneGraph/include/LightComponent.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	SceneNodeManager::SceneNodeManager()
 		: m_rootNode{ std::make_unique<SceneNode>(std::make_unique<Transformable>()) }

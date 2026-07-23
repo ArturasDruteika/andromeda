@@ -3,11 +3,11 @@
 
 
 #include "../../Geometry/include/GpuMeshOpenGL.hpp"
-#include "Andromeda/space/objects/i_geometric_object.hpp"
+#include "andromeda/space/objects/i_geometric_object.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class MeshCacheOpenGL
 	{

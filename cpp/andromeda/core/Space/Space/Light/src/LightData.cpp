@@ -3,7 +3,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     LightData::LightData(
         float intensity,

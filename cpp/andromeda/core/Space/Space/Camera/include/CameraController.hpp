@@ -5,10 +5,10 @@
 #include "CameraView.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "Math/LinearAlgebra/include/quaternions.hpp"
-#include "Andromeda/space/camera/i_camera_controller.hpp"
+#include "andromeda/space/camera/i_camera_controller.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API CameraController
 		: public virtual ICameraController

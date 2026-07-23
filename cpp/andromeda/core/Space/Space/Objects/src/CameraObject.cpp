@@ -1,7 +1,7 @@
 #include "../include/CameraObject.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	CameraObject::CameraObject() = default;
 

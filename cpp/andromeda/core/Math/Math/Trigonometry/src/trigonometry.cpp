@@ -2,7 +2,7 @@
 #include "../../Constants/include/constants.hpp"
 
 
-namespace Andromeda::Math
+namespace andromeda::Math
 {
 	float Trigonometry::deg2_rad(float deg)
 	{

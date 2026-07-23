@@ -4,12 +4,12 @@
 
 #include "Object.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/colors/colors.hpp"
-#include "Andromeda/space/objects/i_geometric_object.hpp"
+#include "andromeda/space/colors/colors.hpp"
+#include "andromeda/space/objects/i_geometric_object.hpp"
 #include "Mesh.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API GeometricObject
 		: public virtual IGeometricObject

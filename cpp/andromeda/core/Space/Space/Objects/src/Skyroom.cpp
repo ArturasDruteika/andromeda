@@ -1,7 +1,7 @@
 #include "../include/Skyroom.hpp"
 #include "spdlog/spdlog.h"
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     Skyroom::Skyroom(float halfExtent, const Color& color)
         : GeometricObject(color)

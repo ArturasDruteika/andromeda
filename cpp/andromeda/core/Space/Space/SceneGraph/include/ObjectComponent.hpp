@@ -3,10 +3,10 @@
 
 
 #include "SceneComponent.hpp"
-#include "Andromeda/space/objects/i_geometric_object.hpp"
+#include "andromeda/space/objects/i_geometric_object.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     class SPACE_API ObjectComponent
         : public SceneComponent

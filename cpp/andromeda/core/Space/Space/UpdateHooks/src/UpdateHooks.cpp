@@ -1,7 +1,7 @@
 #include "../include/UpdateHooks.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     UpdateHooks::UpdateHooks()
         : m_nextId{ 0 }

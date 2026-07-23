@@ -2,7 +2,7 @@
 #define RENDERER__OPENGL__SUPPORTFRAME_BUFFER_OPENGL__HPP
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     enum class FrameBufferType
     {

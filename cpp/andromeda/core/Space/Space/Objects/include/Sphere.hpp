@@ -5,12 +5,12 @@
 #include "GeometricObject.hpp"
 #include "SurfaceObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/colors/colors.hpp"
-#include "Andromeda/space/objects/i_sphere.hpp"
+#include "andromeda/space/colors/colors.hpp"
+#include "andromeda/space/objects/i_sphere.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     class SPACE_API Sphere
         : public ISphere

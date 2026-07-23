@@ -8,7 +8,7 @@
 #include <glm/gtx/euler_angles.hpp>
 
 
-namespace Andromeda::Math
+namespace andromeda::Math
 {
     namespace
     {

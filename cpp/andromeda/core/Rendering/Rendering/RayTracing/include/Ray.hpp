@@ -5,7 +5,7 @@
 #include "glm/glm.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	namespace Rendering
 	{

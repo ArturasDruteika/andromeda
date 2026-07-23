@@ -10,13 +10,13 @@
 #include "SceneNodeManager.hpp"
 #include "SceneUpdateHooks.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/scene/i_scene.hpp"
+#include "andromeda/space/scene/i_scene.hpp"
 #include "pch.hpp"
 
 #include <functional>
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API Scene
 		: public IScene

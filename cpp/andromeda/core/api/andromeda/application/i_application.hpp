@@ -10,7 +10,7 @@
 #include <memory>
 
 
-namespace Andromeda
+namespace andromeda
 {
     class IApplication
     {

@@ -3,7 +3,7 @@
 #include "glad/gl.h"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     GpuMeshOpenGL::GpuMeshOpenGL()
         : m_VAO{ 0 }
@@ -59,7 +59,7 @@ namespace Andromeda::Rendering
         const void* vertexData,
         size_t vertexDataSizeBytes,
         const std::vector<uint32_t>& indices,
-        const Andromeda::Rendering::VertexLayout& layout
+        const andromeda::Rendering::VertexLayout& layout
     )
     {
         Destroy();

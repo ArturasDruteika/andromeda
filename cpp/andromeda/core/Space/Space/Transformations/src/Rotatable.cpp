@@ -2,7 +2,7 @@
 #include "Math/LinearAlgebra/include/quaternions.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     Rotatable::Rotatable()
         : m_stateChanged{ false }

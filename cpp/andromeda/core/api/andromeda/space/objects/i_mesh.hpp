@@ -2,11 +2,11 @@
 #define API__OBJECTS__I_MESH__HPP
 
 
-#include "Andromeda/space/vertices/vertex.hpp"
+#include "andromeda/space/vertices/vertex.hpp"
 #include <vector>
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class IMesh
 	{

@@ -2,15 +2,15 @@
 #define APPLICATION__APPLICATION__HPP
 
 
-#include "Andromeda/Components/GraphicsBackend.hpp"
-#include "Andromeda/Application/IApplication.hpp"
-#include "Andromeda/Engine/IEngine.hpp"
-#include "Andromeda/Platform/IPlatform.hpp"
-#include "Andromeda/space/scene/i_scene.hpp"
+#include "andromeda/Components/GraphicsBackend.hpp"
+#include "andromeda/Application/IApplication.hpp"
+#include "andromeda/Engine/IEngine.hpp"
+#include "andromeda/Platform/IPlatform.hpp"
+#include "andromeda/space/scene/i_scene.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Application
+namespace andromeda::Application
 {
     class Application
         : public virtual IApplication

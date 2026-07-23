@@ -5,7 +5,7 @@
 #include "../../PrecompiledHeaders/include/pch.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	namespace Utils
 	{

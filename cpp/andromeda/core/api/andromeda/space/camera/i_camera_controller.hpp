@@ -6,7 +6,7 @@
 //#include <functional>
 
 
-namespace Andromeda
+namespace andromeda
 {
     //using OnDistanceChange = std::function<void(float)>;
 

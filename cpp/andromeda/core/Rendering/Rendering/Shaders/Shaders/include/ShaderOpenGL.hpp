@@ -8,7 +8,7 @@
 #include "../../Interfaces/include/IShader.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class ShaderOpenGL
 		: public ShaderProgramOpenGL

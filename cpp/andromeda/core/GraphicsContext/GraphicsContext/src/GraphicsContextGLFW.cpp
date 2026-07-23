@@ -3,7 +3,7 @@
 #include "Window/WindowGLFW/include/WindowGLFW.hpp"
 #include "spdlog/spdlog.h"
 
-namespace Andromeda::GraphicsContext
+namespace andromeda::GraphicsContext
 {
     GraphicsContextGLFW::GraphicsContextGLFW()
         : m_initialized{ false }

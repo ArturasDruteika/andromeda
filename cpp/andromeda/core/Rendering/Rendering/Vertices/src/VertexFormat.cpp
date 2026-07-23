@@ -1,7 +1,7 @@
 #include "../include/VertexFormat.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     size_t ComponentTypeSizeBytes(ComponentType type)
     {

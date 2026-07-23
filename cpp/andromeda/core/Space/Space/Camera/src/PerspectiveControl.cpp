@@ -4,7 +4,7 @@
 #include "Math/Trigonometry/include/trigonometry.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	PerspectiveControl::PerspectiveControl()
 		: m_fovDeg{ 45.0f }

@@ -3,10 +3,10 @@
 
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/scene/i_camera_handler.hpp"
+#include "andromeda/space/scene/i_camera_handler.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	// Forward declaration
 	class Camera;

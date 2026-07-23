@@ -2,7 +2,7 @@
 #include "Math/LinearAlgebra/include/linear_algebra_operations.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	CameraController::CameraController(const Math::Vec3& position, const Math::Vec3& targetCoords)
 		: CameraView(position, targetCoords)

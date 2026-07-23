@@ -6,7 +6,7 @@
 #include "../../MacroExports/include/macro_exports.hpp"
 
 
-namespace Andromeda::Math
+namespace andromeda::Math
 {
     // Lightweight value type
     struct Quaternion

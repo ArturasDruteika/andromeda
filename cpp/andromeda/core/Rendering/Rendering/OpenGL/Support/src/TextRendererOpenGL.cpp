@@ -7,7 +7,7 @@
 #include "spdlog/spdlog.h"
 #include "glad/gl.h"
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     TextRendererOpenGL::TextRendererOpenGL()
         : m_VAO{ 0 }

@@ -1,7 +1,7 @@
 #include "../include/LightObject.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	LightObject::LightObject(const LightType& lightType)
 		: m_lightType{ lightType }

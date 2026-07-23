@@ -6,7 +6,7 @@
 #include <functional>
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class IUpdateHooks
 	{

@@ -3,7 +3,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     FrameBufferOpenGL::FrameBufferOpenGL()
         : m_FBO{ 0 }

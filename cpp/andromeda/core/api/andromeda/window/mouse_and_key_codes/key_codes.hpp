@@ -5,7 +5,7 @@
 #include "pch.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	using KeyCode = uint16_t;
 

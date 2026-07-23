@@ -5,34 +5,34 @@
 #include "glad/gl.h"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
-    static GLenum ToGLComponentType(Andromeda::Rendering::ComponentType type)
+    static GLenum ToGLComponentType(andromeda::Rendering::ComponentType type)
     {
         switch (type)
         {
-        case Andromeda::Rendering::ComponentType::Float32: return GL_FLOAT;
-        case Andromeda::Rendering::ComponentType::Int32:   return GL_INT;
-        case Andromeda::Rendering::ComponentType::UInt32:  return GL_UNSIGNED_INT;
-        case Andromeda::Rendering::ComponentType::UInt16:  return GL_UNSIGNED_SHORT;
-        case Andromeda::Rendering::ComponentType::UInt8:   return GL_UNSIGNED_BYTE;
+        case andromeda::Rendering::ComponentType::Float32: return GL_FLOAT;
+        case andromeda::Rendering::ComponentType::Int32:   return GL_INT;
+        case andromeda::Rendering::ComponentType::UInt32:  return GL_UNSIGNED_INT;
+        case andromeda::Rendering::ComponentType::UInt16:  return GL_UNSIGNED_SHORT;
+        case andromeda::Rendering::ComponentType::UInt8:   return GL_UNSIGNED_BYTE;
         default:                                           return GL_FLOAT;
         }
     }
 
-    static bool IsIntegerType(Andromeda::Rendering::ComponentType type)
+    static bool IsIntegerType(andromeda::Rendering::ComponentType type)
     {
-        return Andromeda::Rendering::IsIntegerComponentType(type);
+        return andromeda::Rendering::IsIntegerComponentType(type);
     }
 
-    void VertexLayoutOpenGL::Apply(const Andromeda::Rendering::VertexLayout& layout)
+    void VertexLayoutOpenGL::Apply(const andromeda::Rendering::VertexLayout& layout)
     {
         const std::vector<VertexAttributeDesc>& attrs = layout.GetAttributes();
         const GLsizei stride = static_cast<GLsizei>(layout.GetStrideBytes());
 
         for (const VertexAttributeDesc& attr : attrs)
         {
-            const GLuint location = static_cast<GLuint>(Andromeda::Rendering::VertexLocationPolicy::GetLocation(attr.semantic));
+            const GLuint location = static_cast<GLuint>(andromeda::Rendering::VertexLocationPolicy::GetLocation(attr.semantic));
             const void* offsetPtr = reinterpret_cast<const void*>(attr.offsetBytes);
 
             glEnableVertexAttribArray(location);
@@ -59,7 +59,7 @@ namespace Andromeda::Rendering
                 );
             }
 
-            if (layout.GetInputRate() == Andromeda::Rendering::InputRate::PerInstance)
+            if (layout.GetInputRate() == andromeda::Rendering::InputRate::PerInstance)
             {
                 glVertexAttribDivisor(location, 1);
             }

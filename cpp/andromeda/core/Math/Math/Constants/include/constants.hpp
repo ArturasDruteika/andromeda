@@ -6,7 +6,7 @@
 #include <limits>
 
 
-namespace Andromeda::Math
+namespace andromeda::Math
 {
 	constexpr float PI = 3.14159265358979323846f;
 	constexpr float PI_HALF = PI / 2.0f;

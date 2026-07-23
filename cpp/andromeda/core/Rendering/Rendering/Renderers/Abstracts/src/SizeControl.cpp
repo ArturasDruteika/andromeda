@@ -2,7 +2,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	SizeControl::SizeControl(int width, int height)
 		: m_width{ width }

@@ -5,7 +5,7 @@
 #include "i_event.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     class IWindowResizeEvent
         : public virtual IEvent

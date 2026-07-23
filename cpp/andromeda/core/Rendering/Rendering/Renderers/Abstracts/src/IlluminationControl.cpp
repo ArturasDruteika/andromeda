@@ -1,7 +1,7 @@
 #include "../include/IlluminationControl.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	IlluminationControl::IlluminationControl()
 		: m_isIlluminationMode{ false }

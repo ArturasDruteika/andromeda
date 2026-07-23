@@ -2,7 +2,7 @@
 #define ANDROMEDA__LIGHT__SPOT_LIGHT__HPP
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ISpotLight
 	{

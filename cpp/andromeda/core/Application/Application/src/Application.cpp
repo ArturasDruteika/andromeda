@@ -4,7 +4,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Application
+namespace andromeda::Application
 {
     Application::Application(GraphicsBackend graphicsBackend)
         : m_initialized{ false }
@@ -230,7 +230,7 @@ namespace Andromeda::Application
 }
 
 
-namespace Andromeda
+namespace andromeda
 {
     std::unique_ptr<IApplication> CreateApp(const GraphicsBackend& graphicsBackend)
     {

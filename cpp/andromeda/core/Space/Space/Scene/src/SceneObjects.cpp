@@ -1,7 +1,7 @@
 #include "../include/SceneObjects.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	SceneObjects::SceneObjects()
 		: m_objects{}

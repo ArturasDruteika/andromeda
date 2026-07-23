@@ -1,6 +1,6 @@
 #include "../include/MathUtils.hpp"
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	glm::vec2 MathUtils::ToGLM(const Math::Vec2& vec)
 	{

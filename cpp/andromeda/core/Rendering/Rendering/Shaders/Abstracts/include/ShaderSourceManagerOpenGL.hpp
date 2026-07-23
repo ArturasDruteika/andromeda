@@ -6,7 +6,7 @@
 #include "../../Support/include/ShaderTypes.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class ShaderSourceManagerOpenGL
 	{

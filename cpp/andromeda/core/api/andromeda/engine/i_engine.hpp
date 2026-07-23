@@ -11,7 +11,7 @@
 #include <memory>
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class IEngine
 	{

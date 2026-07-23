@@ -5,7 +5,7 @@
 #include <string_view>
 
 
-namespace Andromeda
+namespace andromeda
 {
 	enum class GraphicsBackend : int
 	{

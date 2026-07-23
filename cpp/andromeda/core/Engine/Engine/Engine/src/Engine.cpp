@@ -1,17 +1,17 @@
 #include "../include/Engine.hpp"
 #include "Rendering/Renderers/Renderers/include/RendererOpenGL.hpp"
-#include "Andromeda/window/events/event_type.hpp"
-#include "Andromeda/window/mouse_and_key_codes/mouse_codes.hpp"
-#include "Andromeda/window/mouse_and_key_codes/key_codes.hpp"
-#include "Andromeda/window/events/i_frame_buffer_events.hpp"
-#include "Andromeda/window/events/i_key_events.hpp"
-#include "Andromeda/window/events/i_mouse_events.hpp"
-#include "Andromeda/space/camera/i_camera_controller.hpp"
+#include "andromeda/window/events/event_type.hpp"
+#include "andromeda/window/mouse_and_key_codes/mouse_codes.hpp"
+#include "andromeda/window/mouse_and_key_codes/key_codes.hpp"
+#include "andromeda/window/events/i_frame_buffer_events.hpp"
+#include "andromeda/window/events/i_key_events.hpp"
+#include "andromeda/window/events/i_mouse_events.hpp"
+#include "andromeda/space/camera/i_camera_controller.hpp"
 
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Engine
+namespace andromeda::Engine
 {
     static constexpr float DEFAULT_MOUSE_YAW_SENSITIVITY = 0.005f;
     static constexpr float DEFAULT_MOUSE_PITCH_SENSITIVITY = 0.005f;
@@ -503,7 +503,7 @@ namespace Andromeda::Engine
 
 }
 
-namespace Andromeda
+namespace andromeda
 {
     std::unique_ptr<IEngine> CreateEngine(const GraphicsBackend& graphicsBackend)
     {

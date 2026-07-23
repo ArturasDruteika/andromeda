@@ -2,7 +2,7 @@
 #define SPACE__POINTS__HPP
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	struct Point2D
 	{

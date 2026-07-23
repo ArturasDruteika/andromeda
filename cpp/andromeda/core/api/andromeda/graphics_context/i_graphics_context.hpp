@@ -5,7 +5,7 @@
 #include "../window/window/i_window.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     class IGraphicsContext
     {

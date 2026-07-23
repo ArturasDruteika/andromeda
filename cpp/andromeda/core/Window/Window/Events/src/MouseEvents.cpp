@@ -2,7 +2,7 @@
 #include <sstream>
 
 
-namespace Andromeda::Window
+namespace andromeda::Window
 {
     // MouseMovedEvent
 
@@ -22,15 +22,15 @@ namespace Andromeda::Window
         return m_y;
     }
 
-    bool MouseMovedEvent::IsInCategory(Andromeda::EventCategory category)
+    bool MouseMovedEvent::IsInCategory(andromeda::EventCategory category)
     {
         return (GetCategoryFlags() & category) != 0;
     }
 
     int MouseMovedEvent::GetCategoryFlags() const
     {
-        return Andromeda::EventCategoryMouse |
-            Andromeda::EventCategoryInput;
+        return andromeda::EventCategoryMouse |
+            andromeda::EventCategoryInput;
     }
 
     std::string MouseMovedEvent::GetName() const
@@ -45,9 +45,9 @@ namespace Andromeda::Window
         return ss.str();
     }
 
-    Andromeda::EventType MouseMovedEvent::GetEventType() const
+    andromeda::EventType MouseMovedEvent::GetEventType() const
     {
-        return Andromeda::EventType::MouseMoved;
+        return andromeda::EventType::MouseMoved;
     }
 
     // MouseScrolledEvent
@@ -68,15 +68,15 @@ namespace Andromeda::Window
         return m_yOffset;
     }
 
-    bool MouseScrolledEvent::IsInCategory(Andromeda::EventCategory category)
+    bool MouseScrolledEvent::IsInCategory(andromeda::EventCategory category)
     {
         return (GetCategoryFlags() & category) != 0;
     }
 
     int MouseScrolledEvent::GetCategoryFlags() const
     {
-        return Andromeda::EventCategoryMouse |
-            Andromeda::EventCategoryInput;
+        return andromeda::EventCategoryMouse |
+            andromeda::EventCategoryInput;
     }
 
     std::string MouseScrolledEvent::GetName() const
@@ -91,38 +91,38 @@ namespace Andromeda::Window
         return ss.str();
     }
 
-    Andromeda::EventType MouseScrolledEvent::GetEventType() const
+    andromeda::EventType MouseScrolledEvent::GetEventType() const
     {
-        return Andromeda::EventType::MouseScrolled;
+        return andromeda::EventType::MouseScrolled;
     }
 
     // MouseButtonEvent
 
-    MouseButtonEvent::MouseButtonEvent(Andromeda::MouseCode button)
+    MouseButtonEvent::MouseButtonEvent(andromeda::MouseCode button)
         : m_button{ button }
     {
     }
 
-    Andromeda::MouseCode MouseButtonEvent::GetMouseButton() const
+    andromeda::MouseCode MouseButtonEvent::GetMouseButton() const
     {
         return m_button;
     }
 
-    bool MouseButtonEvent::IsInCategory(Andromeda::EventCategory category)
+    bool MouseButtonEvent::IsInCategory(andromeda::EventCategory category)
     {
         return (GetCategoryFlags() & category) != 0;
     }
 
     int MouseButtonEvent::GetCategoryFlags() const
     {
-        return Andromeda::EventCategoryMouse |
-            Andromeda::EventCategoryInput |
-            Andromeda::EventCategoryMouseButton;
+        return andromeda::EventCategoryMouse |
+            andromeda::EventCategoryInput |
+            andromeda::EventCategoryMouseButton;
     }
 
     // MouseButtonPressedEvent
 
-    MouseButtonPressedEvent::MouseButtonPressedEvent(Andromeda::MouseCode button)
+    MouseButtonPressedEvent::MouseButtonPressedEvent(andromeda::MouseCode button)
         : MouseButtonEvent{ button }
     {
     }
@@ -139,14 +139,14 @@ namespace Andromeda::Window
         return ss.str();
     }
 
-    Andromeda::EventType MouseButtonPressedEvent::GetEventType() const
+    andromeda::EventType MouseButtonPressedEvent::GetEventType() const
     {
-        return Andromeda::EventType::MouseButtonPressed;
+        return andromeda::EventType::MouseButtonPressed;
     }
 
     // MouseButtonReleasedEvent
 
-    MouseButtonReleasedEvent::MouseButtonReleasedEvent(Andromeda::MouseCode button)
+    MouseButtonReleasedEvent::MouseButtonReleasedEvent(andromeda::MouseCode button)
         : MouseButtonEvent{ button }
     {
     }
@@ -163,8 +163,8 @@ namespace Andromeda::Window
         return ss.str();
     }
 
-    Andromeda::EventType MouseButtonReleasedEvent::GetEventType() const
+    andromeda::EventType MouseButtonReleasedEvent::GetEventType() const
     {
-        return Andromeda::EventType::MouseButtonReleased;
+        return andromeda::EventType::MouseButtonReleased;
     }
 }

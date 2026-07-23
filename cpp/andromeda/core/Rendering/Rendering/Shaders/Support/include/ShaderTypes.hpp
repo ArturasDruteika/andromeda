@@ -2,7 +2,7 @@
 #define RENDERER__SHADER_TYPES__HPP
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	enum class ShaderType
 	{

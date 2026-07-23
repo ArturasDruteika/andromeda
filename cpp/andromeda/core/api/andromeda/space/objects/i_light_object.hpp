@@ -6,7 +6,7 @@
 #include "../light/light_types.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ILightObject
 		: public virtual IObject

@@ -2,7 +2,7 @@
 #define SPACE__TRANSFORMATION_TYPES__HPP
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	enum class TransformationType
 	{

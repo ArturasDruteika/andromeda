@@ -3,13 +3,13 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "pch.hpp"
-#include "Andromeda/Components/GraphicsBackend.hpp"
-#include "Andromeda/GraphicsContext/IGraphicsContext.hpp"
-#include "Andromeda/Platform/IPlatform.hpp"
-#include "Andromeda/window/window/i_window.hpp"
+#include "andromeda/Components/GraphicsBackend.hpp"
+#include "andromeda/GraphicsContext/IGraphicsContext.hpp"
+#include "andromeda/Platform/IPlatform.hpp"
+#include "andromeda/window/window/i_window.hpp"
 
 
-namespace Andromeda::Platform
+namespace andromeda::Platform
 {
     class PLATFORM_API Platform
         : public IPlatform

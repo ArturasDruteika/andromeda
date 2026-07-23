@@ -2,10 +2,10 @@
 #define WINDOW__EVENT_BASE__HPP
 
 
-#include "Andromeda/window/events/i_event.hpp"
+#include "andromeda/window/events/i_event.hpp"
 
 
-namespace Andromeda::Window
+namespace andromeda::Window
 {
     class EventBase
         : public virtual IEvent

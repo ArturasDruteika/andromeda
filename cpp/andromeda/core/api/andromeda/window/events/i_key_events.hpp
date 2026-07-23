@@ -6,7 +6,7 @@
 #include "../mouse_and_key_codes/key_codes.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     // Base interface for all key-related events
     class IKeyEvent

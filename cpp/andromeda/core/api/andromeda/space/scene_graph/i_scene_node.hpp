@@ -8,7 +8,7 @@
 #include <memory>
 
 
-namespace Andromeda
+namespace andromeda
 {
     class ISceneComponent;
 

@@ -5,7 +5,7 @@
 #include "../objects/i_geometric_object.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ISceneState
 	{

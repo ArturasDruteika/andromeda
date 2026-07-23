@@ -2,10 +2,10 @@
 #define RENDERER__GRID_CONTROL__HPP
 
 
-#include "Andromeda/space/colors/colors.hpp"
+#include "andromeda/space/colors/colors.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class GridControl
 	{

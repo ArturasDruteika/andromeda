@@ -3,10 +3,10 @@
 
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/objects/i_surface_object.hpp"
+#include "andromeda/space/objects/i_surface_object.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     class Material;
 

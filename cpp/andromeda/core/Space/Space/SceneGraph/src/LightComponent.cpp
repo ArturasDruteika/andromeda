@@ -1,7 +1,7 @@
 #include "../include/LightComponent.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     LightComponent::LightComponent(int id, const ILightObject* lightObject)
         : m_id{ id }

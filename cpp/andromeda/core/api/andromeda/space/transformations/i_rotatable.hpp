@@ -6,7 +6,7 @@
 #include "Math/LinearAlgebra/include/quaternions.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     class IRotatable
     {

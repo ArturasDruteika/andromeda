@@ -1,5 +1,5 @@
 #include "../include/Scene.hpp"
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	Scene::Scene()
 		: CameraHandler{}

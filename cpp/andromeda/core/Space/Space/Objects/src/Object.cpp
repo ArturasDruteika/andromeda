@@ -1,7 +1,7 @@
 #include "../include/Object.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	std::atomic<int> Object::s_nextId{ 0 };
 

@@ -4,7 +4,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	Sphere::Sphere(float radius, const Color& color)
 		: GeometricObject{ color }

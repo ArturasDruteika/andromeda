@@ -4,11 +4,11 @@
 
 #include "Object.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/light/light_types.hpp"
-#include "Andromeda/space/objects/i_light_object.hpp"
+#include "andromeda/space/light/light_types.hpp"
+#include "andromeda/space/objects/i_light_object.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API LightObject
 		: public virtual ILightObject

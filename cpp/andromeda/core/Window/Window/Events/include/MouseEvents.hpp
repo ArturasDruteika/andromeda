@@ -3,13 +3,13 @@
 
 
 #include "EventBase.hpp"
-#include "Andromeda/window/events/event_type.hpp"
-#include "Andromeda/window/mouse_and_key_codes/mouse_codes.hpp"
-#include "Andromeda/window/events/i_mouse_events.hpp"
+#include "andromeda/window/events/event_type.hpp"
+#include "andromeda/window/mouse_and_key_codes/mouse_codes.hpp"
+#include "andromeda/window/events/i_mouse_events.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Window
+namespace andromeda::Window
 {
     class MouseMovedEvent
         : public EventBase

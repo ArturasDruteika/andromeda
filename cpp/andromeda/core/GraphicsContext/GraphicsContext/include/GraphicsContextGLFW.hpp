@@ -2,12 +2,12 @@
 #define CONTEXT__GLFW_CONTEXT__HPP
 
 
-#include "Andromeda/GraphicsContext/IGraphicsContext.hpp"
-#include "Andromeda/window/window/i_window.hpp"
+#include "andromeda/GraphicsContext/IGraphicsContext.hpp"
+#include "andromeda/window/window/i_window.hpp"
 #include "GLFW/glfw3.h"
 
 
-namespace Andromeda::GraphicsContext
+namespace andromeda::GraphicsContext
 {
 	class GraphicsContextGLFW
 		: public IGraphicsContext

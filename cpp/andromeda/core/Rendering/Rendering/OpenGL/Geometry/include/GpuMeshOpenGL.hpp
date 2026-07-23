@@ -4,10 +4,10 @@
 
 #include "../../../Vertices/include/VertexLayouts.hpp"
 #include "pch.hpp"
-#include "Andromeda/space/objects/i_mesh.hpp"
+#include "andromeda/space/objects/i_mesh.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     class GpuMeshOpenGL
     {
@@ -27,7 +27,7 @@ namespace Andromeda::Rendering
             const void* vertexData,
             size_t vertexDataSizeBytes,
             const std::vector<uint32_t>& indices,
-            const Andromeda::Rendering::VertexLayout& layout
+            const andromeda::Rendering::VertexLayout& layout
         );
 
         // New high-level API (renderer should use this)

@@ -10,7 +10,7 @@
 #include "../components/graphics_backend.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class IRenderer 
 		: public IGridControl

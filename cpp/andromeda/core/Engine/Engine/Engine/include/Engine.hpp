@@ -2,13 +2,13 @@
 #define ENGINECORE__ENGINE__HPP
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/Components/GraphicsBackend.hpp"
-#include "Andromeda/Engine/IEngine.hpp"
+#include "andromeda/Components/GraphicsBackend.hpp"
+#include "andromeda/Engine/IEngine.hpp"
 
 #include "pch.hpp"
 
 
-namespace Andromeda::Engine
+namespace andromeda::Engine
 {
     class ENGINECORE_API Engine
         : public IEngine

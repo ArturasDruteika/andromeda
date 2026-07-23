@@ -3,11 +3,11 @@
 
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/objects/i_object.hpp"
+#include "andromeda/space/objects/i_object.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     class SPACE_API Object
         : public virtual IObject

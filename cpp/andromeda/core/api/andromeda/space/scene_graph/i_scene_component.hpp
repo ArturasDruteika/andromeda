@@ -2,7 +2,7 @@
 #define API__SPACE__SCENE__I_SCENE_COMPONENT__HPP
 
 
-namespace Andromeda
+namespace andromeda
 {
     class ISceneNode;
 

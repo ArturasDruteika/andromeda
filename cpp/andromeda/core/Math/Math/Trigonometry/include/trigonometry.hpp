@@ -8,7 +8,7 @@
 #include "../../MacroExports/include/macro_exports.hpp"
 
 
-namespace Andromeda::Math
+namespace andromeda::Math
 {
 	class MATH_API Trigonometry
 	{

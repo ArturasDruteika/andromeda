@@ -7,7 +7,7 @@
 #include <string>
 
 
-namespace Andromeda
+namespace andromeda
 {
     class IWindow
     {

@@ -3,10 +3,10 @@
 
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/transformations/i_scalable.hpp"
+#include "andromeda/space/transformations/i_scalable.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class SPACE_API Scalable
 		: public virtual IScalable

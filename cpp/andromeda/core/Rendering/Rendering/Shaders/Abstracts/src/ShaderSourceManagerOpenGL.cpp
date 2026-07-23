@@ -3,7 +3,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	ShaderSourceManagerOpenGL::ShaderSourceManagerOpenGL(
 		const std::filesystem::path& vertexShaderFilepath,

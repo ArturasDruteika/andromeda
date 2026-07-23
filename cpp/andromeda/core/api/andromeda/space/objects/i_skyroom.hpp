@@ -6,7 +6,7 @@
 #include "i_surface_object.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ISkyroom
 		: public virtual IGeometricObject

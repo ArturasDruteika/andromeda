@@ -3,7 +3,7 @@
 #include "pch.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     MeshCacheOpenGL::MeshCacheOpenGL() = default;
 

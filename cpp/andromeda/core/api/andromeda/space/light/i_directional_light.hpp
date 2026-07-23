@@ -6,7 +6,7 @@
 #include "../transformations/i_rotatable.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
-namespace Andromeda
+namespace andromeda
 {
     class IDirectionalLight
 		: public virtual ILight

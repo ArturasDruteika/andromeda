@@ -1,7 +1,7 @@
 #include "../include/Transformable.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	Transformable::Transformable()
 		: m_stateChanged{ false }

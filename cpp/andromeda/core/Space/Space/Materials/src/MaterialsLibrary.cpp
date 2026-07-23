@@ -4,7 +4,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	// Helper to map string --> MaterialType
 	// Throws if name not recognized.
@@ -115,7 +115,7 @@ namespace Andromeda::Space
 
 		try
 		{
-			fileContent = Andromeda::Utils::FileOperations::LoadFileAsString(filePath);
+			fileContent = andromeda::Utils::FileOperations::LoadFileAsString(filePath);
 		}
 		catch (const std::exception& e)
 		{

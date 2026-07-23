@@ -1,7 +1,7 @@
 #include "../include/SceneUpdateHooks.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	SceneUpdateHooksManager::SceneUpdateHooksManager() = default;
 

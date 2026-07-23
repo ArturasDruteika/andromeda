@@ -2,7 +2,7 @@
 #include "../../../OpenGL/Renderer/include/RendererOpenGLImpl.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	RendererOpenGL::RendererOpenGL()
 		: m_pRendererOpenGLImpl{ std::make_unique<RendererOpenGL::RendererOpenGLImpl>() }

@@ -3,11 +3,11 @@
 
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/scene/i_scene_environment.hpp"
+#include "andromeda/space/scene/i_scene_environment.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API SceneEnvironment
 		: public virtual ISceneEnvironment

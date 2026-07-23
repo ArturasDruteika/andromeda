@@ -4,10 +4,10 @@
 
 #include "../../Objects/include/GeometricObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/scene/i_scene_state.hpp"
+#include "andromeda/space/scene/i_scene_state.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API SceneState
 		: public virtual ISceneState

@@ -5,7 +5,7 @@
 #include "pch.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	using MouseCode = uint16_t;
 

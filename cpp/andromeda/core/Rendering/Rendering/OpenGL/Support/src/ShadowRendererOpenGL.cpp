@@ -2,14 +2,14 @@
 #include "../../../Shaders/Shaders/include/ShaderOpenGL.hpp"
 #include "../../../Shaders/Support/include/ShaderOpenGLTypes.hpp"
 #include "../../../Utils/include/MathUtils.hpp"
-#include "Andromeda/space/objects/i_light_object.hpp"
+#include "andromeda/space/objects/i_light_object.hpp"
 
 #include "glad/gl.h"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/matrix_inverse.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     void ShadowRendererOpenGL::RenderDirectionalShadowMap(
         const std::unordered_map<int, IGeometricObject*>& objects,

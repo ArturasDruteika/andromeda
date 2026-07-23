@@ -2,36 +2,36 @@
 #include <sstream>
 
 
-namespace Andromeda::Window
+namespace andromeda::Window
 {
     // KeyEvent
 
     KeyEvent::~KeyEvent() = default;
 
-    KeyEvent::KeyEvent(Andromeda::KeyCode keycode)
+    KeyEvent::KeyEvent(andromeda::KeyCode keycode)
         : m_keyCode{ keycode }
     {
     }
 
-    Andromeda::KeyCode KeyEvent::GetKeyCode() const
+    andromeda::KeyCode KeyEvent::GetKeyCode() const
     {
         return m_keyCode;
     }
 
-    bool KeyEvent::IsInCategory(Andromeda::EventCategory category)
+    bool KeyEvent::IsInCategory(andromeda::EventCategory category)
     {
         return (GetCategoryFlags() & category) != 0;
     }
 
     int KeyEvent::GetCategoryFlags() const
     {
-        return Andromeda::EventCategoryKeyboard |
-            Andromeda::EventCategoryInput;
+        return andromeda::EventCategoryKeyboard |
+            andromeda::EventCategoryInput;
     }
 
     // KeyPressedEvent
 
-    KeyPressedEvent::KeyPressedEvent(Andromeda::KeyCode keycode, bool isRepeat)
+    KeyPressedEvent::KeyPressedEvent(andromeda::KeyCode keycode, bool isRepeat)
         : KeyEvent{ keycode }
         , m_isRepeat{ isRepeat }
     {
@@ -44,9 +44,9 @@ namespace Andromeda::Window
         return m_isRepeat;
     }
 
-    Andromeda::EventType KeyPressedEvent::GetEventType() const
+    andromeda::EventType KeyPressedEvent::GetEventType() const
     {
-        return Andromeda::EventType::KeyPressed;
+        return andromeda::EventType::KeyPressed;
     }
 
     std::string KeyPressedEvent::GetName() const
@@ -64,16 +64,16 @@ namespace Andromeda::Window
 
     // KeyReleasedEvent
 
-    KeyReleasedEvent::KeyReleasedEvent(Andromeda::KeyCode keycode)
+    KeyReleasedEvent::KeyReleasedEvent(andromeda::KeyCode keycode)
         : KeyEvent{ keycode }
     {
     }
 
     KeyReleasedEvent::~KeyReleasedEvent() = default;
 
-    Andromeda::EventType KeyReleasedEvent::GetEventType() const
+    andromeda::EventType KeyReleasedEvent::GetEventType() const
     {
-        return Andromeda::EventType::KeyReleased;
+        return andromeda::EventType::KeyReleased;
     }
 
     std::string KeyReleasedEvent::GetName() const
@@ -90,16 +90,16 @@ namespace Andromeda::Window
 
     // KeyTypedEvent
 
-    KeyTypedEvent::KeyTypedEvent(Andromeda::KeyCode keycode)
+    KeyTypedEvent::KeyTypedEvent(andromeda::KeyCode keycode)
         : KeyEvent{ keycode }
     {
     }
 
     KeyTypedEvent::~KeyTypedEvent() = default;
 
-    Andromeda::EventType KeyTypedEvent::GetEventType() const
+    andromeda::EventType KeyTypedEvent::GetEventType() const
     {
-        return Andromeda::EventType::KeyTyped;
+        return andromeda::EventType::KeyTyped;
     }
 
     std::string KeyTypedEvent::GetName() const

@@ -4,10 +4,10 @@
 
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
-#include "Andromeda/space/camera/i_camera_view.hpp"
+#include "andromeda/space/camera/i_camera_view.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API CameraView
 		: public virtual ICameraView

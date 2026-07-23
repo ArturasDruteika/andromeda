@@ -1,7 +1,7 @@
 #include "../include/EventBase.hpp"
 
 
-namespace Andromeda::Window
+namespace andromeda::Window
 {
 	EventBase::EventBase()
 		: m_handled{ false }

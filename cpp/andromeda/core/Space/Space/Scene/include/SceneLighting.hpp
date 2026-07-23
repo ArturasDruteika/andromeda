@@ -6,10 +6,10 @@
 #include "../../Light/include/PointLight.hpp"
 #include "../../Objects/include/LightObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/scene/i_scene_lighting.hpp"
+#include "andromeda/space/scene/i_scene_lighting.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     class SPACE_API SceneLighting
 		: public virtual ISceneLighting

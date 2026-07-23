@@ -5,7 +5,7 @@
 #include "pch.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class ShaderCompilerOpenGL
 	{

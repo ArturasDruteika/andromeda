@@ -2,7 +2,7 @@
 #define RENDERER__I_SHADER__HPP
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class IShader
 	{

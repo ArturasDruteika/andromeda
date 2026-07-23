@@ -6,7 +6,7 @@
 #include "i_camera_view.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     class ICamera
         : public virtual ICameraController

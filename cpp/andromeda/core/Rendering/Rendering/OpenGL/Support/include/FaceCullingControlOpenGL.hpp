@@ -2,7 +2,7 @@
 #define RENDERER__FACE_CULLING_CONTROL_OPENGL__HPP
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class FaceCullingControlOpenGL
 	{

@@ -1,7 +1,7 @@
 #include "../include/SurfaceObject.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     SurfaceObject::SurfaceObject()
 		: m_pMaterial{ nullptr }
@@ -10,12 +10,12 @@ namespace Andromeda::Space
 
     SurfaceObject::~SurfaceObject() = default;
 
-    const Andromeda::IMaterial* SurfaceObject::GetMaterial() const
+    const andromeda::IMaterial* SurfaceObject::GetMaterial() const
     {
         return m_pMaterial;
     }
 
-    void SurfaceObject::SetMaterial(const Andromeda::IMaterial* material)
+    void SurfaceObject::SetMaterial(const andromeda::IMaterial* material)
     {
         m_pMaterial = material;
     }

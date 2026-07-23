@@ -2,14 +2,14 @@
 #define API__SCENE__I_SCENE_NODE_MANAGER__HPP
 
 
-#include "Andromeda/space/scene/i_scene_lighting.hpp"
-#include "Andromeda/space/scene/i_scene_objects.hpp"
-#include "Andromeda/space/scene_graph/i_scene_node.hpp"
+#include "andromeda/space/scene/i_scene_lighting.hpp"
+#include "andromeda/space/scene/i_scene_objects.hpp"
+#include "andromeda/space/scene_graph/i_scene_node.hpp"
 
 #include <memory>
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ISceneNodeManager
 		: public virtual ISceneObjects

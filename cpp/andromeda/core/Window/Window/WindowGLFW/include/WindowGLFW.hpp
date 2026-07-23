@@ -2,8 +2,8 @@
 #define WINDOW__GLFW_WINDOW__HPP_HPP
 
 
-#include "Andromeda/window/events/i_event.hpp"
-#include "Andromeda/window/window/i_window.hpp"
+#include "andromeda/window/events/i_event.hpp"
+#include "andromeda/window/window/i_window.hpp"
 #include "pch.hpp"
 #include "GLFW/glfw3.h"
 
@@ -12,7 +12,7 @@ constexpr int DEFAULT_WINDOW_WIDTH = 640;
 constexpr int DEFAULT_WINDOW_HEIGHT = 640;
 
 
-namespace Andromeda::Window
+namespace andromeda::Window
 {
 	class WindowGLFW
 		: public IWindow
@@ -23,7 +23,7 @@ namespace Andromeda::Window
 		WindowGLFW(
 			int width = DEFAULT_WINDOW_WIDTH,
 			int height = DEFAULT_WINDOW_HEIGHT,
-			const std::string& title = "Andromeda Window",
+			const std::string& title = "andromeda Window",
 			bool initWindow = true
 		);
 		~WindowGLFW() override;

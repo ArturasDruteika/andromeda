@@ -1,7 +1,7 @@
 #include "../include/GridControl.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	GridControl::GridControl()
         : m_isGridVisible{ false }

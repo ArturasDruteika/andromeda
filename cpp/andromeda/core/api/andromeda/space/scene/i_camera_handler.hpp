@@ -5,7 +5,7 @@
 #include "../camera/i_camera.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ICameraHandler
 	{

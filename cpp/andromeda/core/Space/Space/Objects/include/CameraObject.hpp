@@ -5,10 +5,10 @@
 #include "Object.hpp"
 #include "../../Transformations/include/Rotatable.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/objects/i_camera_object.hpp"
+#include "andromeda/space/objects/i_camera_object.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API CameraObject
 		: public virtual ICameraObject

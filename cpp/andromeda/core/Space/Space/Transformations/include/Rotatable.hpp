@@ -3,12 +3,12 @@
 
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/transformations/i_rotatable.hpp"
+#include "andromeda/space/transformations/i_rotatable.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 #include "Math/LinearAlgebra/include/quaternions.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     class SPACE_API Rotatable
         : public virtual IRotatable

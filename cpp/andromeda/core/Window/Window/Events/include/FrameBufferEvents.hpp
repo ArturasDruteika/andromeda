@@ -3,17 +3,17 @@
 
 
 #include "EventBase.hpp"
-#include "Andromeda/window/events/event_type.hpp"
-#include "Andromeda/window/events/i_frame_buffer_events.hpp"
+#include "andromeda/window/events/event_type.hpp"
+#include "andromeda/window/events/i_frame_buffer_events.hpp"
 
 #include <string>
 
 
-namespace Andromeda::Window
+namespace andromeda::Window
 {
     class WindowResizeEvent
         : public EventBase
-        , public virtual Andromeda::IWindowResizeEvent
+        , public virtual andromeda::IWindowResizeEvent
     {
     public:
         WindowResizeEvent(int width, int height);
@@ -35,7 +35,7 @@ namespace Andromeda::Window
 
     class WindowCloseEvent
         : public EventBase
-        , public virtual Andromeda::IWindowCloseEvent
+        , public virtual andromeda::IWindowCloseEvent
     {
     public:
         WindowCloseEvent();
@@ -50,7 +50,7 @@ namespace Andromeda::Window
 
     class FramebufferResizeEvent
         : public EventBase
-        , public virtual Andromeda::IFramebufferResizeEvent
+        , public virtual andromeda::IFramebufferResizeEvent
     {
     public:
         FramebufferResizeEvent(int width, int height);

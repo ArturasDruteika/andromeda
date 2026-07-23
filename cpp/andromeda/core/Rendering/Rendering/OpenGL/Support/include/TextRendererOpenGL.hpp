@@ -6,7 +6,7 @@
 #include "glad/gl.h"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     class TextRendererOpenGL
     {

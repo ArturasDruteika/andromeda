@@ -1,11 +1,11 @@
 // SceneNode.cpp
 #include "../include/SceneNode.hpp"
-#include "Andromeda/space/scene_graph/i_scene_component.hpp"
+#include "andromeda/space/scene_graph/i_scene_component.hpp"
 
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     SceneNode::SceneNode(std::unique_ptr<ITransformable> transform)
         : m_transform(std::move(transform))

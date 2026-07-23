@@ -1,7 +1,7 @@
 #include "../include/linear_algebra_operations.hpp"
 
 
-namespace Andromeda::Math
+namespace andromeda::Math
 {
 	float LinAlgOps::dot_prod(const Vec2& a, const Vec2& b)
 	{

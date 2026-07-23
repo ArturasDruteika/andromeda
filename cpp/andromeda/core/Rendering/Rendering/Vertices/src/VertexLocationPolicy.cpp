@@ -1,6 +1,6 @@
 #include "../include/VertexLocationPolicy.hpp"
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     uint32_t VertexLocationPolicy::GetLocation(VertexSemantic semantic)
     {

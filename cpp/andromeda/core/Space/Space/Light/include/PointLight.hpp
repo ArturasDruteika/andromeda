@@ -5,11 +5,11 @@
 #include "Light.hpp"
 #include "../../Objects/include/LightObject.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/light/i_point_light.hpp"
+#include "andromeda/space/light/i_point_light.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API PointLight
 		: public IPointLight

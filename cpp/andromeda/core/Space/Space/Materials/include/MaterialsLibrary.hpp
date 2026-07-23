@@ -8,7 +8,7 @@
 #include "Materials.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API MaterialLibrary
 	{

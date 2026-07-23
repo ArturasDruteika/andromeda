@@ -1,7 +1,7 @@
 #include "../include/ObjectComponent.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     ObjectComponent::ObjectComponent(int id, IGeometricObject* object)
         : m_id{ id }

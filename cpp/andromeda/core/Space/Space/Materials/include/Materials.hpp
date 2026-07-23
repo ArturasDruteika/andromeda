@@ -5,10 +5,10 @@
 #include "../../MacroExports/include/MacroExports.hpp"
 #include "pch.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
-#include "Andromeda/space/materials/i_material.hpp"
+#include "andromeda/space/materials/i_material.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     class SPACE_API Material
 		: public IMaterial

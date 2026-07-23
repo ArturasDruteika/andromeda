@@ -1,7 +1,7 @@
 #include "../include/FPSCounter.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     FpsCounter::FpsCounter()
         : m_lastTime{ std::chrono::steady_clock::now() }

@@ -3,12 +3,12 @@
 
 
 #include "../../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/Renderer/IRenderer.hpp"
-#include "Andromeda/space/scene/i_scene.hpp"
+#include "andromeda/Renderer/IRenderer.hpp"
+#include "andromeda/space/scene/i_scene.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	class RENDERING_API RendererOpenGL
 		: public IRenderer

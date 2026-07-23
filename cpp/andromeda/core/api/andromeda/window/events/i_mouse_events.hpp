@@ -6,7 +6,7 @@
 #include "../mouse_and_key_codes/mouse_codes.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     class IMouseMovedEvent
         : public virtual IEvent

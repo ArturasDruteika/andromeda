@@ -2,7 +2,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	Material::Material()
 		: m_shininess{ 0.6f }

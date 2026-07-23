@@ -6,7 +6,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Window
+namespace andromeda::Window
 {
 	WindowGLFW::WindowGLFW(int width, int height, const std::string& title, bool initWindow)
 		: m_width{ width }

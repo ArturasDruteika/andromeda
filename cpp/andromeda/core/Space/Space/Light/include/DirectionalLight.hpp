@@ -6,11 +6,11 @@
 #include "../../Objects/include/LightObject.hpp"
 #include "../../Transformations/include/Rotatable.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/light/i_directional_light.hpp"
+#include "andromeda/space/light/i_directional_light.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API DirectionalLight
 		: public IDirectionalLight

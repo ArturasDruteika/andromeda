@@ -1,8 +1,8 @@
 #include "../include/SceneComponent.hpp"
-#include "Andromeda/space/scene_graph/i_scene_node.hpp"
+#include "andromeda/space/scene_graph/i_scene_node.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     SceneComponent::SceneComponent()
         : m_node{ nullptr }

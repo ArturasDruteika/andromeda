@@ -5,7 +5,7 @@
 #include "i_update_hooks.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ISceneUpdateHooks
 		: public virtual IUpdateHooks

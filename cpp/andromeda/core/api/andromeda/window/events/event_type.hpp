@@ -2,7 +2,7 @@
 #define API__WINDOW__EVENTS__EVENTS_TYPE__HPP
 
 
-namespace Andromeda
+namespace andromeda
 {
 #define BIT(x) (1 << x)
 

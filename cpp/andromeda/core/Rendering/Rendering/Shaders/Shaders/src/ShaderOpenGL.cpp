@@ -1,7 +1,7 @@
 #include "../include/ShaderOpenGL.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	ShaderOpenGL::ShaderOpenGL(
 		const std::filesystem::path& vertexCodeFilePath, 

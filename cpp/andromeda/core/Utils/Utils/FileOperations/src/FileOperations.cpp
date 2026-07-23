@@ -1,7 +1,7 @@
 #include "../include/FileOperations.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	namespace Utils
 	{

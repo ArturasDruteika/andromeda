@@ -2,7 +2,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	Cube::Cube(float halfExtent, const Color& color)
 		: GeometricObject(color)

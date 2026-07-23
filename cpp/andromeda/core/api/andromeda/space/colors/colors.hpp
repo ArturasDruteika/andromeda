@@ -5,7 +5,7 @@
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
     // TODO: consider using Math::Vec4 vector to store data for speed
     struct Color

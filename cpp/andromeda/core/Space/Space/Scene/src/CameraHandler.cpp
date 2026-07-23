@@ -2,7 +2,7 @@
 #include "../../Camera/include/Camera.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     CameraHandler::CameraHandler()
         : m_pCamera{ nullptr }

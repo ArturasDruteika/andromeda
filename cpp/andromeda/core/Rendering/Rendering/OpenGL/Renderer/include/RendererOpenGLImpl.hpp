@@ -14,11 +14,11 @@
 #include "../../../Renderers/Abstracts/include/SizeControl.hpp"
 #include "../../../Shaders/Shaders/include/ShaderManager.hpp"
 #include "../../../Vertices/include/VertexLayouts.hpp"
-#include "Andromeda/space/transformations/i_transformable.hpp"
+#include "andromeda/space/transformations/i_transformable.hpp"
 #include "pch.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     class RendererOpenGL::RendererOpenGLImpl
         : public GridControl

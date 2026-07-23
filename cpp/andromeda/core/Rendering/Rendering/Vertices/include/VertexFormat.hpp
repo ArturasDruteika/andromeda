@@ -2,7 +2,7 @@
 #define RENDERING__VERTICES__VERTEX_FORMAT__HPP
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     enum class VertexSemantic
     {

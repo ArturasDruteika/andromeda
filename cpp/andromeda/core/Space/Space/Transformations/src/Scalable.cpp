@@ -2,7 +2,7 @@
 #include "Math/LinearAlgebra/include/linear_algebra_operations.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	Scalable::Scalable()
 		: m_stateChanged{ false}

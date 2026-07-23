@@ -1,7 +1,7 @@
 #include "../include/GeometricObject.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	GeometricObject::GeometricObject() = default;
 

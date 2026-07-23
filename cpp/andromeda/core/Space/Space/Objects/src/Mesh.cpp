@@ -1,7 +1,7 @@
 #include "../include/Mesh.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	Mesh::Mesh() = default;
 

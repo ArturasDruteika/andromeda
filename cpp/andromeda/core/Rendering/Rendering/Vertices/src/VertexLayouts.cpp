@@ -1,7 +1,7 @@
 #include "../include/VertexLayouts.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     VertexLayout::VertexLayout()
         : m_attributes{}

@@ -5,7 +5,7 @@
 #include "i_object.hpp"
 
 
-namespace Andromeda
+namespace andromeda
 {
 	class ICameraObject
 		: public virtual IObject

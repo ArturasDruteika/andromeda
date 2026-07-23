@@ -6,7 +6,7 @@
 #include "pch.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     enum class InputRate
     {

@@ -6,7 +6,7 @@
 #include "spdlog/spdlog.h"
 
 
-namespace Andromeda::Platform
+namespace andromeda::Platform
 {
     Platform::Platform(const GraphicsBackend& graphicsBackend)
         : m_initialized{ false }
@@ -244,7 +244,7 @@ namespace Andromeda::Platform
     }
 }
 
-namespace Andromeda
+namespace andromeda
 {
     std::unique_ptr<IPlatform> CreatePlatform(const GraphicsBackend& graphicsBackend)
     {

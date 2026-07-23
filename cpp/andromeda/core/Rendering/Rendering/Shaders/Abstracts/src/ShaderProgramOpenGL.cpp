@@ -4,7 +4,7 @@
 #include <spdlog/spdlog.h>
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
 	ShaderProgramOpenGL::ShaderProgramOpenGL()
 		: m_programId{ 0 }

@@ -3,11 +3,11 @@
 
 
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/camera/i_perspective_control.hpp"
+#include "andromeda/space/camera/i_perspective_control.hpp"
 #include "Math/LinearAlgebra/include/linear_algebra_data_types.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	class SPACE_API PerspectiveControl
 		: public virtual IPerspectiveControl

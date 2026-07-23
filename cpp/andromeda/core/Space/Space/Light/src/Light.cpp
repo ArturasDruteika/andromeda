@@ -1,7 +1,7 @@
 #include "../include/Light.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	Light::Light(
 		const Math::Vec3& color, 

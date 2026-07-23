@@ -1,7 +1,7 @@
 #include "../include/SceneLighting.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
 	SceneLighting::SceneLighting()
 		: m_directionalLights{}

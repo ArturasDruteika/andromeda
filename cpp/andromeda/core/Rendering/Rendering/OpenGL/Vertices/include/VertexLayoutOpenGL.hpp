@@ -5,7 +5,7 @@
 #include "../../../Vertices/include/VertexLayouts.hpp"
 
 
-namespace Andromeda::Rendering
+namespace andromeda::Rendering
 {
     class VertexLayoutOpenGL
     {

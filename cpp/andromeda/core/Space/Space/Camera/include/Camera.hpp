@@ -5,11 +5,11 @@
 #include "PerspectiveControl.hpp"
 #include "CameraController.hpp"
 #include "../../MacroExports/include/MacroExports.hpp"
-#include "Andromeda/space/camera/i_camera.hpp"
+#include "andromeda/space/camera/i_camera.hpp"
 #include "Math/Constants/include/constants.hpp"
 
 
-namespace Andromeda::Space
+namespace andromeda::Space
 {
     class SPACE_API Camera
         : public ICamera
