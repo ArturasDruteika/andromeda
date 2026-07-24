@@ -1,22 +1,19 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(Utils)
+project(utils)
 
 set(CMAKE_BUILD_PARALLEL_LEVEL)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-# SPDLog
-
-
 # ==== FileOperations ====
 set(FILE_OPERATIONS_HEADERS
-    Utils/FileOperations/include/FileOperations.hpp
+    Utils/file_operations/include/file_operations.hpp
 )
 
 set(FILE_OPERATIONS_SOURCES
-    Utils/FileOperations/src/FileOperations.cpp
+    Utils/file_operations/src/file_operations.cpp
 )
 
 # ==== nlohmann ====
@@ -49,14 +46,14 @@ set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 # Link spdlog
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        PrecompiledHeaders
+        precompiled_headers
         spdlog::spdlog
 )
 
 
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/FileOperations
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/file_operations
     PREFIX
         "FileOperations"
     FILES
