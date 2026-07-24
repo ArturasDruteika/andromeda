@@ -496,7 +496,7 @@ namespace andromeda::engine
             return;
         }
 
-        // Usually you don't "close" here; platform/Window sets ShouldClose().
+        // Usually you don't "close" here; platform/Window sets should_close().
         // But you may still want to mark handled or run shutdown logic.
         event.set_handled(true);
     }
@@ -509,7 +509,7 @@ namespace andromeda
     {
         spdlog::info(
             "create_engine() called with backend {}",
-            GraphicsBackendString(graphics_backend)
+            graphics_backend_string(graphics_backend)
         );
 
         try

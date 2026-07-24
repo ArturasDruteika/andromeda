@@ -26,7 +26,7 @@ namespace andromeda
         virtual IWindow* get_window() const = 0;
 	};
 
-	ANDROMEDA_API std::unique_ptr<IPlatform> CreatePlatform(const GraphicsBackend& graphics_backend);
+	ANDROMEDA_API std::unique_ptr<IPlatform> create_platform(const GraphicsBackend& graphics_backend);
 }
 
 

@@ -16,7 +16,7 @@ namespace andromeda::application
         : public virtual IApplication
     {
     public:
-        explicit Application(GraphicsBackend graphicsBackend);
+        explicit Application(GraphicsBackend graphics_backend);
         ~Application() override;
 
         Application(const Application& other) = delete;
@@ -26,19 +26,19 @@ namespace andromeda::application
         Application& operator=(Application&& other) noexcept = delete;
 
         // Getters
-        IRenderer* GetRenderer() override;
+        IRenderer* get_renderer() override;
 
-        bool Init(
+        bool init(
             unsigned int width, 
             unsigned int height, 
             const std::string& title
         ) override;
-        void DeInit() override;
+        void de_init() override;
 
-        void SetScene(IScene* pScene) override;
+        void set_scene(IScene* p_scene) override;
 
         // Returns 0 on clean exit, non-zero on error
-        int Run() override;
+        int run() override;
 
     private:
         bool init_platform(
@@ -54,11 +54,11 @@ namespace andromeda::application
             const std::string& title
         );
         void connect_events();
-        void RenderLoop();
+        void run();
 
     private:
         bool m_initialized;
-        GraphicsBackend m_graphicsBackend;
+        GraphicsBackend m_graphics_backend;
 
         std::unique_ptr<IPlatform> m_p_platform;
         std::unique_ptr<IEngine> m_p_engine;

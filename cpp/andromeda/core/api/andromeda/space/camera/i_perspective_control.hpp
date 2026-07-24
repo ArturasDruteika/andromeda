@@ -24,7 +24,7 @@ namespace andromeda
 		virtual void set_far_plane(float far_plane, bool update_projection = true) = 0;
 		virtual void set_aspect(float aspect, bool update_projection = true) = 0;
 
-		// Update projection matrix
+		// update projection matrix
 		virtual void update_projection() = 0;
     };
 }

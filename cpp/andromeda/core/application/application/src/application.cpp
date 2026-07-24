@@ -6,9 +6,9 @@
 
 namespace andromeda::application
 {
-    Application::Application(GraphicsBackend graphicsBackend)
+    Application::Application(GraphicsBackend graphics_backend)
         : m_initialized{ false }
-        , m_graphicsBackend{ graphicsBackend }
+        , m_graphics_backend{ graphics_backend }
         , m_p_platform{ nullptr }
         , m_p_engine{ nullptr }
         , m_p_scene{ nullptr }
@@ -22,21 +22,21 @@ namespace andromeda::application
     {
         if (m_initialized)
         {
-            DeInit();
+            de_init();
         }
     }
 
-    IRenderer* Application::GetRenderer()
+    IRenderer* Application::get_renderer()
     {
         return m_p_renderer;
     }
 
-    bool Application::Init(unsigned int width, unsigned int height, const std::string& title)
+    bool Application::init(unsigned int width, unsigned int height, const std::string& title)
     {
         return init_internal(width, height, title);
     }
 
-    void Application::DeInit()
+    void Application::de_init()
     {
         if (!m_p_platform && !m_p_engine && !m_p_window && !m_p_context && !m_p_renderer)
         {
@@ -47,14 +47,14 @@ namespace andromeda::application
         // Engine teardown first (it may reference renderer/resources)
         if (m_p_engine)
         {
-            m_p_engine->DeInit();
+            m_p_engine->de_init();
             m_p_engine.reset();
         }
 
         // platform teardown last (destroys window/context)
         if (m_p_platform)
         {
-            m_p_platform->Shutdown();
+            m_p_platform->shutdown();
             m_p_platform.reset();
         }
 
@@ -66,64 +66,64 @@ namespace andromeda::application
         m_initialized = false;
     }
 
-    void Application::SetScene(IScene* pScene)
+    void Application::set_scene(IScene* p_scene)
     {
-        m_p_scene = pScene;
+        m_p_scene = p_scene;
 
-        // If your Engine has SetScene, call it here:
-        // (You added Engine::SetScene(IScene*))
+        // If your Engine has set_scene, call it here:
+        // (You added engine::set_scene(IScene*))
         if (m_p_engine)
         {
-            // Engine::Engine has SetScene, but IEngine does not in your original API.
-            // If you want this call through IEngine, add SetScene to IEngine too.
+            // engine::Engine has set_scene, but IEngine does not in your original API.
+            // If you want this call through IEngine, add set_scene to IEngine too.
             // For now, dynamic_cast safely if needed:
-            auto* pEngineImpl = dynamic_cast<Engine::Engine*>(m_p_engine.get());
-            if (pEngineImpl)
+            auto* p_engine_impl = dynamic_cast<engine::Engine*>(m_p_engine.get());
+            if (p_engine_impl)
             {
-                pEngineImpl->SetScene(m_p_scene);
+                p_engine_impl->set_scene(m_p_scene);
             }
         }
     }
 
-    int Application::Run()
+    int Application::run()
     {
         if (!m_initialized)
         {
-            spdlog::error("Application::Run() called but application is not initialized.");
+            spdlog::error("Application::run() called but application is not initialized.");
             return -1;
         }
 
         if (!m_p_scene)
         {
-            spdlog::error("Application::Run() called but scene is null. Call SetScene() first.");
+            spdlog::error("Application::run() called but scene is null. Call set_scene() first.");
             return -1;
         }
 
         // Ensure engine sees the scene (if not already connected)
         if (m_p_engine)
         {
-            Engine::Engine* pEngineImpl = dynamic_cast<Engine::Engine*>(m_p_engine.get());
-            if (pEngineImpl)
+            engine::Engine* p_engine_impl = dynamic_cast<engine::Engine*>(m_p_engine.get());
+            if (p_engine_impl)
             {
-                pEngineImpl->SetScene(m_p_scene);
+                p_engine_impl->set_scene(m_p_scene);
             }
         }
 
-        RenderLoop();
+        run();
         
         return 0;
     }
 
     bool Application::init_platform(unsigned int width, unsigned int height, const std::string& title)
     {
-        m_p_platform = CreatePlatform(m_graphicsBackend);
+        m_p_platform = create_platform(m_graphics_backend);
         if (!m_p_platform)
         {
-            spdlog::error("CreatePlatform() returned nullptr.");
+            spdlog::error("create_platform() returned nullptr.");
             return false;
         }
 
-        if (!m_p_platform->Init(width, height, title))
+        if (!m_p_platform->init(width, height, title))
         {
             spdlog::error("Failed to initialize platform.");
             return false;
@@ -134,16 +134,16 @@ namespace andromeda::application
 
     bool Application::init_engine()
     {
-        m_p_engine = CreateEngine(m_graphicsBackend);
+        m_p_engine = create_engine(m_graphics_backend);
         if (!m_p_engine)
         {
-            spdlog::error("CreateEngine() returned nullptr.");
+            spdlog::error("create_engine() returned nullptr.");
             return false;
         }
 
-        if (!m_p_engine->Init())
+        if (!m_p_engine->init())
         {
-            spdlog::error("Engine::Init() failed.");
+            spdlog::error("engine::init() failed.");
             return false;
         }
 
@@ -152,8 +152,8 @@ namespace andromeda::application
 
     bool Application::init_renderer(int width, int height)
     {
-        // You had: pRenderer->Init(width, height, false);
-        m_p_renderer->Init(width, height, false);
+        // You had: pRenderer->init(width, height, false);
+        m_p_renderer->init(width, height, false);
         return true;
     }
 
@@ -161,31 +161,31 @@ namespace andromeda::application
     {
         if (m_initialized)
         {
-            spdlog::warn("Application::Init() called but application is already initialized.");
+            spdlog::warn("Application::init() called but application is already initialized.");
             return true;
         }
 
         if (!init_platform(width, height, title))
         {
-            spdlog::error("Application::Init() failed: platform init failed.");
+            spdlog::error("Application::init() failed: platform init failed.");
             return false;
         }
 
         if (!init_engine())
         {
-            spdlog::error("Application::Init() failed: engine init failed.");
-            DeInit();
+            spdlog::error("Application::init() failed: engine init failed.");
+            de_init();
             return false;
         }
 
-        m_p_window = m_p_platform->GetWindow();
-        m_p_context = m_p_platform->GetGraphicsContext();
-        m_p_renderer = m_p_engine->GetRenderer();
+        m_p_window = m_p_platform->get_window();
+        m_p_context = m_p_platform->get_graphics_context();
+        m_p_renderer = m_p_engine->get_renderer();
 
         if (!m_p_window || !m_p_context || !m_p_renderer)
         {
-            spdlog::error("Application::Init() failed: window/context/renderer is null.");
-            DeInit();
+            spdlog::error("Application::init() failed: window/context/renderer is null.");
+            de_init();
             return false;
         }
 
@@ -193,8 +193,8 @@ namespace andromeda::application
 
         if (!init_renderer(static_cast<int>(width), static_cast<int>(height)))
         {
-            spdlog::error("Application::Init() failed: renderer init failed.");
-            DeInit();
+            spdlog::error("Application::init() failed: renderer init failed.");
+            de_init();
             return false;
         }
         m_initialized = true;
@@ -205,26 +205,26 @@ namespace andromeda::application
     {
         // This is the thing you wanted hidden from main:
         // Window pushes IEvent -> Engine consumes it.
-        m_p_window->SetEventCallback([this](IEvent& e)
+        m_p_window->set_event_callback([this](IEvent& e)
             {
                 if (m_p_engine)
                 {
-                    m_p_engine->OnEvent(e);
+                    m_p_engine->on_event(e);
                 }
             });
     }
 
-    void Application::RenderLoop()
+    void Application::run()
     {
-        while (!m_p_window->ShouldClose())
+        while (!m_p_window->should_close())
         {
-            m_p_window->PollEvents();
+            m_p_window->poll_events();
             if (m_p_scene)
             {
-                m_p_scene->Update(0.016f); // Example deltaTime (60Hz)
+                m_p_scene->update(0.016f); // Example deltaTime (60Hz)
             }
-            m_p_renderer->RenderFrame(*m_p_scene);
-            m_p_context->Present();
+            m_p_renderer->render_frame(*m_p_scene);
+            m_p_context->present();
         }
     }
 }
@@ -232,16 +232,16 @@ namespace andromeda::application
 
 namespace andromeda
 {
-    std::unique_ptr<IApplication> CreateApp(const GraphicsBackend& graphicsBackend)
+    std::unique_ptr<IApplication> create_app(const GraphicsBackend& graphics_backend)
     {
         spdlog::info(
             "CreateApplication() called with backend {}",
-            GraphicsBackendString(graphicsBackend)
+            graphics_backend_string(graphics_backend)
         );
 
         try
         {
-            std::unique_ptr<IApplication> application = std::make_unique<application::Application>(graphicsBackend);
+            std::unique_ptr<IApplication> application = std::make_unique<application::Application>(graphics_backend);
             return application;
         }
         catch (const std::exception& ex)

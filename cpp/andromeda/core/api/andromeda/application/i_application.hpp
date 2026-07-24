@@ -27,7 +27,7 @@ namespace andromeda
         virtual int run() = 0;
     };
 
-    ANDROMEDA_API std::unique_ptr<IApplication> CreateApp(const GraphicsBackend& graphics_backend);
+    ANDROMEDA_API std::unique_ptr<IApplication> create_app(const GraphicsBackend& graphics_backend);
 }
 
 #endif // API__APPLICATION__I_APPLICATION__HPP

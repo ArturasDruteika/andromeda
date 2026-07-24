@@ -28,7 +28,7 @@ namespace andromeda
 			virtual void on_event(IEvent& event) = 0;
 	};
 
-	ANDROMEDA_API std::unique_ptr<IEngine> CreateEngine(const GraphicsBackend& graphics_backend);
+	ANDROMEDA_API std::unique_ptr<IEngine> create_engine(const GraphicsBackend& graphics_backend);
 }
 
 
