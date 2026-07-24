@@ -53,7 +53,7 @@ target_link_libraries(${PROJECT_NAME}
     PUBLIC
         precompiled_headers
         math
-        Api
+        api
 
 )
 
@@ -61,8 +61,8 @@ target_link_libraries(${PROJECT_NAME}
 add_dependencies(${PROJECT_NAME}
     math
     rendering
-    Utils
-    Window
+    utils
+    window
 )
 
 

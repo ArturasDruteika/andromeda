@@ -58,8 +58,8 @@ target_link_libraries(${PROJECT_NAME}
         OpenGL::GL
         graphics_context
         Glad
-        Window
-        Api
+        window
+        api
         imgui
         spdlog::spdlog
 )
@@ -68,8 +68,8 @@ target_link_libraries(${PROJECT_NAME}
 add_dependencies(${PROJECT_NAME}
     graphics_context
     Glad
-    Utils
-    Window
+    utils
+    window
     glfw
     imgui
 )

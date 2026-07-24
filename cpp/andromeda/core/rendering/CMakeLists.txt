@@ -25,7 +25,7 @@ set(MACRO_EXPORTS_HEADERS
 # ==== OpenGL backend (platform specific) ====
 set(OPENGL_HEADERS
     rendering/open_gl/geometry/include/gpu_mesh_open_gl.hpp
-    rendering/open_gl/renderer/include/open_gl_renderer_impl.hpp
+    rendering/open_gl/renderer/include/renderer_open_gl_impl.hpp
     rendering/open_gl/support/include/face_culling_control_open_gl.hpp
     rendering/open_gl/support/include/frame_buffer_open_gl.hpp
     rendering/open_gl/support/include/fps_counter.hpp
@@ -37,7 +37,7 @@ set(OPENGL_HEADERS
 
 set(OPENGL_SOURCES
     rendering/open_gl/geometry/src/gpu_mesh_open_gl.cpp
-    rendering/open_gl/renderer/src/open_gl_renderer_impl.cpp
+    rendering/open_gl/renderer/src/renderer_open_gl_impl.cpp
     rendering/open_gl/support/src/face_culling_control_open_gl.cpp
     rendering/open_gl/support/src/frame_buffer_open_gl.cpp
     rendering/open_gl/support/src/fps_counter.cpp
@@ -57,14 +57,14 @@ set(RENDERERS_HEADERS
     rendering/renderers/abstracts/include/grid_control.hpp
     rendering/renderers/abstracts/include/illumination_control.hpp
     rendering/renderers/abstracts/include/size_control.hpp
-    rendering/renderers/renderers/include/open_gl_renderer.hpp
+    rendering/renderers/renderers/include/renderer_open_gl.hpp
 )
 
 set(RENDERERS_SOURCES
     rendering/renderers/abstracts/src/grid_control.cpp
     rendering/renderers/abstracts/src/illumination_control.cpp
     rendering/renderers/abstracts/src/size_control.cpp
-    rendering/renderers/renderers/src/open_gl_renderer.cpp
+    rendering/renderers/renderers/src/renderer_open_gl.cpp
 )
 
 # ==== Shaders ====

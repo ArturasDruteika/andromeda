@@ -16,11 +16,11 @@ endif ()
 
 # ==== graphics_context ====
 set(GRAPHICS_CONTEXT_HEADERS
-    graphics_context/include/graphics_contextGLFW.hpp
+    graphics_context/include/graphics_context_glfw.hpp
 )
 
 set(GRAPHICS_CONTEXT_SOURCES
-    graphics_context/src/graphics_contextGLFW.cpp
+    graphics_context/src/graphics_context_glfw.cpp
 )
 
 add_library(${PROJECT_NAME} 
@@ -45,8 +45,8 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
         precompiled_headers
-        Api
-        Window
+        api
+        window
         Glad
         glfw
         OpenGL::GL
@@ -56,7 +56,7 @@ target_link_libraries(${PROJECT_NAME}
 add_dependencies(${PROJECT_NAME} 
 	glfw
     Glad
-    Window
+    window
 )
 
 

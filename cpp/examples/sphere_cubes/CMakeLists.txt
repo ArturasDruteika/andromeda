@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(SphereCubes)
+project(sphere_cubes)
 
 set(CMAKE_BUILD_PARALLEL_LEVEL)
 set(CMAKE_CXX_STANDARD 23)
@@ -13,26 +13,26 @@ target_compile_definitions(${PROJECT_NAME}
         ANDROMEDA_API_USE_DLL
 )
 
-# Ensure Engine is linked
+# Ensure engine is linked
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        # PrecompiledHeaders
-        Math
-        Api
-        Space
-        Platform
-        Engine
-        Application
+        # precompiled_headers
+        math
+        api
+        space
+        platform
+        engine
+        application
         spdlog::spdlog
 )
 
-# Ensure Example waits for Engine to build
+# Ensure Example waits for engine to build
 add_dependencies(${PROJECT_NAME}
-    Math
-    Space
-    Platform
-    Engine
-    Application
+    math
+    space
+    platform
+    engine
+    application
 )
 
 # Set working directory only for Visual Studio

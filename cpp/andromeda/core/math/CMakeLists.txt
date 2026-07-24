@@ -8,12 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions(-DMATH_EXPORT)
 
-# SPDLog
 
-
-# ==== Constants ====
+# ==== constants ====
 set(CONSTANTS_HEADERS
-    math/Constants/include/constants.hpp
+    math/constants/include/constants.hpp
 )
 
 # ==== Linear Algebra ====
@@ -35,11 +33,11 @@ set(MACRO_EXPORTS_HEADERS
 
 # ==== Trigonometry ====
 set(TRIGONOMETRY_HEADERS
-    math/Trigonometry/include/trigonometry.hpp
+    math/trigonometry/include/trigonometry.hpp
 )
 
 set(TRIGONOMETRY_SOURCES
-    math/Trigonometry/src/trigonometry.cpp
+    math/trigonometry/src/trigonometry.cpp
 )
 
 
@@ -71,9 +69,9 @@ target_link_libraries(${PROJECT_NAME}
 # ==== IDE Organization ====
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Constants
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/constants
     PREFIX
-        "Constants"
+        "constants"
     FILES
         ${CONSTANTS_HEADERS}
 )
@@ -99,9 +97,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Trigonometry
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/trigonometry
     PREFIX
-        "Trigonometry"
+        "trigonometry"
     FILES
         ${TRIGONOMETRY_HEADERS}
         ${TRIGONOMETRY_SOURCES}

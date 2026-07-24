@@ -156,7 +156,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/space/camera
     PREFIX
-        "Camera"
+        "camera"
     FILES
         ${CAMERA_HEADERS}
 )
@@ -165,7 +165,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/space/colors
     PREFIX
-        "Colors"
+        "colors"
     FILES
         ${COLORS_HEADERS}
 )
@@ -175,7 +175,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/components
     PREFIX
-        "Components"
+        "components"
     FILES
         ${COMPONENTS_HEADERS}
 )
@@ -202,7 +202,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/space/light
     PREFIX
-        "Light"
+        "light"
     FILES
         ${LIGHT_HEADERS}
 )
@@ -211,7 +211,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/space/materials
     PREFIX
-        "Materials"
+        "materials"
     FILES
         ${MATERIALS_HEADERS}
 )
@@ -220,7 +220,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/space/objects
     PREFIX
-        "Objects"
+        "objects"
     FILES
         ${OBJECTS_HEADERS}
 )
@@ -238,7 +238,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/renderer
     PREFIX
-        "Renderer"
+        "renderer"
     FILES
         ${RENDERER_HEADERS}
 )
@@ -247,7 +247,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/space/scene
     PREFIX
-        "Scene"
+        "scene"
     FILES
         ${SCENE_HEADERS}
 )
@@ -256,7 +256,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/space/scene_graph
     PREFIX
-        "SceneGraph"
+        "scene_graph"
     FILES
         ${SCENE_GRAPH_HEADERS}
 )
@@ -265,7 +265,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/space/transformations
     PREFIX
-        "Transformations"
+        "transformations"
     FILES
         ${TRANSFORMATION_HEADERS}
 )
@@ -283,7 +283,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/andromeda/window
     PREFIX
-        "Window"
+        "window"
     FILES
         ${WINDOW_HEADERS}
 )

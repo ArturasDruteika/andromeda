@@ -9,21 +9,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ==== FileOperations ====
 set(FILE_OPERATIONS_HEADERS
-    Utils/file_operations/include/file_operations.hpp
+    utils/file_operations/include/file_operations.hpp
 )
 
 set(FILE_OPERATIONS_SOURCES
-    Utils/file_operations/src/file_operations.cpp
+    utils/file_operations/src/file_operations.cpp
 )
 
 # ==== nlohmann ====
 set(NLOHMANN_HEADERS
-    Utils/nlohmann_json/include/json.hpp
+    utils/nlohmann_json/include/json.hpp
 )
 
 # ==== stb ====
 set(STB_HEADERS
-    Utils/stb/include/stb_easy_font.h
+    utils/stb/include/stb_easy_font.h
 )
 
 
@@ -55,7 +55,7 @@ source_group(
     TREE 
         ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/file_operations
     PREFIX
-        "FileOperations"
+        "file_operations"
     FILES
         ${FILE_OPERATIONS_HEADERS}
         ${FILE_OPERATIONS_SOURCES}

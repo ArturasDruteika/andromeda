@@ -11,144 +11,144 @@ add_definitions(-DSPACE_EXPORT)
 
 # ==== Camera ====
 set(CAMERA_HEADERS
-    Space/camera/include/perspective_control.hpp
-    Space/camera/include/camera_view.hpp
-    Space/camera/include/camera_controller.hpp
-    Space/camera/include/camera.hpp
+    space/camera/include/perspective_control.hpp
+    space/camera/include/camera_view.hpp
+    space/camera/include/camera_controller.hpp
+    space/camera/include/camera.hpp
 )
 
 set(CAMERA_SOURCES
-    Space/camera/src/perspective_control.cpp
-    Space/camera/src/camera_view.cpp
-    Space/camera/src/camera_controller.cpp
-    Space/camera/src/camera.cpp
+    space/camera/src/perspective_control.cpp
+    space/camera/src/camera_view.cpp
+    space/camera/src/camera_controller.cpp
+    space/camera/src/camera.cpp
 )
 
 # ==== Coordinates ====
 set(COORDINATES_HEADERS
-    Space/coordinates/include/points.hpp
+    space/coordinates/include/points.hpp
 )
 
 # ==== Light ====
 set(LIGHT_HEADERS
-    Space/light/include/light.hpp
-    Space/light/include/directional_light.hpp
-    Space/light/include/point_light.hpp
-    Space/light/include/spot_light.hpp
-    Space/light/include/light_data.hpp
+    space/light/include/light.hpp
+    space/light/include/directional_light.hpp
+    space/light/include/point_light.hpp
+    space/light/include/spot_light.hpp
+    space/light/include/light_data.hpp
 )
 
 set(LIGHT_SOURCES
-    Space/light/src/light.cpp
-    Space/light/src/directional_light.cpp
-    Space/light/src/point_light.cpp
-    Space/light/src/spot_light.cpp
-    Space/light/src/light_data.cpp
+    space/light/src/light.cpp
+    space/light/src/directional_light.cpp
+    space/light/src/point_light.cpp
+    space/light/src/spot_light.cpp
+    space/light/src/light_data.cpp
 )
 
 # ==== Macro Exports ====
 set(MACRO_EXPORTS_HEADERS
-    Space/macro_exports/include/macro_exports.hpp
+    space/macro_exports/include/macro_exports.hpp
 )
 
 # ==== Materials ====
 set(MATERIALS_HEADERS
-    Space/materials/include/materials.hpp
-    Space/materials/include/materials_library.hpp
-    Space/materials/include/material_types.hpp
+    space/materials/include/materials.hpp
+    space/materials/include/materials_library.hpp
+    space/materials/include/material_types.hpp
 )
 
 set(MATERIALS_SOURCES
-    Space/materials/src/materials.cpp
-    Space/materials/src/materials_library.cpp
+    space/materials/src/materials.cpp
+    space/materials/src/materials_library.cpp
 )
 
 # ==== Objects ====
 set(OBJECTS_HEADERS
-    Space/objects/include/camera_object.hpp
-    Space/objects/include/cube.hpp
-    Space/objects/include/geometric_object.hpp
-    Space/objects/include/light_object.hpp
-    Space/objects/include/mesh.hpp
-    Space/objects/include/object.hpp
-    Space/objects/include/skyroom.hpp
-    Space/objects/include/sphere.hpp
-    Space/objects/include/surface_object.hpp
+    space/objects/include/camera_object.hpp
+    space/objects/include/cube.hpp
+    space/objects/include/geometric_object.hpp
+    space/objects/include/light_object.hpp
+    space/objects/include/mesh.hpp
+    space/objects/include/object.hpp
+    space/objects/include/skyroom.hpp
+    space/objects/include/sphere.hpp
+    space/objects/include/surface_object.hpp
 )
 
 set(OBJECTS_SOURCES
-    Space/objects/src/camera_object.cpp
-    Space/objects/src/cube.cpp
-    Space/objects/src/geometric_object.cpp
-    Space/objects/src/light_object.cpp
-    Space/objects/src/mesh.cpp
-    Space/objects/src/object.cpp
-    Space/objects/src/skyroom.cpp
-    Space/objects/src/sphere.cpp
-    Space/objects/src/surface_object.cpp
+    space/objects/src/camera_object.cpp
+    space/objects/src/cube.cpp
+    space/objects/src/geometric_object.cpp
+    space/objects/src/light_object.cpp
+    space/objects/src/mesh.cpp
+    space/objects/src/object.cpp
+    space/objects/src/skyroom.cpp
+    space/objects/src/sphere.cpp
+    space/objects/src/surface_object.cpp
 )
 
 # ==== Scene ====
 set(SCENE_HEADERS
-    Space/scene/include/camera_handler.hpp
-    Space/scene/include/scene.hpp
-    Space/scene/include/scene_environment.hpp
-    Space/scene/include/scene_lighting.hpp
-    Space/scene/include/scene_node_manager.hpp
-    Space/scene/include/scene_objects.hpp
-    Space/scene/include/scene_state.hpp
-    Space/scene/include/scene_update_hooks.hpp
+    space/scene/include/camera_handler.hpp
+    space/scene/include/scene.hpp
+    space/scene/include/scene_environment.hpp
+    space/scene/include/scene_lighting.hpp
+    space/scene/include/scene_node_manager.hpp
+    space/scene/include/scene_objects.hpp
+    space/scene/include/scene_state.hpp
+    space/scene/include/scene_update_hooks.hpp
 )
 
 # ==== UpdateHooks ====
 set(UPDATE_HOOKS_HEADERS
-    Space/update_hooks/include/update_hooks.hpp
+    space/update_hooks/include/update_hooks.hpp
 )
 
 set(UPDATE_HOOKS_SOURCES
-    Space/update_hooks/src/update_hooks.cpp
+    space/update_hooks/src/update_hooks.cpp
 )
 
 set(SCENE_SOURCES
-    Space/scene/src/camera_handler.cpp
-    Space/scene/src/scene.cpp
-    Space/scene/src/scene_environment.cpp
-    Space/scene/src/scene_lighting.cpp
-    Space/scene/src/scene_node_manager.cpp
-    Space/scene/src/scene_objects.cpp
-    Space/scene/src/scene_state.cpp
-    Space/scene/src/scene_update_hooks.cpp
+    space/scene/src/camera_handler.cpp
+    space/scene/src/scene.cpp
+    space/scene/src/scene_environment.cpp
+    space/scene/src/scene_lighting.cpp
+    space/scene/src/scene_node_manager.cpp
+    space/scene/src/scene_objects.cpp
+    space/scene/src/scene_state.cpp
+    space/scene/src/scene_update_hooks.cpp
 )
 
 # ==== SceneGraph ====
 set(SCENE_GRAPH_HEADERS
-    Space/scene_graph/include/scene_component.hpp
-    Space/scene_graph/include/scene_node.hpp
-    Space/scene_graph/include/object_component.hpp
-    Space/scene_graph/include/light_component.hpp
+    space/scene_graph/include/scene_component.hpp
+    space/scene_graph/include/scene_node.hpp
+    space/scene_graph/include/object_component.hpp
+    space/scene_graph/include/light_component.hpp
 )
 
 set(SCENE_GRAPH_SOURCES
-    Space/scene_graph/src/scene_component.cpp
-    Space/scene_graph/src/scene_node.cpp
-    Space/scene_graph/src/object_component.cpp
-    Space/scene_graph/src/light_component.cpp
+    space/scene_graph/src/scene_component.cpp
+    space/scene_graph/src/scene_node.cpp
+    space/scene_graph/src/object_component.cpp
+    space/scene_graph/src/light_component.cpp
 )
 
 # ==== Transformations ====
 set(TRANSFORMATIONS_HEADERS
-    Space/transformations/include/rotatable.hpp
-    Space/transformations/include/scalable.hpp
-    Space/transformations/include/transformable.hpp
-    Space/transformations/include/transformation_types.hpp
-    Space/transformations/include/translatable.hpp
+    space/transformations/include/rotatable.hpp
+    space/transformations/include/scalable.hpp
+    space/transformations/include/transformable.hpp
+    space/transformations/include/transformation_types.hpp
+    space/transformations/include/translatable.hpp
 )
 
 set(TRANSFORMATIONS_SOURCES
-    Space/transformations/src/rotatable.cpp
-    Space/transformations/src/scalable.cpp
-    Space/transformations/src/transformable.cpp
-    Space/transformations/src/translatable.cpp
+    space/transformations/src/rotatable.cpp
+    space/transformations/src/scalable.cpp
+    space/transformations/src/transformable.cpp
+    space/transformations/src/translatable.cpp
 )
 
 # ==== Target ====
@@ -199,7 +199,7 @@ add_dependencies(${PROJECT_NAME}
 ## Material properties
 set(MATERIAL_JSON_FILENAME "material_properties.json")
 set(MATERIAL_JSON_SOURCE
-    "${CMAKE_CURRENT_SOURCE_DIR}/MaterialProperties/${MATERIAL_JSON_FILENAME}"
+    "${CMAKE_CURRENT_SOURCE_DIR}/material_properties/${MATERIAL_JSON_FILENAME}"
 )
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")

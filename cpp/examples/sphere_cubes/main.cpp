@@ -1,13 +1,13 @@
-#include "andromeda/Application/IApplication.hpp"
-#include "Space/Objects/include/Sphere.hpp"
-#include "Space/Scene/include/Scene.hpp"
-#include "Space/SceneGraph/include/SceneNode.hpp"
-#include "Space/SceneGraph/include/ObjectComponent.hpp"
-#include "Space/SceneGraph/include/LightComponent.hpp"
-#include "Space/Transformations/include/Transformable.hpp"
-#include "Space/Camera/include/Camera.hpp"
-#include "Space/Materials/include/MaterialsLibrary.hpp"
-#include "Space/Light/include/DirectionalLight.hpp"
+#include "andromeda/application/i_application.hpp"
+#include "space/objects/include/sphere.hpp"
+#include "space/scene/include/scene.hpp"
+#include "space/scene_graph/include/scene_node.hpp"
+#include "space/scene_graph/include/object_component.hpp"
+#include "space/scene_graph/include/light_component.hpp"
+#include "space/transformations/include/transformable.hpp"
+#include "space/camera/include/camera.hpp"
+#include "space/materials/include/materials_library.hpp"
+#include "space/light/include/directional_light.hpp"
 
 #include "spdlog/spdlog.h"
 
@@ -17,64 +17,89 @@
 #include <vector>
 
 
-void PopulateSceneWithDummyObjects(
-    andromeda::Space::Scene& scene,
-    const andromeda::Space::MaterialLibrary& materialLibrary
+void populate_scene_with_dummy_objects(
+    andromeda::space::Scene& scene,
+    const andromeda::space::MaterialLibrary& material_library
 )
 {
     // Precompute available material types for random selection
-    std::vector<andromeda::Space::MaterialType> materialTypes = materialLibrary.GetAllMaterialTypes();
-    if (materialTypes.empty())
+    std::vector<andromeda::space::MaterialType> material_types =
+        material_library.get_all_material_types();
+
+    if (material_types.empty())
     {
-        spdlog::warn("PopulateSceneWithDummyObjects - MaterialLibrary is empty; spheres will have no materials set.");
+        spdlog::warn(
+            "PopulateSceneWithDummyObjects - MaterialLibrary is empty; spheres will have no materials set."
+        );
     }
 
     std::mt19937 rng(1337);
     std::uniform_real_distribution<float> dist(-100.0f, 100.0f);
-    std::uniform_real_distribution<float> colorDist(0.1f, 0.9f);
+    std::uniform_real_distribution<float> color_dist(0.1f, 0.9f);
 
-    std::uniform_int_distribution<size_t> materialDist(
+    std::uniform_int_distribution<size_t> material_dist(
         0,
-        materialTypes.empty() ? 0 : materialTypes.size() - 1
+        material_types.empty() ? 0 : material_types.size() - 1
     );
 
     // Sun
-    andromeda::Space::DirectionalLight* pSun = new andromeda::Space::DirectionalLight(
-        andromeda::math::Vec3{ 10.0f, 10.0f, 10.0f },
-        andromeda::math::Vec3{ 1.0f, 1.0f, 1.0f },
-        1.0f
-    );
+    andromeda::space::DirectionalLight* p_sun =
+        new andromeda::space::DirectionalLight(
+            andromeda::math::Vec3{ 10.0f, 10.0f, 10.0f },
+            andromeda::math::Vec3{ 1.0f, 1.0f, 1.0f },
+            1.0f
+        );
 
     {
-        std::unique_ptr<andromeda::Space::SceneNode> sunNode =
-            std::make_unique<andromeda::Space::SceneNode>(
-                std::make_unique<andromeda::Transformable>(andromeda::math::Vec3{ 10.0f, 10.0f, 10.0f })
+        std::unique_ptr<andromeda::space::SceneNode> sun_node =
+            std::make_unique<andromeda::space::SceneNode>(
+                std::make_unique<andromeda::Transformable>(
+                    andromeda::math::Vec3{ 10.0f, 10.0f, 10.0f }
+                )
             );
-        sunNode->AddComponent(std::make_unique<andromeda::Space::LightComponent>(0, pSun));
-        scene.AttachNode(std::move(sunNode));
+
+        sun_node->add_component(
+            std::make_unique<andromeda::space::LightComponent>(0, p_sun)
+        );
+
+        scene.attach_node(std::move(sun_node));
     }
 
-    andromeda::Space::Sphere* pCenterSphere = new andromeda::Space::Sphere(
-        0.1f,
-        andromeda::Color{ 0.2f, 0.9f, 1.0f, 1.0f }
-    );
+    andromeda::space::Sphere* p_center_sphere =
+        new andromeda::space::Sphere(
+            0.1f,
+            andromeda::Color{ 0.2f, 0.9f, 1.0f, 1.0f }
+        );
+
     {
-        std::unique_ptr<andromeda::Space::SceneNode> centerNode =
-            std::make_unique<andromeda::Space::SceneNode>(
-                std::make_unique<andromeda::Transformable>(andromeda::math::Vec3{ 0.0f, 0.0f, 0.0f })
+        std::unique_ptr<andromeda::space::SceneNode> center_node =
+            std::make_unique<andromeda::space::SceneNode>(
+                std::make_unique<andromeda::Transformable>(
+                    andromeda::math::Vec3{ 0.0f, 0.0f, 0.0f }
+                )
             );
-        centerNode->AddComponent(std::make_unique<andromeda::Space::ObjectComponent>(1, pCenterSphere));
-        scene.AttachNode(std::move(centerNode));
+
+        center_node->add_component(
+            std::make_unique<andromeda::space::ObjectComponent>(
+                1,
+                p_center_sphere
+            )
+        );
+
+        scene.attach_node(std::move(center_node));
     }
 
-    if (!materialTypes.empty())
+    if (!material_types.empty())
     {
-        andromeda::Space::MaterialType sphereCenterMatType = materialTypes[materialDist(rng)];
-        const andromeda::IMaterial* pSphereCenterMat =
-            materialLibrary.GetMaterialPtr(sphereCenterMatType);
-        if (pSphereCenterMat)
+        andromeda::space::MaterialType sphere_center_mat_type =
+            material_types[material_dist(rng)];
+
+        const andromeda::IMaterial* p_sphere_center_mat =
+            material_library.get_material_ptr(sphere_center_mat_type);
+
+        if (p_sphere_center_mat)
         {
-            pCenterSphere->SetMaterial(pSphereCenterMat);
+            p_center_sphere->set_material(p_sphere_center_mat);
         }
     }
 
@@ -89,35 +114,47 @@ void PopulateSceneWithDummyObjects(
         };
 
         andromeda::Color color{
-            colorDist(rng),
-            colorDist(rng),
-            colorDist(rng),
+            color_dist(rng),
+            color_dist(rng),
+            color_dist(rng),
             1.0f
         };
 
-        andromeda::Space::Sphere* pSphere = new andromeda::Space::Sphere(
-            1.0f,
-            color
-        );
+        andromeda::space::Sphere* p_sphere =
+            new andromeda::space::Sphere(
+                1.0f,
+                color
+            );
 
         // Assign random material
-        if (!materialTypes.empty())
+        if (!material_types.empty())
         {
-            andromeda::Space::MaterialType matType = materialTypes[materialDist(rng)];
-            const andromeda::IMaterial* pMat = materialLibrary.GetMaterialPtr(matType);
-            if (pMat)
+            andromeda::space::MaterialType mat_type =
+                material_types[material_dist(rng)];
+
+            const andromeda::IMaterial* p_mat =
+                material_library.get_material_ptr(mat_type);
+
+            if (p_mat)
             {
-                pSphere->SetMaterial(pMat);
+                p_sphere->set_material(p_mat);
             }
         }
 
         {
-            std::unique_ptr<andromeda::Space::SceneNode> sphereNode =
-                std::make_unique<andromeda::Space::SceneNode>(
+            std::unique_ptr<andromeda::space::SceneNode> sphere_node =
+                std::make_unique<andromeda::space::SceneNode>(
                     std::make_unique<andromeda::Transformable>(pos)
                 );
-            sphereNode->AddComponent(std::make_unique<andromeda::Space::ObjectComponent>(i, pSphere));
-            scene.AttachNode(std::move(sphereNode));
+
+            sphere_node->add_component(
+                std::make_unique<andromeda::space::ObjectComponent>(
+                    i,
+                    p_sphere
+                )
+            );
+
+            scene.attach_node(std::move(sphere_node));
         }
     }
 }
@@ -130,36 +167,51 @@ int main(void)
     std::string title = "andromeda - SphereCubes";
 
     // Load materials once and reuse
-    andromeda::Space::MaterialLibrary materialLibrary(
-        std::filesystem::path("material_properties/material_properties.json")
+    andromeda::space::MaterialLibrary material_library(
+        std::filesystem::path(
+            "material_properties/material_properties.json"
+        )
     );
 
-    if (materialLibrary.GetSize() == 0)
+    if (material_library.get_size() == 0)
     {
-        spdlog::warn("No materials loaded from assets/materials.json; spheres will fall back to having no materials.");
+        spdlog::warn(
+            "No materials loaded from assets/materials.json; spheres will fall back to having no materials."
+        );
     }
 
-    andromeda::Space::Scene* pScene = new andromeda::Space::Scene();
-    andromeda::Space::Camera* pCamera = new andromeda::Space::Camera(
-        andromeda::math::Vec3{ 0.0f, 0.0f, 10.0f }
+    andromeda::space::Scene* p_scene =
+        new andromeda::space::Scene();
+
+    andromeda::space::Camera* p_camera =
+        new andromeda::space::Camera(
+            andromeda::math::Vec3{ 0.0f, 0.0f, 10.0f }
+        );
+
+    p_scene->set_active_camera(p_camera);
+
+    p_scene->set_background_color(
+        andromeda::math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f }
     );
-    pScene->SetActiveCamera(pCamera);
-    pScene->SetBackgroundColor(andromeda::math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f });
 
-    PopulateSceneWithDummyObjects(*pScene, materialLibrary);
+    populate_scene_with_dummy_objects(*p_scene, material_library);
 
-    std::unique_ptr<andromeda::IApplication> pApp =
-        andromeda::CreateApp(andromeda::GraphicsBackend::OpenGL);
-    if (!pApp->Init(width, height, title))
+    std::unique_ptr<andromeda::IApplication> p_app =
+        andromeda::create_app(andromeda::GraphicsBackend::OpenGL);
+
+    if (!p_app->init(width, height, title))
     {
         spdlog::error("Failed to initialize Application.");
         return -1;
     }
 
-    pApp->SetScene(pScene);
-    andromeda::IRenderer* pRenderer = pApp->GetRenderer();
-    pRenderer->SetIlluminationMode(false);
-    pApp->Run();
+    p_app->set_scene(p_scene);
+
+    andromeda::IRenderer* p_renderer =
+        p_app->get_renderer();
+
+    p_renderer->set_illumination_mode(false);
+    p_app->run();
 
     return 0;
 }
