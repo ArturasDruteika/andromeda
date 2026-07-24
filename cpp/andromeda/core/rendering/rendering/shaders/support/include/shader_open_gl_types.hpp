@@ -1,11 +1,11 @@
-#ifndef RENDERER__SHADER_OPENGL_TYPES__HPP
-#define RENDERER__SHADER_OPENGL_TYPES__HPP
+#ifndef RENDERING__SHADERS__SUPPORT__SHADER_OPEN_GL_TYPES__HPP
+#define RENDERING__SHADERS__SUPPORT__SHADER_OPEN_GL_TYPES__HPP
 
 
 #include "pch.hpp"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
 	enum class ShaderOpenGLTypes
 	{
@@ -22,11 +22,11 @@ namespace andromeda::Rendering
 	struct ShaderDefinition
 	{
 		ShaderOpenGLTypes type;
-		std::filesystem::path vertexPath{};
-		std::filesystem::path fragmentPath{};
-		std::filesystem::path geometryPath{};
+		std::filesystem::path vertex_path{};
+		std::filesystem::path fragment_path{};
+		std::filesystem::path geometry_path{};
 	};
 }
 
 
-#endif // RENDERER__SHADER_OPENGL_TYPES__HPP
+#endif // RENDERING__SHADERS__SUPPORT__SHADER_OPEN_GL_TYPES__HPP

@@ -1,59 +1,59 @@
-#include "../include/ShaderCompilerOpenGL.hpp"
+#include "../include/shader_compiler_open_gl.hpp"
 #include "glad/gl.h"
 #include "spdlog/spdlog.h"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
 	ShaderCompilerOpenGL::ShaderCompilerOpenGL() = default;
 
 	ShaderCompilerOpenGL::~ShaderCompilerOpenGL() = default;
 
-	unsigned int ShaderCompilerOpenGL::Compile(unsigned int type, const std::string& source)
+	unsigned int ShaderCompilerOpenGL::compile(unsigned int type, const std::string& source)
 	{
 		unsigned int shader = glCreateShader(type);
-		const char* shaderSourcePtr = source.c_str();
-		glShaderSource(shader, 1, &shaderSourcePtr, nullptr);
+		const char* shader_source_ptr = source.c_str();
+		glShaderSource(shader, 1, &shader_source_ptr, nullptr);
 		glCompileShader(shader);
-		CheckCompileErrors(shader, type);
+		check_compile_errors(shader, type);
 		return shader;
 	}
 
-	unsigned int ShaderCompilerOpenGL::Link(
-		unsigned int vertexShader,
-		unsigned int fragmentShader,
-		unsigned int geometryShader
+	unsigned int ShaderCompilerOpenGL::link(
+		unsigned int vertex_shader,
+		unsigned int fragment_shader,
+		unsigned int geometry_shader
 	)
 	{
 		unsigned int program = glCreateProgram();
 
-		if (vertexShader)
-			glAttachShader(program, vertexShader);
-		if (fragmentShader)
-			glAttachShader(program, fragmentShader);
-		if (geometryShader)
-			glAttachShader(program, geometryShader);
+		if (vertex_shader)
+			glAttachShader(program, vertex_shader);
+		if (fragment_shader)
+			glAttachShader(program, fragment_shader);
+		if (geometry_shader)
+			glAttachShader(program, geometry_shader);
 
 		glLinkProgram(program);
 
-		if (!CheckLinkErrors(program))
+		if (!check_link_errors(program))
 		{
 			glDeleteProgram(program);
 			return 0;
 		}
 
 		// Optionally detach after a successful link
-		if (vertexShader)
-			glDetachShader(program, vertexShader);
-		if (fragmentShader)
-			glDetachShader(program, fragmentShader);
-		if (geometryShader)
-			glDetachShader(program, geometryShader);
+		if (vertex_shader)
+			glDetachShader(program, vertex_shader);
+		if (fragment_shader)
+			glDetachShader(program, fragment_shader);
+		if (geometry_shader)
+			glDetachShader(program, geometry_shader);
 
 		return program;
 	}
 
-	bool ShaderCompilerOpenGL::CheckCompileErrors(unsigned int shader, int type)
+	bool ShaderCompilerOpenGL::check_compile_errors(unsigned int shader, int type)
 	{
 		int success;
 		int length;
@@ -63,15 +63,15 @@ namespace andromeda::Rendering
 			glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
 			char* message = (char*)alloca(length * sizeof(char));
 			glGetShaderInfoLog(shader, length, nullptr, message);
-			std::string shaderTypeStr = (type == GL_VERTEX_SHADER ? "vertex" : "fragment");
-			spdlog::error("Shader compilation error ({}): {}", shaderTypeStr, message);
+			std::string shader_type_str = (type == GL_VERTEX_SHADER ? "vertex" : "fragment");
+			spdlog::error("Shader compilation error ({}): {}", shader_type_str, message);
 			glDeleteShader(shader);
 			return false;
 		}
 		return true;
 	}
 
-	bool ShaderCompilerOpenGL::CheckLinkErrors(unsigned int program)
+	bool ShaderCompilerOpenGL::check_link_errors(unsigned int program)
 	{
 		int success;
 		glGetProgramiv(program, GL_LINK_STATUS, &success);

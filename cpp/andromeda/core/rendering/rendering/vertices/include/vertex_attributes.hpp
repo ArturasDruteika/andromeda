@@ -2,7 +2,10 @@
 #define RENDERING__VERTEX_ATTRIBUTES__HPP
 
 
-namespace andromeda::Rendering
+#include <stddef.h>
+
+
+namespace andromeda::rendering
 {
     struct VertexAttributes
     {

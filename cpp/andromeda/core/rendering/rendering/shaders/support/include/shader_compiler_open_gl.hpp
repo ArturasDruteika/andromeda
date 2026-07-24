@@ -1,11 +1,11 @@
-#ifndef RENDERER__SHADER_COMPILER_OPENGL__HPP
-#define RENDERER__SHADER_COMPILER_OPENGL__HPP
+#ifndef RENDERING__SHADERS__SUPPORT__SHADER_COMPILER_OPEN_GL__HPP
+#define RENDERING__SHADERS__SUPPORT__SHADER_COMPILER_OPEN_GL__HPP
 
 
 #include "pch.hpp"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
 	class ShaderCompilerOpenGL
 	{
@@ -13,18 +13,19 @@ namespace andromeda::Rendering
 		ShaderCompilerOpenGL();
 		~ShaderCompilerOpenGL();
 
-		unsigned int Compile(unsigned int type, const std::string& source);
-		unsigned int Link(
-			unsigned int vertexShader, 
-			unsigned int fragmentShader,
-			unsigned int geometryShader = 0
+		unsigned int compile(unsigned int type, const std::string& source);
+
+		unsigned int link(
+			unsigned int vertex_shader,
+			unsigned int fragment_shader,
+			unsigned int geometry_shader = 0
 		);
 
 	private:
-		bool CheckCompileErrors(unsigned int shader, int type);
-		bool CheckLinkErrors(unsigned int program);
+		bool check_compile_errors(unsigned int shader, int type);
+		bool check_link_errors(unsigned int program);
 	};
 }
 
 
-#endif // RENDERER__SHADER_COMPILER_OPENGL__HPP
+#endif // RENDERING__SHADERS__SUPPORT__SHADER_COMPILER_OPEN_GL__HPP

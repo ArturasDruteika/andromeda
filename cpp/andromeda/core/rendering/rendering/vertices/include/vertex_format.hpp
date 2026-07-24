@@ -2,7 +2,10 @@
 #define RENDERING__VERTICES__VERTEX_FORMAT__HPP
 
 
-namespace andromeda::Rendering
+#include <cstddef>
+
+
+namespace andromeda::rendering
 {
     enum class VertexSemantic
     {
@@ -26,8 +29,8 @@ namespace andromeda::Rendering
         UInt8
     };
 
-    size_t ComponentTypeSizeBytes(ComponentType type);
-    bool IsIntegerComponentType(ComponentType type);
+    std::size_t component_type_size_bytes(ComponentType type);
+    bool is_integer_component_type(ComponentType type);
 }
 
 

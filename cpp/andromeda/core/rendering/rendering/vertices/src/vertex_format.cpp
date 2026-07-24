@@ -1,9 +1,9 @@
-#include "../include/VertexFormat.hpp"
+#include "../include/vertex_format.hpp"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
-    size_t ComponentTypeSizeBytes(ComponentType type)
+    std::size_t component_type_size_bytes(ComponentType type)
     {
         switch (type)
         {
@@ -16,7 +16,7 @@ namespace andromeda::Rendering
         }
     }
 
-    bool IsIntegerComponentType(ComponentType type)
+    bool is_integer_component_type(ComponentType type)
     {
         switch (type)
         {

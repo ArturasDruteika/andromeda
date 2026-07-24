@@ -1,16 +1,20 @@
-#include "../include/UniformSetterOpenGL.hpp"
+#include "../include/uniform_setter_open_gl.hpp"
 #include "glad/gl.h"
 #include <glm/gtc/type_ptr.hpp>
 #include "spdlog/spdlog.h"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
 	UniformSetterOpenGL::UniformSetterOpenGL() = default;
 
 	UniformSetterOpenGL::~UniformSetterOpenGL() = default;
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, int value) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		int value
+	) const
 	{
 		int location = glGetUniformLocation(program, name.c_str());
 		if (location != -1)
@@ -23,7 +27,11 @@ namespace andromeda::Rendering
 		}
 	}
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, float value) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		float value
+	) const
 	{
 		int location = glGetUniformLocation(program, name.c_str());
 		if (location == -1)
@@ -35,7 +43,11 @@ namespace andromeda::Rendering
 	}
 
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, const glm::vec3& vector) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		const glm::vec3& vector
+	) const
 	{
 		int location = glGetUniformLocation(program, name.c_str());
 		if (location == -1)
@@ -47,7 +59,11 @@ namespace andromeda::Rendering
 		glUniform3f(location, vector.x, vector.y, vector.z);
 	}
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, const glm::vec4& matrix) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		const glm::vec4& vector
+	) const
 	{
 		int location = glGetUniformLocation(program, name.c_str());
 		if (location == -1)
@@ -55,10 +71,14 @@ namespace andromeda::Rendering
 			spdlog::warn("Uniform '{}' not found in shader.", name);
 			return;
 		}
-		glUniform4f(location, matrix.r, matrix.g, matrix.b, matrix.a);
+		glUniform4f(location, vector.r, vector.g, vector.b, vector.a);
 	}
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, const glm::mat3& matrix) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		const glm::mat3& matrix
+	) const
 	{
 		int location = glGetUniformLocation(program, name.c_str());
 		if (location == -1)
@@ -70,7 +90,11 @@ namespace andromeda::Rendering
 		glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, const glm::mat4& matrix) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		const glm::mat4& matrix
+	) const
 	{
 		int location = glGetUniformLocation(program, name.c_str());
 		if (location == -1)
@@ -82,16 +106,20 @@ namespace andromeda::Rendering
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
 	}
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, const std::vector<float>& values) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		const std::vector<float>& values
+	) const
 	{
 		for (size_t i = 0; i < values.size(); ++i)
 		{
 			// construct "name[i]" for each element
-			std::string indexedName = name + "[" + std::to_string(i) + "]";
-			int location = glGetUniformLocation(program, indexedName.c_str());
+			std::string indexed_name = name + "[" + std::to_string(i) + "]";
+			int location = glGetUniformLocation(program, indexed_name.c_str());
 			if (location == -1)
 			{
-				spdlog::warn("Uniform '{}' not found in shader.", indexedName);
+				spdlog::warn("Uniform '{}' not found in shader.", indexed_name);
 				continue;
 			}
 			// upload single float
@@ -99,37 +127,49 @@ namespace andromeda::Rendering
 		}
 	}
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, const std::vector<glm::vec3>& vectors) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		const std::vector<glm::vec3>& vectors
+	) const
 	{
 		for (size_t i = 0; i < vectors.size(); ++i)
 		{
-			std::string indexedName = name + "[" + std::to_string(i) + "]";
-			int location = glGetUniformLocation(program, indexedName.c_str());
+			std::string indexed_name = name + "[" + std::to_string(i) + "]";
+			int location = glGetUniformLocation(program, indexed_name.c_str());
 			if (location == -1)
 			{
-				spdlog::warn("Uniform '{}' not found in shader.", indexedName);
+				spdlog::warn("Uniform '{}' not found in shader.", indexed_name);
 				continue;
 			}
 			glUniform3f(location, vectors[i].x, vectors[i].y, vectors[i].z);
 		}
 	}
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, const std::vector<glm::vec4>& vectors) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		const std::vector<glm::vec4>& vectors
+	) const
 	{
 		for (size_t i = 0; i < vectors.size(); ++i)
 		{
-			std::string indexedName = name + "[" + std::to_string(i) + "]";
-			int location = glGetUniformLocation(program, indexedName.c_str());
+			std::string indexed_name = name + "[" + std::to_string(i) + "]";
+			int location = glGetUniformLocation(program, indexed_name.c_str());
 			if (location == -1)
 			{
-				spdlog::warn("Uniform '{}' not found in shader.", indexedName);
+				spdlog::warn("Uniform '{}' not found in shader.", indexed_name);
 				continue;
 			}
 			glUniform4f(location, vectors[i].r, vectors[i].g, vectors[i].b, vectors[i].a);
 		}
 	}
 
-	void UniformSetterOpenGL::SetUniform(unsigned int program, const std::string& name, const std::vector<glm::mat4>& matrices) const
+	void UniformSetterOpenGL::set_uniform(
+		unsigned int program,
+		const std::string& name,
+		const std::vector<glm::mat4>& matrices
+	) const
 	{
 		if (matrices.empty())
 			return;
@@ -139,8 +179,8 @@ namespace andromeda::Rendering
 		// only try appending [0] if the caller passed the base name without brackets
 		if (location == -1 && name.find('[') == std::string::npos)
 		{
-			std::string name0 = name + "[0]";
-			location = glGetUniformLocation(program, name0.c_str());
+			std::string name_0 = name + "[0]";
+			location = glGetUniformLocation(program, name_0.c_str());
 		}
 
 		if (location == -1)
