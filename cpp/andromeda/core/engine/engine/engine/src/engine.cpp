@@ -1,4 +1,4 @@
-#include "../include/Engine.hpp"
+#include "../include/engine.hpp"
 #include "rendering/renderers/renderers/include/renderer_open_gl.hpp"
 #include "andromeda/window/events/event_type.hpp"
 #include "andromeda/window/mouse_and_key_codes/mouse_codes.hpp"
@@ -259,7 +259,7 @@ namespace andromeda::engine
             {
             case GraphicsBackend::OpenGL:
             {
-                m_renderer = std::make_unique<Rendering::RendererOpenGL>();
+                m_renderer = std::make_unique<rendering::RendererOpenGL>();
                 spdlog::info("Engine::create_renderer() created OpenGL renderer.");
                 break;
             }
