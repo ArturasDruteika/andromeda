@@ -1,64 +1,66 @@
-#include "../include/FPSCounter.hpp"
+#include "../include/fps_counter.hpp"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
     FpsCounter::FpsCounter()
-        : m_lastTime{ std::chrono::steady_clock::now() }
-        , m_deltaSeconds{ 0.0f }
-        , m_instantFps{ 0.0f }
-        , m_smoothedFps{ 0.0f }
-        , m_firstFrame{ true }
+        : m_last_time{ std::chrono::steady_clock::now() }
+        , m_delta_seconds{ 0.0f }
+        , m_instant_fps{ 0.0f }
+        , m_smoothed_fps{ 0.0f }
+        , m_first_frame{ true }
     {
     }
 
     FpsCounter::~FpsCounter() = default;
 
-    void FpsCounter::FrameTick()
+    void FpsCounter::frame_tick()
     {
-        std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+        const std::chrono::steady_clock::time_point now =
+            std::chrono::steady_clock::now();
 
-        m_deltaSeconds =
-            std::chrono::duration<float>(now - m_lastTime).count();
+        m_delta_seconds =
+            std::chrono::duration<float>(now - m_last_time).count();
 
-        m_lastTime = now;
+        m_last_time = now;
 
-        if (m_deltaSeconds > 0.0f)
+        if (m_delta_seconds > 0.0f)
         {
-            m_instantFps = 1.0f / m_deltaSeconds;
+            m_instant_fps = 1.0f / m_delta_seconds;
         }
         else
         {
-            m_instantFps = 0.0f;
+            m_instant_fps = 0.0f;
         }
 
-        // Smooth with exponential moving average
-        const float alpha = 0.1f; // smoothing factor
+        // Smooth with exponential moving average.
+        constexpr float alpha = 0.1f;
 
-        if (m_firstFrame)
+        if (m_first_frame)
         {
-            m_smoothedFps = m_instantFps;
-            m_firstFrame = false;
+            m_smoothed_fps = m_instant_fps;
+            m_first_frame = false;
         }
         else
         {
-            m_smoothedFps =
-                alpha * m_instantFps + (1.0f - alpha) * m_smoothedFps;
+            m_smoothed_fps =
+                alpha * m_instant_fps +
+                (1.0f - alpha) * m_smoothed_fps;
         }
     }
 
-    float FpsCounter::GetInstantFps() const
+    float FpsCounter::get_instant_fps() const
     {
-        return m_instantFps;
+        return m_instant_fps;
     }
 
-    float FpsCounter::GetSmoothedFps() const
+    float FpsCounter::get_smoothed_fps() const
     {
-        return m_smoothedFps;
+        return m_smoothed_fps;
     }
 
-    float FpsCounter::GetDeltaSeconds() const
+    float FpsCounter::get_delta_seconds() const
     {
-        return m_deltaSeconds;
+        return m_delta_seconds;
     }
 }

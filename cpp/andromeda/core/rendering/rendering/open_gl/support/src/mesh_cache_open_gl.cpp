@@ -1,44 +1,44 @@
-mesh_cache_open_gl#include "../include/MeshCacheOpenGL.hpp"
-#include "../../../vertices/include/VertexLayouts.hpp"
+#include "../include/mesh_cache_open_gl.hpp"
+#include "../../../vertices/include/vertex_layouts.hpp"
 #include "pch.hpp"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
     MeshCacheOpenGL::MeshCacheOpenGL() = default;
 
     MeshCacheOpenGL::~MeshCacheOpenGL() = default;
 
-    void MeshCacheOpenGL::Sync(
+    void MeshCacheOpenGL::sync(
         const std::unordered_map<int, IGeometricObject*>& objects,
-        const VertexLayout& defaultLayout
+        const VertexLayout& default_layout
     )
     {
-        std::unordered_set<int> objIds;
-        objIds.reserve(objects.size());
+        std::unordered_set<int> obj_ids;
+        obj_ids.reserve(objects.size());
 
-        for (const auto& [sceneKey, obj] : objects)
+        for (const auto& [scene_key, obj] : objects)
         {
             if (!obj)
             {
                 continue;
             }
 
-            const int objId = obj->GetID();
-            objIds.insert(objId);
+            const int obj_id = obj->get_id();
+            obj_ids.insert(obj_id);
 
-            std::unordered_map<int, GpuMeshOpenGL>::iterator it = m_meshes.find(objId);
+            std::unordered_map<int, GpuMeshOpenGL>::iterator it = m_meshes.find(obj_id);
             if (it == m_meshes.end())
             {
-                GpuMeshOpenGL gpuMesh;
-                gpuMesh.Create(obj->GetMesh(), defaultLayout);
-                m_meshes.emplace(objId, std::move(gpuMesh));
+                GpuMeshOpenGL gpu_mesh;
+                gpu_mesh.create(obj->get_mesh(), default_layout);
+                m_meshes.emplace(obj_id, std::move(gpu_mesh));
             }
         }
 
         for (std::unordered_map<int, GpuMeshOpenGL>::iterator it = m_meshes.begin(); it != m_meshes.end();)
         {
-            if (objIds.find(it->first) == objIds.end())
+            if (obj_ids.find(it->first) == obj_ids.end())
             {
                 it = m_meshes.erase(it);
             }
@@ -49,9 +49,9 @@ namespace andromeda::Rendering
         }
     }
 
-    const GpuMeshOpenGL* MeshCacheOpenGL::TryGet(int objectId) const
+    const GpuMeshOpenGL* MeshCacheOpenGL::try_get(int object_id) const
     {
-        std::unordered_map<int, GpuMeshOpenGL>::const_iterator it = m_meshes.find(objectId);
+        std::unordered_map<int, GpuMeshOpenGL>::const_iterator it = m_meshes.find(object_id);
         if (it == m_meshes.end())
         {
             return nullptr;
@@ -60,7 +60,7 @@ namespace andromeda::Rendering
         return &it->second;
     }
 
-    void MeshCacheOpenGL::Clear()
+    void MeshCacheOpenGL::clear()
     {
         m_meshes.clear();
     }

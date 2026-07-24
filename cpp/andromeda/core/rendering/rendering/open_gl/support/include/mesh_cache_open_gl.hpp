@@ -1,13 +1,13 @@
-#ifndef RENDERING__OPENGL__SUPPORT__MESH_CACHE__HPP__HPP
-#define RENDERING__OPENGL__SUPPORT__MESH_CACHE__HPP__HPP
+#ifndef RENDERING__OPENGL__SUPPORT__MESH_CACHE_OPEN_GL__HPP
+#define RENDERING__OPENGL__SUPPORT__MESH_CACHE_OPEN_GL__HPP
 
 
-#include "../../Geometry/include/GpuMeshOpenGL.hpp"
+#include "../../geometry/include/gpu_mesh_open_gl.hpp"
 #include "andromeda/space/objects/i_geometric_object.hpp"
 #include "pch.hpp"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
 	class MeshCacheOpenGL
 	{
@@ -20,12 +20,14 @@ namespace andromeda::Rendering
 		MeshCacheOpenGL(MeshCacheOpenGL&& other) noexcept = delete;
 		MeshCacheOpenGL& operator=(MeshCacheOpenGL&& other) noexcept = delete;
 
-		void Sync(
+		void sync(
 			const std::unordered_map<int, IGeometricObject*>& objects,
-			const VertexLayout& defaultLayout
+			const VertexLayout& default_layout
 		);
-		const GpuMeshOpenGL* TryGet(int objectId) const;
-		void Clear();
+
+		const GpuMeshOpenGL* try_get(int object_id) const;
+
+		void clear();
 
 	protected:
 		std::unordered_map<int, GpuMeshOpenGL> m_meshes;
@@ -33,4 +35,4 @@ namespace andromeda::Rendering
 }
 
 
-#endif // RENDERING__OPENGL__SUPPORT__MESH_CACHE__HPP__HPP
+#endif // RENDERING__OPENGL__SUPPORT__MESH_CACHE_OPEN_GL__HPP

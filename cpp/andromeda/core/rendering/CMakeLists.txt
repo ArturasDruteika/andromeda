@@ -16,7 +16,6 @@ if (APPLE)
     target_compile_definitions(${EXEC_NAME} PRIVATE GL_SILENCE_DEPRECATION)
 endif ()
 
-# SPDLog
 
 # ==== Macro Exports ====
 set(MACRO_EXPORTS_HEADERS
@@ -25,93 +24,93 @@ set(MACRO_EXPORTS_HEADERS
 
 # ==== OpenGL backend (platform specific) ====
 set(OPENGL_HEADERS
-    rendering/OpenGL/Geometry/include/GpuMeshOpenGL.hpp
-    rendering/OpenGL/Renderer/include/RendererOpenGLImpl.hpp
-    rendering/OpenGL/Support/include/FaceCullingControlOpenGL.hpp
-    rendering/OpenGL/Support/include/FrameBufferOpenGL.hpp
-    rendering/OpenGL/Support/include/FPSCounter.hpp
-    rendering/OpenGL/Support/include/MeshCacheOpenGL.hpp
-    rendering/OpenGL/Support/include/ShadowRendererOpenGL.hpp
-    rendering/OpenGL/Support/include/TextRendererOpenGL.hpp
-    rendering/OpenGL/vertices/include/VertexLayoutOpenGL.hpp
+    rendering/open_gl/geometry/include/gpu_mesh_open_gl.hpp
+    rendering/open_gl/renderer/include/open_gl_renderer_impl.hpp
+    rendering/open_gl/support/include/face_culling_control_open_gl.hpp
+    rendering/open_gl/support/include/frame_buffer_open_gl.hpp
+    rendering/open_gl/support/include/fps_counter.hpp
+    rendering/open_gl/support/include/mesh_cache_open_gl.hpp
+    rendering/open_gl/support/include/shadow_renderer_open_gl.hpp
+    rendering/open_gl/support/include/text_renderer_open_gl.hpp
+    rendering/open_gl/vertices/include/vertex_layout_open_gl.hpp
 )
 
 set(OPENGL_SOURCES
-    rendering/OpenGL/Geometry/src/GpuMeshOpenGL.cpp
-    rendering/OpenGL/Renderer/src/RendererOpenGLImpl.cpp
-    rendering/OpenGL/Support/src/FaceCullingControlOpenGL.cpp
-    rendering/OpenGL/Support/src/FrameBufferOpenGL.cpp
-    rendering/OpenGL/Support/src/FPSCounter.cpp
-    rendering/OpenGL/Support/src/MeshCacheOpenGL.cpp
-    rendering/OpenGL/Support/src/ShadowRendererOpenGL.cpp
-    rendering/OpenGL/Support/src/TextRendererOpenGL.cpp
-    rendering/OpenGL/vertices/src/VertexLayoutOpenGL.cpp
+    rendering/open_gl/geometry/src/gpu_mesh_open_gl.cpp
+    rendering/open_gl/renderer/src/open_gl_renderer_impl.cpp
+    rendering/open_gl/support/src/face_culling_control_open_gl.cpp
+    rendering/open_gl/support/src/frame_buffer_open_gl.cpp
+    rendering/open_gl/support/src/fps_counter.cpp
+    rendering/open_gl/support/src/mesh_cache_open_gl.cpp
+    rendering/open_gl/support/src/shadow_renderer_open_gl.cpp
+    rendering/open_gl/support/src/text_renderer_open_gl.cpp
+    rendering/open_gl/vertices/src/vertex_layout_open_gl.cpp
 )
 
-# ==== RayTracing ====
-set(RAYTRACING_HEADERS
-    rendering/RayTracing/include/Ray.hpp
+# ==== Ray Tracing ====
+set(RAY_TRACING_HEADERS
+    rendering/ray_tracing/include/ray.hpp
 )
 
 # ==== Renderers ====
 set(RENDERERS_HEADERS
-    rendering/Renderers/Abstracts/include/GridControl.hpp
-    rendering/Renderers/Abstracts/include/IlluminationControl.hpp
-    rendering/Renderers/Abstracts/include/SizeControl.hpp
-    rendering/Renderers/Renderers/include/RendererOpenGL.hpp
+    rendering/renderers/abstracts/include/grid_control.hpp
+    rendering/renderers/abstracts/include/illumination_control.hpp
+    rendering/renderers/abstracts/include/size_control.hpp
+    rendering/renderers/renderers/include/open_gl_renderer.hpp
 )
 
 set(RENDERERS_SOURCES
-    rendering/Renderers/Abstracts/src/GridControl.cpp
-    rendering/Renderers/Abstracts/src/IlluminationControl.cpp
-    rendering/Renderers/Abstracts/src/SizeControl.cpp
-    rendering/Renderers/Renderers/src/RendererOpenGL.cpp
+    rendering/renderers/abstracts/src/grid_control.cpp
+    rendering/renderers/abstracts/src/illumination_control.cpp
+    rendering/renderers/abstracts/src/size_control.cpp
+    rendering/renderers/renderers/src/open_gl_renderer.cpp
 )
 
 # ==== Shaders ====
 set(SHADERS_HEADERS
-    rendering/Shaders/Abstracts/include/ShaderProgramOpenGL.hpp
-    rendering/Shaders/Abstracts/include/ShaderSourceManagerOpenGL.hpp
-    rendering/Shaders/Interfaces/include/IShader.hpp
-    rendering/Shaders/Shaders/include/ShaderManager.hpp
-    rendering/Shaders/Shaders/include/ShaderOpenGL.hpp
-    rendering/Shaders/Support/include/ShaderCompilerOpenGL.hpp
-    rendering/Shaders/Support/include/ShaderOpenGLTypes.hpp
-    rendering/Shaders/Support/include/ShaderTypes.hpp
-    rendering/Shaders/Support/include/UniformSetterOpenGL.hpp
+    rendering/shaders/abstracts/include/shader_program_open_gl.hpp
+    rendering/shaders/abstracts/include/shader_source_manager_open_gl.hpp
+    rendering/shaders/interfaces/include/i_shader.hpp
+    rendering/shaders/shaders/include/shader_manager.hpp
+    rendering/shaders/shaders/include/shader_open_gl.hpp
+    rendering/shaders/support/include/shader_compiler_open_gl.hpp
+    rendering/shaders/support/include/shader_open_gl_types.hpp
+    rendering/shaders/support/include/shader_types.hpp
+    rendering/shaders/support/include/uniform_setter_open_gl.hpp
 )
 
 set(SHADERS_SOURCES
-    rendering/Shaders/Abstracts/src/ShaderProgramOpenGL.cpp
-    rendering/Shaders/Abstracts/src/ShaderSourceManagerOpenGL.cpp
-    rendering/Shaders/Interfaces/src/IShader.cpp
-    rendering/Shaders/Shaders/src/ShaderManager.cpp
-    rendering/Shaders/Shaders/src/ShaderOpenGL.cpp
-    rendering/Shaders/Support/src/ShaderCompilerOpenGL.cpp
-    rendering/Shaders/Support/src/UniformSetterOpenGL.cpp
+    rendering/shaders/abstracts/src/shader_program_open_gl.cpp
+    rendering/shaders/abstracts/src/shader_source_manager_open_gl.cpp
+    rendering/shaders/interfaces/src/i_shader.cpp
+    rendering/shaders/shaders/src/shader_manager.cpp
+    rendering/shaders/shaders/src/shader_open_gl.cpp
+    rendering/shaders/support/src/shader_compiler_open_gl.cpp
+    rendering/shaders/support/src/uniform_setter_open_gl.cpp
 )
 
 # ==== Utilities ====
 set(UTILS_HEADERS
-    rendering/Utils/include/mathUtils.hpp
+    rendering/utils/include/math_utils.hpp
 )
 
 set(UTILS_SOURCES
-    rendering/Utils/src/mathUtils.cpp
+    rendering/utils/src/math_utils.cpp
 )
 
-# ==== vertices (API agnostic) ====
+# ==== Vertices (API agnostic) ====
 set(VERTEX_HEADERS
-    rendering/vertices/include/VertexFormat.hpp
-    rendering/vertices/include/VertexAttributes.hpp
-    rendering/vertices/include/VertexLayouts.hpp
-    rendering/vertices/include/VertexLocationPolicy.hpp
+    rendering/vertices/include/vertex_format.hpp
+    rendering/vertices/include/vertex_attributes.hpp
+    rendering/vertices/include/vertex_layouts.hpp
+    rendering/vertices/include/vertex_location_policy.hpp
 )
 
 set(VERTEX_SOURCES
-    rendering/vertices/src/VertexFormat.cpp
-    rendering/vertices/src/VertexLayouts.cpp
-    rendering/vertices/src/VertexLocationPolicy.cpp
+    rendering/vertices/src/vertex_format.cpp
+    rendering/vertices/src/vertex_layouts.cpp
+    rendering/vertices/src/vertex_location_policy.cpp
 )
 
 add_library(${PROJECT_NAME}
@@ -141,17 +140,17 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
         precompiled_headers
-        Utils
+        utils
         Glad
         spdlog::spdlog
         glm::glm
     PUBLIC
         math
-        Api
+        api
 )
 
 add_dependencies(${PROJECT_NAME}
-    Utils
+    utils
     math
     Glad
 )
@@ -219,18 +218,18 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/RayTracing
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/ray_tracing
     PREFIX
-        "RayTracing"
+        "ray_tracing"
     FILES
-        ${RAYTRACING_HEADERS}
+        ${RAY_TRACING_HEADERS}
 )
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Renderers
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/renderers
     PREFIX
-        "Renderers"
+        "renderers"
     FILES
         ${RENDERERS_HEADERS}
         ${RENDERERS_SOURCES}
@@ -238,9 +237,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Scene
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/scene
     PREFIX
-        "Scene"
+        "scene"
     FILES
         ${SCENE_HEADERS}
         ${SCENE_SOURCES}
@@ -248,9 +247,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Shaders
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/shaders
     PREFIX
-        "Shaders"
+        "shaders"
     FILES
         ${SHADERS_HEADERS}
         ${SHADERS_SOURCES}
@@ -258,9 +257,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Utils
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/utils
     PREFIX
-        "Utils"
+        "utils"
     FILES
         ${UTILS_HEADERS}
         ${UTILS_SOURCES}
@@ -278,9 +277,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/OpenGL
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/open_gl
     PREFIX
-        "OpenGL"
+        "open_gl"
     FILES
         ${OPENGL_HEADERS}
         ${OPENGL_SOURCES}

@@ -5,7 +5,7 @@
 #include "pch.hpp"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
     class FpsCounter
     {
@@ -19,20 +19,20 @@ namespace andromeda::Rendering
         FpsCounter& operator=(FpsCounter&& other) noexcept = delete;
 
         // Call once per frame
-        void FrameTick();
+        void frame_tick();
 
-        float GetInstantFps() const;
-        float GetSmoothedFps() const;
+        float get_instant_fps() const;
+        float get_smoothed_fps() const;
 
         // Delta time in seconds
-        float GetDeltaSeconds() const;
+        float get_delta_seconds() const;
 
     private:
-        std::chrono::steady_clock::time_point m_lastTime;
-        float m_deltaSeconds;
-        float m_instantFps;
-        float m_smoothedFps;
-        bool m_firstFrame;
+        std::chrono::steady_clock::time_point m_last_time;
+        float m_delta_seconds;
+        float m_instant_fps;
+        float m_smoothed_fps;
+        bool m_first_frame;
     };
 }
 

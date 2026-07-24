@@ -1,146 +1,146 @@
-#include "../include/GpuMeshOpenGL.hpp"
-#include "../../vertices/include/VertexLayoutOpenGL.hpp"
+#include "../include/gpu_mesh_open_gl.hpp"
+#include "../../vertices/include/vertex_layout_open_gl.hpp"
 #include "glad/gl.h"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
     GpuMeshOpenGL::GpuMeshOpenGL()
-        : m_VAO{ 0 }
-        , m_VBO{ 0 }
-        , m_EBO{ 0 }
-        , m_indexCount{ 0 }
+        : m_vao{ 0 }
+        , m_vbo{ 0 }
+        , m_ebo{ 0 }
+        , m_index_count{ 0 }
     {
     }
 
     GpuMeshOpenGL::~GpuMeshOpenGL()
     {
-        Destroy();
+        destroy();
     }
 
     GpuMeshOpenGL::GpuMeshOpenGL(GpuMeshOpenGL&& other) noexcept
-        : m_VAO{ 0 }
-        , m_VBO{ 0 }
-        , m_EBO{ 0 }
-        , m_indexCount{ 0 }
+        : m_vao{ 0 }
+        , m_vbo{ 0 }
+        , m_ebo{ 0 }
+        , m_index_count{ 0 }
     {
-        MoveFrom(other);
+        move_from(other);
     }
 
     GpuMeshOpenGL& GpuMeshOpenGL::operator=(GpuMeshOpenGL&& other) noexcept
     {
         if (this != &other)
         {
-            Destroy();
-            MoveFrom(other);
+            destroy();
+            move_from(other);
         }
         return *this;
     }
 
-    void GpuMeshOpenGL::MoveFrom(GpuMeshOpenGL& other) noexcept
+    void GpuMeshOpenGL::move_from(GpuMeshOpenGL& other) noexcept
     {
-        m_VAO = other.m_VAO;
-        m_VBO = other.m_VBO;
-        m_EBO = other.m_EBO;
-        m_indexCount = other.m_indexCount;
+        m_vao = other.m_vao;
+        m_vbo = other.m_vbo;
+        m_ebo = other.m_ebo;
+        m_index_count = other.m_index_count;
 
-        other.m_VAO = 0;
-        other.m_VBO = 0;
-        other.m_EBO = 0;
-        other.m_indexCount = 0;
+        other.m_vao = 0;
+        other.m_vbo = 0;
+        other.m_ebo = 0;
+        other.m_index_count = 0;
     }
 
-    bool GpuMeshOpenGL::IsValid() const
+    bool GpuMeshOpenGL::is_valid() const
     {
-        return m_VAO != 0;
+        return m_vao != 0;
     }
 
-    void GpuMeshOpenGL::Create(
-        const void* vertexData,
-        size_t vertexDataSizeBytes,
+    void GpuMeshOpenGL::create(
+        const void* vertex_data,
+        size_t vertex_data_size_bytes,
         const std::vector<uint32_t>& indices,
-        const andromeda::Rendering::VertexLayout& layout
+        const andromeda::rendering::VertexLayout& layout
     )
     {
-        Destroy();
+        destroy();
 
-        m_indexCount = static_cast<uint32_t>(indices.size());
+        m_index_count = static_cast<uint32_t>(indices.size());
 
-        glGenVertexArrays(1, &m_VAO);
-        glGenBuffers(1, &m_VBO);
-        glGenBuffers(1, &m_EBO);
+        glGenVertexArrays(1, &m_vao);
+        glGenBuffers(1, &m_vbo);
+        glGenBuffers(1, &m_ebo);
 
-        glBindVertexArray(m_VAO);
+        glBindVertexArray(m_vao);
 
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-        glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(vertexDataSizeBytes), vertexData, GL_STATIC_DRAW);
+        glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
+        glBufferData(GL_ARRAY_BUFFER, static_cast<GLsizeiptr>(vertex_data_size_bytes), vertex_data, GL_STATIC_DRAW);
 
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, static_cast<GLsizeiptr>(indices.size() * sizeof(uint32_t)), indices.data(), GL_STATIC_DRAW);
 
-        VertexLayoutOpenGL::Apply(layout);
+        VertexLayoutOpenGL::apply(layout);
 
         glBindVertexArray(0);
     }
 
-    void GpuMeshOpenGL::Create(const IMesh& mesh, const VertexLayout& layout)
+    void GpuMeshOpenGL::create(const IMesh& mesh, const VertexLayout& layout)
     {
-        const std::vector<Vertex>& vertices = mesh.Getvertices();
-        const std::vector<unsigned int>& indicesUI = mesh.GetIndices();
+        const std::vector<Vertex>& vertices = mesh.get_vertices();
+        const std::vector<unsigned int>& indices_ui = mesh.get_indices();
 
-        std::vector<uint32_t> indicesU32;
-        indicesU32.reserve(indicesUI.size());
-        for (unsigned int idx : indicesUI)
+        std::vector<uint32_t> indices_u32;
+        indices_u32.reserve(indices_ui.size());
+        for (unsigned int idx : indices_ui)
         {
-            indicesU32.push_back(static_cast<uint32_t>(idx));
+            indices_u32.push_back(static_cast<uint32_t>(idx));
         }
 
-        Create(
+        create(
             vertices.data(),
             vertices.size() * sizeof(Vertex),
-            indicesU32,
+            indices_u32,
             layout
         );
     }
 
-    void GpuMeshOpenGL::Destroy()
+    void GpuMeshOpenGL::destroy()
     {
-        if (m_EBO != 0)
+        if (m_ebo != 0)
         {
-            glDeleteBuffers(1, &m_EBO);
-            m_EBO = 0;
+            glDeleteBuffers(1, &m_ebo);
+            m_ebo = 0;
         }
-        if (m_VBO != 0)
+        if (m_vbo != 0)
         {
-            glDeleteBuffers(1, &m_VBO);
-            m_VBO = 0;
+            glDeleteBuffers(1, &m_vbo);
+            m_vbo = 0;
         }
-        if (m_VAO != 0)
+        if (m_vao != 0)
         {
-            glDeleteVertexArrays(1, &m_VAO);
-            m_VAO = 0;
+            glDeleteVertexArrays(1, &m_vao);
+            m_vao = 0;
         }
 
-        m_indexCount = 0;
+        m_index_count = 0;
     }
 
-    uint32_t GpuMeshOpenGL::GetVAO() const
+    uint32_t GpuMeshOpenGL::get_vao() const
     {
-        return m_VAO;
+        return m_vao;
     }
 
-    uint32_t GpuMeshOpenGL::GetVBO() const
+    uint32_t GpuMeshOpenGL::get_vbo() const
     {
-        return m_VBO;
+        return m_vbo;
     }
 
-    uint32_t GpuMeshOpenGL::GetEBO() const
+    uint32_t GpuMeshOpenGL::get_ebo() const
     {
-        return m_EBO;
+        return m_ebo;
     }
 
-    uint32_t GpuMeshOpenGL::GetIndexCount() const
+    uint32_t GpuMeshOpenGL::get_index_count() const
     {
-        return m_indexCount;
+        return m_index_count;
     }
 }

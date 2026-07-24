@@ -5,16 +5,13 @@
 #include "glm/glm.hpp"
 
 
-namespace andromeda
+namespace andromeda::rendering
 {
-	namespace Rendering
+	struct Ray
 	{
-		struct Ray
-		{
-			glm::vec3 origin;
-			glm::vec3 direction;
-		};
-	}
+		glm::vec3 origin;
+		glm::vec3 direction;
+	};
 }
 
 

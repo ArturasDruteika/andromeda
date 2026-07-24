@@ -1,8 +1,8 @@
-#ifndef RENDERER__OPENGL__SUPPORTFRAME_BUFFER_OPENGL__HPP
-#define RENDERER__OPENGL__SUPPORTFRAME_BUFFER_OPENGL__HPP
+#ifndef RENDERER__OPENGL__SUPPORT__FRAME_BUFFER_OPENGL__HPP
+#define RENDERER__OPENGL__SUPPORT__FRAME_BUFFER_OPENGL__HPP
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
     enum class FrameBufferType
     {
@@ -27,35 +27,35 @@ namespace andromeda::Rendering
         FrameBufferOpenGL& operator=(FrameBufferOpenGL&& other) noexcept;
 
         bool init(int width, int height, FrameBufferType type);
-        void Resize(int width, int height);
+        void resize(int width, int height);
 
-        void Bind() const;
-        static void Unbind();
+        void bind() const;
+        static void unbind();
 
         // Getters
-        unsigned int GetId() const;
-        unsigned int GetColorTexture() const;     // valid only for ColorDepth
-        unsigned int GetDepthRenderbuffer() const; // valid only for ColorDepth
-        unsigned int GetDepthTexture() const;     // valid only for DepthOnly
-        unsigned int GetDepthCubeTexture() const;
-        int GetWidth() const;
-        int GetHeight() const;
-        FrameBufferType GetFrameBufferType() const;
+        unsigned int get_id() const;
+        unsigned int get_color_texture() const;        // valid only for ColorDepth
+        unsigned int get_depth_renderbuffer() const;   // valid only for ColorDepth
+        unsigned int get_depth_texture() const;        // valid only for Depth
+        unsigned int get_depth_cube_texture() const;
+        int get_width() const;
+        int get_height() const;
+        FrameBufferType get_frame_buffer_type() const;
 
     private:
-        void Destroy();
-        bool Build();
-        bool BuildColorDepth();
-        bool BuildDepthOnly();
-		bool BuildDepthCube();
-        bool CheckStatus() const;
+        void destroy();
+        bool build();
+        bool build_color_depth();
+        bool build_depth();
+        bool build_depth_cube();
+        bool check_status() const;
 
     private:
-        unsigned int m_FBO;
-        unsigned int m_colorTex;
-        unsigned int m_depthRBO;
-        unsigned int m_depthTex;
-        unsigned int m_depthCubeTex;
+        unsigned int m_fbo;
+        unsigned int m_color_tex;
+        unsigned int m_depth_rbo;
+        unsigned int m_depth_tex;
+        unsigned int m_depth_cube_tex;
         int m_width;
         int m_height;
         FrameBufferType m_type;
@@ -63,4 +63,4 @@ namespace andromeda::Rendering
 }
 
 
-#endif // RENDERER__OPENGL__SUPPORTFRAME_BUFFER_OPENGL__HPP
+#endif // RENDERER__OPENGL__SUPPORT__FRAME_BUFFER_OPENGL__HPP

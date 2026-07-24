@@ -1,94 +1,95 @@
-#include "../include/TextRendererOpenGL.hpp"
+#include "../include/text_renderer_open_gl.hpp"
 
 #define STB_EASY_FONT_IMPLEMENTATION
-#include "Utils/stb/include/stb_easy_font.h"
+#include "utils/stb/include/stb_easy_font.h"
 #include "pch.hpp"
 
 #include "spdlog/spdlog.h"
 #include "glad/gl.h"
 
-namespace andromeda::Rendering
+
+namespace andromeda::rendering
 {
     TextRendererOpenGL::TextRendererOpenGL()
-        : m_VAO{ 0 }
-        , m_VBO{ 0 }
-        , m_isInitialized{ false }
+        : m_vao{ 0 }
+        , m_vbo{ 0 }
+        , m_is_initialized{ false }
     {
     }
 
     TextRendererOpenGL::~TextRendererOpenGL()
     {
-        Destroy();
+        destroy();
     }
 
     TextRendererOpenGL::TextRendererOpenGL(TextRendererOpenGL&& other) noexcept
-        : m_VAO{ 0 }
-        , m_VBO{ 0 }
-        , m_isInitialized{ false }
+        : m_vao{ 0 }
+        , m_vbo{ 0 }
+        , m_is_initialized{ false }
     {
-        MoveFrom(other);
+        move_from(other);
     }
 
     TextRendererOpenGL& TextRendererOpenGL::operator=(TextRendererOpenGL&& other) noexcept
     {
         if (this != &other)
         {
-            Destroy();
-            MoveFrom(other);
+            destroy();
+            move_from(other);
         }
         return *this;
     }
 
-    void TextRendererOpenGL::MoveFrom(TextRendererOpenGL& other) noexcept
+    void TextRendererOpenGL::move_from(TextRendererOpenGL& other) noexcept
     {
-        m_VAO = other.m_VAO;
-        m_VBO = other.m_VBO;
-        m_isInitialized = other.m_isInitialized;
+        m_vao = other.m_vao;
+        m_vbo = other.m_vbo;
+        m_is_initialized = other.m_is_initialized;
 
-        other.m_VAO = 0;
-        other.m_VBO = 0;
-        other.m_isInitialized = false;
+        other.m_vao = 0;
+        other.m_vbo = 0;
+        other.m_is_initialized = false;
     }
 
-    void TextRendererOpenGL::Destroy()
+    void TextRendererOpenGL::destroy()
     {
-        if (m_VBO != 0)
+        if (m_vbo != 0)
         {
-            glDeleteBuffers(1, &m_VBO);
-            m_VBO = 0;
+            glDeleteBuffers(1, &m_vbo);
+            m_vbo = 0;
         }
 
-        if (m_VAO != 0)
+        if (m_vao != 0)
         {
-            glDeleteVertexArrays(1, &m_VAO);
-            m_VAO = 0;
+            glDeleteVertexArrays(1, &m_vao);
+            m_vao = 0;
         }
 
-        m_isInitialized = false;
+        m_is_initialized = false;
     }
 
-    bool TextRendererOpenGL::IsValid() const
+    bool TextRendererOpenGL::is_valid() const
     {
-        return m_isInitialized && m_VAO != 0 && m_VBO != 0;
+        return m_is_initialized && m_vao != 0 && m_vbo != 0;
     }
 
     void TextRendererOpenGL::init()
     {
-        if (m_isInitialized)
+        if (m_is_initialized)
         {
             return;
         }
 
-        glGenVertexArrays(1, &m_VAO);
-        glGenBuffers(1, &m_VBO);
+        glGenVertexArrays(1, &m_vao);
+        glGenBuffers(1, &m_vbo);
 
-        if (m_VAO == 0 || m_VBO == 0)
+        if (m_vao == 0 || m_vbo == 0)
         {
             spdlog::error("TextRendererOpenGL::init -> VAO or VBO is 0. GL context valid?");
         }
 
-        glBindVertexArray(m_VAO);
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+        glBindVertexArray(m_vao);
+        glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 
         glEnableVertexAttribArray(0);
         glVertexAttribPointer(
@@ -103,14 +104,14 @@ namespace andromeda::Rendering
         glBindVertexArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-        m_isInitialized = true;
+        m_is_initialized = true;
     }
 
-    void TextRendererOpenGL::RenderText(const std::string& text, float x, float y, float scale)
+    void TextRendererOpenGL::render_text(const std::string& text, float x, float y, float scale)
     {
-        if (!m_isInitialized)
+        if (!m_is_initialized)
         {
-            spdlog::warn("TextRendererOpenGL::RenderText called before init()");
+            spdlog::warn("TextRendererOpenGL::render_text called before init()");
             return;
         }
 
@@ -131,37 +132,37 @@ namespace andromeda::Rendering
         };
 
         static const int MAX_QUADS = 1024;
-        EasyFontVertex quadBuffer[MAX_QUADS * 4]; // 4 verts per quad
+        EasyFontVertex quad_buffer[MAX_QUADS * 4]; // 4 verts per quad
 
-        int numQuads = stb_easy_font_print(
+        int num_quads = stb_easy_font_print(
             x,
             y,
             const_cast<char*>(text.c_str()),
             nullptr,                    // we ignore per-vertex color
-            quadBuffer,
-            sizeof(quadBuffer)
+            quad_buffer,
+            sizeof(quad_buffer)
         );
 
-        if (numQuads <= 0)
+        if (num_quads <= 0)
         {
             return;
         }
 
-        if (numQuads > MAX_QUADS)
+        if (num_quads > MAX_QUADS)
         {
-            numQuads = MAX_QUADS;
+            num_quads = MAX_QUADS;
         }
 
         // We will convert quads to triangles (2 per quad = 6 verts)
         std::vector<float> vertices;
-        vertices.reserve(static_cast<std::size_t>(numQuads) * 6U * 2U);
+        vertices.reserve(static_cast<std::size_t>(num_quads) * 6U * 2U);
 
         const float sx = scale;
         const float sy = scale;
 
-        for (int i = 0; i < numQuads; ++i)
+        for (int i = 0; i < num_quads; ++i)
         {
-            EasyFontVertex* q = quadBuffer + i * 4;
+            EasyFontVertex* q = quad_buffer + i * 4;
 
             float x0 = q[0].x * sx;
             float y0 = q[0].y * sy;
@@ -187,8 +188,8 @@ namespace andromeda::Rendering
             vertices.insert(vertices.end(), tri, tri + 12);
         }
 
-        glBindVertexArray(m_VAO);
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+        glBindVertexArray(m_vao);
+        glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 
         glBufferData(
             GL_ARRAY_BUFFER,
@@ -203,16 +204,16 @@ namespace andromeda::Rendering
         glBindVertexArray(0);
     }
 
-    void TextRendererOpenGL::RenderDebugQuad(
+    void TextRendererOpenGL::render_debug_quad(
         float x,
         float y,
         float w,
         float h
     )
     {
-        if (!m_isInitialized)
+        if (!m_is_initialized)
         {
-            spdlog::warn("TextRendererOpenGL::RenderDebugQuad called before init()");
+            spdlog::warn("TextRendererOpenGL::render_debug_quad called before init()");
             return;
         }
 
@@ -227,8 +228,8 @@ namespace andromeda::Rendering
             x,      y + h
         };
 
-        glBindVertexArray(m_VAO);
-        glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+        glBindVertexArray(m_vao);
+        glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 
         glBufferData(
             GL_ARRAY_BUFFER,

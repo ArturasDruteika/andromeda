@@ -1,12 +1,12 @@
-#ifndef RENDERING__OPENGL__SUPPORT__TEXT_RENDERER_OPENGL__HPP
-#define RENDERING__OPENGL__SUPPORT__TEXT_RENDERER_OPENGL__HPP
+#ifndef RENDERING__OPENGL__SUPPORT__TEXT_RENDERER_OPEN_GL__HPP
+#define RENDERING__OPENGL__SUPPORT__TEXT_RENDERER_OPEN_GL__HPP
 
 
 #include "pch.hpp"
 #include "glad/gl.h"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
     class TextRendererOpenGL
     {
@@ -25,21 +25,21 @@ namespace andromeda::Rendering
 
         // x, y are passed directly to stb_easy_font and then scaled on CPU.
         // The coordinate system is whatever your text shader expects (typically screen space).
-        void RenderText(const std::string& text, float x, float y, float scale = 1.0f);
-        void RenderDebugQuad(float x, float y, float w, float h);
+        void render_text(const std::string& text, float x, float y, float scale = 1.0f);
+        void render_debug_quad(float x, float y, float w, float h);
 
-        bool IsValid() const;
-
-    private:
-        void Destroy();
-        void MoveFrom(TextRendererOpenGL& other) noexcept;
+        bool is_valid() const;
 
     private:
-        bool m_isInitialized;
-        GLuint m_VAO;
-        GLuint m_VBO;
+        void destroy();
+        void move_from(TextRendererOpenGL& other) noexcept;
+
+    private:
+        bool m_is_initialized;
+        GLuint m_vao;
+        GLuint m_vbo;
     };
 }
 
 
-#endif // RENDERING__OPENGL__SUPPORT__TEXT_RENDERER_OPENGL__HPP
+#endif // RENDERING__OPENGL__SUPPORT__TEXT_RENDERER_OPEN_GL__HPP

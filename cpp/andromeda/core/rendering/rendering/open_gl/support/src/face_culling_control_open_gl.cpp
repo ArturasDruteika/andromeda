@@ -1,40 +1,46 @@
-#include "../include/FaceCullingControlOpenGL.hpp"
+#include "../include/face_culling_control_open_gl.hpp"
 #include "glad/gl.h"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
 	FaceCullingControlOpenGL::FaceCullingControlOpenGL()
-		: m_isFaceCullingEnabled{ false }
-		, m_isBackFaceCullingEnabled{ false }
+		: m_is_face_culling_enabled{ false }
+		, m_is_back_face_culling_enabled{ false }
 	{
 	}
 
 	FaceCullingControlOpenGL::~FaceCullingControlOpenGL() = default;
 
-	bool FaceCullingControlOpenGL::IsFaceCullingEnabled() const
+	bool FaceCullingControlOpenGL::is_face_culling_enabled() const
 	{
-		return m_isFaceCullingEnabled;
+		return m_is_face_culling_enabled;
 	}
 
-	bool FaceCullingControlOpenGL::IsBackFaceCullingEnabled() const
+	bool FaceCullingControlOpenGL::is_back_face_culling_enabled() const
 	{
-		return m_isBackFaceCullingEnabled;
+		return m_is_back_face_culling_enabled;
 	}
 
-	void FaceCullingControlOpenGL::EnableFaceCulling(unsigned int face, unsigned int winding) const
+	void FaceCullingControlOpenGL::enable_face_culling(
+		unsigned int face,
+		unsigned int winding
+	) const
 	{
 		glEnable(GL_CULL_FACE);
 		glCullFace(face);
 		glFrontFace(winding);
-		m_isFaceCullingEnabled = true;
-		m_isBackFaceCullingEnabled = (face == GL_BACK);
+
+		m_is_face_culling_enabled = true;
+		m_is_back_face_culling_enabled = (face == GL_BACK);
 	}
 
-	void FaceCullingControlOpenGL::DisableFaceCulling() const
+	void FaceCullingControlOpenGL::disable_face_culling() const
 	{
 		glDisable(GL_CULL_FACE);
 		glFrontFace(GL_CCW);
-		m_isFaceCullingEnabled = false;
+
+		m_is_face_culling_enabled = false;
+		m_is_back_face_culling_enabled = false;
 	}
 }

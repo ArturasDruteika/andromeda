@@ -2,7 +2,7 @@
 #define RENDERER__ILLUMINATION_CONTROL__HPP
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
 	class IlluminationControl
 	{
@@ -11,12 +11,13 @@ namespace andromeda::Rendering
 		~IlluminationControl();
 
 		// Getters
-		bool IsIlluminationMode() const;
+		bool is_illumination_mode() const;
+
 		// Setters
-		void SetIlluminationMode(bool mode);
+		void set_illumination_mode(bool mode);
 
 	protected:
-		bool m_isIlluminationMode;
+		bool m_is_illumination_mode;
 	};
 }
 

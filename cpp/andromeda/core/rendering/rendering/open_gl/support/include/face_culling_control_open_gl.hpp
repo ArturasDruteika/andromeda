@@ -2,7 +2,7 @@
 #define RENDERER__FACE_CULLING_CONTROL_OPENGL__HPP
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
 	class FaceCullingControlOpenGL
 	{
@@ -11,15 +11,15 @@ namespace andromeda::Rendering
 		~FaceCullingControlOpenGL();
 
 		// Getters
-		bool IsFaceCullingEnabled() const;
-		bool IsBackFaceCullingEnabled() const;
+		bool is_face_culling_enabled() const;
+		bool is_back_face_culling_enabled() const;
 
-		void EnableFaceCulling(unsigned int face, unsigned int winding) const;
-		void DisableFaceCulling() const;
+		void enable_face_culling(unsigned int face, unsigned int winding) const;
+		void disable_face_culling() const;
 
 	protected:
-		mutable bool m_isFaceCullingEnabled;
-		mutable bool m_isBackFaceCullingEnabled;
+		mutable bool m_is_face_culling_enabled;
+		mutable bool m_is_back_face_culling_enabled;
 	};
 }
 

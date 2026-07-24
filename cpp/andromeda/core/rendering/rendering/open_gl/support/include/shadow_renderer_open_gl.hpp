@@ -1,11 +1,11 @@
-#ifndef RENDERING__OPENGL__SUPPORT__SHADOW_RENDERER_OPENGL__HPP
-#define RENDERING__OPENGL__SUPPORT__SHADOW_RENDERER_OPENGL__HPP
+#ifndef RENDERING__OPENGL__SUPPORT__SHADOW_RENDERER_OPEN_GL__HPP
+#define RENDERING__OPENGL__SUPPORT__SHADOW_RENDERER_OPEN_GL__HPP
 
 
-#include "FrameBufferOpenGL.hpp"
-#include "FaceCullingControlOpenGL.hpp"
-#include "../../../Shaders/Shaders/include/ShaderManager.hpp"
-#include "../../Support/include/MeshCacheOpenGL.hpp"
+#include "frame_buffer_open_gl.hpp"
+#include "face_culling_control_open_gl.hpp"
+#include "../../../shaders/shaders/include/shader_manager.hpp"
+#include "../../support/include/mesh_cache_open_gl.hpp"
 #include "andromeda/space/light/i_directional_light.hpp"
 #include "andromeda/space/light/i_point_light.hpp"
 #include "andromeda/space/objects/i_geometric_object.hpp"
@@ -13,52 +13,52 @@
 #include "pch.hpp"
 
 
-namespace andromeda::Rendering
+namespace andromeda::rendering
 {
     class ShadowRendererOpenGL
     {
     public:
-        static void RenderDirectionalShadowMap(
+        static void render_directional_shadow_map(
             const std::unordered_map<int, IGeometricObject*>& objects,
-            const std::unordered_map<int, ITransformable*>& objectTransforms,
-            FrameBufferOpenGL& shadowFbo,
+            const std::unordered_map<int, ITransformable*>& object_transforms,
+            FrameBufferOpenGL& shadow_fbo,
             int resolution,
-            const glm::mat4& lightSpaceMatrix,
-            ShaderManager& shaderManager,
-            MeshCacheOpenGL& meshCache,
+            const glm::mat4& light_space_matrix,
+            ShaderManager& shader_manager,
+            MeshCacheOpenGL& mesh_cache,
             FaceCullingControlOpenGL& culling
         );
 
-        static void RenderPointShadowCube(
+        static void render_point_shadow_cube(
             const std::unordered_map<int, IGeometricObject*>& objects,
-            const std::unordered_map<int, ITransformable*>& objectTransforms,
-            FrameBufferOpenGL& pointShadowFbo,
+            const std::unordered_map<int, ITransformable*>& object_transforms,
+            FrameBufferOpenGL& point_shadow_fbo,
             int resolution,
-            const glm::vec3& lightPos,
-            float nearPlane,
-            float farPlane,
-            ShaderManager& shaderManager,
-            MeshCacheOpenGL& meshCache,
+            const glm::vec3& light_pos,
+            float near_plane,
+            float far_plane,
+            ShaderManager& shader_manager,
+            MeshCacheOpenGL& mesh_cache,
             FaceCullingControlOpenGL& culling
         );
 
-        // TODO: consider making it a void and calculating ONLY when the scene state has been changed
-        static glm::mat4 ComputeLightSpaceMatrix(
-            const std::unordered_map<int, const IDirectionalLight*>& directionalLights,
-            const math::Vec3& sceneCenter
+        // TODO: consider making it void and calculating only when the scene state has changed.
+        static glm::mat4 compute_light_space_matrix(
+            const std::unordered_map<int, const IDirectionalLight*>& directional_lights,
+            const math::Vec3& scene_center
         );
 
-        static void PopulateDirectionalLightUniforms(
+        static void populate_directional_light_uniforms(
             ShaderOpenGL& shader,
-            const std::unordered_map<int, const IDirectionalLight*>& dirLights
+            const std::unordered_map<int, const IDirectionalLight*>& directional_lights
         );
 
-        static void PopulatePointLightUniforms(
+        static void populate_point_light_uniforms(
             ShaderOpenGL& shader,
-            const std::unordered_map<int, const IPointLight*>& pointLights
+            const std::unordered_map<int, const IPointLight*>& point_lights
         );
     };
 }
 
 
-#endif // RENDERING__OPENGL__SUPPORT__SHADOW_RENDERER_OPENGL__HPP
+#endif // RENDERING__OPENGL__SUPPORT__SHADOW_RENDERER_OPEN_GL__HPP
