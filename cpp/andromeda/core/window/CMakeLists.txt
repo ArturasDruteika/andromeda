@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(Window)
+project(window)
 
 set(CMAKE_BUILD_PARALLEL_LEVEL)
 set(CMAKE_CXX_STANDARD 23)
@@ -17,28 +17,28 @@ endif ()
 
 # ==== Events ====
 set(EVENTS_HEADERS
-    Window/Events/include/EventBase.hpp
-    Window/Events/include/MouseEvents.hpp
-    Window/Events/include/KeyEvents.hpp
-    Window/Events/include/FrameBufferEvents.hpp
-    Window/Events/include/EventDispatcher.hpp
+    window/events/include/event_base.hpp
+    window/events/include/mouse_events.hpp
+    window/events/include/key_events.hpp
+    window/events/include/frame_buffer_events.hpp
+    window/events/include/event_dispatcher.hpp
 )
 
 set(EVENTS_SOURCES
-    Window/Events/src/EventBase.cpp
-    Window/Events/src/MouseEvents.cpp
-    Window/Events/src/FrameBufferEvents.cpp
-    Window/Events/src/KeyEvents.cpp
-    Window/Events/src/EventDispatcher.cpp
+    window/events/src/event_base.cpp
+    window/events/src/mouse_events.cpp
+    window/events/src/frame_buffer_events.cpp
+    window/events/src/key_events.cpp
+    window/events/src/event_dispatcher.cpp
 )
 
 # ==== WindowGLFW ====
 set(WINDOW_GLFW_HEADERS
-    Window/WindowGLFW/include/WindowGLFW.hpp
+    window/window_glfw/include/window_glfw.hpp
 )
 
 set(WINDOW_GLFW_SOURCES
-    Window/WindowGLFW/src/WindowGLFW.cpp
+    window/window_glfw/src/window_glfw.cpp
 )
 
 add_library(${PROJECT_NAME} 
@@ -59,17 +59,17 @@ target_include_directories(${PROJECT_NAME}
 # Link GLFW and OpenGL to the executable
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
-        PrecompiledHeaders
-        Utils
+        precompiled_headers
+        utils
         glfw
         OpenGL::GL
         spdlog::spdlog
     PUBLIC
-        Api
+        api
 )
 
 add_dependencies(${PROJECT_NAME} 
-    Utils
+    utils
     glfw
 )
 
@@ -77,9 +77,9 @@ add_dependencies(${PROJECT_NAME}
 # Organize files into Solution Explorer folders
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Events 
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/events 
     PREFIX 
-        "Events" 
+        "events" 
     FILES
         ${EVENTS_HEADERS}
         ${EVENTS_SOURCES}
@@ -87,9 +87,9 @@ source_group(
 
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/WindowGLFW 
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/window_glfw 
     PREFIX 
-        "WindowGLFW" 
+        "window_glfw" 
     FILES
         ${WINDOW_GLFW_HEADERS}
         ${WINDOW_GLFW_SOURCES}

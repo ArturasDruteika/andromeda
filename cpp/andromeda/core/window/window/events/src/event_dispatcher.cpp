@@ -1,7 +1,7 @@
-#include "../include/EventDispatcher.hpp"
+#include "../include/event_dispatcher.hpp"
 
 
-namespace andromeda::Window
+namespace andromeda::window
 {
 	EventDispatcher::EventDispatcher(IEvent& event)
 		: m_event{ event }

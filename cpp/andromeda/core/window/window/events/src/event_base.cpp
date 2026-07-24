@@ -1,7 +1,7 @@
-#include "../include/EventBase.hpp"
+#include "../include/event_base.hpp"
 
 
-namespace andromeda::Window
+namespace andromeda::window
 {
 	EventBase::EventBase()
 		: m_handled{ false }
@@ -10,14 +10,13 @@ namespace andromeda::Window
 
 	EventBase::~EventBase() = default;
 
-	bool EventBase::IsHandled() const
+	bool EventBase::is_handled() const
 	{
 		return m_handled;
 	}
 
-	void EventBase::SetHandled(bool handled)
+	void EventBase::set_handled(bool handled)
 	{
 		m_handled = handled;
 	}
 }
-

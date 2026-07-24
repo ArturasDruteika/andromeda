@@ -2,14 +2,14 @@
 #define WINDOW__MOUSE_EVENTS__HPP
 
 
-#include "EventBase.hpp"
+#include "event_base.hpp"
 #include "andromeda/window/events/event_type.hpp"
 #include "andromeda/window/mouse_and_key_codes/mouse_codes.hpp"
 #include "andromeda/window/events/i_mouse_events.hpp"
 #include "pch.hpp"
 
 
-namespace andromeda::Window
+namespace andromeda::window
 {
     class MouseMovedEvent
         : public EventBase
@@ -19,14 +19,14 @@ namespace andromeda::Window
         MouseMovedEvent(float x, float y);
         ~MouseMovedEvent() override = default;
 
-        float GetX() const override;
-        float GetY() const override;
+        float get_x() const override;
+        float get_y() const override;
 
-        bool IsInCategory(EventCategory category) override;
-        int GetCategoryFlags() const override;
-        std::string GetName() const override;
-        std::string ToString() const override;
-        EventType GetEventType() const override;
+        bool is_in_category(EventCategory category) override;
+        int get_category_flags() const override;
+        std::string get_name() const override;
+        std::string to_string() const override;
+        EventType get_event_type() const override;
 
     private:
         float m_x;
@@ -38,21 +38,21 @@ namespace andromeda::Window
         , public virtual IMouseScrolledEvent
     {
     public:
-        MouseScrolledEvent(float xOffset, float yOffset);
+        MouseScrolledEvent(float x_offset, float y_offset);
         ~MouseScrolledEvent() override = default;
 
-        float GetXOffset() const override;
-        float GetYOffset() const override;
+        float get_x_offset() const override;
+        float get_y_offset() const override;
 
-        bool IsInCategory(EventCategory category) override;
-        int GetCategoryFlags() const override;
-        std::string GetName() const override;
-        std::string ToString() const override;
-        EventType GetEventType() const override;
+        bool is_in_category(EventCategory category) override;
+        int get_category_flags() const override;
+        std::string get_name() const override;
+        std::string to_string() const override;
+        EventType get_event_type() const override;
 
     private:
-        float m_xOffset;
-        float m_yOffset;
+        float m_x_offset;
+        float m_y_offset;
     };
 
     class MouseButtonEvent
@@ -63,10 +63,10 @@ namespace andromeda::Window
         explicit MouseButtonEvent(MouseCode button);
         ~MouseButtonEvent() override = default;
 
-        MouseCode GetMouseButton() const override;
+        MouseCode get_mouse_button() const override;
 
-        bool IsInCategory(EventCategory category) override;
-        int GetCategoryFlags() const override;
+        bool is_in_category(EventCategory category) override;
+        int get_category_flags() const override;
 
     protected:
         MouseCode m_button;
@@ -80,9 +80,9 @@ namespace andromeda::Window
         explicit MouseButtonPressedEvent(MouseCode button);
         ~MouseButtonPressedEvent() override = default;
 
-        std::string GetName() const override;
-        std::string ToString() const override;
-        EventType GetEventType() const override;
+        std::string get_name() const override;
+        std::string to_string() const override;
+        EventType get_event_type() const override;
     };
 
     class MouseButtonReleasedEvent
@@ -93,10 +93,11 @@ namespace andromeda::Window
         explicit MouseButtonReleasedEvent(MouseCode button);
         ~MouseButtonReleasedEvent() override = default;
 
-        std::string GetName() const override;
-        std::string ToString() const override;
-        EventType GetEventType() const override;
+        std::string get_name() const override;
+        std::string to_string() const override;
+        EventType get_event_type() const override;
     };
 }
+
 
 #endif // WINDOW__MOUSE_EVENTS__HPP

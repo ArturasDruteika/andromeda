@@ -5,7 +5,7 @@
 #include "andromeda/window/events/i_event.hpp"
 
 
-namespace andromeda::Window
+namespace andromeda::window
 {
 	class EventDispatcher
 	{
@@ -16,7 +16,7 @@ namespace andromeda::Window
         // F will be deduced by the compiler
         // F: bool(T&)
         template<typename T, typename F>
-        bool Dispatch(const F& func)
+        bool dispatch(const F& func)
         {
             // Prefer dynamic_cast so we don't need GetStaticType / macros
             if (auto* e = dynamic_cast<T*>(&m_event))
@@ -24,7 +24,7 @@ namespace andromeda::Window
                 bool handled = func(*e);
                 if (handled)
                 {
-                    m_event.SetHandled(true);
+                    m_event.set_handled(true);
                 }
                 return handled;
             }

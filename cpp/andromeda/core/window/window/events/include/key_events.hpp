@@ -2,14 +2,14 @@
 #define WINDOW__KEY_EVENTS__HPP
 
 
-#include "EventBase.hpp"
+#include "event_base.hpp"
 #include "andromeda/window/events/event_type.hpp"
 #include "andromeda/window/mouse_and_key_codes/key_codes.hpp"
 #include "andromeda/window/events/i_key_events.hpp"
 #include "pch.hpp"
 
 
-namespace andromeda::Window
+namespace andromeda::window
 {
     class KeyEvent
         : public EventBase
@@ -19,13 +19,13 @@ namespace andromeda::Window
         explicit KeyEvent(KeyCode keycode);
         ~KeyEvent() override;
 
-        bool IsInCategory(EventCategory category) override;
-        int GetCategoryFlags() const override;
+        bool is_in_category(EventCategory category) override;
+        int get_category_flags() const override;
 
-        KeyCode GetKeyCode() const override;
+        KeyCode get_key_code() const override;
 
     protected:
-        KeyCode m_keyCode;
+        KeyCode m_key_code;
     };
 
     class KeyPressedEvent
@@ -33,17 +33,17 @@ namespace andromeda::Window
         , public virtual IKeyPressedEvent
     {
     public:
-        KeyPressedEvent(KeyCode keycode, bool isRepeat);
+        KeyPressedEvent(KeyCode keycode, bool is_repeat);
         ~KeyPressedEvent() override;
 
-        bool IsRepeat() const override;
+        bool is_repeat() const override;
 
-        EventType GetEventType() const override;
-        std::string GetName() const override;
-        std::string ToString() const override;
+        EventType get_event_type() const override;
+        std::string get_name() const override;
+        std::string to_string() const override;
 
     private:
-        bool m_isRepeat;
+        bool m_is_repeat;
     };
 
     class KeyReleasedEvent
@@ -54,9 +54,9 @@ namespace andromeda::Window
         explicit KeyReleasedEvent(KeyCode keycode);
         ~KeyReleasedEvent() override;
 
-        EventType GetEventType() const override;
-        std::string GetName() const override;
-        std::string ToString() const override;
+        EventType get_event_type() const override;
+        std::string get_name() const override;
+        std::string to_string() const override;
     };
 
     class KeyTypedEvent
@@ -67,10 +67,11 @@ namespace andromeda::Window
         explicit KeyTypedEvent(KeyCode keycode);
         ~KeyTypedEvent() override;
 
-        EventType GetEventType() const override;
-        std::string GetName() const override;
-        std::string ToString() const override;
+        EventType get_event_type() const override;
+        std::string get_name() const override;
+        std::string to_string() const override;
     };
 }
+
 
 #endif // WINDOW__KEY_EVENTS__HPP
