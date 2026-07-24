@@ -1,7 +1,7 @@
-#include "../include/ObjectComponent.hpp"
+#include "../include/object_component.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
     ObjectComponent::ObjectComponent(int id, IGeometricObject* object)
         : m_id{ id }
@@ -11,12 +11,12 @@ namespace andromeda::Space
 
     ObjectComponent::~ObjectComponent() = default;
 
-    int ObjectComponent::GetId() const
+    int ObjectComponent::get_id() const
     {
         return m_id;
     }
 
-    IGeometricObject* ObjectComponent::GetObject() const
+    IGeometricObject* ObjectComponent::get_object() const
     {
         return m_object;
     }

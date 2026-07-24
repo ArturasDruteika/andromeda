@@ -1,12 +1,12 @@
 #pragma once
 
 
-#include "../../MacroExports/include/MacroExports.hpp"
+#include "../../macro_exports/include/macro_exports.hpp"
 #include "andromeda/space/scene/i_scene_update_hooks.hpp"
 #include "pch.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
     class SPACE_API UpdateHooks
         : public virtual ISceneUpdateHooks
@@ -15,10 +15,10 @@ namespace andromeda::Space
         UpdateHooks();
         ~UpdateHooks() override;
 
-        ISceneUpdateHooks::Handle Add(ISceneUpdateHooks::Callback callback) override;
-        void Remove(ISceneUpdateHooks::Handle handle) override;
-        void Clear() override;
-        void run(float deltaTime) override;
+        ISceneUpdateHooks::Handle add(ISceneUpdateHooks::Callback callback) override;
+        void remove(ISceneUpdateHooks::Handle handle) override;
+        void clear() override;
+        void run(float delta_time) override;
 
     private:
         struct Entry
@@ -26,9 +26,9 @@ namespace andromeda::Space
             std::uint64_t id = 0;
             ISceneUpdateHooks::Callback fn;
         };
-	
+
     private:
-        std::uint64_t m_nextId;
+        std::uint64_t m_next_id;
         std::vector<Entry> m_entries;
     };
 }

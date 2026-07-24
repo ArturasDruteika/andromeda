@@ -2,10 +2,10 @@
 #define SPACE__TRANSFORMATIONS__TRANSFORMABLE__HPP
 
 
-#include "Rotatable.hpp"
-#include "Scalable.hpp"
-#include "Translatable.hpp"
-#include "../../MacroExports/include/MacroExports.hpp"
+#include "rotatable.hpp"
+#include "scalable.hpp"
+#include "translatable.hpp"
+#include "../../macro_exports/include/macro_exports.hpp"
 #include "andromeda/space/transformations/i_transformable.hpp"
 
 
@@ -23,17 +23,17 @@ namespace andromeda
 		~Transformable() override;
 
 		// Getters
-		bool StateChanged() const override;
-		math::Mat4 GetModelMatrix() override;
+		bool state_changed() const override;
+		math::Mat4 get_model_matrix() override;
 		// Setters
-		void SetModelMatrix(const math::Mat4& modelMatrix) override;
+		void set_model_matrix(const math::Mat4& model_matrix) override;
 
-		void UpdateModelMatrix() override;
-		void ResetState() override;
+		void update_model_matrix() override;
+		void reset_state() override;
 
 	private:
-		bool m_stateChanged;
-		math::Mat4 m_modelMatrix;
+		bool m_state_changed;
+		math::Mat4 m_model_matrix;
 	};
 }
 

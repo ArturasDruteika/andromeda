@@ -2,11 +2,11 @@
 #define SPACE__SCENE_GRAPH__OBJECT_COMPONENT__HPP
 
 
-#include "SceneComponent.hpp"
+#include "scene_component.hpp"
 #include "andromeda/space/objects/i_geometric_object.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
     class SPACE_API ObjectComponent
         : public SceneComponent
@@ -15,8 +15,8 @@ namespace andromeda::Space
         ObjectComponent(int id, IGeometricObject* object);
         ~ObjectComponent() override;
 
-        int GetId() const;
-        IGeometricObject* GetObject() const;
+        int get_id() const;
+        IGeometricObject* get_object() const;
 
     private:
         int m_id;

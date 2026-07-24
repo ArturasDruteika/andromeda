@@ -2,25 +2,25 @@
 #define SPACE__SCENE_GRAPH__LIGHT_COMPONENT__HPP
 
 
-#include "SceneComponent.hpp"
+#include "scene_component.hpp"
 #include "andromeda/space/objects/i_light_object.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
     class SPACE_API LightComponent
         : public SceneComponent
     {
     public:
-        LightComponent(int id, const ILightObject* lightObject);
+        LightComponent(int id, const ILightObject* light_object);
         ~LightComponent() override;
 
-        int GetId() const;
-        const ILightObject* GetLightObject() const;
+        int get_id() const;
+        const ILightObject* get_light_object() const;
 
     private:
         int m_id;
-        const ILightObject* m_lightObject;
+        const ILightObject* m_light_object;
     };
 }
 

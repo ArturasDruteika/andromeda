@@ -2,7 +2,7 @@
 #define SPACE__TRANSFORMATIONS__TRANSLATABLE__HPP
 
 
-#include "../../MacroExports/include/MacroExports.hpp"
+#include "../../macro_exports/include/macro_exports.hpp"
 #include "andromeda/space/transformations/i_translatable.hpp"
 
 
@@ -17,22 +17,22 @@ namespace andromeda
 		~Translatable() override;
 
 		// Getters
-		bool StateChanged() const override;
-		const math::Vec3& GetPosition() const override;
-		const math::Mat4& GetTranslationMatrix() const override;
+		bool state_changed() const override;
+		const math::Vec3& get_position() const override;
+		const math::Mat4& get_translation_matrix() const override;
 		// Setters
-		void ResetState() override;
-		void SetPosition(const math::Vec3& position) override;
+		void reset_state() override;
+		void set_position(const math::Vec3& position) override;
 
-		void Translate(const math::Vec3& translation) override;
+		void translate(const math::Vec3& translation) override;
 
 	protected:
-		void UpdateTranslationMatrix();
+		void update_translation_matrix();
 
 	private:
-		bool m_stateChanged;
+		bool m_state_changed;
 		math::Vec3 m_position;
-		math::Mat4 m_translationMatrix;
+		math::Mat4 m_translation_matrix;
 	};
 }
 

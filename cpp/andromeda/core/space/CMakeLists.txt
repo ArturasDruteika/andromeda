@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(Space)
+project(space)
 
 set(CMAKE_BUILD_PARALLEL_LEVEL)
 set(CMAKE_CXX_STANDARD 23)
@@ -8,44 +8,42 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions(-DSPACE_EXPORT)
 
-# SPDLog
-
 
 # ==== Camera ====
 set(CAMERA_HEADERS
-    Space/Camera/include/PerspectiveControl.hpp
-    Space/Camera/include/CameraView.hpp
-    Space/Camera/include/CameraController.hpp
-    Space/Camera/include/Camera.hpp
+    Space/camera/include/perspective_control.hpp
+    Space/camera/include/camera_view.hpp
+    Space/camera/include/camera_controller.hpp
+    Space/camera/include/camera.hpp
 )
 
 set(CAMERA_SOURCES
-    Space/Camera/src/PerspectiveControl.cpp
-    Space/Camera/src/CameraView.cpp
-    Space/Camera/src/CameraController.cpp
-    Space/Camera/src/Camera.cpp
+    Space/camera/src/perspective_control.cpp
+    Space/camera/src/camera_view.cpp
+    Space/camera/src/camera_controller.cpp
+    Space/camera/src/camera.cpp
 )
 
 # ==== Coordinates ====
 set(COORDINATES_HEADERS
-    Space/Coordinates/include/Points.hpp
+    Space/coordinates/include/points.hpp
 )
 
 # ==== Light ====
 set(LIGHT_HEADERS
-    Space/Light/include/Light.hpp
-    Space/Light/include/DirectionalLight.hpp
-    Space/Light/include/PointLight.hpp
-    Space/Light/include/SpotLight.hpp
-    Space/Light/include/LightData.hpp
+    Space/light/include/light.hpp
+    Space/light/include/directional_light.hpp
+    Space/light/include/point_light.hpp
+    Space/light/include/spot_light.hpp
+    Space/light/include/light_data.hpp
 )
 
 set(LIGHT_SOURCES
-    Space/Light/src/Light.cpp
-    Space/Light/src/DirectionalLight.cpp
-    Space/Light/src/PointLight.cpp
-    Space/Light/src/SpotLight.cpp
-    Space/Light/src/LightData.cpp
+    Space/light/src/light.cpp
+    Space/light/src/directional_light.cpp
+    Space/light/src/point_light.cpp
+    Space/light/src/spot_light.cpp
+    Space/light/src/light_data.cpp
 )
 
 # ==== Macro Exports ====
@@ -55,102 +53,102 @@ set(MACRO_EXPORTS_HEADERS
 
 # ==== Materials ====
 set(MATERIALS_HEADERS
-    Space/Materials/include/Materials.hpp
-    Space/Materials/include/MaterialsLibrary.hpp
-    Space/Materials/include/MaterialTypes.hpp
+    Space/materials/include/materials.hpp
+    Space/materials/include/materials_library.hpp
+    Space/materials/include/material_types.hpp
 )
 
 set(MATERIALS_SOURCES
-    Space/Materials/src/Materials.cpp
-    Space/Materials/src/MaterialsLibrary.cpp
+    Space/materials/src/materials.cpp
+    Space/materials/src/materials_library.cpp
 )
 
 # ==== Objects ====
 set(OBJECTS_HEADERS
-    Space/Objects/include/CameraObject.hpp
-    Space/Objects/include/Cube.hpp
-    Space/Objects/include/GeometricObject.hpp
-    Space/Objects/include/LightObject.hpp
-    Space/Objects/include/Mesh.hpp
-    Space/Objects/include/Object.hpp
-    Space/Objects/include/Skyroom.hpp
-    Space/Objects/include/Sphere.hpp
-    Space/Objects/include/SurfaceObject.hpp
+    Space/objects/include/camera_object.hpp
+    Space/objects/include/cube.hpp
+    Space/objects/include/geometric_object.hpp
+    Space/objects/include/light_object.hpp
+    Space/objects/include/mesh.hpp
+    Space/objects/include/object.hpp
+    Space/objects/include/skyroom.hpp
+    Space/objects/include/sphere.hpp
+    Space/objects/include/surface_object.hpp
 )
 
 set(OBJECTS_SOURCES
-    Space/Objects/src/CameraObject.cpp
-    Space/Objects/src/Cube.cpp
-    Space/Objects/src/GeometricObject.cpp
-    Space/Objects/src/LightObject.cpp
-    Space/Objects/src/Mesh.cpp
-    Space/Objects/src/Object.cpp
-    Space/Objects/src/Skyroom.cpp
-    Space/Objects/src/Sphere.cpp
-    Space/Objects/src/SurfaceObject.cpp
+    Space/objects/src/camera_object.cpp
+    Space/objects/src/cube.cpp
+    Space/objects/src/geometric_object.cpp
+    Space/objects/src/light_object.cpp
+    Space/objects/src/mesh.cpp
+    Space/objects/src/object.cpp
+    Space/objects/src/skyroom.cpp
+    Space/objects/src/sphere.cpp
+    Space/objects/src/surface_object.cpp
 )
 
 # ==== Scene ====
 set(SCENE_HEADERS
-    Space/Scene/include/CameraHandler.hpp
-    Space/Scene/include/Scene.hpp
-    Space/Scene/include/SceneEnvironment.hpp
-    Space/Scene/include/SceneLighting.hpp
-    Space/Scene/include/SceneNodeManager.hpp
-    Space/Scene/include/SceneObjects.hpp
-    Space/Scene/include/SceneState.hpp
-    Space/Scene/include/SceneUpdateHooks.hpp
+    Space/scene/include/camera_handler.hpp
+    Space/scene/include/scene.hpp
+    Space/scene/include/scene_environment.hpp
+    Space/scene/include/scene_lighting.hpp
+    Space/scene/include/scene_node_manager.hpp
+    Space/scene/include/scene_objects.hpp
+    Space/scene/include/scene_state.hpp
+    Space/scene/include/scene_update_hooks.hpp
 )
 
 # ==== UpdateHooks ====
 set(UPDATE_HOOKS_HEADERS
-    Space/UpdateHooks/include/UpdateHooks.hpp
+    Space/update_hooks/include/update_hooks.hpp
 )
 
 set(UPDATE_HOOKS_SOURCES
-    Space/UpdateHooks/src/UpdateHooks.cpp
+    Space/update_hooks/src/update_hooks.cpp
 )
 
 set(SCENE_SOURCES
-    Space/Scene/src/CameraHandler.cpp
-    Space/Scene/src/Scene.cpp
-    Space/Scene/src/SceneEnvironment.cpp
-    Space/Scene/src/SceneLighting.cpp
-    Space/Scene/src/SceneNodeManager.cpp
-    Space/Scene/src/SceneObjects.cpp
-    Space/Scene/src/SceneState.cpp
-    Space/Scene/src/SceneUpdateHooks.cpp
+    Space/scene/src/camera_handler.cpp
+    Space/scene/src/scene.cpp
+    Space/scene/src/scene_environment.cpp
+    Space/scene/src/scene_lighting.cpp
+    Space/scene/src/scene_node_manager.cpp
+    Space/scene/src/scene_objects.cpp
+    Space/scene/src/scene_state.cpp
+    Space/scene/src/scene_update_hooks.cpp
 )
 
 # ==== SceneGraph ====
 set(SCENE_GRAPH_HEADERS
-    Space/SceneGraph/include/SceneComponent.hpp
-    Space/SceneGraph/include/SceneNode.hpp
-    Space/SceneGraph/include/ObjectComponent.hpp
-    Space/SceneGraph/include/LightComponent.hpp
+    Space/scene_graph/include/scene_component.hpp
+    Space/scene_graph/include/scene_node.hpp
+    Space/scene_graph/include/object_component.hpp
+    Space/scene_graph/include/light_component.hpp
 )
 
 set(SCENE_GRAPH_SOURCES
-    Space/SceneGraph/src/SceneComponent.cpp
-    Space/SceneGraph/src/SceneNode.cpp
-    Space/SceneGraph/src/ObjectComponent.cpp
-    Space/SceneGraph/src/LightComponent.cpp
+    Space/scene_graph/src/scene_component.cpp
+    Space/scene_graph/src/scene_node.cpp
+    Space/scene_graph/src/object_component.cpp
+    Space/scene_graph/src/light_component.cpp
 )
 
 # ==== Transformations ====
 set(TRANSFORMATIONS_HEADERS
-    Space/Transformations/include/Rotatable.hpp
-    Space/Transformations/include/Scalable.hpp
-    Space/Transformations/include/Transformable.hpp
-    Space/Transformations/include/TransformationTypes.hpp
-    Space/Transformations/include/Translatable.hpp
+    Space/transformations/include/rotatable.hpp
+    Space/transformations/include/scalable.hpp
+    Space/transformations/include/transformable.hpp
+    Space/transformations/include/transformation_types.hpp
+    Space/transformations/include/translatable.hpp
 )
 
 set(TRANSFORMATIONS_SOURCES
-    Space/Transformations/src/Rotatable.cpp
-    Space/Transformations/src/Scalable.cpp
-    Space/Transformations/src/Transformable.cpp
-    Space/Transformations/src/Translatable.cpp
+    Space/transformations/src/rotatable.cpp
+    Space/transformations/src/scalable.cpp
+    Space/transformations/src/transformable.cpp
+    Space/transformations/src/translatable.cpp
 )
 
 # ==== Target ====
@@ -185,16 +183,16 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
         precompiled_headers
-        Api
+        api
         math
-        Utils
+        utils
         spdlog::spdlog
 )
 
 # ==== Dependencies ====
 add_dependencies(${PROJECT_NAME}
     math
-    Utils
+    utils
 )
 
 
@@ -229,9 +227,9 @@ add_custom_command(
 # ==== IDE Organization ====
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Camera
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/camera
     PREFIX
-        "Camera"
+        "camera"
     FILES
         ${CAMERA_HEADERS}
         ${CAMERA_SOURCES}
@@ -239,18 +237,18 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Coordinates
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/coordinates
     PREFIX
-        "Coordinates"
+        "coordinates"
     FILES
         ${COORDINATES_HEADERS}
 )
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Light
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/light
     PREFIX
-        "Light"
+        "light"
     FILES
         ${LIGHT_HEADERS}
         ${LIGHT_SOURCES}
@@ -267,9 +265,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Materials
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/materials
     PREFIX
-        "Materials"
+        "materials"
     FILES
         ${MATERIALS_HEADERS}
         ${MATERIALS_SOURCES}
@@ -277,9 +275,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Objects
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/objects
     PREFIX
-        "Objects"
+        "objects"
     FILES
         ${OBJECTS_HEADERS}
         ${OBJECTS_SOURCES}
@@ -287,9 +285,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Scene
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/scene
     PREFIX
-        "Scene"
+        "scene"
     FILES
         ${SCENE_HEADERS}
         ${SCENE_SOURCES}
@@ -297,9 +295,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/SceneGraph
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/scene_graph
     PREFIX
-        "SceneGraph"
+        "scene_graph"
     FILES
         ${SCENE_GRAPH_HEADERS}
         ${SCENE_GRAPH_SOURCES}
@@ -307,9 +305,9 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/Transformations
+        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/transformations
     PREFIX
-        "Transformations"
+        "transformations"
     FILES
         ${TRANSFORMATIONS_HEADERS}
         ${TRANSFORMATIONS_SOURCES}

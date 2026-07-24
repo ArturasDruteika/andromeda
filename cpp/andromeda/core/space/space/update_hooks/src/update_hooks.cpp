@@ -1,19 +1,19 @@
-#include "../include/UpdateHooks.hpp"
+#include "../include/update_hooks.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
     UpdateHooks::UpdateHooks()
-        : m_nextId{ 0 }
+        : m_next_id{ 0 }
     {
     }
 
     UpdateHooks::~UpdateHooks() = default;
 
-    UpdateHooks::Handle UpdateHooks::Add(Callback callback)
+    UpdateHooks::Handle UpdateHooks::add(Callback callback)
     {
         Handle handle;
-        handle.id = ++m_nextId;
+        handle.id = ++m_next_id;
 
         Entry entry;
         entry.id = handle.id;
@@ -24,7 +24,7 @@ namespace andromeda::Space
         return handle;
     }
 
-    void UpdateHooks::Remove(Handle handle)
+    void UpdateHooks::remove(Handle handle)
     {
         auto it = std::remove_if(
             m_entries.begin(),
@@ -37,16 +37,17 @@ namespace andromeda::Space
         m_entries.erase(it, m_entries.end());
     }
 
-    void UpdateHooks::Clear()
+    void UpdateHooks::clear()
     {
         m_entries.clear();
     }
 
-    void UpdateHooks::run(float deltaTime)
+    void UpdateHooks::run(float delta_time)
     {
         // Capture ids so callbacks can remove themselves safely.
         std::vector<uint64_t> ids;
         ids.reserve(m_entries.size());
+
         for (const auto& entry : m_entries)
         {
             ids.push_back(entry.id);
@@ -64,7 +65,7 @@ namespace andromeda::Space
 
             if (it != m_entries.end() && it->fn)
             {
-                it->fn(deltaTime);
+                it->fn(delta_time);
             }
         }
     }
