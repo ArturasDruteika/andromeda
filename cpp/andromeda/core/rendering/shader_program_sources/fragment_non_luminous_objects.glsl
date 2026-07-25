@@ -7,36 +7,36 @@ in vec4 v_FragPosLightSpace;     // lightVP * worldPos
 out vec4 outColor;
 
 // ===== material =====
-uniform vec3  u_materialAmbient;
-uniform vec3  u_materialDiffuse;
-uniform vec3  u_materialSpecular;
-uniform float u_materialShininess;
+uniform vec3  u_material_ambient;
+uniform vec3  u_material_diffuse;
+uniform vec3  u_material_specular;
+uniform float u_material_shininess;
 
 // ===== camera =====
 uniform vec3 u_cameraPosWS;
 
 // ===== shadow samplers =====
-uniform sampler2D         u_dirShadowMap;     // manual compare (no compare mode)
-uniform samplerCube       u_pointShadowCube;  // manual compare (COMPARE_MODE = GL_NONE)
+uniform sampler2D         u_dir_shadow_map;     // manual compare (no compare mode)
+uniform samplerCube       u_point_shadow_cube;  // manual compare (COMPARE_MODE = GL_NONE)
 
 // ===== directional lights =====
-uniform int      u_numDirLights;
-uniform vec3     u_dirLightDirections[8];     // EXPECTED: light -> scene (ray dir)
-uniform vec3     u_dirLightAmbient[8];
-uniform vec3     u_dirLightDiffuse[8];
-uniform vec3     u_dirLightSpecular[8];
+uniform int      u_num_dir_lights;
+uniform vec3     u_dir_light_directions[8];     // EXPECTED: light -> scene (ray dir)
+uniform vec3     u_dir_light_ambient[8];
+uniform vec3     u_dir_light_diffuse[8];
+uniform vec3     u_dir_light_specular[8];
 
 // ===== point lights =====
-uniform int   u_numPointLights;
-uniform vec3  u_pointLightPositions[16];
-uniform vec3  u_pointLightAmbient[16];
-uniform vec3  u_pointLightDiffuse[16];
-uniform vec3  u_pointLightSpecular[16];
-uniform float u_pointLightConstant[16];
-uniform float u_pointLightLinear[16];
-uniform float u_pointLightQuadratic[16];
-uniform float u_pointLightFarPlanes[16];
-uniform float u_pointLightIntensity[16];
+uniform int   u_num_point_lights;
+uniform vec3  u_point_light_positions[16];
+uniform vec3  u_point_light_ambient[16];
+uniform vec3  u_point_light_diffuse[16];
+uniform vec3  u_point_light_specular[16];
+uniform float u_point_light_constant[16];
+uniform float u_point_light_linear[16];
+uniform float u_point_light_quadratic[16];
+uniform float u_point_light_far_planes[16];
+uniform float u_point_light_intensity[16];
 
 
 const vec3 kSampleDirs[20] = vec3[](
@@ -74,14 +74,14 @@ float DirShadowVisibility(vec4 fragPosLightSpace, vec3 normalWS, vec3 lightDirWS
     float bias = max(constBias, slopeFactor * (1.0 - NdotL));
 
     // 3x3 PCF
-    vec2 texelSize = 1.0 / vec2(textureSize(u_dirShadowMap, 0));
+    vec2 texelSize = 1.0 / vec2(textureSize(u_dir_shadow_map, 0));
     float vis = 0.0;
     for (int dy = -1; dy <= 1; ++dy)
     {
         for (int dx = -1; dx <= 1; ++dx)
         {
             vec2 o = vec2(dx, dy) * texelSize;
-            float mapDepth = texture(u_dirShadowMap, projCoords.xy + o).r;
+            float mapDepth = texture(u_dir_shadow_map, projCoords.xy + o).r;
             float current  = projCoords.z - bias;
             vis += (current <= mapDepth) ? 1.0 : 0.0;
         }
@@ -107,7 +107,7 @@ float PointShadowVisibilitySingle(vec3 fragPosWS, vec3 normalWS, vec3 lightPosWS
     for (int i = 0; i < samples; ++i)
     {
         // Sample stored normalized depth from the cubemap
-        float stored = texture(u_pointShadowCube, toFrag + kSampleDirs[i] * radius).r;
+        float stored = texture(u_point_shadow_cube, toFrag + kSampleDirs[i] * radius).r;
         float closestDepth = stored * farPlane; // de-normalize
 
         if (currentDist - bias > closestDepth)
@@ -147,14 +147,14 @@ vec3 ShadeBlinnPhong(
     vec3 l = normalize(lightDirWS);
 
     // Ambient (not shadowed)
-    vec3 ambientTerm = ambientColor * u_materialAmbient;
+    vec3 ambientTerm = ambientColor * u_material_ambient;
 
     // Diffuse
     float NdotL = max(dot(n_diffuse, l), 0.0);
-    vec3  diffuseTerm = diffuseColor * u_materialDiffuse * NdotL;
+    vec3  diffuseTerm = diffuseColor * u_material_diffuse * NdotL;
 
     // Blinn–Phong specular with flat normal (seam-free)
-    float shin = clamp(u_materialShininess, 1.0, 128.0);
+    float shin = clamp(u_material_shininess, 1.0, 128.0);
     float specStrength = 0.9;
     if (NdotL > 0.0)
     {
@@ -164,7 +164,7 @@ vec3 ShadeBlinnPhong(
         // tame grazing spikes
         specStrength *= NdotL;
     }
-    vec3 specularTerm = specularColor * u_materialSpecular * specStrength;
+    vec3 specularTerm = specularColor * u_material_specular * specStrength;
 
     // Apply shadowing to direct terms only
     return ambientTerm + intensity * attenuation * shadowVisibility * (diffuseTerm + specularTerm);
@@ -178,10 +178,10 @@ void main()
     vec3 colorAccum = vec3(0.0);
 
     // ----- Directional lights -----
-    for (int i = 0; i < u_numDirLights; ++i)
+    for (int i = 0; i < u_num_dir_lights; ++i)
     {
-        // If your engine stores scene->light, flip here: vec3 lightDirWS = -u_dirLightDirections[i];
-        vec3 lightDirWS = normalize(-u_dirLightDirections[i]); // light -> scene
+        // If your engine stores scene->light, flip here: vec3 lightDirWS = -u_dir_light_directions[i];
+        vec3 lightDirWS = normalize(-u_dir_light_directions[i]); // light -> scene
 
         float visibility = 1.0;
         // TODO: later implement visibility if multiple directional shadows exist
@@ -193,24 +193,24 @@ void main()
             viewDir, 
             lightDirWS,
             1.0,
-            u_dirLightAmbient[i], 
-            u_dirLightDiffuse[i], 
-            u_dirLightSpecular[i],
+            u_dir_light_ambient[i], 
+            u_dir_light_diffuse[i], 
+            u_dir_light_specular[i],
             1.0,
             visibility
         );
     }
 
     // ----- Point lights -----
-    for (int i = 0; i < u_numPointLights; ++i)
+    for (int i = 0; i < u_num_point_lights; ++i)
     {
-        vec3 lightPosWS = u_pointLightPositions[i];
+        vec3 lightPosWS = u_point_light_positions[i];
         vec3 lightDirWS = lightPosWS - v_FragPos;   // light -> frag
         float dist      = length(lightDirWS);
 
-        float attenuation = 1.0 / (u_pointLightConstant[i] +
-                                   u_pointLightLinear[i] * dist +
-                                   u_pointLightQuadratic[i] * dist * dist);
+        float attenuation = 1.0 / (u_point_light_constant[i] +
+                                   u_point_light_linear[i] * dist +
+                                   u_point_light_quadratic[i] * dist * dist);
 
         float visibility = 1.0;
         // TODO: later implement visibility if multiple point shadows exist
@@ -218,18 +218,18 @@ void main()
             visibility = PointShadowVisibilitySingle(
                 v_FragPos, 
                 normalWS, 
-                u_pointLightPositions[i], 
-                u_pointLightFarPlanes[i]
+                u_point_light_positions[i], 
+                u_point_light_far_planes[i]
             );
 
         colorAccum += ShadeBlinnPhong(
             normalWS, 
             viewDir, 
             lightDirWS,
-            u_pointLightIntensity[i], 
-            u_pointLightAmbient[i], 
-            u_pointLightDiffuse[i], 
-            u_pointLightSpecular[i],
+            u_point_light_intensity[i], 
+            u_point_light_ambient[i], 
+            u_point_light_diffuse[i], 
+            u_point_light_specular[i],
             attenuation,
             visibility
         );

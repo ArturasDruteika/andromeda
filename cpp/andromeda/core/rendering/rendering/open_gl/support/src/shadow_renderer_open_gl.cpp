@@ -37,7 +37,7 @@ namespace andromeda::rendering
 
         ShaderOpenGL* depth_shader = shader_manager.get_shader(ShaderOpenGLTypes::ShadowMap);
         depth_shader->bind();
-        depth_shader->set_uniform("u_lightSpaceMatrix", light_space_matrix);
+        depth_shader->set_uniform("u_light_space_matrix", light_space_matrix);
 
         for (const auto& [id, obj] : objects)
         {
@@ -131,9 +131,9 @@ namespace andromeda::rendering
             matrices[i] = proj * glm::lookAt(light_pos, targets[i], ups[i]);
         }
 
-        shader->set_uniform("u_shadowMatrices[0]", matrices);
-        shader->set_uniform("u_lightPos", light_pos);
-        shader->set_uniform("u_farPlane", far_plane);
+        shader->set_uniform("u_shadow_matrices[0]", matrices);
+        shader->set_uniform("u_light_pos", light_pos);
+        shader->set_uniform("u_far_plane", far_plane);
 
         for (const auto& [id, obj] : objects)
         {
@@ -222,11 +222,11 @@ namespace andromeda::rendering
             specular.push_back(MathUtils::to_glm(light->get_specular()));
         }
 
-        shader.set_uniform("u_numDirLights", static_cast<int>(directions.size()));
-        shader.set_uniform("u_dirLightDirections", directions);
-        shader.set_uniform("u_dirLightAmbient", ambient);
-        shader.set_uniform("u_dirLightDiffuse", diffuse);
-        shader.set_uniform("u_dirLightSpecular", specular);
+        shader.set_uniform("u_num_dir_lights", static_cast<int>(directions.size()));
+        shader.set_uniform("u_dir_light_directions", directions);
+        shader.set_uniform("u_dir_light_ambient", ambient);
+        shader.set_uniform("u_dir_light_diffuse", diffuse);
+        shader.set_uniform("u_dir_light_specular", specular);
     }
 
     void ShadowRendererOpenGL::populate_point_light_uniforms(
@@ -251,15 +251,15 @@ namespace andromeda::rendering
             far_plane.push_back(point_light->get_shadow_far_plane());
         }
 
-        shader.set_uniform("u_numPointLights", static_cast<int>(positions.size()));
-        shader.set_uniform("u_pointLightPositions", positions);
-        shader.set_uniform("u_pointLightAmbient", ambient);
-        shader.set_uniform("u_pointLightDiffuse", diffuse);
-        shader.set_uniform("u_pointLightSpecular", specular);
-        shader.set_uniform("u_pointLightIntensity", intensity);
-        shader.set_uniform("u_pointLightConstant", constant);
-        shader.set_uniform("u_pointLightLinear", linear);
-        shader.set_uniform("u_pointLightQuadratic", quadratic);
-        shader.set_uniform("u_pointLightFarPlanes", far_plane);
+        shader.set_uniform("u_num_point_lights", static_cast<int>(positions.size()));
+        shader.set_uniform("u_point_light_positions", positions);
+        shader.set_uniform("u_point_light_ambient", ambient);
+        shader.set_uniform("u_point_light_diffuse", diffuse);
+        shader.set_uniform("u_point_light_specular", specular);
+        shader.set_uniform("u_point_light_intensity", intensity);
+        shader.set_uniform("u_point_light_constant", constant);
+        shader.set_uniform("u_point_light_linear", linear);
+        shader.set_uniform("u_point_light_quadratic", quadratic);
+        shader.set_uniform("u_point_light_far_planes", far_plane);
     }
 }

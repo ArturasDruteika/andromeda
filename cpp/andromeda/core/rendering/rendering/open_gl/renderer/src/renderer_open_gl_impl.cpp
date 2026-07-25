@@ -188,8 +188,8 @@ namespace andromeda::rendering
 
         if (has_dir)
         {
-            shader->set_uniform("u_dirShadowMap", DIR_UNIT);
-            shader->set_uniform("u_lightSpaceMatrix", m_shadow_map_light_space);
+            shader->set_uniform("u_dir_shadow_map", DIR_UNIT);
+            shader->set_uniform("u_light_space_matrix", m_shadow_map_light_space);
 
             ShadowRendererOpenGL::populate_directional_light_uniforms(
                 *shader,
@@ -199,7 +199,7 @@ namespace andromeda::rendering
 
         if (has_point)
         {
-            shader->set_uniform("u_pointShadowCube", POINT_UNIT);
+            shader->set_uniform("u_point_shadow_cube", POINT_UNIT);
 
             ShadowRendererOpenGL::populate_point_light_uniforms(
                 *shader,
@@ -564,13 +564,13 @@ namespace andromeda::rendering
                     MathUtils::to_glm(transform_it->second->get_model_matrix())
                 );
 
-                shader.set_uniform("u_materialAmbient", MathUtils::to_glm(material->get_ambient()));
-                shader.set_uniform("u_materialDiffuse", MathUtils::to_glm(material->get_diffuse()));
-                shader.set_uniform("u_materialSpecular", MathUtils::to_glm(material->get_specular()));
-                shader.set_uniform("u_materialShininess", material->get_shininess());
+                shader.set_uniform("u_material_ambient", MathUtils::to_glm(material->get_ambient()));
+                shader.set_uniform("u_material_diffuse", MathUtils::to_glm(material->get_diffuse()));
+                shader.set_uniform("u_material_specular", MathUtils::to_glm(material->get_specular()));
+                shader.set_uniform("u_material_shininess", material->get_shininess());
 
                 shader.set_uniform("u_model", MathUtils::to_glm(transform_it->second->get_model_matrix()));
-                shader.set_uniform("u_normalMatrix", normal_matrix);
+                shader.set_uniform("u_normal_matrix", normal_matrix);
 
                 const int obj_id = obj->get_id();
                 const GpuMeshOpenGL* mesh = m_mesh_cache.try_get(obj_id);

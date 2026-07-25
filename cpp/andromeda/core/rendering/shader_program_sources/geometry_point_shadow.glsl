@@ -5,7 +5,7 @@ layout (triangle_strip, max_vertices = 18) out;
 in vec3 v_WorldPos[];    // from VS
 out vec3 gWorldPos;      // to FS
 
-uniform mat4 u_shadowMatrices[6];
+uniform mat4 u_shadow_matrices[6];
 
 void main()
 {
@@ -16,7 +16,7 @@ void main()
         for (int i = 0; i < 3; ++i)
         {
             gWorldPos   = v_WorldPos[i];
-            gl_Position = u_shadowMatrices[face] * vec4(v_WorldPos[i], 1.0);
+            gl_Position = u_shadow_matrices[face] * vec4(v_WorldPos[i], 1.0);
             EmitVertex();
         }
         EndPrimitive();

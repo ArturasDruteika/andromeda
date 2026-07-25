@@ -109,7 +109,7 @@ namespace andromeda::application
             }
         }
 
-        run();
+        run_render_loop();
         
         return 0;
     }
@@ -214,15 +214,15 @@ namespace andromeda::application
             });
     }
 
-    void Application::render_loop()
+    void Application::run_render_loop()
     {
         while (!m_p_window->should_close())
         {
             m_p_window->poll_events();
+
             if (m_p_scene)
-            {
                 m_p_scene->update(0.016f); // Example deltaTime (60Hz)
-            }
+
             m_p_renderer->render_frame(*m_p_scene);
             m_p_context->present();
         }
