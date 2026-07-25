@@ -2,7 +2,7 @@
 #define SPACE__MATERIAL_TYPES__HPP
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
     enum class MaterialType 
     {

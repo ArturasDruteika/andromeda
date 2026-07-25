@@ -1,38 +1,42 @@
-#include "../include/SceneEnvironment.hpp"
+#include "../include/scene_environment.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
 	SceneEnvironment::SceneEnvironment()
-		: m_ambientStrength{ 0.1f }
-		, m_backgroundColor{ math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f } }
+		: m_ambient_strength{ 0.1f }
+		, m_background_color{ math::Vec4{ 0.0f, 0.0f, 0.0f, 1.0f } }
 	{
 	}
 
 	SceneEnvironment::~SceneEnvironment() = default;
 
-	float SceneEnvironment::GetAmbientStrength() const
+	float SceneEnvironment::get_ambient_strength() const
 	{
-		return m_ambientStrength;
+		return m_ambient_strength;
 	}
 
-	const math::Vec4& SceneEnvironment::GetBackgroundColor() const
+	const math::Vec4& SceneEnvironment::get_background_color() const
 	{
-		return m_backgroundColor;
+		return m_background_color;
 	}
 
-	void SceneEnvironment::SetAmbientStrength(float ambientStrength)
+	void SceneEnvironment::set_ambient_strength(float ambient_strength)
 	{
-		m_ambientStrength = ambientStrength;
+		m_ambient_strength = ambient_strength;
 	}
 
-	void SceneEnvironment::SetBackgroundColor(const math::Vec4& backroundColor)
+	void SceneEnvironment::set_background_color(
+		const math::Vec4& background_color
+	)
 	{
-		m_backgroundColor = backroundColor;
+		m_background_color = background_color;
 	}
 
-	void SceneEnvironment::ResizeGrid(float resizeFactor)
+	void SceneEnvironment::resize_grid(float resize_factor)
 	{
-		// Implementation for resizing the grid can be added here
+		(void)resize_factor;
+
+		// Implementation for resizing the grid can be added here.
 	}
 }

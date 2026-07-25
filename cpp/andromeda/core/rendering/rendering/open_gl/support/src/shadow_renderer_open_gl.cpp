@@ -61,7 +61,7 @@ namespace andromeda::rendering
 
             depth_shader->set_uniform(
                 "u_model",
-                math_utils::to_glm(transform_it->second->get_model_matrix())
+                MathUtils::to_glm(transform_it->second->get_model_matrix())
             );
             glBindVertexArray(mesh->get_vao());
             glDrawElements(
@@ -162,7 +162,7 @@ namespace andromeda::rendering
 
             shader->set_uniform(
                 "u_model",
-                math_utils::to_glm(transform_it->second->get_model_matrix())
+                MathUtils::to_glm(transform_it->second->get_model_matrix())
             );
             glBindVertexArray(mesh->get_vao());
             glDrawElements(
@@ -185,12 +185,12 @@ namespace andromeda::rendering
     {
         const IDirectionalLight* light = directional_lights.begin()->second;
 
-        glm::vec3 direction = math_utils::to_glm(light->get_direction());
+        glm::vec3 direction = MathUtils::to_glm(light->get_direction());
         glm::vec3 up(0.0f, 1.0f, 0.0f);
 
-        glm::vec3 light_pos = math_utils::to_glm(scene_center) - direction * 20.0f;
+        glm::vec3 light_pos = MathUtils::to_glm(scene_center) - direction * 20.0f;
 
-        glm::mat4 view = glm::lookAt(light_pos, math_utils::to_glm(scene_center), up);
+        glm::mat4 view = glm::lookAt(light_pos, MathUtils::to_glm(scene_center), up);
 
         glm::mat4 proj = glm::ortho(
             -light->get_light_orthographic_half_size(),
@@ -216,10 +216,10 @@ namespace andromeda::rendering
 
         for (const auto& [id, light] : directional_lights)
         {
-            directions.push_back(math_utils::to_glm(light->get_direction()));
+            directions.push_back(MathUtils::to_glm(light->get_direction()));
             ambient.push_back(glm::vec3(0.9f));
-            diffuse.push_back(math_utils::to_glm(light->get_diffuse()));
-            specular.push_back(math_utils::to_glm(light->get_specular()));
+            diffuse.push_back(MathUtils::to_glm(light->get_diffuse()));
+            specular.push_back(MathUtils::to_glm(light->get_specular()));
         }
 
         shader.set_uniform("u_numDirLights", static_cast<int>(directions.size()));
@@ -239,10 +239,10 @@ namespace andromeda::rendering
 
         for (const auto& [id, point_light] : point_lights)
         {
-            positions.push_back(math_utils::to_glm(point_light->get_position()));
-            ambient.push_back(math_utils::to_glm(point_light->get_ambient()));
-            diffuse.push_back(math_utils::to_glm(point_light->get_diffuse()));
-            specular.push_back(math_utils::to_glm(point_light->get_specular()));
+            positions.push_back(MathUtils::to_glm(point_light->get_position()));
+            ambient.push_back(MathUtils::to_glm(point_light->get_ambient()));
+            diffuse.push_back(MathUtils::to_glm(point_light->get_diffuse()));
+            specular.push_back(MathUtils::to_glm(point_light->get_specular()));
 
             intensity.push_back(point_light->get_intensity());
             constant.push_back(point_light->get_attenuation_constant());

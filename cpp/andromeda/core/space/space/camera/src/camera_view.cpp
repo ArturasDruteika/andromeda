@@ -1,65 +1,105 @@
-#include "../include/CameraView.hpp"
+#include "../include/camera_view.hpp"
 #include "math/linear_algebra/include/linear_algebra_operations.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
-	CameraView::CameraView(const math::Vec3& position, const math::Vec3& targetCoords)
+	CameraView::CameraView(
+		const math::Vec3& position,
+		const math::Vec3& target_coords
+	)
 		: m_position{ position }
-		, m_targetCoords{ targetCoords }
-		, m_forward{ math::LinAlgOps::Normalize(m_targetCoords - m_position) }
-		, m_right{ math::LinAlgOps::Normalize(math::LinAlgOps::Cross(m_forward, math::Vec3(0.0f, 1.0f, 0.0f))) }
-		, m_up{ math::LinAlgOps::Cross(m_right, m_forward) }
+		, m_target_coords{ target_coords }
+		, m_forward{
+			math::LinAlgOps::normalize(
+				m_target_coords - m_position
+			)
+		}
+		, m_right{
+			math::LinAlgOps::normalize(
+				math::LinAlgOps::cross(
+					m_forward,
+					math::Vec3(0.0f, 1.0f, 0.0f)
+				)
+			)
+		}
+		, m_up{
+			math::LinAlgOps::cross(
+				m_right,
+				m_forward
+			)
+		}
+		, m_view_matrix{}
 	{
-		CalculateViewMatrix();
+		calculate_view_matrix();
 	}
 
 	CameraView::~CameraView() = default;
 
-	const math::Vec3& CameraView::GetPosition() const
+	const math::Vec3& CameraView::get_position() const
 	{
 		return m_position;
 	}
 
-	const math::Vec3& CameraView::GetTargetCoords() const
+	const math::Vec3& CameraView::get_target_coords() const
 	{
-		return m_targetCoords;
+		return m_target_coords;
 	}
 
-	const math::Vec3& CameraView::GetForward() const
+	const math::Vec3& CameraView::get_forward() const
 	{
 		return m_forward;
 	}
 
-	const math::Vec3& CameraView::GetRight() const
+	const math::Vec3& CameraView::get_right() const
 	{
 		return m_right;
 	}
 
-	const math::Vec3& CameraView::GetUp() const
+	const math::Vec3& CameraView::get_up() const
 	{
 		return m_up;
 	}
 
-	const math::Mat4& CameraView::GetViewMatrix() const
+	const math::Mat4& CameraView::get_view_matrix() const
 	{
-		return m_viewMat;
+		return m_view_matrix;
 	}
 
-	void CameraView::SetPosition(const math::Vec3& position)
+	void CameraView::set_position(const math::Vec3& position)
 	{
 		m_position = position;
-		CalculateViewMatrix();
+		calculate_view_matrix();
 	}
 
-	void CameraView::SetTargetCoords(const math::Vec3& targetCoords)
+	void CameraView::set_target_coords(const math::Vec3& target_coords)
 	{
-		m_targetCoords = targetCoords;
-		CalculateViewMatrix();
+		m_target_coords = target_coords;
+		calculate_view_matrix();
 	}
 
-	void CameraView::CalculateViewMatrix()
+	void CameraView::calculate_view_matrix()
 	{
-		m_viewMat = math::LinAlgOps::LookAt(m_position, m_targetCoords, m_up);
+		m_forward = math::LinAlgOps::normalize(
+			m_target_coords - m_position
+		);
+
+		m_right = math::LinAlgOps::normalize(
+			math::LinAlgOps::cross(
+				m_forward,
+				math::Vec3(0.0f, 1.0f, 0.0f)
+			)
+		);
+
+		m_up = math::LinAlgOps::cross(
+			m_right,
+			m_forward
+		);
+
+		m_view_matrix = math::LinAlgOps::look_at(
+			m_position,
+			m_target_coords,
+			m_up
+		);
 	}
 }

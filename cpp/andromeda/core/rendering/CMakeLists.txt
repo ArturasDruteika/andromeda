@@ -136,7 +136,7 @@ target_include_directories(${PROJECT_NAME}
         ${CMAKE_CURRENT_SOURCE_DIR}/
 )
 
-# Link libraries - Api is INTERFACE, so this just pulls in its usage requirements
+# Link libraries - api is INTERFACE, so this just pulls in its usage requirements
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
         precompiled_headers
@@ -179,7 +179,7 @@ set(SHADER_FILES
 # Create full source paths
 set(SHADER_SOURCE_PATHS "")
 foreach(FILE_NAME IN LISTS SHADER_FILES)
-    list(APPEND SHADER_SOURCE_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/ShaderProgramSources/${FILE_NAME}")
+    list(APPEND SHADER_SOURCE_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/shader_program_sources/${FILE_NAME}")
 endforeach()
 
 # Determine output directory based on platform

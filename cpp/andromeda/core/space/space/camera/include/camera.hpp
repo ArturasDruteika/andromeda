@@ -1,15 +1,16 @@
-#ifndef RENDERING__CAMERA__HPP
-#define RENDERING__CAMERA__HPP
+#ifndef SPACE__CAMERA__CAMERA__HPP
+#define SPACE__CAMERA__CAMERA__HPP
 
 
-#include "PerspectiveControl.hpp"
-#include "CameraController.hpp"
-#include "../../MacroExports/include/MacroExports.hpp"
+#include "../../macro_exports/include/macro_exports.hpp"
+#include "camera_controller.hpp"
+#include "perspective_control.hpp"
+
 #include "andromeda/space/camera/i_camera.hpp"
-#include "math/Constants/include/constants.hpp"
+#include "math/constants/include/constants.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
     class SPACE_API Camera
         : public ICamera
@@ -18,15 +19,21 @@ namespace andromeda::Space
     {
     public:
         Camera();
-        Camera(const math::Vec3& position, float yawRadians = -math::PI_HALF, float pitchRadians = 0.0f);
-        ~Camera();
 
-        //void SetOnDistanceChange(OnDistanceChange callback);
+        Camera(
+            const math::Vec3& position,
+            float yaw_radians = -math::PI_HALF,
+            float pitch_radians = 0.0f
+        );
 
-    //private:
-        //OnDistanceChange m_onDistanceChangeCallback;
+        ~Camera() override;
+
+        // void set_on_distance_change(OnDistanceChange callback);
+
+    private:
+        // OnDistanceChange m_on_distance_change_callback;
     };
 }
 
 
-#endif // RENDERING__CAMERA__HPP
+#endif // SPACE__CAMERA__CAMERA__HPP

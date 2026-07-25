@@ -81,7 +81,7 @@ namespace andromeda::platform
                     // Option B: handle some platform-level stuff here
                     window::EventDispatcher dispatcher(e);
 
-                    dispatcher.Dispatch<window::WindowCloseEvent>(
+                    dispatcher.dispatch<window::WindowCloseEvent>(
                         [this](window::WindowCloseEvent& evt)
                         {
                             // maybe tell engine to stop, etc.
@@ -247,7 +247,7 @@ namespace andromeda::platform
 
 namespace andromeda
 {
-    std::unique_ptr<Iplatform> create_platform(const GraphicsBackend& graphics_backend)
+    std::unique_ptr<IPlatform> create_platform(const GraphicsBackend& graphics_backend)
     {
         spdlog::info(
             "create_platform() called with backend {}",
@@ -256,7 +256,7 @@ namespace andromeda
 
         try
         {
-            std::unique_ptr<Iplatform> platform = std::make_unique<platform::Platform>(graphics_backend);
+            std::unique_ptr<IPlatform> platform = std::make_unique<platform::Platform>(graphics_backend);
             return platform;
         }
         catch (const std::exception& ex)

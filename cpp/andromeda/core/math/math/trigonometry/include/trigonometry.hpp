@@ -5,7 +5,7 @@
 #define MATH__TRIGONOMETRY__HPP
 
 
-#include "../../MacroExports/include/macro_exports.hpp"
+#include "../../macro_exports/include/macro_exports.hpp"
 
 
 namespace andromeda::math

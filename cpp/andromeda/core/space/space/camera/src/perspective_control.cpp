@@ -1,92 +1,122 @@
-#include "../include/PerspectiveControl.hpp"
+#include "../include/perspective_control.hpp"
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 #include "math/linear_algebra/include/linear_algebra_operations.hpp"
-#include "math/Trigonometry/include/trigonometry.hpp"
+#include "math/trigonometry/include/trigonometry.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
 	PerspectiveControl::PerspectiveControl()
-		: m_fovDeg{ 45.0f }
-		, m_nearPlane{ 0.1f }
-		, m_farPlane{ 1000.0f }
+		: m_fov_deg{ 45.0f }
+		, m_near_plane{ 0.1f }
+		, m_far_plane{ 1000.0f }
 		, m_aspect{ 1.0f }
 		, m_projection{}
 	{
-		UpdateProjection();
+		update_projection();
 	}
 
-	PerspectiveControl::PerspectiveControl(float fovDeg, float nearPlane, float farPlane, float aspect)
-		: m_fovDeg{ fovDeg }
-		, m_nearPlane{ nearPlane }
-		, m_farPlane{ farPlane }
+	PerspectiveControl::PerspectiveControl(
+		float fov_deg,
+		float near_plane,
+		float far_plane,
+		float aspect
+	)
+		: m_fov_deg{ fov_deg }
+		, m_near_plane{ near_plane }
+		, m_far_plane{ far_plane }
 		, m_aspect{ aspect }
+		, m_projection{}
 	{
-		UpdateProjection();
+		update_projection();
 	}
 
 	PerspectiveControl::~PerspectiveControl() = default;
 
-	float PerspectiveControl::GetFieldOfViewDegrees() const
+	float PerspectiveControl::get_field_of_view_degrees() const
 	{
-		return m_fovDeg;
+		return m_fov_deg;
 	}
 
-	float PerspectiveControl::GetNearPlane() const
+	float PerspectiveControl::get_near_plane() const
 	{
-		return m_nearPlane;
+		return m_near_plane;
 	}
 
-	float PerspectiveControl::GetFarPlane() const
+	float PerspectiveControl::get_far_plane() const
 	{
-		return m_farPlane;
+		return m_far_plane;
 	}
 
-	float PerspectiveControl::GetAspect() const
+	float PerspectiveControl::get_aspect() const
 	{
 		return m_aspect;
 	}
 
-	const math::Mat4& PerspectiveControl::GetProjection() const
+	const math::Mat4& PerspectiveControl::get_projection() const
 	{
 		return m_projection;
 	}
 
-	void PerspectiveControl::SetFieldOfViewDegrees(float fovDeg, bool updateProjection)
+	void PerspectiveControl::set_field_of_view_degrees(
+		float fov_deg,
+		bool update_projection
+	)
 	{
-		m_fovDeg = fovDeg;
-		if (updateProjection)
-			UpdateProjection();
+		m_fov_deg = fov_deg;
+
+		if (update_projection)
+		{
+			this->update_projection();
+		}
 	}
 
-	void PerspectiveControl::SetNearPlane(float nearPlane, bool updateProjection)
+	void PerspectiveControl::set_near_plane(
+		float near_plane,
+		bool update_projection
+	)
 	{
-		m_nearPlane = nearPlane;
-		if (updateProjection)
-			UpdateProjection();
+		m_near_plane = near_plane;
+
+		if (update_projection)
+		{
+			this->update_projection();
+		}
 	}
 
-	void PerspectiveControl::SetFarPlane(float farPlane, bool updateProjection)
+	void PerspectiveControl::set_far_plane(
+		float far_plane,
+		bool update_projection
+	)
 	{
-		m_farPlane = farPlane;
-		if (updateProjection)
-			UpdateProjection();
+		m_far_plane = far_plane;
+
+		if (update_projection)
+		{
+			this->update_projection();
+		}
 	}
 
-	void PerspectiveControl::SetAspect(float aspect, bool updateProjection)
+	void PerspectiveControl::set_aspect(
+		float aspect,
+		bool update_projection
+	)
 	{
 		m_aspect = aspect;
-		if (updateProjection)
-			UpdateProjection();
+
+		if (update_projection)
+		{
+			this->update_projection();
+		}
 	}
 
-	void PerspectiveControl::UpdateProjection()
+	void PerspectiveControl::update_projection()
 	{
-		m_projection = math::LinAlgOps::Perspective(
-			math::Trigonometry::Deg2Rad(m_fovDeg), 
-			m_aspect, 
-			m_nearPlane, 
-			m_farPlane
+		m_projection = math::LinAlgOps::perspective(
+			math::Trigonometry::deg_2_rad(m_fov_deg),
+			m_aspect,
+			m_near_plane,
+			m_far_plane
 		);
 	}
 }

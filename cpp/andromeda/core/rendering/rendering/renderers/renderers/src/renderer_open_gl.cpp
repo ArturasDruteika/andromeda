@@ -1,5 +1,5 @@
-#include "../include/open_gl_renderer.hpp"
-#include "../../../open_gl/renderer/include/open_gl_renderer_impl.hpp"
+#include "../include/renderer_open_gl.hpp"
+#include "../../../open_gl/renderer/include/renderer_open_gl_impl.hpp"
 
 
 namespace andromeda::rendering

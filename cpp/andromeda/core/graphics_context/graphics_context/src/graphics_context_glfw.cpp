@@ -1,6 +1,6 @@
 #include "glad/gl.h"
-#include "../include/GraphicsContextGLFW.hpp"
-#include "Window/WindowGLFW/include/WindowGLFW.hpp"
+#include "../include/graphics_context_glfw.hpp"
+#include "window/window_glfw/include/window_glfw.hpp"
 #include "spdlog/spdlog.h"
 
 namespace andromeda::graphics_context
@@ -21,14 +21,14 @@ namespace andromeda::graphics_context
     bool GraphicsContextGLFW::init(IWindow& window)
     {
         // We only support GLFW-based windows here
-        Window::WindowGLFW* p_window_glfw = dynamic_cast<Window::WindowGLFW*>(&window);
+        window::WindowGLFW* p_window_glfw = dynamic_cast<window::WindowGLFW*>(&window);
         if (p_window_glfw == nullptr)
         {
             spdlog::error("GraphicsContextGLFW::init - Invalid window type (expected WindowGLFW).");
             return false;
         }
 
-        m_p_glfw_window = static_cast<GLFWwindow*>(p_window_glfw->GetNativeHandle());
+        m_p_glfw_window = static_cast<GLFWwindow*>(p_window_glfw->get_native_handle());
         if (!m_p_glfw_window)
         {
             spdlog::error("GraphicsContextGLFW::init - GLFWwindow* is null.");

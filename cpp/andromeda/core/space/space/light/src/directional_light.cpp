@@ -1,8 +1,8 @@
-#include "../include/DirectionalLight.hpp"
+#include "../include/directional_light.hpp"
 #include "math/linear_algebra/include/linear_algebra_operations.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
 	DirectionalLight::DirectionalLight(
 		const math::Vec3& direction,
@@ -11,9 +11,9 @@ namespace andromeda::Space
 		const math::Vec3& ambient,
 		const math::Vec3& diffuse,
 		const math::Vec3& specular,
-		float orthographicHalfSize,
-		float nearPlane,
-		float farPlane
+		float orthographic_half_size,
+		float near_plane,
+		float far_plane
 	)
 		: Light{
 			color,
@@ -23,55 +23,61 @@ namespace andromeda::Space
 			specular
 		}
 		, LightObject{ LightType::Directional }
-		, m_orthographicHalfSize{ orthographicHalfSize }
-		, m_nearPlane{ nearPlane }
-		, m_farPlane{ farPlane }
-		, m_direction{ math::LinAlgOps::Normalize(direction) }
+		, m_orthographic_half_size{ orthographic_half_size }
+		, m_near_plane{ near_plane }
+		, m_far_plane{ far_plane }
+		, m_direction{ math::LinAlgOps::normalize(direction) }
 	{
 	}
 
 	DirectionalLight::~DirectionalLight() = default;
 
-	float DirectionalLight::GetLightOrthographicHalfSize() const
+	float DirectionalLight::get_light_orthographic_half_size() const
 	{
-		return m_orthographicHalfSize;
+		return m_orthographic_half_size;
 	}
 
-	float DirectionalLight::GetLightNearPlane() const
+	float DirectionalLight::get_light_near_plane() const
 	{
-		return m_nearPlane;
+		return m_near_plane;
 	}
 
-	float DirectionalLight::GetLightFarPlane() const
+	float DirectionalLight::get_light_far_plane() const
 	{
-		return m_farPlane;
+		return m_far_plane;
 	}
 
-	const math::Vec3& DirectionalLight::GetDirection() const
+	const math::Vec3& DirectionalLight::get_direction() const
 	{
 		return m_direction;
 	}
 
-	void DirectionalLight::SetLightOrthographicHalfSize(float halfSize)
+	void DirectionalLight::set_light_orthographic_half_size(float half_size)
 	{
-		if (halfSize > 0.0f)
-			m_orthographicHalfSize = halfSize;
+		if (half_size > 0.0f)
+		{
+			m_orthographic_half_size = half_size;
+		}
 	}
 
-	void DirectionalLight::SetLightNearPlane(float nearPlane)
+	void DirectionalLight::set_light_near_plane(float near_plane)
 	{
-		if (nearPlane > 0.0f)
-			m_nearPlane = nearPlane;
+		if (near_plane > 0.0f)
+		{
+			m_near_plane = near_plane;
+		}
 	}
 
-	void DirectionalLight::SetLightFarPlane(float farPlane)
+	void DirectionalLight::set_light_far_plane(float far_plane)
 	{
-		if (farPlane > m_nearPlane)
-			m_farPlane = farPlane;
+		if (far_plane > m_near_plane)
+		{
+			m_far_plane = far_plane;
+		}
 	}
 
-	void DirectionalLight::SetDirection(const math::Vec3& direction)
+	void DirectionalLight::set_direction(const math::Vec3& direction)
 	{
-		m_direction = math::LinAlgOps::Normalize(direction);
+		m_direction = math::LinAlgOps::normalize(direction);
 	}
 }

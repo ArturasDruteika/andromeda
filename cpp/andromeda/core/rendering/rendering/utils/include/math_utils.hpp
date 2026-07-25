@@ -8,7 +8,7 @@
 
 namespace andromeda::rendering
 {
-	class mathUtils
+	class MathUtils
 	{
 	public:
 		static glm::vec2 to_glm(const math::Vec2& vec);

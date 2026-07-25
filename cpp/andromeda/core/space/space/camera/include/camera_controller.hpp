@@ -2,29 +2,33 @@
 #define SPACE__CAMERA__CAMERA_CONTROLLER__HPP
 
 
-#include "CameraView.hpp"
-#include "../../MacroExports/include/MacroExports.hpp"
+#include "camera_view.hpp"
+#include "../../macro_exports/include/macro_exports.hpp"
 #include "math/linear_algebra/include/quaternions.hpp"
 #include "andromeda/space/camera/i_camera_controller.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
 	class SPACE_API CameraController
 		: public virtual ICameraController
 		, public CameraView
 	{
 	public:
-		CameraController(const math::Vec3& position, const math::Vec3& targetCoords = math::Vec3(0.0f, 0.0f, 0.0f));
+		CameraController(
+			const math::Vec3& position,
+			const math::Vec3& target_coords = math::Vec3(0.0f, 0.0f, 0.0f)
+		);
+
 		~CameraController();
 
-		void Rotate(float yaw, float pitch, float roll) override;
-		void Zoom(float deltaDistance) override;
+		void rotate(float yaw, float pitch, float roll) override;
+		void zoom(float delta_distance) override;
 
-		//void SetOnDistanceChange(OnDistanceChange callback) override;
+		// void set_on_distance_change(OnDistanceChange callback) override;
 
 	private:
-		void UpdateDirection();
+		void update_direction();
 
 	protected:
 		float m_distance;

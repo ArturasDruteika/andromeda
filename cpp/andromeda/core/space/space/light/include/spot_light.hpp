@@ -5,7 +5,7 @@
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
 	class SpotLight
 	{

@@ -1,21 +1,21 @@
-#include "../include/PointLight.hpp"
+#include "../include/point_light.hpp"
 #include "spdlog/spdlog.h"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
     PointLight::PointLight(
-        const math::Vec3& position, 
-        const math::Vec3& color, 
-        float intensity, 
+        const math::Vec3& position,
+        const math::Vec3& color,
+        float intensity,
         const math::Vec3& ambient,
         const math::Vec3& diffuse,
         const math::Vec3& specular,
-        float attenuationConstant, 
-        float attenuationLinear, 
-        float attenuationQuadratic,
-        float shadowNearPlane,
-        float shadowFarPlane
+        float attenuation_constant,
+        float attenuation_linear,
+        float attenuation_quadratic,
+        float shadow_near_plane,
+        float shadow_far_plane
     )
         : Light{
             color,
@@ -25,88 +25,95 @@ namespace andromeda::Space
             specular
         }
         , LightObject{ LightType::Point }
-        , m_attenuationConstant{ attenuationConstant }
-        , m_attenuationLinear{ attenuationLinear }
-        , m_attenuationQuadratic{ attenuationQuadratic }
+        , m_attenuation_constant{ attenuation_constant }
+        , m_attenuation_linear{ attenuation_linear }
+        , m_attenuation_quadratic{ attenuation_quadratic }
+        , m_shadow_near_plane{ shadow_near_plane }
+        , m_shadow_far_plane{ shadow_far_plane }
         , m_position{ position }
-        , m_shadowNearPlane{ shadowNearPlane }
-        , m_shadowFarPlane{ shadowFarPlane }
     {
     }
 
     PointLight::~PointLight() = default;
 
-    float PointLight::GetAttenuationConstant() const
+    float PointLight::get_attenuation_constant() const
     {
-        return m_attenuationConstant;
+        return m_attenuation_constant;
     }
 
-    float PointLight::GetAttenuationLinear() const
+    float PointLight::get_attenuation_linear() const
     {
-        return m_attenuationLinear;
+        return m_attenuation_linear;
     }
 
-    float PointLight::GetAttenuationQuadratic() const
+    float PointLight::get_attenuation_quadratic() const
     {
-        return m_attenuationQuadratic;
+        return m_attenuation_quadratic;
     }
 
-    float PointLight::GetShadowNearPlane() const
+    float PointLight::get_shadow_near_plane() const
     {
-        return m_shadowNearPlane;
+        return m_shadow_near_plane;
     }
 
-    float PointLight::GetShadowFarPlane() const
+    float PointLight::get_shadow_far_plane() const
     {
-        return m_shadowFarPlane;
+        return m_shadow_far_plane;
     }
 
-    const math::Vec3& PointLight::GetPosition() const
+    const math::Vec3& PointLight::get_position() const
     {
         return m_position;
     }
 
-    void PointLight::SetAttenuationConstant(float constant)
+    void PointLight::set_attenuation_constant(float attenuation_constant)
     {
-        if (constant < 0.0f)
+        if (attenuation_constant < 0.0f)
         {
             spdlog::error("Attenuation constant must be non-negative");
             return;
         }
-        m_attenuationConstant = constant;
+
+        m_attenuation_constant = attenuation_constant;
     }
 
-    void PointLight::SetAttenuationLinear(float linear)
+    void PointLight::set_attenuation_linear(float attenuation_linear)
     {
-        if (linear < 0 || linear > 1)
+        if (attenuation_linear < 0.0f || attenuation_linear > 1.0f)
         {
-            spdlog::error("Attenuation linear components must be between 0.0 and 1.0");
+            spdlog::error(
+                "Attenuation linear component must be between 0.0 and 1.0"
+            );
             return;
         }
-        m_attenuationLinear = linear;
+
+        m_attenuation_linear = attenuation_linear;
     }
 
-    void PointLight::SetAttenuationQuadratic(float quadratic)
+    void PointLight::set_attenuation_quadratic(float attenuation_quadratic)
     {
-        if (quadratic < 0 || quadratic > 1)
+        if (attenuation_quadratic < 0.0f || attenuation_quadratic > 1.0f)
         {
-            spdlog::error("Attenuation quadratic components must be between 0.0 and 1.0");
+            spdlog::error(
+                "Attenuation quadratic component must be between 0.0 and 1.0"
+            );
             return;
         }
-        m_attenuationQuadratic = quadratic;
+
+        m_attenuation_quadratic = attenuation_quadratic;
     }
 
-    void PointLight::SetShadowNearPlane(float shadowNearPlane)
+    void PointLight::set_shadow_near_plane(float shadow_near_plane)
     {
-        m_shadowNearPlane = shadowNearPlane;
+        m_shadow_near_plane = shadow_near_plane;
     }
 
-    void PointLight::SetShadowFarPlane(float shadowFarPlane)
+    void PointLight::set_shadow_far_plane(float shadow_far_plane)
     {
-        m_shadowFarPlane = shadowFarPlane;
+        m_shadow_far_plane = shadow_far_plane;
     }
 
-    void PointLight::SetPosition(const math::Vec3& position)
+    void PointLight::set_position(const math::Vec3& position)
     {
         m_position = position;
     }

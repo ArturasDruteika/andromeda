@@ -214,7 +214,7 @@ namespace andromeda::application
             });
     }
 
-    void Application::run()
+    void Application::render_loop()
     {
         while (!m_p_window->should_close())
         {

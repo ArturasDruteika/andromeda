@@ -125,7 +125,7 @@ namespace andromeda::rendering
 
         m_mesh_cache.sync(scene.get_objects(), m_default_vertex_layout);
 
-        set_background_color(math_utils::to_glm(scene.get_background_color()));
+        set_background_color(MathUtils::to_glm(scene.get_background_color()));
         begin_frame();
 
         if (m_is_illumination_mode)
@@ -173,17 +173,17 @@ namespace andromeda::rendering
 
         shader->set_uniform(
             "u_view",
-            math_utils::to_glm(r_camera.get_view_matrix())
+            MathUtils::to_glm(r_camera.get_view_matrix())
         );
 
         shader->set_uniform(
             "u_projection",
-            glm::transpose(math_utils::to_glm(r_camera.get_projection()))
+            glm::transpose(MathUtils::to_glm(r_camera.get_projection()))
         );
 
         shader->set_uniform(
             "u_cameraPosWS",
-            math_utils::to_glm(r_camera.get_position())
+            MathUtils::to_glm(r_camera.get_position())
         );
 
         if (has_dir)
@@ -230,12 +230,12 @@ namespace andromeda::rendering
 
         lum_shader->set_uniform(
             "u_view",
-            math_utils::to_glm(r_camera.get_view_matrix())
+            MathUtils::to_glm(r_camera.get_view_matrix())
         );
 
         lum_shader->set_uniform(
             "u_projection",
-            math_utils::to_glm(r_camera.get_projection())
+            MathUtils::to_glm(r_camera.get_projection())
         );
 
         for (const auto& [id, obj] : objects)
@@ -268,7 +268,7 @@ namespace andromeda::rendering
 
             lum_shader->set_uniform(
                 "u_model",
-                math_utils::to_glm(transform_it->second->get_model_matrix())
+                MathUtils::to_glm(transform_it->second->get_model_matrix())
             );
 
             glBindVertexArray(mesh->get_vao());
@@ -300,12 +300,12 @@ namespace andromeda::rendering
 
         shader->set_uniform(
             "u_view",
-            math_utils::to_glm(r_camera.get_view_matrix())
+            MathUtils::to_glm(r_camera.get_view_matrix())
         );
 
         shader->set_uniform(
             "u_projection",
-            glm::transpose(math_utils::to_glm(r_camera.get_projection()))
+            glm::transpose(MathUtils::to_glm(r_camera.get_projection()))
         );
 
         for (const auto& [id, obj] : objects)
@@ -335,7 +335,7 @@ namespace andromeda::rendering
 
             shader->set_uniform(
                 "u_model",
-                math_utils::to_glm(model_matrix)
+                MathUtils::to_glm(model_matrix)
             );
 
             glBindVertexArray(mesh->get_vao());
@@ -363,8 +363,8 @@ namespace andromeda::rendering
         //ShaderOpenGL* shader = m_p_shader_manager->get_shader(ShaderOpenGLTypes::Grid);
         //shader->bind();
 
-        //shader->set_uniform("u_view", math_utils::to_glm(m_p_camera->get_view_matrix()));
-        //shader->set_uniform("u_projection", math_utils::to_glm(m_p_camera->get_projection()));
+        //shader->set_uniform("u_view", MathUtils::to_glm(m_p_camera->get_view_matrix()));
+        //shader->set_uniform("u_projection", MathUtils::to_glm(m_p_camera->get_projection()));
 
         //glBindVertexArray(mesh.get_vao());
         //glDrawElements(GL_LINES, static_cast<GLsizei>(mesh.get_index_count()), GL_UNSIGNED_INT, nullptr);
@@ -561,15 +561,15 @@ namespace andromeda::rendering
 
                 const IMaterial* material = surface_obj->get_material();
                 glm::mat3 normal_matrix = glm::inverseTranspose(
-                    math_utils::to_glm(transform_it->second->get_model_matrix())
+                    MathUtils::to_glm(transform_it->second->get_model_matrix())
                 );
 
-                shader.set_uniform("u_materialAmbient", math_utils::to_glm(material->get_ambient()));
-                shader.set_uniform("u_materialDiffuse", math_utils::to_glm(material->get_diffuse()));
-                shader.set_uniform("u_materialSpecular", math_utils::to_glm(material->get_specular()));
+                shader.set_uniform("u_materialAmbient", MathUtils::to_glm(material->get_ambient()));
+                shader.set_uniform("u_materialDiffuse", MathUtils::to_glm(material->get_diffuse()));
+                shader.set_uniform("u_materialSpecular", MathUtils::to_glm(material->get_specular()));
                 shader.set_uniform("u_materialShininess", material->get_shininess());
 
-                shader.set_uniform("u_model", math_utils::to_glm(transform_it->second->get_model_matrix()));
+                shader.set_uniform("u_model", MathUtils::to_glm(transform_it->second->get_model_matrix()));
                 shader.set_uniform("u_normalMatrix", normal_matrix);
 
                 const int obj_id = obj->get_id();
@@ -642,7 +642,7 @@ namespace andromeda::rendering
         if (has_point)
         {
             const IPointLight* pl = point_lights.begin()->second;
-            const glm::vec3 light_pos = math_utils::to_glm(pl->get_position());
+            const glm::vec3 light_pos = MathUtils::to_glm(pl->get_position());
             const float near_plane = pl->get_shadow_near_plane();
             const float far_plane = pl->get_shadow_far_plane();
 

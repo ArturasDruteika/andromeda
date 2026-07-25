@@ -2,40 +2,46 @@
 #define SPACE__CAMERA__CAMERA_VIEW__HPP
 
 
-#include "../../MacroExports/include/MacroExports.hpp"
-#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
+#include "../../macro_exports/include/macro_exports.hpp"
 #include "andromeda/space/camera/i_camera_view.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
 	class SPACE_API CameraView
 		: public virtual ICameraView
 	{
 	public:
-		CameraView(const math::Vec3& position, const math::Vec3& targetCoords = math::Vec3(0.0f, 0.0f, 0.0f));
-		~CameraView();
+		CameraView(
+			const math::Vec3& position,
+			const math::Vec3& target_coords = math::Vec3(0.0f, 0.0f, 0.0f)
+		);
 
-		const math::Vec3& GetPosition() const override;
-		const math::Vec3& GetTargetCoords() const override;
-		const math::Vec3& GetForward() const override;
-		const math::Vec3& GetRight() const override;
-		const math::Vec3& GetUp() const override;
-		const math::Mat4& GetViewMatrix() const override;
+		~CameraView() override;
+
+		// Getters
+		const math::Vec3& get_position() const override;
+		const math::Vec3& get_target_coords() const override;
+		const math::Vec3& get_forward() const override;
+		const math::Vec3& get_right() const override;
+		const math::Vec3& get_up() const override;
+		const math::Mat4& get_view_matrix() const override;
+
 		// Setters
-		void SetPosition(const math::Vec3& position);
-		void SetTargetCoords(const math::Vec3& targetCoords);
+		void set_position(const math::Vec3& position);
+		void set_target_coords(const math::Vec3& target_coords);
 
 	protected:
-		void CalculateViewMatrix();
+		void calculate_view_matrix();
 
 	protected:
 		math::Vec3 m_position;
-		math::Vec3 m_targetCoords;
+		math::Vec3 m_target_coords;
 		math::Vec3 m_forward;
 		math::Vec3 m_right;
 		math::Vec3 m_up;
-		math::Mat4 m_viewMat;
+		math::Mat4 m_view_matrix;
 	};
 }
 

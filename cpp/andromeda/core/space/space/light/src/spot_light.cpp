@@ -1,7 +1,7 @@
-#include "../include/SpotLight.hpp"
+#include "../include/spot_light.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
 	SpotLight::SpotLight()
 	{

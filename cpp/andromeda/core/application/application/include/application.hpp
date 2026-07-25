@@ -54,7 +54,7 @@ namespace andromeda::application
             const std::string& title
         );
         void connect_events();
-        void run();
+        void render_loop();
 
     private:
         bool m_initialized;

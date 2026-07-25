@@ -6,7 +6,7 @@
 #include "../components/graphics_backend.hpp"
 #include "../renderer/i_renderer.hpp"
 #include "../space/scene/i_scene.hpp"
-#include "../window/window/events/i_event.hpp"
+#include "../window/events/i_event.hpp"
 
 #include <memory>
 

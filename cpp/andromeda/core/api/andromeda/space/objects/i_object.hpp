@@ -17,7 +17,7 @@ namespace andromeda
 		virtual int get_id() const = 0;
         virtual const std::string& get_name() const = 0;
         // Setters
-		virtual void set_active(bool active) = 0;
+		virtual void active(bool active) = 0;
         virtual void set_name(const std::string& name) = 0;
 		virtual void set_id(int id) = 0;
 	};

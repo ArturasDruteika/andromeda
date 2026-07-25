@@ -10,7 +10,8 @@ namespace andromeda::rendering
 	{
         if (init_shaders)
         {
-            init_shaders();
+            if (!ShaderManager::init_shaders())
+                spdlog::error("Shader initialization failed.");
         }
 	}
 

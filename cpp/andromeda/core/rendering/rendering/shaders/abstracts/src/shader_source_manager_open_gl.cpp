@@ -76,13 +76,10 @@ namespace andromeda::rendering
 				filepath.string()
 			);
 
-			throw std::runtime_error(
-				"Shader file not found: " + filepath.string()
-			);
+			throw std::runtime_error("Shader file not found: " + filepath.string());
 		}
 
-		const std::string code =
-			Utils::FileOperations::load_file_as_string(filepath);
+		const std::string code = utils::FileOperations::load_file_as_string(filepath);
 
 		switch (shader_type)
 		{

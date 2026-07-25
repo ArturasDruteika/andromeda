@@ -2,7 +2,7 @@
 #define CONTEXT__GLFW_CONTEXT__HPP
 
 
-#include "andromeda/graphics_context/IGraphicsContext.hpp"
+#include "andromeda/graphics_context/i_graphics_context.hpp"
 #include "andromeda/window/window/i_window.hpp"
 
 #include "GLFW/glfw3.h"

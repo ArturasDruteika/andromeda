@@ -2,36 +2,37 @@
 #define SPACE__MATERIALS_LIBRARY__HPP
 
 
-#include "../../MacroExports/include/MacroExports.hpp"
-#include "../../Materials/include/MaterialTypes.hpp"
+#include "../../macro_exports/include/macro_exports.hpp"
+#include "../../materials/include/material_types.hpp"
+#include "materials.hpp"
 #include "pch.hpp"
-#include "Materials.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
 	class SPACE_API MaterialLibrary
 	{
 	public:
 		MaterialLibrary();
-		MaterialLibrary(const std::filesystem::path& filePath);
+		explicit MaterialLibrary(const std::filesystem::path& file_path);
 		~MaterialLibrary();
 
 		// Getters
-		bool Has(const MaterialType& materialType) const;
-		size_t GetSize() const;
-		std::filesystem::path GetMaterialsConfigFilePath() const;
-		std::unordered_map<MaterialType, Material> GetMaterials() const;
-		std::vector<MaterialType> GetAllMaterialTypes() const;
-		Material GetMaterial(const MaterialType& materialType) const;
-		const Material* GetMaterialPtr(const MaterialType& materialType) const;
+		bool has(const MaterialType& material_type) const;
+		std::size_t get_size() const;
+		std::filesystem::path get_materials_config_file_path() const;
+		std::unordered_map<MaterialType, Material> get_materials() const;
+		std::vector<MaterialType> get_all_material_types() const;
+		Material get_material(const MaterialType& material_type) const;
+		const Material* get_material_ptr(const MaterialType& material_type) const;
 
-		bool LoadFromFile(const std::filesystem::path& filePath);
-		bool SaveToFile(const std::filesystem::path& filePath) const;
-		// TODO: Consider adding ability to add, remove and update materials to the config
+		bool load_from_file(const std::filesystem::path& file_path);
+		bool save_to_file(const std::filesystem::path& file_path) const;
+
+		// TODO: Consider adding ability to add, remove, and update materials in the config.
 
 	private:
-		std::filesystem::path m_materialsConfigFilePath;
+		std::filesystem::path m_materials_config_file_path;
 		std::unordered_map<MaterialType, Material> m_materials;
 	};
 }

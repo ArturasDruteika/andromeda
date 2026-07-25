@@ -2,44 +2,45 @@
 #define SPACE__MATERIALS__HPP
 
 
-#include "../../MacroExports/include/MacroExports.hpp"
-#include "pch.hpp"
-#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
+#include "../../macro_exports/include/macro_exports.hpp"
 #include "andromeda/space/materials/i_material.hpp"
+#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
+#include "pch.hpp"
 
 
-namespace andromeda::Space
+namespace andromeda::space
 {
-    class SPACE_API Material
+	class SPACE_API Material
 		: public IMaterial
-    {
-    public:
-        Material();
-        ~Material();
+	{
+	public:
+		Material();
+		~Material() override;
 
-        // Getters
-        float GetShininess() const override;
-        const std::string& GetName() const override;
-        const math::Vec3& GetAmbient() const override;
-        const math::Vec3& GetDiffuse() const override;
-        const math::Vec3& GetSpecular() const override;
-        // Setters
-        void SetShininess(float shininess) override;
-        void SetName(const std::string& name) override;
-        void SetAmbient(const math::Vec3& ambient) override;
-        void SetDiffuse(const math::Vec3& diffuse) override;
-        void SetSpecular(const math::Vec3& specular) override;
+		// Getters
+		float get_shininess() const override;
+		const std::string& get_name() const override;
+		const math::Vec3& get_ambient() const override;
+		const math::Vec3& get_diffuse() const override;
+		const math::Vec3& get_specular() const override;
 
-    private:
-        bool ValidateVec3Components(const math::Vec3& vector);
+		// Setters
+		void set_shininess(float shininess) override;
+		void set_name(const std::string& name) override;
+		void set_ambient(const math::Vec3& ambient) override;
+		void set_diffuse(const math::Vec3& diffuse) override;
+		void set_specular(const math::Vec3& specular) override;
 
-    private:
-        float m_shininess;
-        std::string m_name;
-        math::Vec3 m_ambient;
-        math::Vec3 m_diffuse;
-        math::Vec3 m_specular;
-    };
+	private:
+		bool validate_vec3_components(const math::Vec3& vector);
+
+	private:
+		float m_shininess;
+		std::string m_name;
+		math::Vec3 m_ambient;
+		math::Vec3 m_diffuse;
+		math::Vec3 m_specular;
+	};
 }
 
 
