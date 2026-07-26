@@ -34,6 +34,7 @@ namespace andromeda::space
 
 	protected:
 		void calculate_view_matrix();
+		void update_view_matrix();
 
 	protected:
 		math::Vec3 m_position;

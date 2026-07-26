@@ -66,8 +66,8 @@ namespace andromeda::math
 
     Quaternion QuaternionOps::from_axis_angle(const Vec3& axis, float angle_radians)
     {
-        glm::vec3 gAxis = to_glm(axis);
-        glm::quat gq = glm::angleAxis(angle_radians, glm::normalize(gAxis));
+        glm::vec3 g_axis = to_glm(axis);
+        glm::quat gq = glm::angleAxis(angle_radians, glm::normalize(g_axis));
         return from_glm(gq);
     }
 
@@ -84,9 +84,9 @@ namespace andromeda::math
     Quaternion QuaternionOps::normalize(const Quaternion& q, float epsilon)
     {
         glm::quat g = to_glm(q);
-        float lenSq = glm::dot(g, g);
+        float len_sq = glm::dot(g, g);
 
-        if (lenSq <= epsilon * epsilon)
+        if (len_sq <= epsilon * epsilon)
         {
             return q;
         }
@@ -103,9 +103,9 @@ namespace andromeda::math
     Quaternion QuaternionOps::inverse(const Quaternion& q, float epsilon)
     {
         glm::quat g = to_glm(q);
-        float lenSq = glm::dot(g, g);
+        float len_sq = glm::dot(g, g);
 
-        if (lenSq <= epsilon * epsilon)
+        if (len_sq <= epsilon * epsilon)
         {
             return identity();
         }
@@ -160,23 +160,23 @@ namespace andromeda::math
         glm::quat ga = to_glm(a);
         glm::quat gb = to_glm(b);
 
-        glm::quat gRes = glm::slerp(ga, gb, t);
+        glm::quat g_res = glm::slerp(ga, gb, t);
 
-        float lenSq = glm::dot(gRes, gRes);
-        if (lenSq <= epsilon * epsilon)
+        float len_sq = glm::dot(g_res, g_res);
+        if (len_sq <= epsilon * epsilon)
         {
-            gRes = glm::normalize(gRes);
+            g_res = glm::normalize(g_res);
         }
 
-        return from_glm(gRes);
+        return from_glm(g_res);
     }
 
     Vec3 QuaternionOps::rotate_vector(const Quaternion& q, const Vec3& v)
     {
         glm::quat gq = to_glm(q);
         glm::vec3 gv = to_glm(v);
-        glm::vec3 gvRot = glm::rotate(gq, gv);
-        return from_glm(gvRot);
+        glm::vec3 gv_rot = glm::rotate(gq, gv);
+        return from_glm(gv_rot);
     }
 
     Quaternion QuaternionOps::angle_axis(float angle_radians, const Vec3& axis)
@@ -192,8 +192,8 @@ namespace andromeda::math
     Quaternion QuaternionOps::from_euler_xyz(float x_radians, float y_radians, float z_radians)
     {
         // Build rotation matrix from Euler XYZ, then convert to quaternion.
-        glm::mat4 R = glm::eulerAngleXYZ(x_radians, y_radians, z_radians);
-        glm::quat q = glm::quat_cast(R);
+        glm::mat4 r = glm::eulerAngleXYZ(x_radians, y_radians, z_radians);
+        glm::quat q = glm::quat_cast(r);
         return from_glm(q);
     }
 

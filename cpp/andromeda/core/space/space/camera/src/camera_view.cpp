@@ -1,6 +1,8 @@
 #include "../include/camera_view.hpp"
 #include "math/linear_algebra/include/linear_algebra_operations.hpp"
 
+#include "spdlog/spdlog.h"
+
 
 namespace andromeda::space
 {
@@ -96,6 +98,15 @@ namespace andromeda::space
 			m_forward
 		);
 
+		m_view_matrix = math::LinAlgOps::look_at(
+			m_position,
+			m_target_coords,
+			m_up
+		);
+	}
+
+	void CameraView::update_view_matrix()
+	{
 		m_view_matrix = math::LinAlgOps::look_at(
 			m_position,
 			m_target_coords,

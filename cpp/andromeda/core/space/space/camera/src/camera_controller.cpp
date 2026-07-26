@@ -1,5 +1,6 @@
 #include "../include/camera_controller.hpp"
 #include "math/linear_algebra/include/linear_algebra_operations.hpp"
+#include "spdlog/spdlog.h"
 
 
 namespace andromeda::space
@@ -18,54 +19,64 @@ namespace andromeda::space
 
 	void CameraController::rotate(float yaw, float pitch, float roll)
 	{
-		// Get camera local axes.
-		math::Vec3 right = math::QuaternionOps::rotate(
-			m_orientation,
-			math::Vec3(1.0f, 0.0f, 0.0f)
-		);
-
-		math::Vec3 up = math::QuaternionOps::rotate(
-			m_orientation,
-			math::Vec3(0.0f, 1.0f, 0.0f)
-		);
-
-		math::Vec3 forward = math::QuaternionOps::rotate(
-			m_orientation,
-			math::Vec3(0.0f, 0.0f, -1.0f)
-		);
-
-		if (roll != 0.0f)
+		if (yaw != 0.0f)
 		{
-			// Roll: rotate around forward.
-			math::Quaternion q_roll =
-				math::QuaternionOps::angle_axis(roll, forward);
-
-			m_orientation = math::QuaternionOps::normalize(
-				math::QuaternionOps::multiply(
-					q_roll,
-					m_orientation
-				)
+			// Yaw around the camera's current local up axis.
+			math::Vec3 up = math::QuaternionOps::rotate(
+				m_orientation,
+				math::Vec3(0.0f, 1.0f, 0.0f)
 			);
-		}
-		else
-		{
-			// Yaw: rotate around up.
+
 			math::Quaternion q_yaw =
 				math::QuaternionOps::angle_axis(-yaw, up);
 
-			// Pitch: rotate around right.
+			m_orientation = math::QuaternionOps::multiply(
+				q_yaw,
+				m_orientation
+			);
+
+			m_orientation =
+				math::QuaternionOps::normalize(m_orientation);
+		}
+
+		if (pitch != 0.0f)
+		{
+			// Recalculate right after yaw so pitch uses the new local axis.
+			math::Vec3 right = math::QuaternionOps::rotate(
+				m_orientation,
+				math::Vec3(1.0f, 0.0f, 0.0f)
+			);
+
 			math::Quaternion q_pitch =
 				math::QuaternionOps::angle_axis(-pitch, right);
 
-			m_orientation = math::QuaternionOps::normalize(
-				math::QuaternionOps::multiply(
-					math::QuaternionOps::multiply(
-						q_yaw,
-						q_pitch
-					),
-					m_orientation
-				)
+			m_orientation = math::QuaternionOps::multiply(
+				q_pitch,
+				m_orientation
 			);
+
+			m_orientation =
+				math::QuaternionOps::normalize(m_orientation);
+		}
+
+		if (roll != 0.0f)
+		{
+			// Recalculate forward after yaw and pitch.
+			math::Vec3 forward = math::QuaternionOps::rotate(
+				m_orientation,
+				math::Vec3(0.0f, 0.0f, -1.0f)
+			);
+
+			math::Quaternion q_roll =
+				math::QuaternionOps::angle_axis(roll, forward);
+
+			m_orientation = math::QuaternionOps::multiply(
+				q_roll,
+				m_orientation
+			);
+
+			m_orientation =
+				math::QuaternionOps::normalize(m_orientation);
 		}
 
 		update_direction();
@@ -95,21 +106,32 @@ namespace andromeda::space
 
 	void CameraController::update_direction()
 	{
-		// Forward is -Z in local space (OpenGL convention).
-		math::Vec3 local_offset(0.0f, 0.0f, m_distance);
-
-		math::Vec3 offset = math::QuaternionOps::rotate(
-			m_orientation,
-			local_offset
+		// Derive all three camera axes from the orientation.
+		m_forward = math::LinAlgOps::normalize(
+			math::QuaternionOps::rotate(
+				m_orientation,
+				math::Vec3(0.0f, 0.0f, -1.0f)
+			)
 		);
 
-		m_position = m_target_coords + offset;
-
-		m_up = math::QuaternionOps::rotate(
-			m_orientation,
-			math::Vec3(0.0f, 1.0f, 0.0f)
+		m_right = math::LinAlgOps::normalize(
+			math::QuaternionOps::rotate(
+				m_orientation,
+				math::Vec3(1.0f, 0.0f, 0.0f)
+			)
 		);
 
-		calculate_view_matrix();
+		m_up = math::LinAlgOps::normalize(
+			math::QuaternionOps::rotate(
+				m_orientation,
+				math::Vec3(0.0f, 1.0f, 0.0f)
+			)
+		);
+
+		// Keep the camera orbiting around the target.
+		m_position = m_target_coords - m_forward * m_distance;
+
+		// Do not recalculate the axes using world up here.
+		update_view_matrix();
 	}
 }
