@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.24)
+
+project(core)
+
+add_subdirectory(precompiled_headers)
+add_subdirectory(math)
+add_subdirectory(api)
+add_subdirectory(utils)
+add_subdirectory(space)
+add_subdirectory(window)
+add_subdirectory(graphics_context)
+add_subdirectory(rendering)
+add_subdirectory(platform)
+add_subdirectory(engine)
+add_subdirectory(application)
