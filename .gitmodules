@@ -9,4 +9,4 @@
 	url = https://github.com/g-truc/glm.git
 [submodule "cpp/andromeda/external/spdlog"]
 	path = cpp/andromeda/external/spdlog
-	url = https://github.com/gabime/spdlog
+	url = https://github.com/gabime/spdlog.git
