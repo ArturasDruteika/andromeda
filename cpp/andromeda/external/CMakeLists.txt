@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(AndromedaExternal)
+project(andromeda_external)
 
 add_subdirectory(glfw)
 add_subdirectory(glm)
