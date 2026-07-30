@@ -8,18 +8,33 @@
 
 namespace andromeda
 {
-	class ISkyroom
-		: public virtual IGeometricObject
-		, public virtual ISurfaceObject
-	{
-	public:
-		virtual ~ISkyroom() = default;
+    /// @brief Defines the interface for a skyroom object.
+    ///
+    /// A skyroom is a large enclosing geometric object used to render the
+    /// surrounding environment. Its size is defined by a half-extent measured
+    /// from its center to each face.
+    class ISkyroom
+        : public virtual IGeometricObject
+        , public virtual ISurfaceObject
+    {
+    public:
+        /// @brief Virtual destructor.
+        virtual ~ISkyroom() = default;
 
-		// Getters
-		virtual float get_half_extent() const = 0;
-		// Setters
-		virtual void set_half_extent(float half_extent) = 0;
-	};
+        // Getters
+
+        /// @brief Retrieves the skyroom half-extent.
+        ///
+        /// @return Half the length of each side of the skyroom.
+        virtual float get_half_extent() const = 0;
+
+        // Setters
+
+        /// @brief Sets the skyroom half-extent.
+        ///
+        /// @param half_extent Half the length of each side of the skyroom.
+        virtual void set_half_extent(float half_extent) = 0;
+    };
 }
 
 

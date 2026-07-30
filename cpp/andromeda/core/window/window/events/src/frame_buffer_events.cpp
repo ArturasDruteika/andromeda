@@ -24,7 +24,7 @@ namespace andromeda::window
         return m_height;
     }
 
-    bool WindowResizeEvent::is_in_category(EventCategory category)
+    bool WindowResizeEvent::is_in_category(EventCategory category) const
     {
         return (get_category_flags() & category) != 0;
     }
@@ -57,7 +57,7 @@ namespace andromeda::window
 
     WindowCloseEvent::~WindowCloseEvent() = default;
 
-    bool WindowCloseEvent::is_in_category(EventCategory category)
+    bool WindowCloseEvent::is_in_category(EventCategory category) const
     {
         return (get_category_flags() & category) != 0;
     }
@@ -102,7 +102,7 @@ namespace andromeda::window
         return m_height;
     }
 
-    bool FramebufferResizeEvent::is_in_category(EventCategory category)
+    bool FramebufferResizeEvent::is_in_category(EventCategory category) const
     {
         return (get_category_flags() & category) != 0;
     }

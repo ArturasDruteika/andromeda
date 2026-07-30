@@ -11,15 +11,25 @@
 
 namespace andromeda
 {
-	class ISceneNodeManager
-		: public virtual ISceneObjects
-		, public virtual ISceneLighting
-	{
-	public:
-		virtual ~ISceneNodeManager() = default;
+    /// @brief Defines the interface for managing scene nodes.
+    ///
+    /// Combines scene object and lighting management with the ability to attach
+    /// nodes to the scene graph.
+    class ISceneNodeManager
+        : public virtual ISceneObjects
+        , public virtual ISceneLighting
+    {
+    public:
+        /// @brief Virtual destructor.
+        virtual ~ISceneNodeManager() = default;
 
-		virtual void attach_node(std::unique_ptr<ISceneNode> node) = 0;
-	};
+        /// @brief Attaches a node to the scene graph.
+        ///
+        /// Ownership of the node is transferred to the scene manager.
+        ///
+        /// @param node Unique pointer to the scene node to attach.
+        virtual void attach_node(std::unique_ptr<ISceneNode> node) = 0;
+    };
 }
 
 

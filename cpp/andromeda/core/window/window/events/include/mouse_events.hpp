@@ -22,7 +22,7 @@ namespace andromeda::window
         float get_x() const override;
         float get_y() const override;
 
-        bool is_in_category(EventCategory category) override;
+        bool is_in_category(EventCategory category) const override;
         int get_category_flags() const override;
         std::string get_name() const override;
         std::string to_string() const override;
@@ -44,7 +44,7 @@ namespace andromeda::window
         float get_x_offset() const override;
         float get_y_offset() const override;
 
-        bool is_in_category(EventCategory category) override;
+        bool is_in_category(EventCategory category) const override;
         int get_category_flags() const override;
         std::string get_name() const override;
         std::string to_string() const override;
@@ -65,7 +65,7 @@ namespace andromeda::window
 
         MouseCode get_mouse_button() const override;
 
-        bool is_in_category(EventCategory category) override;
+        bool is_in_category(EventCategory category) const override;
         int get_category_flags() const override;
 
     protected:

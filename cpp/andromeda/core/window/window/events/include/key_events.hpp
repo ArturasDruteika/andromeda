@@ -19,7 +19,7 @@ namespace andromeda::window
         explicit KeyEvent(KeyCode keycode);
         ~KeyEvent() override;
 
-        bool is_in_category(EventCategory category) override;
+        bool is_in_category(EventCategory category) const override;
         int get_category_flags() const override;
 
         KeyCode get_key_code() const override;

@@ -22,7 +22,7 @@ namespace andromeda::window
         int get_width() const override;
         int get_height() const override;
 
-        bool is_in_category(EventCategory category) override;
+        bool is_in_category(EventCategory category) const override;
         int get_category_flags() const override;
         std::string get_name() const override;
         std::string to_string() const override;
@@ -41,7 +41,7 @@ namespace andromeda::window
         WindowCloseEvent();
         ~WindowCloseEvent() override;
 
-        bool is_in_category(EventCategory category) override;
+        bool is_in_category(EventCategory category) const override;
         int get_category_flags() const override;
         std::string get_name() const override;
         std::string to_string() const override;
@@ -59,7 +59,7 @@ namespace andromeda::window
         int get_width() const override;
         int get_height() const override;
 
-        bool is_in_category(EventCategory category) override;
+        bool is_in_category(EventCategory category) const override;
         int get_category_flags() const override;
         std::string get_name() const override;
         std::string to_string() const override;
