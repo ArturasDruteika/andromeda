@@ -10,31 +10,62 @@
 
 namespace andromeda::graphics_context
 {
-	class GraphicsContextGLFW
-		: public IGraphicsContext
-	{
-	public:
-		GraphicsContextGLFW();
-		~GraphicsContextGLFW() override;
+    /// @brief GLFW implementation of a graphics context.
+    ///
+    /// Manages the creation and lifetime of an OpenGL context associated with
+    /// a GLFW window, including context activation and buffer presentation.
+    class GraphicsContextGLFW
+        : public IGraphicsContext
+    {
+    public:
+        /// @brief Constructs an uninitialized graphics context.
+        GraphicsContextGLFW();
 
-		GraphicsContextGLFW(const GraphicsContextGLFW& other) = delete;	// Prevent Copy Constructor
-		GraphicsContextGLFW& operator=(const GraphicsContextGLFW& other) = delete;	// Prevent Copy assignment
-		GraphicsContextGLFW(GraphicsContextGLFW&& other) noexcept = delete;	// Prevent Move constructor
-		GraphicsContextGLFW& operator=(const GraphicsContextGLFW&& other) noexcept = delete;	// Prevent Move assignment
+        /// @brief Destroys the graphics context.
+        ~GraphicsContextGLFW() override;
 
-		bool is_initialized() const override;
-		bool init(IWindow& window) override;
-		void make_current() override;
-		void present() override;
-		void set_context_hints();
+        GraphicsContextGLFW(const GraphicsContextGLFW& other) = delete;
+        GraphicsContextGLFW& operator=(const GraphicsContextGLFW& other) = delete;
+        GraphicsContextGLFW(GraphicsContextGLFW&& other) noexcept = delete;
+        GraphicsContextGLFW& operator=(const GraphicsContextGLFW&& other) noexcept = delete;
 
-	private:
-		bool load_glad();
+        // Getters
 
-	private:
-		bool m_initialized;
-		GLFWwindow* m_p_glfw_window;
-	};
+        /// @brief Checks whether the graphics context has been initialized.
+        ///
+        /// @return `true` if the context is initialized; otherwise, `false`.
+        bool is_initialized() const override;
+
+        /// @brief Initializes the graphics context for the specified window.
+        ///
+        /// @param window Window to associate with the graphics context.
+        /// @return `true` if initialization succeeded; otherwise, `false`.
+        bool init(IWindow& window) override;
+
+        /// @brief Makes this graphics context current.
+        void make_current() override;
+
+        /// @brief Presents the rendered frame.
+        ///
+        /// Swaps the front and back buffers of the associated window.
+        void present() override;
+
+        /// @brief Configures GLFW context creation hints.
+        void set_context_hints();
+
+    private:
+        /// @brief Loads OpenGL functions using GLAD.
+        ///
+        /// @return `true` if GLAD initialization succeeded; otherwise, `false`.
+        bool load_glad();
+
+    private:
+        /// @brief Indicates whether the graphics context has been initialized.
+        bool m_initialized;
+
+        /// @brief Associated GLFW window.
+        GLFWwindow* m_p_glfw_window;
+    };
 }
 
 
