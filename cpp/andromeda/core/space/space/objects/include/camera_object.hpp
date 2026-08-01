@@ -10,12 +10,19 @@
 
 namespace andromeda::space
 {
+	/// @brief Represents a camera object within the scene.
+	///
+	/// Provides a scene object implementation that identifies an object as a
+	/// camera while inheriting common object functionality.
 	class SPACE_API CameraObject
 		: public virtual ICameraObject
 		, public Object
 	{
 	public:
+		/// @brief Constructs a camera object.
 		CameraObject();
+
+		/// @brief Destroys the camera object.
 		~CameraObject() override;
 	};
 }

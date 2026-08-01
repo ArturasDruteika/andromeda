@@ -10,17 +10,31 @@ namespace andromeda::space
 {
     class Material;
 
+    /// @brief Represents a scene object with an associated surface material.
+    ///
+    /// Provides access to a material used for rendering the object's surface.
     class SPACE_API SurfaceObject
         : public virtual ISurfaceObject
     {
     public:
+        /// @brief Constructs a surface object.
         SurfaceObject();
+
+        /// @brief Destroys the surface object.
         ~SurfaceObject() override;
 
+        /// @brief Retrieves the material assigned to the surface.
+        ///
+        /// @return Pointer to the assigned material, or `nullptr` if none is set.
         const IMaterial* get_material() const override;
+
+        /// @brief Assigns a material to the surface.
+        ///
+        /// @param material Pointer to the material to assign.
         void set_material(const IMaterial* material) override;
 
     private:
+        /// @brief Pointer to the assigned surface material.
         const IMaterial* m_p_material;
     };
 }

@@ -12,20 +12,31 @@
 
 namespace andromeda::space
 {
+    /// @brief Default implementation of the camera interface.
+    ///
+    /// Combines perspective projection and camera control functionality into a
+    /// single camera object suitable for rendering a 3D scene.
     class SPACE_API Camera
         : public ICamera
         , public PerspectiveControl
         , public CameraController
     {
     public:
+        /// @brief Constructs a camera using default settings.
         Camera();
 
+        /// @brief Constructs a camera with the specified position and orientation.
+        ///
+        /// @param position Initial camera position.
+        /// @param yaw_radians Initial yaw angle in radians.
+        /// @param pitch_radians Initial pitch angle in radians.
         Camera(
             const math::Vec3& position,
             float yaw_radians = -math::PI_HALF,
             float pitch_radians = 0.0f
         );
 
+        /// @brief Destroys the camera.
         ~Camera() override;
 
         // void set_on_distance_change(OnDistanceChange callback);
