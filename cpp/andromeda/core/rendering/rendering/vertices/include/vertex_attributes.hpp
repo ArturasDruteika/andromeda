@@ -7,14 +7,29 @@
 
 namespace andromeda::rendering
 {
+    /// @brief Describes a single vertex attribute.
+    ///
+    /// Defines how a vertex attribute is interpreted by the graphics pipeline,
+    /// including its shader location, data format, and memory layout.
     struct VertexAttributes
     {
-        unsigned int index = 0;  // Location in shader
-        int size = -1;            // Number of components (e.g., 3 for vec3)
-        unsigned int type = 0;   // GL_FLOAT, GL_INT, etc.
-        bool normalized = false;     // Should it be normalized?
-        size_t stride = 0;       // Offset between attributes
-        size_t offset = 0;       // Byte offset in struct
+        /// @brief Attribute location in the shader program.
+        unsigned int index = 0;
+
+        /// @brief Number of components in the attribute (for example, 3 for a vec3).
+        int size = -1;
+
+        /// @brief Underlying graphics API data type (for example, GL_FLOAT).
+        unsigned int type = 0;
+
+        /// @brief Indicates whether integer values should be normalized.
+        bool normalized = false;
+
+        /// @brief Byte stride between consecutive vertex attributes.
+        size_t stride = 0;
+
+        /// @brief Byte offset of the attribute within the vertex structure.
+        size_t offset = 0;
     };
 }
 

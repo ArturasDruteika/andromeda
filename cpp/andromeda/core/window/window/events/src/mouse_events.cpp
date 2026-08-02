@@ -22,7 +22,7 @@ namespace andromeda::window
         return m_y;
     }
 
-    bool MouseMovedEvent::is_in_category(EventCategory category)
+    bool MouseMovedEvent::is_in_category(EventCategory category) const
     {
         return (get_category_flags() & category) != 0;
     }
@@ -68,7 +68,7 @@ namespace andromeda::window
         return m_y_offset;
     }
 
-    bool MouseScrolledEvent::is_in_category(EventCategory category)
+    bool MouseScrolledEvent::is_in_category(EventCategory category) const
     {
         return (get_category_flags() & category) != 0;
     }
@@ -108,7 +108,7 @@ namespace andromeda::window
         return m_button;
     }
 
-    bool MouseButtonEvent::is_in_category(EventCategory category)
+    bool MouseButtonEvent::is_in_category(EventCategory category) const
     {
         return (get_category_flags() & category) != 0;
     }

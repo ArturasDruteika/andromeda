@@ -4,6 +4,7 @@
 
 namespace andromeda::space
 {
+    /// @brief Enumerates the built-in material presets supported by the engine.
     enum class MaterialType 
     {
         None,

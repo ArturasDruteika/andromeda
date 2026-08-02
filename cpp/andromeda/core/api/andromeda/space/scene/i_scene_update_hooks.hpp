@@ -7,15 +7,24 @@
 
 namespace andromeda
 {
-	class ISceneUpdateHooks
-		: public virtual IUpdateHooks
-	{
-	public:
-		using Callback = IUpdateHooks::Callback;
-		using Handle = IUpdateHooks::Handle;
+    /// @brief Defines the interface for scene update hooks.
+    ///
+    /// Extends the generic update hook interface for scene-specific update
+    /// notifications. Callback registration and management are inherited from
+    /// `IUpdateHooks`.
+    class ISceneUpdateHooks
+        : public virtual IUpdateHooks
+    {
+    public:
+        /// @brief Callback function type.
+        using Callback = IUpdateHooks::Callback;
 
-		~ISceneUpdateHooks() override = default;
-	};
+        /// @brief Callback registration handle type.
+        using Handle = IUpdateHooks::Handle;
+
+        /// @brief Virtual destructor.
+        ~ISceneUpdateHooks() override = default;
+    };
 }
 
 

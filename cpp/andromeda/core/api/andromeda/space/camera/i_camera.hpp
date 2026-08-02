@@ -8,11 +8,16 @@
 
 namespace andromeda
 {
+    /// @brief Defines the complete camera interface.
+    ///
+    /// Combines camera view access, camera control, and perspective control
+    /// into a single interface representing a fully configurable camera.
     class ICamera
         : public virtual ICameraController
-		, public virtual IPerspectiveControl
+        , public virtual IPerspectiveControl
     {
     public:
+        /// @brief Virtual destructor.
         virtual ~ICamera() = default;
     };
 }

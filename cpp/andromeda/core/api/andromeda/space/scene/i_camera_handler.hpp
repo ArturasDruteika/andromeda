@@ -7,17 +7,32 @@
 
 namespace andromeda
 {
-	class ICameraHandler
-	{
-	public:
-		virtual ~ICameraHandler() = default;
+    /// @brief Defines the interface for managing the active camera.
+    ///
+    /// A camera handler maintains the currently active camera used for
+    /// rendering a scene.
+    class ICameraHandler
+    {
+    public:
+        /// @brief Virtual destructor.
+        virtual ~ICameraHandler() = default;
 
-		// Getters
-		virtual ICamera* get_active_camera() const = 0;
-		// Setters
-		virtual void set_active_camera(ICamera* camera) = 0;
-	};
+        // Getters
+
+        /// @brief Retrieves the active camera.
+        ///
+        /// @return Pointer to the active camera, or `nullptr` if no camera is active.
+        virtual ICamera* get_active_camera() const = 0;
+
+        // Setters
+
+        /// @brief Sets the active camera.
+        ///
+        /// @param camera Pointer to the camera that will become active, or
+        ///               `nullptr` to clear the active camera.
+        virtual void set_active_camera(ICamera* camera) = 0;
+    };
 }
 
 
-#endif // API_CAMERA_HANDLER__I_CAMERA_HANDLER__HPP
+#endif // API__CAMERA_HANDLER__I_CAMERA_HANDLER__HPP

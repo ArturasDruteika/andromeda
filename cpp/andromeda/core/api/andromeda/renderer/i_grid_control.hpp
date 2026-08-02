@@ -4,16 +4,30 @@
 
 namespace andromeda
 {
-	class IGridControl
-	{
-	public:
-		virtual ~IGridControl() = default;
+    /// @brief Defines the interface for controlling renderer grid visualization.
+    ///
+    /// This interface provides access to the visibility state of the editor or
+    /// debugging grid rendered by the engine.
+    class IGridControl
+    {
+    public:
+        /// @brief Virtual destructor.
+        virtual ~IGridControl() = default;
 
-		// Getters
-		virtual bool is_grid_visible() const = 0;
-		// Setters
-		virtual void set_grid_visible(bool visible) = 0;
-	};
+        // Getters
+
+        /// @brief Checks whether the grid is currently visible.
+        ///
+        /// @return `true` if the grid is visible; otherwise, `false`.
+        virtual bool is_grid_visible() const = 0;
+
+        // Setters
+
+        /// @brief Sets the grid visibility.
+        ///
+        /// @param visible `true` to display the grid; `false` to hide it.
+        virtual void set_grid_visible(bool visible) = 0;
+    };
 }
 
 

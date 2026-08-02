@@ -18,7 +18,7 @@ namespace andromeda::window
         return m_key_code;
     }
 
-    bool KeyEvent::is_in_category(EventCategory category)
+    bool KeyEvent::is_in_category(EventCategory category) const
     {
         return (get_category_flags() & category) != 0;
     }
