@@ -1,5 +1,4 @@
-#ifndef RENDERING__OPENGL__SUPPORT__MESH_CACHE_OPEN_GL__HPP
-#define RENDERING__OPENGL__SUPPORT__MESH_CACHE_OPEN_GL__HPP
+#pragma once
 
 
 #include "../../geometry/include/gpu_mesh_open_gl.hpp"
@@ -55,6 +54,3 @@ namespace andromeda::rendering
 		std::unordered_map<int, GpuMeshOpenGL> m_meshes;
 	};
 }
-
-
-#endif // RENDERING__OPENGL__SUPPORT__MESH_CACHE_OPEN_GL__HPP

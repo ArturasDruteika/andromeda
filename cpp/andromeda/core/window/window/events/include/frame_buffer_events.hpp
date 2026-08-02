@@ -1,5 +1,4 @@
-#ifndef WINDOW__FRAMEBUFFER_EVENTS__HPP
-#define WINDOW__FRAMEBUFFER_EVENTS__HPP
+#pragma once
 
 
 #include "event_base.hpp"
@@ -173,6 +172,3 @@ namespace andromeda::window
         int m_height;
     };
 }
-
-
-#endif // WINDOW__FRAMEBUFFER_EVENTS__HPP

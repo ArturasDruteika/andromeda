@@ -1,5 +1,4 @@
-#ifndef MATH__MATH_OPERATIONS__HPP
-#define MATH__MATH_OPERATIONS__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -170,6 +169,3 @@ namespace andromeda::math
 		}
 	};
 }
-
-
-#endif // MATH__MATH_OPERATIONS__HPP

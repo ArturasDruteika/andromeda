@@ -1,5 +1,4 @@
-#ifndef RENDERER__ILLUMINATION_CONTROL__HPP
-#define RENDERER__ILLUMINATION_CONTROL__HPP
+#pragma once
 
 
 namespace andromeda::rendering
@@ -35,6 +34,3 @@ namespace andromeda::rendering
 		bool m_is_illumination_mode;
 	};
 }
-
-
-#endif // RENDERER__ILLUMINATION_CONTROL__HPP

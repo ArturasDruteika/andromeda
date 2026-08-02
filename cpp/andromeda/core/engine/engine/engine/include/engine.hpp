@@ -1,5 +1,4 @@
-#ifndef ENGINECORE__ENGINE__HPP
-#define ENGINECORE__ENGINE__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -144,6 +143,3 @@ namespace andromeda::engine
         float m_scroll_zoom_sensitivity;
     };
 }
-
-
-#endif // ENGINECORE__ENGINE__HPP

@@ -1,5 +1,4 @@
-#ifndef RENDERER__FACE_CULLING_CONTROL_OPENGL__HPP
-#define RENDERER__FACE_CULLING_CONTROL_OPENGL__HPP
+#pragma once
 
 
 namespace andromeda::rendering
@@ -46,6 +45,3 @@ namespace andromeda::rendering
 		mutable bool m_is_back_face_culling_enabled;
 	};
 }
-
-
-#endif // RENDERER__FACE_CULLING_CONTROL_OPENGL__HPP

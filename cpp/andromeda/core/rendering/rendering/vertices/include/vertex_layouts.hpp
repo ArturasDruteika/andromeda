@@ -1,5 +1,4 @@
-#ifndef RENDERING__VERTICES__VERTEX_LAYOUTS__HPP
-#define RENDERING__VERTICES__VERTEX_LAYOUTS__HPP
+#pragma once
 
 
 #include "vertex_format.hpp"
@@ -89,5 +88,3 @@ namespace andromeda::rendering
         InputRate m_input_rate;
     };
 }
-
-#endif // RENDERING__VERTICES__VERTEX_LAYOUTS__HPP

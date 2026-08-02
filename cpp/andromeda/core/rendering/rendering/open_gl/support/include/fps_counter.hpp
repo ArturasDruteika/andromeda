@@ -1,5 +1,4 @@
-#ifndef RENDERING__OPENGL__SUPPORT__FPS_COUNTER__HPP
-#define RENDERING__OPENGL__SUPPORT__FPS_COUNTER__HPP
+#pragma once
 
 
 #include "pch.hpp"
@@ -62,5 +61,3 @@ namespace andromeda::rendering
         bool m_first_frame;
     };
 }
-
-#endif // RENDERING__OPENGL__SUPPORT__FPS_COUNTER__HPP

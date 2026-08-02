@@ -1,5 +1,4 @@
-#ifndef RENDERING__VERTEX_ATTRIBUTES__HPP
-#define RENDERING__VERTEX_ATTRIBUTES__HPP
+#pragma once
 
 
 #include <stddef.h>
@@ -32,6 +31,3 @@ namespace andromeda::rendering
         size_t offset = 0;
     };
 }
-
-
-#endif // RENDERING__VERTEX_ATTRIBUTES__HPP

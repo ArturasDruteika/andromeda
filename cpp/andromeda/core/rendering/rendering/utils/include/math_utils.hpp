@@ -1,5 +1,4 @@
-#ifndef RENDERING__MATH_UTILS__HPP
-#define RENDERING__MATH_UTILS__HPP
+#pragma once
 
 
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
@@ -88,6 +87,3 @@ namespace andromeda::rendering
 		static math::Mat4 from_glm(const glm::mat4& glm_mat);
 	};
 }
-
-
-#endif // RENDERING__MATH_UTILS__HPP

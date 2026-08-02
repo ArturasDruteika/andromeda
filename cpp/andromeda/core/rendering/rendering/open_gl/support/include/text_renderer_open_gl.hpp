@@ -1,5 +1,4 @@
-#ifndef RENDERING__OPENGL__SUPPORT__TEXT_RENDERER_OPEN_GL__HPP
-#define RENDERING__OPENGL__SUPPORT__TEXT_RENDERER_OPEN_GL__HPP
+#pragma once
 
 
 #include "pch.hpp"
@@ -73,6 +72,3 @@ namespace andromeda::rendering
         GLuint m_vbo;
     };
 }
-
-
-#endif // RENDERING__OPENGL__SUPPORT__TEXT_RENDERER_OPEN_GL__HPP

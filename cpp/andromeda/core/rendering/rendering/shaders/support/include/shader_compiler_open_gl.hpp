@@ -1,5 +1,4 @@
-#ifndef RENDERING__SHADERS__SUPPORT__SHADER_COMPILER_OPEN_GL__HPP
-#define RENDERING__SHADERS__SUPPORT__SHADER_COMPILER_OPEN_GL__HPP
+#pragma once
 
 
 #include "pch.hpp"
@@ -54,6 +53,3 @@ namespace andromeda::rendering
 		bool check_link_errors(unsigned int program);
 	};
 }
-
-
-#endif // RENDERING__SHADERS__SUPPORT__SHADER_COMPILER_OPEN_GL__HPP

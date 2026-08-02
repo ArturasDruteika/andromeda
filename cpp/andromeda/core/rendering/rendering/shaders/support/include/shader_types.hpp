@@ -1,5 +1,4 @@
-#ifndef RENDERER__SHADER_TYPES__HPP
-#define RENDERER__SHADER_TYPES__HPP
+#pragma once
 
 
 namespace andromeda::rendering
@@ -17,6 +16,3 @@ namespace andromeda::rendering
 		Geometry
 	};
 }
-
-
-#endif // RENDERER__SHADER_TYPES__HPP

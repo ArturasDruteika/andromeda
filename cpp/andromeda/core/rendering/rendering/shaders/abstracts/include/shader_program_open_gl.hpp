@@ -1,5 +1,4 @@
-#ifndef RENDERING__SHADERS__ABSTRACTS__SHADER_PROGRAM_OPEN_GL__HPP
-#define RENDERING__SHADERS__ABSTRACTS__SHADER_PROGRAM_OPEN_GL__HPP
+#pragma once
 
 
 #include "pch.hpp"
@@ -50,6 +49,3 @@ namespace andromeda::rendering
 		unsigned int m_program_id;
 	};
 }
-
-
-#endif // RENDERING__SHADERS__ABSTRACTS__SHADER_PROGRAM_OPEN_GL__HPP

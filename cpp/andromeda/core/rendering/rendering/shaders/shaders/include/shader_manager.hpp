@@ -1,5 +1,4 @@
-#ifndef RENDERING__SHADERS__SHADERS__SHADER_MANAGER__HPP
-#define RENDERING__SHADERS__SHADERS__SHADER_MANAGER__HPP
+#pragma once
 
 
 #include "shader_open_gl.hpp"
@@ -107,6 +106,3 @@ namespace andromeda::rendering
 		std::unordered_map<ShaderOpenGLTypes, ShaderOpenGL*> m_shaders_map;
 	};
 }
-
-
-#endif // RENDERING__SHADERS__SHADERS__SHADER_MANAGER__HPP

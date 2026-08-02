@@ -1,5 +1,4 @@
-#ifndef RENDERING__OPENGL__SUPPORT__SHADOW_RENDERER_OPEN_GL__HPP
-#define RENDERING__OPENGL__SUPPORT__SHADOW_RENDERER_OPEN_GL__HPP
+#pragma once
 
 
 #include "frame_buffer_open_gl.hpp"
@@ -100,6 +99,3 @@ namespace andromeda::rendering
         );
     };
 }
-
-
-#endif // RENDERING__OPENGL__SUPPORT__SHADOW_RENDERER_OPEN_GL__HPP

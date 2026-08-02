@@ -1,5 +1,4 @@
-#ifndef WINDOW__EVENT_DISPATCHER__HPP
-#define WINDOW__EVENT_DISPATCHER__HPP
+#pragma once
 
 
 #include "andromeda/window/events/i_event.hpp"
@@ -53,6 +52,3 @@ namespace andromeda::window
 		IEvent& m_event;
 	};
 }
-
-
-#endif // WINDOW__EVENT_DISPATCHER__HPP

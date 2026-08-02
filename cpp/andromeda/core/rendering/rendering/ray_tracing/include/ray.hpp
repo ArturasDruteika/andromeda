@@ -1,5 +1,4 @@
-#ifndef RENDERING__RAY__HPP
-#define RENDERING__RAY__HPP
+#pragma once
 
 
 #include "glm/glm.hpp"
@@ -13,6 +12,3 @@ namespace andromeda::rendering
 		glm::vec3 direction;
 	};
 }
-
-
-#endif // RENDERING__RAY__HPP

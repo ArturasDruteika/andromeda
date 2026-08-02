@@ -1,5 +1,4 @@
-#ifndef PRECOMPILED_HEADERS__PCH__HPP
-#define PRECOMPILED_HEADERS__PCH__HPP
+#pragma once
 
 
 // Standard library headers
@@ -28,6 +27,3 @@
 #include <thread>
 #include <unordered_map>
 #include <vector>
-
-
-#endif // PRECOMPILED_HEADERS__PCH__HPP
