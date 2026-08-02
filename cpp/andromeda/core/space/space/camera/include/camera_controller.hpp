@@ -1,5 +1,4 @@
-#ifndef SPACE__CAMERA__CAMERA_CONTROLLER__HPP
-#define SPACE__CAMERA__CAMERA_CONTROLLER__HPP
+#pragma once
 
 
 #include "camera_view.hpp"
@@ -57,6 +56,3 @@ namespace andromeda::space
 		math::Quaternion m_orientation;
 	};
 }
-
-
-#endif // SPACE__CAMERA__CAMERA_CONTROLLER__HPP

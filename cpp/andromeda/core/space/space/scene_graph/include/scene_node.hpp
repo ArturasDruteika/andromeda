@@ -1,5 +1,4 @@
-#ifndef API__SPACE__SCENE__SCENE_NODE__HPP
-#define API__SPACE__SCENE__SCENE_NODE__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -111,6 +110,3 @@ namespace andromeda::space
         std::vector<std::unique_ptr<ISceneComponent>> m_components;
     };
 }
-
-
-#endif // API__SPACE__SCENE__SCENE_NODE__HPP

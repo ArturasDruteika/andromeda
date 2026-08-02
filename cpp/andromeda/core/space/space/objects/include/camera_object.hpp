@@ -1,5 +1,4 @@
-#ifndef SPACE__OBJECTS__CAMERA_OBJECT__HPP
-#define SPACE__OBJECTS__CAMERA_OBJECT__HPP
+#pragma once
 
 
 #include "object.hpp"
@@ -26,6 +25,3 @@ namespace andromeda::space
 		~CameraObject() override;
 	};
 }
-
-
-#endif // SPACE__OBJECTS__CAMERA_OBJECT__HPP

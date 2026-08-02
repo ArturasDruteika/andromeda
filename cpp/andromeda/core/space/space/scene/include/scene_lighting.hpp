@@ -1,5 +1,4 @@
-#ifndef SPACE__SCENE__SCENE_LIGHTING__HPP
-#define SPACE__SCENE__SCENE_LIGHTING__HPP
+#pragma once
 
 
 #include "../../light/include/directional_light.hpp"
@@ -64,6 +63,3 @@ namespace andromeda::space
         std::unordered_map<int, const ILightObject*> m_light_objects;
     };
 }
-
-
-#endif // SPACE__SCENE__SCENE_LIGHTING__HPP

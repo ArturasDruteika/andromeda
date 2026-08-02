@@ -1,5 +1,4 @@
-#ifndef ANDROMEDA__SPACE__OBJECTS__SKYROOM__HPP
-#define ANDROMEDA__SPACE__OBJECTS__SKYROOM__HPP
+#pragma once
 
 
 #include "geometric_object.hpp"
@@ -103,6 +102,3 @@ namespace andromeda::space
         float m_half_extent;
     };
 }
-
-
-#endif // ANDROMEDA__SPACE__OBJECTS__SKYROOM__HPP

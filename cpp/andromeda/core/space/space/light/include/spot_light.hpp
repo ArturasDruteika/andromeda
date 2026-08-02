@@ -1,5 +1,4 @@
-#ifndef SPACE__SPOT_LIGHT__HPP
-#define SPACE__SPOT_LIGHT__HPP
+#pragma once
 
 
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
@@ -14,6 +13,3 @@ namespace andromeda::space
 		~SpotLight();
 	};
 }
-
-
-#endif // SPACE__SPOT_LIGHT__HPP

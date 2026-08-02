@@ -1,5 +1,4 @@
-#ifndef SPACE__TRANSFORMATIONS__ROTATABLE__HPP
-#define SPACE__TRANSFORMATIONS__ROTATABLE__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -103,5 +102,3 @@ namespace andromeda
         math::Quaternion m_orientation;
     };
 }
-
-#endif // SPACE__TRANSFORMATIONS__ROTATABLE__HPP

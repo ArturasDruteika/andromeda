@@ -1,5 +1,4 @@
-#ifndef SPACE__SCENE__SCENE_NODE_MANAGER__HPP
-#define SPACE__SCENE__SCENE_NODE_MANAGER__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -68,6 +67,3 @@ namespace andromeda::space
 		std::unique_ptr<SceneNode> m_root_node;
 	};
 }
-
-
-#endif // SPACE__SCENE__SCENE_NODE_MANAGER__HPP

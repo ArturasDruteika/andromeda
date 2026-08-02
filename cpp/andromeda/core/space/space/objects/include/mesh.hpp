@@ -1,5 +1,4 @@
-#ifndef ANDROMEDA__SPACE__MESH__HPP
-#define ANDROMEDA__SPACE__MESH__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -65,6 +64,3 @@ namespace andromeda::space
 		std::vector<Vertex> m_vertices;
 	};
 }
-
-
-#endif // ANDROMEDA__SPACE__MESH__HPP

@@ -1,5 +1,4 @@
-#ifndef SPACE__MATERIAL_TYPES__HPP
-#define SPACE__MATERIAL_TYPES__HPP
+#pragma once
 
 
 namespace andromeda::space
@@ -37,6 +36,3 @@ namespace andromeda::space
         Count  // always keep last; useful for iteration/arrays
     };
 }
-
-
-#endif // SPACE__MATERIAL_TYPES__HPP

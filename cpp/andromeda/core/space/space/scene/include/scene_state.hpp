@@ -1,5 +1,4 @@
-#ifndef SPACE__SCENE__SCENE_STATE__HPP
-#define SPACE__SCENE__SCENE_STATE__HPP
+#pragma once
 
 
 #include "../../objects/include/geometric_object.hpp"
@@ -31,6 +30,3 @@ namespace andromeda::space
 		bool state_changed(const std::unordered_map<int, IGeometricObject*>& objects) const override;
 	};
 }
-
-
-#endif // SPACE__SCENE__SCENE_STATE__HPP

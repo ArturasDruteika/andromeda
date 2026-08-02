@@ -1,5 +1,4 @@
-#ifndef SPACE__MATERIALS_LIBRARY__HPP
-#define SPACE__MATERIALS_LIBRARY__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -90,6 +89,3 @@ namespace andromeda::space
 		std::unordered_map<MaterialType, Material> m_materials;
 	};
 }
-
-
-#endif // SPACE__MATERIALS_LIBRARY__HPP

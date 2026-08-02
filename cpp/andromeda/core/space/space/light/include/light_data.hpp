@@ -1,5 +1,4 @@
-#ifndef SPACE__LIGHT_DATA__HPP
-#define SPACE__LIGHT_DATA__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -227,6 +226,3 @@ namespace andromeda::space
         LightType m_light_type;
     };
 }
-
-
-#endif // SPACE__LIGHT_DATA__HPP

@@ -1,5 +1,4 @@
-#ifndef SPACE__POINT_LIGHT__HPP
-#define SPACE__POINT_LIGHT__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -136,6 +135,3 @@ namespace andromeda::space
 		math::Vec3 m_position;
 	};
 }
-
-
-#endif // SPACE__POINT_LIGHT__HPP

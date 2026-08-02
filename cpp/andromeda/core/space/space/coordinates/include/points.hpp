@@ -1,5 +1,4 @@
-#ifndef SPACE__POINTS__HPP
-#define SPACE__POINTS__HPP
+#pragma once
 
 
 namespace andromeda::Space
@@ -80,5 +79,3 @@ namespace andromeda::Space
 		}
 	};
 }
-
-#endif // SPACE__POINTS__HPP

@@ -1,5 +1,4 @@
-#ifndef ANDROMEDA__SPACE__LIGHT_OBJECT__HPP
-#define ANDROMEDA__SPACE__LIGHT_OBJECT__HPP
+#pragma once
 
 
 #include "object.hpp"
@@ -39,6 +38,3 @@ namespace andromeda::space
 		LightType m_light_type;
 	};
 }
-
-
-#endif // ANDROMEDA__SPACE__LIGHT_OBJECT__HPP

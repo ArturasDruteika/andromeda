@@ -1,5 +1,4 @@
-#ifndef SPACE__SCENE_GRAPH__LIGHT_COMPONENT__HPP
-#define SPACE__SCENE_GRAPH__LIGHT_COMPONENT__HPP
+#pragma once
 
 
 #include "scene_component.hpp"
@@ -43,6 +42,3 @@ namespace andromeda::space
         const ILightObject* m_light_object;
     };
 }
-
-
-#endif // SPACE__SCENE_GRAPH__LIGHT_COMPONENT__HPP

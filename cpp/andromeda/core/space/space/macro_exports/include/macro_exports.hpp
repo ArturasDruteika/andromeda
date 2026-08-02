@@ -1,5 +1,4 @@
-#ifndef SPACE__MACRO_EXPORTS__HPP
-#define SPACE__MACRO_EXPORTS__HPP
+#pragma once
 
 
 #if defined(_WIN32)
@@ -15,6 +14,3 @@
     // GCC
     #define SPACE_API __attribute__((visibility("default")))
 #endif
-
-
-#endif // SPACE__MACRO_EXPORTS__HPP

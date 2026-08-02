@@ -1,5 +1,4 @@
-#ifndef SPACE__CAMERA__CAMERA__HPP
-#define SPACE__CAMERA__CAMERA__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -45,6 +44,3 @@ namespace andromeda::space
         // OnDistanceChange m_on_distance_change_callback;
     };
 }
-
-
-#endif // SPACE__CAMERA__CAMERA__HPP

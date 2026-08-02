@@ -1,5 +1,4 @@
-#ifndef SPACE__SCENE__SCENE_API__SCENE__HPP
-#define SPACE__SCENE__SCENE_API__SCENE__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -60,6 +59,3 @@ namespace andromeda::space
 		math::Vec4 m_background_color;
 	};
 }
-
-
-#endif // SPACE__SCENE__SCENE_API__SCENE__HPP

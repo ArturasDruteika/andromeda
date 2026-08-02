@@ -1,5 +1,4 @@
-#ifndef SPACE__TRANSFORMATIONS__SCALABLE__HPP
-#define SPACE__TRANSFORMATIONS__SCALABLE__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -75,6 +74,3 @@ namespace andromeda
 		math::Mat4 m_scale_matrix;
 	};
 }
-
-
-#endif // SPACE__TRANSFORMATIONS__SCALABLE__HPP

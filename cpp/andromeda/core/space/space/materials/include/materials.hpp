@@ -1,5 +1,4 @@
-#ifndef SPACE__MATERIALS__HPP
-#define SPACE__MATERIALS__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -102,6 +101,3 @@ namespace andromeda::space
 		math::Vec3 m_specular;
 	};
 }
-
-
-#endif // SPACE__MATERIALS__HPP
