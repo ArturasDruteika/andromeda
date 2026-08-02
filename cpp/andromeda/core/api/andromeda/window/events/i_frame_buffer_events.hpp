@@ -1,5 +1,4 @@
-#ifndef API__WINDOW__EVENTS__I_FRAMEBUFFER_EVENTS_HPP
-#define API__WINDOW__EVENTS__I_FRAMEBUFFER_EVENTS_HPP
+#pragma once
 
 
 #include "i_event.hpp"
@@ -61,6 +60,3 @@ namespace andromeda
         virtual int get_height() const = 0;
     };
 }
-
-
-#endif // API__WINDOW__EVENTS__I_FRAMEBUFFER_EVENTS_HPP

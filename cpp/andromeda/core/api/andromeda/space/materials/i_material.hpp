@@ -1,5 +1,4 @@
-#ifndef ANDROMEDA__MATERIALS__I_MATERIAL__HPP
-#define ANDROMEDA__MATERIALS__I_MATERIAL__HPP
+#pragma once
 
 
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
@@ -74,6 +73,3 @@ namespace andromeda
         virtual void set_specular(const math::Vec3& specular) = 0;
     };
 }
-
-
-#endif // ANDROMEDA__MATERIALS__I_MATERIAL__HPP

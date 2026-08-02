@@ -1,5 +1,4 @@
-#ifndef API__SCENE__I_SCENE_UPDATE_HOOKS__HPP
-#define API__SCENE__I_SCENE_UPDATE_HOOKS__HPP
+#pragma once
 
 
 #include "i_update_hooks.hpp"
@@ -26,6 +25,3 @@ namespace andromeda
         ~ISceneUpdateHooks() override = default;
     };
 }
-
-
-#endif // API__SCENE__I_SCENE_UPDATE_HOOKS__HPP

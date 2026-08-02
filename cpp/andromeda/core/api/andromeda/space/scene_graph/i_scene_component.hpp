@@ -1,5 +1,4 @@
-#ifndef API__SPACE__SCENE__I_SCENE_COMPONENT__HPP
-#define API__SPACE__SCENE__I_SCENE_COMPONENT__HPP
+#pragma once
 
 
 namespace andromeda
@@ -25,6 +24,3 @@ namespace andromeda
         virtual void on_detach() = 0;
     };
 }
-
-
-#endif // API__SPACE__SCENE__I_SCENE_COMPONENT__HPP

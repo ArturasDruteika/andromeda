@@ -1,5 +1,4 @@
-#ifndef API__WINDOW__I_WINDOW__HPP
-#define API__WINDOW__I_WINDOW__HPP
+#pragma once
 
 
 #include "../events/i_event.hpp"
@@ -79,6 +78,3 @@ namespace andromeda
         virtual void set_event_callback(const EventCallbackFn& callback) = 0;
     };
 }
-
-
-#endif // API__WINDOW__I_WINDOW__HPP

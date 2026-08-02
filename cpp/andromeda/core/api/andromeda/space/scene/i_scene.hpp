@@ -1,5 +1,4 @@
-#ifndef API__SCENE__I_SCENE__HPP
-#define API__SCENE__I_SCENE__HPP
+#pragma once
 
 
 #include "i_camera_handler.hpp"
@@ -52,6 +51,3 @@ namespace andromeda
         virtual void update(float delta_time) = 0;
     };
 }
-
-
-#endif // API__SCENE__I_SCENE__HPP

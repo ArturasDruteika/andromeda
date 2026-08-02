@@ -1,5 +1,4 @@
-#ifndef API__SPACE__COLORS__COLORS__HPP
-#define API__SPACE__COLORS__COLORS__HPP
+#pragma once
 
 
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
@@ -54,6 +53,3 @@ namespace andromeda
         }
     };
 }
-
-
-#endif // API__SPACE__COLORS__COLORS__HPP

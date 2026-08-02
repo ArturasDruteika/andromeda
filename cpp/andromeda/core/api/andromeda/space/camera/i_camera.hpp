@@ -1,5 +1,4 @@
-#ifndef API__CAMERA__I_CAMERA__HPP
-#define API__CAMERA__I_CAMERA__HPP
+#pragma once
 
 
 #include "i_camera_controller.hpp"
@@ -21,6 +20,3 @@ namespace andromeda
         virtual ~ICamera() = default;
     };
 }
-
-
-#endif // API__CAMERA__I_CAMERA__HPP

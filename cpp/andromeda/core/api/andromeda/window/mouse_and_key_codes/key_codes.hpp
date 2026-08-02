@@ -1,5 +1,4 @@
-#ifndef API__WINDOW__EVENTS__KEY_CODES__HPP
-#define API__WINDOW__EVENTS__KEY_CODES__HPP
+#pragma once
 
 
 #include "pch.hpp"
@@ -152,6 +151,3 @@ namespace andromeda
         Menu = 348
     };
 }
-
-
-#endif // API__WINDOW__EVENTS__KEY_CODES__HPP

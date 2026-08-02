@@ -1,5 +1,4 @@
-#ifndef API__WINDOW__EVENTS__I_EVENT_HPP
-#define API__WINDOW__EVENTS__I_EVENT_HPP
+#pragma once
 
 
 #include "event_type.hpp"
@@ -57,6 +56,3 @@ namespace andromeda
         virtual EventType get_event_type() const = 0;
     };
 }
-
-
-#endif // API__WINDOW__EVENTS__I_EVENT_HPP

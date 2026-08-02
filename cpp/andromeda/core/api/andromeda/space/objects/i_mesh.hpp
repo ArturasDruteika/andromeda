@@ -1,5 +1,4 @@
-#ifndef API__OBJECTS__I_MESH__HPP
-#define API__OBJECTS__I_MESH__HPP
+#pragma once
 
 
 #include "andromeda/space/vertices/vertex.hpp"
@@ -41,6 +40,3 @@ namespace andromeda
         virtual const std::vector<Vertex>& get_vertices() const = 0;
     };
 }
-
-
-#endif // API__OBJECTS__I_MESH__HPP

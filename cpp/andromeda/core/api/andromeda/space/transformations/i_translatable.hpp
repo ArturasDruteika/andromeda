@@ -1,5 +1,4 @@
-#ifndef API__SPACE__TRANSFORMATIONS__I_TRANSLATABLE__HPP
-#define API__SPACE__TRANSFORMATIONS__I_TRANSLATABLE__HPP
+#pragma once
 
 
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
@@ -51,6 +50,3 @@ namespace andromeda
         virtual void translate(const math::Vec3& translation) = 0;
     };
 }
-
-
-#endif // API__SPACE__TRANSFORMATIONS__I_TRANSLATABLE__HPP

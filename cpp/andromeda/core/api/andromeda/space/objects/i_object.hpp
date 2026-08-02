@@ -1,5 +1,4 @@
-#ifndef API__OBJECTS__I_OBJECT__HPP
-#define API__OBJECTS__I_OBJECT__HPP
+#pragma once
 
 
 #include <string>
@@ -52,6 +51,3 @@ namespace andromeda
         virtual void set_id(int id) = 0;
     };
 }
-
-
-#endif // API__OBJECTS__I_OBJECT__HPP

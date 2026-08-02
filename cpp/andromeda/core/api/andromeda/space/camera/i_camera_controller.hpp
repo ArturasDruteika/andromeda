@@ -1,5 +1,4 @@
-#ifndef API__CAMERA__I_CAMERA_CONTROLLER__HPP
-#define API__CAMERA__I_CAMERA_CONTROLLER__HPP
+#pragma once
 
 
 #include "i_camera_view.hpp"
@@ -41,6 +40,3 @@ namespace andromeda
         //virtual void SetOnDistanceChange(OnDistanceChange callback) = 0;
     };
 }
-
-
-#endif // API__CAMERA__I_CAMERA_CONTROLLER__HPP

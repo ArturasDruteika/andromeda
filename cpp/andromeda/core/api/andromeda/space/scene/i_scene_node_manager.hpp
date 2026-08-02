@@ -1,5 +1,4 @@
-#ifndef API__SCENE__I_SCENE_NODE_MANAGER__HPP
-#define API__SCENE__I_SCENE_NODE_MANAGER__HPP
+#pragma once
 
 
 #include "andromeda/space/scene/i_scene_lighting.hpp"
@@ -31,6 +30,3 @@ namespace andromeda
         virtual void attach_node(std::unique_ptr<ISceneNode> node) = 0;
     };
 }
-
-
-#endif // API__SCENE__I_SCENE_NODE_MANAGER__HPP

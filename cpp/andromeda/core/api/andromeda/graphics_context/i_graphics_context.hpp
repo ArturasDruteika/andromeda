@@ -1,5 +1,4 @@
-#ifndef API__GRAPHICS_CONTEXT__I_GRAPHICS_CONTEXT__HPP
-#define API__GRAPHICS_CONTEXT__I_GRAPHICS_CONTEXT__HPP
+#pragma once
 
 
 #include "../window/window/i_window.hpp"
@@ -42,6 +41,3 @@ namespace andromeda
         virtual void present() = 0;
     };
 }
-
-
-#endif // API__GRAPHICS_CONTEXT__I_GRAPHICS_CONTEXT__HPP

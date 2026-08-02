@@ -1,5 +1,4 @@
-#ifndef API__WINDOW__EVENTS__EVENTS_TYPE__HPP
-#define API__WINDOW__EVENTS__EVENTS_TYPE__HPP
+#pragma once
 
 
 namespace andromeda
@@ -86,6 +85,3 @@ namespace andromeda
         EventCategoryMouseButton = bit(4)
     };
 }
-
-
-#endif // API__WINDOW__EVENTS__EVENTS_TYPE__HPP

@@ -1,5 +1,4 @@
-#ifndef API__SPACE__VERTICES__VERTEX__HPP
-#define API__SPACE__VERTICES__VERTEX__HPP
+#pragma once
 
 
 #include "../colors/colors.hpp"
@@ -63,6 +62,3 @@ namespace andromeda
         }
     };
 }
-
-
-#endif // API__SPACE__VERTICES__VERTEX__HPP

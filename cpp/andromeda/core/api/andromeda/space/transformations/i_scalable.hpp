@@ -1,5 +1,4 @@
-#ifndef API__SPACE__TRANSFORMATIONS__I_SCALABLE__HPP
-#define API__SPACE__TRANSFORMATIONS__I_SCALABLE__HPP
+#pragma once
 
 
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
@@ -56,6 +55,3 @@ namespace andromeda
         virtual void scale(float uniform_scale) = 0;
     };
 }
-
-
-#endif // API__SPACE__TRANSFORMATIONS__I_SCALABLE__HPP

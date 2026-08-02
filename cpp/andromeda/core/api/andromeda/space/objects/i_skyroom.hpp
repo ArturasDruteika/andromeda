@@ -1,5 +1,4 @@
-#ifndef API__OBJECTS__I_SKYROOM__HPP
-#define API__OBJECTS__I_SKYROOM__HPP
+#pragma once
 
 
 #include "i_geometric_object.hpp"
@@ -36,6 +35,3 @@ namespace andromeda
         virtual void set_half_extent(float half_extent) = 0;
     };
 }
-
-
-#endif // API__OBJECTS__I_SKYROOM__HPP

@@ -1,5 +1,4 @@
-#ifndef API__OBJECTS__I_CAMERA_OBJECT__HPP
-#define API__OBJECTS__I_CAMERA_OBJECT__HPP
+#pragma once
 
 
 #include "i_object.hpp"
@@ -19,6 +18,3 @@ namespace andromeda
         virtual ~ICameraObject() = default;
     };
 }
-
-
-#endif // API__OBJECTS__I_CAMERA_OBJECT__HPP

@@ -1,5 +1,4 @@
-#ifndef API__CAMERA__I_PERSPECTIVE_CONTROL__HPP
-#define API__CAMERA__I_PERSPECTIVE_CONTROL__HPP
+#pragma once
 
 
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
@@ -83,6 +82,3 @@ namespace andromeda
         virtual void update_projection() = 0;
     };
 }
-
-
-#endif // API__CAMERA__I_PERSPECTIVE_CONTROL__HPP

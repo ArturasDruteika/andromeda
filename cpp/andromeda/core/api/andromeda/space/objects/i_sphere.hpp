@@ -1,5 +1,4 @@
-#ifndef API__OBJECTS__I_SPHERE__HPP
-#define API__OBJECTS__I_SPHERE__HPP
+#pragma once
 
 
 #include "i_geometric_object.hpp"
@@ -28,6 +27,3 @@ namespace andromeda
         virtual float get_radius() const = 0;
     };
 }
-
-
-#endif // API__OBJECTS__I_SPHERE__HPP

@@ -1,5 +1,4 @@
-#ifndef API__CAMERA_HANDLER__I_CAMERA_HANDLER__HPP
-#define API__CAMERA_HANDLER__I_CAMERA_HANDLER__HPP
+#pragma once
 
 
 #include "../camera/i_camera.hpp"
@@ -33,6 +32,3 @@ namespace andromeda
         virtual void set_active_camera(ICamera* camera) = 0;
     };
 }
-
-
-#endif // API__CAMERA_HANDLER__I_CAMERA_HANDLER__HPP

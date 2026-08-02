@@ -1,5 +1,4 @@
-#ifndef API__OBJECTS__I_GEOMETRIC_OBJECT__HPP
-#define API__OBJECTS__I_GEOMETRIC_OBJECT__HPP
+#pragma once
 
 
 #include "i_object.hpp"
@@ -41,6 +40,3 @@ namespace andromeda
         virtual void set_color(const Color& color) = 0;
     };
 }
-
-
-#endif // API__OBJECTS__I_GEOMETRIC_OBJECT__HPP
