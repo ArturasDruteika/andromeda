@@ -7,14 +7,31 @@
 
 namespace andromeda::window
 {
+	/// @brief Dispatches events to type-specific handlers.
+	///
+	/// Performs runtime type checking and invokes the provided callback when the
+	/// stored event matches the requested event type.
 	class EventDispatcher
 	{
 	public:
+		/// @brief Constructs an event dispatcher.
+		///
+		/// @param event Event to dispatch.
 		EventDispatcher(IEvent& event);
+
+		/// @brief Destroys the event dispatcher.
 		~EventDispatcher();
 
-        // F will be deduced by the compiler
-        // F: bool(T&)
+        /// @brief Dispatches the stored event to a matching handler.
+        ///
+        /// If the stored event is of type `T`, the callback is invoked. If the
+        /// callback returns `true`, the event is marked as handled.
+        ///
+        /// @tparam T Event type expected by the callback.
+        /// @tparam F Callable object accepting `T&` and returning `bool`.
+        /// @param func Event handler to invoke.
+        /// @return `true` if the event was dispatched and handled; otherwise,
+        /// `false`.
         template<typename T, typename F>
         bool dispatch(const F& func)
         {
@@ -32,6 +49,7 @@ namespace andromeda::window
         }
 
 	private:
+		/// @brief Reference to the event being dispatched.
 		IEvent& m_event;
 	};
 }
