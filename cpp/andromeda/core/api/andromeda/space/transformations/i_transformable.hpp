@@ -1,5 +1,4 @@
-#ifndef API__SPACE__TRANSFORMATIONS__I_TRANSFORMABLE__HPP
-#define API__SPACE__TRANSFORMATIONS__I_TRANSFORMABLE__HPP
+#pragma once
 
 
 #include "i_rotatable.hpp"
@@ -53,6 +52,3 @@ namespace andromeda
         virtual void reset_state() = 0;
     };
 }
-
-
-#endif // API__SPACE__TRANSFORMATIONS__I_TRANSFORMABLE__HPP

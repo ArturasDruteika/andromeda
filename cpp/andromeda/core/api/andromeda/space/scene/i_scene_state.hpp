@@ -1,5 +1,4 @@
-#ifndef API__SCENE__I_SCENE_STATE__HPP
-#define API__SCENE__I_SCENE_STATE__HPP
+#pragma once
 
 
 #include "../objects/i_geometric_object.hpp"
@@ -24,6 +23,3 @@ namespace andromeda
         virtual bool state_changed(const std::unordered_map<int, IGeometricObject*>& objects) const = 0;
     };
 }
-
-
-#endif // API__SCENE__I_SCENE_STATE__HPP

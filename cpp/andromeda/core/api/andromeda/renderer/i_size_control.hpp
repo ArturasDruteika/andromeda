@@ -1,5 +1,4 @@
-#ifndef API__RENDERER__I_SIZE__HPP
-#define API__RENDERER__I_SIZE__HPP
+#pragma once
 
 
 namespace andromeda
@@ -33,6 +32,3 @@ namespace andromeda
         virtual void resize(int width, int height) = 0;
     };
 }
-
-
-#endif // API__RENDERER__I_SIZE__HPP

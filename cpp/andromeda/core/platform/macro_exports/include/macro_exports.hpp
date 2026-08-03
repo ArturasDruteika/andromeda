@@ -1,5 +1,4 @@
-#ifndef PLATFORM__MACRO_EXPORTS__HPP
-#define PLATFORM__MACRO_EXPORTS__HPP
+#pragma once
 
 
 #if defined(_WIN32)
@@ -15,6 +14,3 @@
     // GCC
     #define PLATFORM_API __attribute__((visibility("default")))
 #endif
-
-
-#endif // PLATFORM__MACRO_EXPORTS__HPP

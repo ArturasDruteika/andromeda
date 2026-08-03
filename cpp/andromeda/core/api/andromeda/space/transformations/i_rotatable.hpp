@@ -1,5 +1,4 @@
-#ifndef API__SPACE__TRANSFORMATIONS__I_ROTATABLE__HPP
-#define API__SPACE__TRANSFORMATIONS__I_ROTATABLE__HPP
+#pragma once
 
 
 #include "math/linear_algebra/include/linear_algebra_data_types.hpp"
@@ -77,6 +76,3 @@ namespace andromeda
         virtual void rotate_z(float angle) = 0;
     };
 }
-
-
-#endif // API__SPACE__TRANSFORMATIONS__I_ROTATABLE__HPP

@@ -1,5 +1,4 @@
-#ifndef ANDROMEDA__LIGHT__I_DIRECTIONAL_LIGHT__HPP
-#define ANDROMEDA__LIGHT__I_DIRECTIONAL_LIGHT__HPP
+#pragma once
 
 
 #include "i_light.hpp"
@@ -74,6 +73,3 @@ namespace andromeda
         virtual void set_direction(const math::Vec3& direction) = 0;
     };
 }
-
-
-#endif // ANDROMEDA__LIGHT__I_DIRECTIONAL_LIGHT__HPP

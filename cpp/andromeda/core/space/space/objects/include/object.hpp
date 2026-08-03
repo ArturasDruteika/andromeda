@@ -1,5 +1,4 @@
-#ifndef SPACE__OBJECTS__OBJECT__HPP
-#define SPACE__OBJECTS__OBJECT__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -71,6 +70,3 @@ namespace andromeda::space
         static std::atomic<int> s_next_id;
     };
 }
-
-
-#endif // SPACE__OBJECTS__OBJECT__HPP

@@ -1,5 +1,4 @@
-#ifndef RENDERER__OPENGL__SUPPORT__FRAME_BUFFER_OPENGL__HPP
-#define RENDERER__OPENGL__SUPPORT__FRAME_BUFFER_OPENGL__HPP
+#pragma once
 
 
 namespace andromeda::rendering
@@ -172,6 +171,3 @@ namespace andromeda::rendering
         FrameBufferType m_type;
     };
 }
-
-
-#endif // RENDERER__OPENGL__SUPPORT__FRAME_BUFFER_OPENGL__HPP

@@ -1,5 +1,4 @@
-#ifndef ANDROMEDA__SPACE__GEOMETRIC_OBJECT__HPP
-#define ANDROMEDA__SPACE__GEOMETRIC_OBJECT__HPP
+#pragma once
 
 
 #include "object.hpp"
@@ -63,6 +62,3 @@ namespace andromeda::space
 		Mesh m_mesh;
 	};
 }
-
-
-#endif // ANDROMEDA__SPACE__GEOMETRIC_OBJECT__HPP

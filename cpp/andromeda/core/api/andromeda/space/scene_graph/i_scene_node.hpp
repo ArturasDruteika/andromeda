@@ -1,5 +1,4 @@
-#ifndef API__SPACE__SCENE__I_SCENE_NODE__HPP
-#define API__SPACE__SCENE__I_SCENE_NODE__HPP
+#pragma once
 
 
 #include "../transformations/i_transformable.hpp"
@@ -93,6 +92,3 @@ namespace andromeda
         virtual void for_each_component(const std::function<void(const ISceneComponent&)>& fn) const = 0;
     };
 }
-
-
-#endif // API__SPACE__SCENE__I_SCENE_NODE__HPP

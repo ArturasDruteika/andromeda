@@ -1,5 +1,4 @@
-#ifndef RENDERING__GEOMETRY__GPU_MESH_OPENGL__HPP
-#define RENDERING__GEOMETRY__GPU_MESH_OPENGL__HPP
+#pragma once
 
 
 #include "../../../vertices/include/vertex_layouts.hpp"
@@ -103,5 +102,3 @@ namespace andromeda::rendering
         uint32_t m_index_count;
     };
 }
-
-#endif // RENDERING__GEOMETRY__GPU_MESH_OPENGL__HPP

@@ -1,5 +1,4 @@
-#ifndef WINDOW__MOUSE_EVENTS__HPP
-#define WINDOW__MOUSE_EVENTS__HPP
+#pragma once
 
 
 #include "event_base.hpp"
@@ -231,6 +230,3 @@ namespace andromeda::window
         EventType get_event_type() const override;
     };
 }
-
-
-#endif // WINDOW__MOUSE_EVENTS__HPP

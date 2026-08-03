@@ -1,5 +1,4 @@
-#ifndef MATH__MACRO_EXPORTS__HPP
-#define MATH__MACRO_EXPORTS__HPP
+#pragma once
 
 
 #if defined(_WIN32)
@@ -15,6 +14,3 @@
     // GCC
     #define MATH_API __attribute__((visibility("default")))
 #endif
-
-
-#endif // MATH__MACRO_EXPORTS__HPP

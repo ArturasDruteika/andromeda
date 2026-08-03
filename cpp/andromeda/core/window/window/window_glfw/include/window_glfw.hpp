@@ -1,5 +1,4 @@
-#ifndef WINDOW__GLFW_WINDOW__HPP_HPP
-#define WINDOW__GLFW_WINDOW__HPP_HPP
+#pragma once
 
 
 #include "andromeda/window/events/i_event.hpp"
@@ -169,6 +168,3 @@ namespace andromeda::window
 		GLFWwindow* m_window;
 	};
 }
-
-
-#endif // WINDOW__GLFW_WINDOW__HPP_HPP

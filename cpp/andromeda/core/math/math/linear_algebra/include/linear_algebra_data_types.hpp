@@ -1,5 +1,4 @@
-#ifndef MATH__MATH_DATA_TYPES__HPP
-#define MATH__MATH_DATA_TYPES__HPP
+#pragma once
 
 
 #include <array>
@@ -812,6 +811,3 @@ namespace andromeda::math
     }
 
 }
-
-
-#endif // MATH__MATH_DATA_TYPES__HPP

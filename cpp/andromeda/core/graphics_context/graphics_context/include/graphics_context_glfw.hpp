@@ -1,5 +1,4 @@
-#ifndef CONTEXT__GLFW_CONTEXT__HPP
-#define CONTEXT__GLFW_CONTEXT__HPP
+#pragma once
 
 
 #include "andromeda/graphics_context/i_graphics_context.hpp"
@@ -67,6 +66,3 @@ namespace andromeda::graphics_context
         GLFWwindow* m_p_glfw_window;
     };
 }
-
-
-#endif // CONTEXT__GLFW_CONTEXT__HPP

@@ -1,5 +1,4 @@
-#ifndef MATH__LINEAR_ALGEBRA__QUATERNIONS__HPP
-#define MATH__LINEAR_ALGEBRA__QUATERNIONS__HPP
+#pragma once
 
 
 #include "linear_algebra_data_types.hpp"
@@ -153,6 +152,3 @@ namespace andromeda::math
         static Mat4 to_mat4(const Quaternion& q);
     };
 }
-
-
-#endif // MATH__LINEAR_ALGEBRA__QUATERNIONS__HPP

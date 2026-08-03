@@ -1,5 +1,4 @@
-#ifndef SPACE__TRANSFORMATIONS__TRANSFORMABLE__HPP
-#define SPACE__TRANSFORMATIONS__TRANSFORMABLE__HPP
+#pragma once
 
 
 #include "rotatable.hpp"
@@ -68,6 +67,3 @@ namespace andromeda
 		math::Mat4 m_model_matrix;
 	};
 }
-
-
-#endif // SPACE__TRANSFORMATIONS__TRANSFORMABLE__HPP

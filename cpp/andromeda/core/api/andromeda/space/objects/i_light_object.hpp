@@ -1,5 +1,4 @@
-#ifndef API__OBJECTS__I_LIGHT_OBJECT__HPP
-#define API__OBJECTS__I_LIGHT_OBJECT__HPP
+#pragma once
 
 
 #include "i_object.hpp"
@@ -27,6 +26,3 @@ namespace andromeda
         virtual const LightType& get_light_type() const = 0;
     };
 }
-
-
-#endif // API__OBJECTS__I_LIGHT_OBJECT__HPP

@@ -1,5 +1,4 @@
-#ifndef API__PLATFORM__I_PLATFORM__HPP
-#define API__PLATFORM__I_PLATFORM__HPP
+#pragma once
 
 
 #include "../macro_exports/macro_exports.hpp"
@@ -68,6 +67,3 @@ namespace andromeda
     /// @return A unique pointer to the created platform instance.
     ANDROMEDA_API std::unique_ptr<IPlatform> create_platform(const GraphicsBackend& graphics_backend);
 }
-
-
-#endif // API__PLATFORM__I_PLATFORM__HPP

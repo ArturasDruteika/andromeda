@@ -1,5 +1,4 @@
-#ifndef API__SCENE__I_SCENE_OBJECTS__HPP
-#define API__SCENE__I_SCENE_OBJECTS__HPP
+#pragma once
 
 
 #include "../objects/i_geometric_object.hpp"
@@ -47,6 +46,3 @@ namespace andromeda
         virtual void remove_object(int id) = 0;
     };
 }
-
-
-#endif // API__SCENE__I_SCENE_OBJECTS__HPP

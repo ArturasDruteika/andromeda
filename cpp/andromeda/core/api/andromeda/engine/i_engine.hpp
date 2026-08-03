@@ -1,5 +1,4 @@
-#ifndef API__ENGINE__I_ENGINE__HPP
-#define API__ENGINE__I_ENGINE__HPP
+#pragma once
 
 
 #include "../macro_exports/macro_exports.hpp"
@@ -65,6 +64,3 @@ namespace andromeda
     /// @return A unique pointer to the created engine instance.
     ANDROMEDA_API std::unique_ptr<IEngine> create_engine(const GraphicsBackend& graphics_backend);
 }
-
-
-#endif // API__ENGINE__I_ENGINE__HPP

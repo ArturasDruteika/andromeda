@@ -1,5 +1,4 @@
-#ifndef RENDERING__SHADERS__SUPPORT__SHADER_OPEN_GL_TYPES__HPP
-#define RENDERING__SHADERS__SUPPORT__SHADER_OPEN_GL_TYPES__HPP
+#pragma once
 
 
 #include "pch.hpp"
@@ -51,6 +50,3 @@ namespace andromeda::rendering
 		std::filesystem::path geometry_path{};
 	};
 }
-
-
-#endif // RENDERING__SHADERS__SUPPORT__SHADER_OPEN_GL_TYPES__HPP

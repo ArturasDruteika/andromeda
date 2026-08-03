@@ -1,5 +1,4 @@
-#ifndef API__OBJECTS__INTERFACES__I_CUBE__HPP
-#define API__OBJECTS__INTERFACES__I_CUBE__HPP
+#pragma once
 
 
 #include "i_geometric_object.hpp"
@@ -26,6 +25,3 @@ namespace andromeda
         virtual float get_half_extent() const = 0;
     };
 }
-
-
-#endif // API__OBJECTS__INTERFACES__I_CUBE__HPP

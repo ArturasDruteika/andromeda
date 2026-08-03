@@ -1,5 +1,4 @@
-#ifndef API__CAMERA__I_CAMERA_VIEW__HPP
-#define API__CAMERA__I_CAMERA_VIEW__HPP
+#pragma once
 
 
 #include "i_perspective_control.hpp"
@@ -52,6 +51,3 @@ namespace andromeda
         virtual const math::Mat4& get_view_matrix() const = 0;
     };
 }
-
-
-#endif // API__CAMERA__I_CAMERA_VIEW__HPP

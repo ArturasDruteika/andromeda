@@ -1,5 +1,4 @@
-#ifndef API__SPACE__TRANSFORMATIONS__TRANSFORMATION_TYPES__HPP
-#define API__SPACE__TRANSFORMATIONS__TRANSFORMATION_TYPES__HPP
+#pragma once
 
 
 namespace andromeda
@@ -20,6 +19,3 @@ namespace andromeda
         All
     };
 }
-
-
-#endif // API__SPACE__TRANSFORMATIONS__TRANSFORMATION_TYPES__HPP

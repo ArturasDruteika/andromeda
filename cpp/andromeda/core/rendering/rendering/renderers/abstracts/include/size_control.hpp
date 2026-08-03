@@ -1,5 +1,4 @@
-#ifndef RENDERING__RENDERERS__ABSTRACTS__SIZE_CONTROL__HPP
-#define RENDERING__RENDERERS__ABSTRACTS__SIZE_CONTROL__HPP
+#pragma once
 
 
 namespace andromeda::rendering
@@ -46,6 +45,3 @@ namespace andromeda::rendering
 		int m_height;
 	};
 }
-
-
-#endif // RENDERING__RENDERERS__ABSTRACTS__SIZE_CONTROL__HPP

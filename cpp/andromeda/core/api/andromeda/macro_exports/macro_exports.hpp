@@ -1,5 +1,4 @@
-#ifndef API__MACRO_EXPORTS__MACRO_EXPORTS__HPP
-#define API__MACRO_EXPORTS__MACRO_EXPORTS__HPP
+#pragma once
 
 
 #if defined(_WIN32) || defined(__CYGWIN__)
@@ -19,5 +18,3 @@
         #define ANDROMEDA_API
     #endif
 #endif
-
-#endif // API_MACRO_EXPORTS__MACRO_EXPORTS__HPP

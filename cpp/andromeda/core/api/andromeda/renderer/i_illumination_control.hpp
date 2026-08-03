@@ -1,5 +1,4 @@
-#ifndef API__RENDERER__I_ILLUMINATION_CONTROL__HPP
-#define API__RENDERER__I_ILLUMINATION_CONTROL__HPP
+#pragma once
 
 
 namespace andromeda
@@ -29,6 +28,3 @@ namespace andromeda
         virtual void set_illumination_mode(bool mode) = 0;
     };
 }
-
-
-#endif // API__RENDERER__I_ILLUMINATION_CONTROL__HPP

@@ -1,5 +1,4 @@
-#ifndef API__SCENE__I_SCENE_LIGHTING__HPP
-#define API__SCENE__I_SCENE_LIGHTING__HPP
+#pragma once
 
 
 #include "../light/i_directional_light.hpp"
@@ -39,6 +38,3 @@ namespace andromeda
         virtual const std::unordered_map<int, const ILightObject*>& get_light_objects() const = 0;
     };
 }
-
-
-#endif // API__SCENE__I_SCENE_LIGHTING__HPP

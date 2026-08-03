@@ -1,5 +1,4 @@
-#ifndef SPACE__OBJECTS__CUBE__HPP
-#define SPACE__OBJECTS__CUBE__HPP
+#pragma once
 
 
 #include "geometric_object.hpp"
@@ -97,6 +96,3 @@ namespace andromeda::space
         float m_half_extent;
     };
 }
-
-
-#endif // SPACE__OBJECTS__CUBE__HPP

@@ -1,5 +1,4 @@
-#ifndef APPLICATION__APPLICATION__HPP
-#define APPLICATION__APPLICATION__HPP
+#pragma once
 
 
 #include "andromeda/components/graphics_backend.hpp"
@@ -125,5 +124,3 @@ namespace andromeda::application
         IRenderer* m_p_renderer;
     };
 }
-
-#endif // APPLICATION__APPLICATION__HPP

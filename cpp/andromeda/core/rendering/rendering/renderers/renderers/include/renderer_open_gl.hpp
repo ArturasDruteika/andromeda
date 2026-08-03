@@ -1,5 +1,4 @@
-#ifndef RENDERER__OPEN_GL_RENDERER__HPP
-#define RENDERER__OPEN_GL_RENDERER__HPP
+#pragma once
 
 
 #include "../../../macro_exports/include/macro_exports.hpp"
@@ -102,6 +101,3 @@ namespace andromeda::rendering
 		std::unique_ptr<RendererOpenGLImpl> m_p_renderer_open_gl_impl;
 	};
 }
-
-
-#endif // RENDERER__OPEN_GL_RENDERER__HPP

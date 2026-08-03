@@ -1,5 +1,4 @@
-#ifndef RENDERER__GRID_CONTROL__HPP
-#define RENDERER__GRID_CONTROL__HPP
+#pragma once
 
 
 #include "andromeda/space/colors/colors.hpp"
@@ -91,6 +90,3 @@ namespace andromeda::rendering
 		Color m_grid_color;
 	};
 }
-
-
-#endif // RENDERER__GRID_CONTROL__HPP

@@ -1,5 +1,4 @@
-#ifndef API__APPLICATION__I_APPLICATION__HPP
-#define API__APPLICATION__I_APPLICATION__HPP
+#pragma once
 
 
 #include "../components/graphics_backend.hpp"
@@ -67,5 +66,3 @@ namespace andromeda
     /// @return A unique pointer to the created application instance.
     ANDROMEDA_API std::unique_ptr<IApplication> create_app(const GraphicsBackend& graphics_backend);
 }
-
-#endif // API__APPLICATION__I_APPLICATION__HPP

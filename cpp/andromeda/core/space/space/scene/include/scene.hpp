@@ -1,5 +1,4 @@
-#ifndef SPACE__SCENE__SCENE__HPP
-#define SPACE__SCENE__SCENE__HPP
+#pragma once
 
 
 #include "camera_handler.hpp"
@@ -63,6 +62,3 @@ namespace andromeda::space
 		math::Vec3 m_scene_center;
 	};
 }
-
-
-#endif // API_SCENE__I_SCENE__HPP

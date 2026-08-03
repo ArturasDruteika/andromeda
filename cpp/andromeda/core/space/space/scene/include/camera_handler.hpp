@@ -1,5 +1,4 @@
-#ifndef SPACE__SCENE__CAMERA_HANDLER__HPP
-#define SPACE__SCENE__CAMERA_HANDLER__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -40,6 +39,3 @@ namespace andromeda::space
 		Camera* m_p_camera;
 	};
 }
-
-
-#endif // API_CAMERA_HANDLER__I_CAMERA_HANDLER__HPP

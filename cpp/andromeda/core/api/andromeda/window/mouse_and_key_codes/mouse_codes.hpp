@@ -1,5 +1,4 @@
-#ifndef API__WINDOW__EVENTS__MOUSE_CODES__HPP
-#define API__WINDOW__EVENTS__MOUSE_CODES__HPP
+#pragma once
 
 
 #include "pch.hpp"
@@ -35,6 +34,3 @@ namespace andromeda
         ButtonMiddle = Button2
     };
 }
-
-
-#endif // API__WINDOW__EVENTS__MOUSE_CODES__HPP

@@ -1,5 +1,4 @@
-#ifndef RENDERING__SHADERS__SHADERS__SHADER_OPEN_GL__HPP
-#define RENDERING__SHADERS__SHADERS__SHADER_OPEN_GL__HPP
+#pragma once
 
 
 #include "../../abstracts/include/shader_program_open_gl.hpp"
@@ -55,6 +54,3 @@ namespace andromeda::rendering
 		UniformSetterOpenGL m_uniform_setter;
 	};
 }
-
-
-#endif // RENDERING__SHADERS__SHADERS__SHADER_OPEN_GL__HPP

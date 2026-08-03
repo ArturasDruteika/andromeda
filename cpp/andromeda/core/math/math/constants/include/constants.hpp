@@ -1,5 +1,4 @@
-#ifndef MATH__CONSTANTS__HPP
-#define MATH__CONSTANTS__HPP
+#pragma once
 
 
 #include "../../linear_algebra/include/linear_algebra_data_types.hpp"
@@ -33,6 +32,3 @@ namespace andromeda::math
     /// @brief Unit vector along the negative Z axis.
     constexpr math::Vec3 NEGATIVE_Z_AXIS{ 0.0f, 0.0f, -1.0f };
 }
-
-
-#endif // MATH__CONSTANTS__HPP

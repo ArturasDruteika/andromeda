@@ -1,5 +1,4 @@
-#ifndef SPACE__CAMERA__PERSPECTIVE_CONTROL__HPP
-#define SPACE__CAMERA__PERSPECTIVE_CONTROL__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -125,6 +124,3 @@ namespace andromeda::space
 		math::Mat4 m_projection;
 	};
 }
-
-
-#endif // SPACE__CAMERA__PERSPECTIVE_CONTROL__HPP

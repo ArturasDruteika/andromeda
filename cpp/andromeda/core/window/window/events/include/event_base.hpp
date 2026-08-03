@@ -1,5 +1,4 @@
-#ifndef WINDOW__EVENT_BASE__HPP
-#define WINDOW__EVENT_BASE__HPP
+#pragma once
 
 
 #include "andromeda/window/events/i_event.hpp"
@@ -36,5 +35,3 @@ namespace andromeda::window
         bool m_handled;
     };
 }
-
-#endif // WINDOW__EVENT_BASE__HPP

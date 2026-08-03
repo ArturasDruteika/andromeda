@@ -1,5 +1,4 @@
-#ifndef RENDERING__SHADERS__ABSTRACTS__SHADER_SOURCE_MANAGER_OPEN_GL__HPP
-#define RENDERING__SHADERS__ABSTRACTS__SHADER_SOURCE_MANAGER_OPEN_GL__HPP
+#pragma once
 
 
 #include "pch.hpp"
@@ -93,6 +92,3 @@ namespace andromeda::rendering
 		std::string m_geometry_code;
 	};
 }
-
-
-#endif // RENDERING__SHADERS__ABSTRACTS__SHADER_SOURCE_MANAGER_OPEN_GL__HPP

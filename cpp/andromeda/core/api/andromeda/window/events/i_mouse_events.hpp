@@ -1,5 +1,4 @@
-#ifndef API__WINDOW__EVENTS__I_MOUSE_EVENTS_HPP
-#define API__WINDOW__EVENTS__I_MOUSE_EVENTS_HPP
+#pragma once
 
 
 #include "i_event.hpp"
@@ -88,6 +87,3 @@ namespace andromeda
         virtual ~IMouseButtonReleasedEvent() = default;
     };
 }
-
-
-#endif // API__WINDOW__EVENTS__I_MOUSE_EVENTS_HPP

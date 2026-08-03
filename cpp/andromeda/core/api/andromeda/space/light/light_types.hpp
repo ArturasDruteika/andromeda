@@ -1,5 +1,4 @@
-#ifndef ANDROMEDA__LIGHT__LIGHT_TYPES__HPP
-#define ANDROMEDA__LIGHT__LIGHT_TYPES__HPP
+#pragma once
 
 
 namespace andromeda
@@ -20,6 +19,3 @@ namespace andromeda
         Spot = 3
     };
 }
-
-
-#endif // ANDROMEDA__LIGHT__LIGHT_TYPES__HPP

@@ -1,5 +1,4 @@
-#ifndef WINDOW__KEY_EVENTS__HPP
-#define WINDOW__KEY_EVENTS__HPP
+#pragma once
 
 
 #include "event_base.hpp"
@@ -151,6 +150,3 @@ namespace andromeda::window
         std::string to_string() const override;
     };
 }
-
-
-#endif // WINDOW__KEY_EVENTS__HPP

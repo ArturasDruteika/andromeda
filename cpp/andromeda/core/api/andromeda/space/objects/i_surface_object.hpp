@@ -1,5 +1,4 @@
-#ifndef API__OBJECTS__I_SURFACE_OBJECT__HPP
-#define API__OBJECTS__I_SURFACE_OBJECT__HPP
+#pragma once
 
 
 #include "../materials/i_material.hpp"
@@ -33,6 +32,3 @@ namespace andromeda
         virtual void set_material(const IMaterial* material) = 0;
     };
 }
-
-
-#endif // API__OBJECTS__I_SURFACE_OBJECT__HPP

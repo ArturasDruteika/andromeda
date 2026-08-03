@@ -1,5 +1,4 @@
-#ifndef RENDERING__VERTICES__VERTEX_FORMAT__HPP
-#define RENDERING__VERTICES__VERTEX_FORMAT__HPP
+#pragma once
 
 
 #include <cstddef>
@@ -70,6 +69,3 @@ namespace andromeda::rendering
     /// `false`.
     bool is_integer_component_type(ComponentType type);
 }
-
-
-#endif // RENDERING__VERTICES__VERTEX_FORMAT__HPP

@@ -1,5 +1,4 @@
-#ifndef ENGINECORE__MACRO_EXPORTS__HPP
-#define ENGINECORE__MACRO_EXPORTS__HPP
+#pragma once
 
 
 #if defined(_WIN32)
@@ -15,6 +14,3 @@
     // GCC
     #define ENGINECORE_API __attribute__((visibility("default")))
 #endif
-
-
-#endif // ENGINECORE__MACRO_EXPORTS__HPP

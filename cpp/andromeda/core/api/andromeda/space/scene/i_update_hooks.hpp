@@ -1,5 +1,4 @@
-#ifndef API__SCENE__I_UPDATE_HOOKS__HPP
-#define API__SCENE__I_UPDATE_HOOKS__HPP
+#pragma once
 
 
 #include <cstdint>
@@ -53,6 +52,3 @@ namespace andromeda
         virtual void run(float delta_time) = 0;
     };
 }
-
-
-#endif // API__SCENE__I_UPDATE_HOOKS__HPP

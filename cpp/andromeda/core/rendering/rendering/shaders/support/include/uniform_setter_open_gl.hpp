@@ -1,5 +1,4 @@
-#ifndef RENDERING__SHADERS__SUPPORT__UNIFORM_SETTER_OPEN_GL__HPP
-#define RENDERING__SHADERS__SUPPORT__UNIFORM_SETTER_OPEN_GL__HPP
+#pragma once
 
 
 #include "pch.hpp"
@@ -92,6 +91,3 @@ namespace andromeda::rendering
 		void set_uniform(unsigned int program, const std::string& name, const std::vector<glm::mat4>& matrices) const;
 	};
 }
-
-
-#endif // RENDERING__SHADERS__SUPPORT__UNIFORM_SETTER_OPEN_GL__HPP

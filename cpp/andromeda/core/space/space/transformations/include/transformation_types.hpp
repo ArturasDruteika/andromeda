@@ -1,5 +1,4 @@
-#ifndef SPACE__TRANSFORMATION_TYPES__HPP
-#define SPACE__TRANSFORMATION_TYPES__HPP
+#pragma once
 
 
 namespace andromeda::space
@@ -13,6 +12,3 @@ namespace andromeda::space
 		All
 	};
 }
-
-
-#endif // SPACE__TRANSFORMATION_TYPES__HPP

@@ -1,5 +1,4 @@
-#ifndef RENDERING__MACRO_EXPORTS__HPP
-#define RENDERING__MACRO_EXPORTS__HPP
+#pragma once
 
 
 #if defined(_WIN32)
@@ -15,6 +14,3 @@
     // GCC
     #define RENDERING_API __attribute__((visibility("default")))
 #endif
-
-
-#endif // RENDERING__MACRO_EXPORTS__HPP

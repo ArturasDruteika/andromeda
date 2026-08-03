@@ -1,5 +1,4 @@
-#ifndef API__RENDERER__I_RENDERER__HPP
-#define API__RENDERER__I_RENDERER__HPP
+#pragma once
 
 
 #include "i_grid_control.hpp"
@@ -68,6 +67,3 @@ namespace andromeda
     // /// @return A unique pointer to the created renderer instance.
     // ANDROMEDA_API std::unique_ptr<IRenderer> create_renderer(const GraphicsBackend& graphics_backend);
 }
-
-
-#endif // API__RENDERER__I_RENDERER__HPP

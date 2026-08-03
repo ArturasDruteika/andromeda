@@ -1,5 +1,4 @@
-#ifndef RENDERING__VERTICES__VERTEX_LOCATION_POLICY__HPP
-#define RENDERING__VERTICES__VERTEX_LOCATION_POLICY__HPP
+#pragma once
 
 
 #include "vertex_format.hpp"
@@ -22,5 +21,3 @@ namespace andromeda::rendering
         static uint32_t get_location(VertexSemantic semantic);
     };
 }
-
-#endif // RENDERING__VERTICES__VERTEX_LOCATION_POLICY__HPP

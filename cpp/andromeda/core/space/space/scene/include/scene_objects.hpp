@@ -1,5 +1,4 @@
-#ifndef SPACE__SCENE__SCENE_OBJECTS__HPP
-#define SPACE__SCENE__SCENE_OBJECTS__HPP
+#pragma once
 
 
 #include "../../objects/include/geometric_object.hpp"
@@ -63,6 +62,3 @@ namespace andromeda::space
 		std::unordered_map<int, ITransformable*> m_object_transforms;
 	};
 }
-
-
-#endif // SPACE__SCENE__SCENE_OBJECTS__HPP

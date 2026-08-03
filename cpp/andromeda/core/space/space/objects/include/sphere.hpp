@@ -1,5 +1,4 @@
-#ifndef ANDROMEDA__SPACE__OBJECTS__SPHERE__HPP
-#define ANDROMEDA__SPACE__OBJECTS__SPHERE__HPP
+#pragma once
 
 
 #include "geometric_object.hpp"
@@ -99,6 +98,3 @@ namespace andromeda::space
         float m_radius;
     };
 }
-
-
-#endif // ANDROMEDA__SPACE__OBJECTS__SPHERE__HPP

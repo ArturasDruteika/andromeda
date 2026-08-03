@@ -1,5 +1,4 @@
-#ifndef SPACE__CAMERA__CAMERA_VIEW__HPP
-#define SPACE__CAMERA__CAMERA_VIEW__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -100,6 +99,3 @@ namespace andromeda::space
 		math::Mat4 m_view_matrix;
 	};
 }
-
-
-#endif // SPACE__CAMERA__CAMERA_VIEW__HPP

@@ -1,5 +1,4 @@
-#ifndef PLATFORM__PLATFORM__PLATFORM__HPP
-#define PLATFORM__PLATFORM__PLATFORM__HPP
+#pragma once
 
 
 #include "../../macro_exports/include/macro_exports.hpp"
@@ -88,6 +87,3 @@ namespace andromeda::platform
         std::unique_ptr<IWindow> m_p_window;
     };
 }
-
-
-#endif // PLATFORM__PLATFORM__PLATFORM__HPP

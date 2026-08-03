@@ -1,5 +1,4 @@
-#ifndef API__ENGINE__GRAPHICS_BACKEND__HPP
-#define API__ENGINE__GRAPHICS_BACKEND__HPP
+#pragma once
 
 
 #include <string_view>
@@ -36,5 +35,3 @@ namespace andromeda
         }
     }
 }
-
-#endif // API__ENGINE__GRAPHICS_BACKEND__HPP

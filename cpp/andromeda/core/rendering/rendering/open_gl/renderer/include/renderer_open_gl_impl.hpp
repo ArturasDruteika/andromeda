@@ -1,5 +1,4 @@
-#ifndef RENDERER__OPENGL_RENDERER_IMPL__HPP
-#define RENDERER__OPENGL_RENDERER_IMPL__HPP
+#pragma once
 
 
 #include "../../geometry/include/gpu_mesh_open_gl.hpp"
@@ -206,6 +205,3 @@ namespace andromeda::rendering
         mutable std::chrono::steady_clock::time_point m_last_frame_time = std::chrono::steady_clock::now();
     };
 }
-
-
-#endif // RENDERER__OPENGL_RENDERER_IMPL__HPP
