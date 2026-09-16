@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24.0)
 
-project(Glad LANGUAGES C)
+project(glad LANGUAGES C)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -33,7 +33,7 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/glad
     PREFIX
-        "Glad"
+        "glad"
     FILES
         glad/include/glad/gl.h
         glad/include/KHR/khrplatform.h

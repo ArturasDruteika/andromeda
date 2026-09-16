@@ -57,7 +57,7 @@ target_link_libraries(${PROJECT_NAME}
         glfw
         OpenGL::GL
         graphics_context
-        Glad
+        glad
         window
         api
         imgui
@@ -67,7 +67,7 @@ target_link_libraries(${PROJECT_NAME}
 # Explicit build ordering (alphabetical)
 add_dependencies(${PROJECT_NAME}
     graphics_context
-    Glad
+    glad
     utils
     window
     glfw
