@@ -21,15 +21,26 @@ add_subdirectory(andromeda)
 add_subdirectory(examples)
 
 # --- Install Rules ---
-set(CMAKE_INSTALL_PREFIX "${CMAKE_BINARY_DIR}/INSTALL" CACHE PATH "Installation directory" FORCE)
+set(
+    CMAKE_INSTALL_PREFIX
+    "${CMAKE_BINARY_DIR}/INSTALL"
+    CACHE PATH
+    "Installation directory"
+    FORCE
+)
 
-# Install compiled binaries, excluding certain files
 install(
-	DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>/"
-	DESTINATION "${CMAKE_INSTALL_PREFIX}/$<CONFIG>/"
-	FILES_MATCHING
-	PATTERN "*"
-	PATTERN "*.lib" EXCLUDE
-	PATTERN "*.exp" EXCLUDE
-	PATTERN "*.pdb" EXCLUDE
+    DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>/"
+    DESTINATION "${CMAKE_INSTALL_PREFIX}/$<CONFIG>/"
+
+    FILE_PERMISSIONS
+        OWNER_READ OWNER_WRITE OWNER_EXECUTE
+        GROUP_READ GROUP_EXECUTE
+        WORLD_READ WORLD_EXECUTE
+
+    FILES_MATCHING
+        PATTERN "*"
+        PATTERN "*.lib" EXCLUDE
+        PATTERN "*.exp" EXCLUDE
+        PATTERN "*.pdb" EXCLUDE
 )
