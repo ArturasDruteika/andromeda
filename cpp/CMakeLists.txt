@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.24)
 
 project(andromeda)
 
-set(CMAKE_BUILD_PARALLEL_LEVEL)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -17,7 +16,6 @@ endif()
 
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
-set(CMAKE_BUILD_PARALLEL_LEVEL)
 
 add_subdirectory(andromeda)
 add_subdirectory(examples)
