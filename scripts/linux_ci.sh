@@ -15,7 +15,13 @@ log()
 run_build()
 {
     log "Running build script..."
-    "${REPO_ROOT}/scripts/build-linux.sh"
+    "${REPO_ROOT}/scripts/linux_build.sh"
+}
+
+run_install()
+{
+    log "Running install script..."
+    "${REPO_ROOT}/scripts/linux_install.sh"
 }
 
 package_for_act()
@@ -24,13 +30,17 @@ package_for_act()
         return
     fi
 
-    log "ACT=true detected, packaging INSTALL -> tar.gz"
-    if [[ ! -d "${REPO_ROOT}/${BUILD_DIR}/INSTALL" ]]; then
-        echo "ERROR: install dir missing: ${REPO_ROOT}/${BUILD_DIR}/INSTALL"
+    log "ACT=true detected, packaging install -> tar.gz"
+
+    if [[ ! -d "${REPO_ROOT}/${BUILD_DIR}/install" ]]; then
+        echo "ERROR: install dir missing: ${REPO_ROOT}/${BUILD_DIR}/install"
         exit 1
     fi
 
-    tar -czf andromeda-ubuntu-release.tar.gz -C "${REPO_ROOT}/${BUILD_DIR}" INSTALL
+    tar -czf andromeda-ubuntu-release.tar.gz \
+        -C "${REPO_ROOT}/${BUILD_DIR}" \
+        install
+
     ls -lah andromeda-ubuntu-release.tar.gz
 }
 
@@ -44,7 +54,9 @@ main()
     fi
 
     run_build
+    run_install
     package_for_act
+
     log "Done"
 }
 

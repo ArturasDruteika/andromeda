@@ -16,7 +16,7 @@ log()
 }
 
 # shellcheck source=/dev/null
-source "${REPO_ROOT}/scripts/setup-linux.sh"
+source "${REPO_ROOT}/scripts/linux_setup.sh"
 
 configure()
 {
