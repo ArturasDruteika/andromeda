@@ -4,11 +4,12 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 
-BUILD_DIR="${REPO_ROOT}/build/release"
-INSTALL_DIR="${REPO_ROOT}/build/install"
-
 COMPILER="clang"
-GENERATOR="ninja"
+
+CONFIGURE_PRESET=""
+BUILD_PRESET=""
+BUILD_DIR=""
+INSTALL_DIR=""
 
 log()
 {
@@ -21,15 +22,13 @@ usage()
 Usage: $(basename "$0") [options]
 
 Options:
-    --compiler <clang|gcc>     Compiler to use (default: clang)
-    --generator <ninja|make>   Build system to use (default: ninja)
+    --compiler <clang|gcc>     Compiler preset to use (default: clang)
     -h, --help                 Show this help message
 
 Examples:
     $(basename "$0")
+    $(basename "$0") --compiler clang
     $(basename "$0") --compiler gcc
-    $(basename "$0") --generator make
-    $(basename "$0") --compiler gcc --generator make
 EOF
 }
 
@@ -43,27 +42,13 @@ parse_args()
                     usage >&2
                     exit 1
                 }
+
                 COMPILER="$2"
                 shift 2
                 ;;
 
             --compiler=*)
                 COMPILER="${1#*=}"
-                shift
-                ;;
-
-            --generator)
-                [[ $# -ge 2 ]] || {
-                    echo "Error: --generator requires a value." >&2
-                    usage >&2
-                    exit 1
-                }
-                GENERATOR="$2"
-                shift 2
-                ;;
-
-            --generator=*)
-                GENERATOR="${1#*=}"
                 shift
                 ;;
 
@@ -94,55 +79,38 @@ parse_args()
             exit 1
             ;;
     esac
-
-    case "${GENERATOR}" in
-        ninja|make)
-            ;;
-        *)
-            echo "Error: Invalid generator '${GENERATOR}'. Expected 'ninja' or 'make'." >&2
-            usage >&2
-            exit 1
-            ;;
-    esac
 }
 
-select_toolchain()
+select_preset()
 {
     case "${COMPILER}" in
         clang)
-            C_COMPILER="clang"
-            CXX_COMPILER="clang++"
+            CONFIGURE_PRESET="release-linux-clang"
+            BUILD_PRESET="build-release-linux-clang"
+            BUILD_DIR="${REPO_ROOT}/build/linux_clang_release"
+            INSTALL_DIR="${REPO_ROOT}/build/linux_clang_install"
             ;;
-        gcc)
-            C_COMPILER="gcc"
-            CXX_COMPILER="g++"
-            ;;
-    esac
 
-    case "${GENERATOR}" in
-        ninja)
-            CMAKE_GENERATOR="Ninja"
-            ;;
-        make)
-            CMAKE_GENERATOR="Unix Makefiles"
+        gcc)
+            CONFIGURE_PRESET="release-linux-gcc"
+            BUILD_PRESET="build-release-linux-gcc"
+            BUILD_DIR="${REPO_ROOT}/build/linux_gcc_release"
+            INSTALL_DIR="${REPO_ROOT}/build/linux_gcc_install"
             ;;
     esac
 }
 
 check_dependencies()
 {
-    local dependencies=(
-        cmake
-        "${C_COMPILER}"
-        "${CXX_COMPILER}"
-    )
+    local dependencies=(cmake)
 
-    case "${GENERATOR}" in
-        ninja)
-            dependencies+=(ninja)
+    case "${COMPILER}" in
+        clang)
+            dependencies+=(clang clang++ ninja)
             ;;
-        make)
-            dependencies+=(make)
+
+        gcc)
+            dependencies+=(gcc g++ make)
             ;;
     esac
 
@@ -152,43 +120,54 @@ check_dependencies()
             exit 1
         fi
     done
+
+    if [[ ! -f "${REPO_ROOT}/CMakePresets.json" ]]; then
+        echo "Error: CMakePresets.json was not found in '${REPO_ROOT}'." >&2
+        exit 1
+    fi
 }
 
 configure()
 {
-    log "Configuring Release build..."
+    log "Configuring with preset '${CONFIGURE_PRESET}'..."
     log "Build directory: ${BUILD_DIR}"
     log "Install directory: ${INSTALL_DIR}"
-    log "Generator: ${CMAKE_GENERATOR}"
-    log "C compiler: ${C_COMPILER}"
-    log "C++ compiler: ${CXX_COMPILER}"
 
-    cmake \
-        -S "${REPO_ROOT}" \
-        -B "${BUILD_DIR}" \
-        -G "${CMAKE_GENERATOR}" \
-        -DCMAKE_C_COMPILER="${C_COMPILER}" \
-        -DCMAKE_CXX_COMPILER="${CXX_COMPILER}" \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="${INSTALL_DIR}"
+    (
+        cd "${REPO_ROOT}"
+        cmake --preset "${CONFIGURE_PRESET}"
+    )
 
     log "Configuration complete."
 }
 
 build()
 {
-    log "Building Release..."
+    log "Building with preset '${BUILD_PRESET}'..."
 
-    cmake --build "${BUILD_DIR}" --parallel
+    (
+        cd "${REPO_ROOT}"
+        cmake --build --preset "${BUILD_PRESET}" --parallel
+    )
 
     log "Build complete."
 }
 
 install()
 {
-    log "Installing to ${INSTALL_DIR}..."
+    log "Installing runtime to ${INSTALL_DIR}..."
 
-    cmake --install "${BUILD_DIR}"
+    # Remove files left by previous installations.
+    rm -rf "${INSTALL_DIR}"
+
+    # Install only the runtime component.
+    cmake --install "${BUILD_DIR}" \
+        --component runtime
+
+    if [[ ! -d "${INSTALL_DIR}" ]]; then
+        echo "Error: Install directory was not created: ${INSTALL_DIR}" >&2
+        exit 1
+    fi
 
     log "Installation complete."
 }
@@ -200,25 +179,28 @@ show_install()
     if command -v tree >/dev/null 2>&1; then
         tree "${INSTALL_DIR}"
     else
-        find "${INSTALL_DIR}" -type f -print
+        find "${INSTALL_DIR}" -print
     fi
 }
 
 main()
 {
     parse_args "$@"
-    select_toolchain
+    select_preset
     check_dependencies
 
-    log "Starting Linux install..."
+    log "Starting Linux installation..."
     log "Repository root: ${REPO_ROOT}"
+    log "Compiler: ${COMPILER}"
+    log "Configure preset: ${CONFIGURE_PRESET}"
+    log "Build preset: ${BUILD_PRESET}"
 
     configure
     build
     install
     show_install
 
-    log "Linux install finished successfully."
+    log "Linux installation finished successfully."
 }
 
 main "$@"
