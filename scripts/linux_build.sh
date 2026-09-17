@@ -2,64 +2,41 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
-PARENT_DIR="$(cd -- "${REPO_ROOT}/.." && pwd)"
 
-# Build knobs (override via env)
-: "${BUILD_DIR:=build}"
-: "${BUILD_TYPE:=Release}"
-: "${INSTALL_DIR:=${REPO_ROOT}/${BUILD_DIR}/INSTALL}"
-
-log()
-{
-    echo "[$(date -u +%H:%M:%S)] $*"
-}
-
-# shellcheck source=/dev/null
-source "${REPO_ROOT}/scripts/linux_setup.sh"
-
-configure()
-{
-    log "Configure: BUILD_TYPE=${BUILD_TYPE} BUILD_DIR=${BUILD_DIR}"
-    rm -rf "${REPO_ROOT:?}/${BUILD_DIR}"
-    cmake -S "${REPO_ROOT}" -B "${REPO_ROOT}/${BUILD_DIR}" -G Ninja \
-        -DCMAKE_BUILD_TYPE="${BUILD_TYPE}" \
-        -DCMAKE_INSTALL_PREFIX="${INSTALL_DIR}"
-}
+# shellcheck source=linux_generate.sh
+source "${SCRIPT_DIR}/linux_generate.sh"
 
 build()
 {
-    log "Build"
-    cmake --build "${REPO_ROOT}/${BUILD_DIR}" --parallel
+    log "Building with preset '${BUILD_PRESET}'..."
+
+    (
+        cd "${REPO_ROOT}"
+        cmake --build --preset "${BUILD_PRESET}" --parallel
+    )
+
+    log "Build complete."
 }
 
-install()
+build_main()
 {
-    log "Install -> ${INSTALL_DIR}"
-    cmake --install "${REPO_ROOT}/${BUILD_DIR}"
-    if [[ ! -d "${INSTALL_DIR}" ]]; then
-        echo "ERROR: install dir not created: ${INSTALL_DIR}"
-        exit 1
-    fi
-}
+    parse_args "$@"
+    select_preset
+    check_generate_dependencies
 
-main()
-{
-    log "Repo: ${REPO_ROOT}"
+    log "Starting Linux build..."
+    log "Repository root: ${REPO_ROOT}"
+    log "Compiler: ${COMPILER}"
+    log "Configuration: ${CONFIG}"
+    log "Configure preset: ${CONFIGURE_PRESET}"
+    log "Build preset: ${BUILD_PRESET}"
 
-    # Ensure submodules are initialized and updated
-    if [[ -d "${REPO_ROOT}/.git" ]]; then
-        log "Updating git submodules..."
-        git -C "${REPO_ROOT}" submodule sync --recursive
-        git -C "${REPO_ROOT}" submodule update --init --recursive
-    fi
-
-    install_build_deps_linux
-    configure
+    generate
     build
-    install
 
-    log "Done"
+    log "Linux build finished successfully."
 }
 
-main "$@"
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+    build_main "$@"
+fi

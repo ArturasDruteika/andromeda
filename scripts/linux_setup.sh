@@ -46,6 +46,7 @@ install_build_deps_linux()
         pkg-config \
         xorg-dev \
         libwayland-dev \
+        libwayland-bin \
         wayland-protocols \
         libxkbcommon-dev \
         libgl1-mesa-dev \

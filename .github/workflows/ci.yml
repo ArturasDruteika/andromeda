@@ -15,26 +15,31 @@ jobs:
               with:
                   submodules: recursive
 
-            - name: Ensure submodules are up to date
-              run: |
-                  git submodule sync --recursive
-                  git submodule update --init --recursive
-
-            - name: Build (scripts)
+            - name: Build
               shell: bash
               run: |
                   set -euo pipefail
+
                   chmod +x \
+                      ./scripts/linux_generate.sh \
                       ./scripts/linux_build.sh \
-                      ./scripts/linux_ci.sh \
-                      ./scripts/linux_install.sh
+                      ./scripts/linux_install.sh \
+                      ./scripts/linux_ci.sh
 
                   ./scripts/linux_ci.sh
 
-            - name: Upload install artifact
+            - name: Upload Clang Release
               if: ${{ env.ACT != 'true' }}
               uses: actions/upload-artifact@v4
               with:
-                  name: andromeda-ubuntu-release
-                  path: build/install/
+                  name: andromeda-linux-clang-release
+                  path: build/linux_clang_install/
+                  if-no-files-found: error
+
+            - name: Upload GCC Release
+              if: ${{ env.ACT != 'true' }}
+              uses: actions/upload-artifact@v4
+              with:
+                  name: andromeda-linux-gcc-release
+                  path: build/linux_gcc_install/
                   if-no-files-found: error
