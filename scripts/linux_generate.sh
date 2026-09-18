@@ -4,6 +4,9 @@ set -euo pipefail
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 
+# shellcheck source=submodules_init.sh
+source "${SCRIPT_DIR}/linux_git_submodules_init.sh"
+
 COMPILER="clang"
 CONFIG="release"
 
@@ -172,6 +175,8 @@ check_generate_dependencies()
 
 generate()
 {
+    init_submodules
+
     log "Generating with preset '${CONFIGURE_PRESET}'..."
 
     (

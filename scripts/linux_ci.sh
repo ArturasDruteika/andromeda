@@ -78,12 +78,6 @@ main()
     log "Starting Linux CI..."
     log "Repository root: ${REPO_ROOT}"
 
-    if [[ -d "${REPO_ROOT}/.git" ]]; then
-        log "Updating git submodules..."
-        git -C "${REPO_ROOT}" submodule sync --recursive
-        git -C "${REPO_ROOT}" submodule update --init --recursive
-    fi
-
     install_build_deps_linux
     run_builds
     package_for_act

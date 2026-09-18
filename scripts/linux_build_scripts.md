@@ -5,28 +5,70 @@ The Linux scripts are split into separate stages so that each script has a singl
 ## Script hierarchy
 
 ```text
+linux_git_submodules_init.sh
+    │
+    │  Initializes and updates Git submodules recursively
+    ▼
+linux_generate.sh
+    │
+    │  Initialize Submodules + Configure / Generate
+    ▼
+linux_build.sh
+    │
+    │  Initialize Submodules + Generate + Build
+    ▼
+linux_install.sh
+    │
+    │  Initialize Submodules + Generate + Build + Install
+    ▼
+Release installation
+
+
 linux_setup.sh
     │
     │  Installs system/build dependencies
-    │
-    └──────────────────────────────┐
-                                   ▼
-linux_generate.sh             linux_ci.sh
-    │                              │
-    │  Configure / Generate        │  CI orchestration
-    ▼                              │
-linux_build.sh                     ├── setup
-    │                              ├── Clang Debug
-    │  Generate + Build            ├── Clang Release
-    ▼                              ├── GCC Debug
-linux_install.sh                   └── GCC Release
-    │
-    │  Generate + Build + Install
     ▼
-Release installation
+linux_ci.sh
+    │
+    ├── Setup
+    ├── Clang Debug
+    ├── Clang Release
+    ├── GCC Debug
+    └── GCC Release
 ```
 
 ## Scripts
+
+### `linux_git_submodules_init.sh`
+
+Initializes and updates all Git submodules recursively.
+
+It performs the equivalent of:
+
+```bash
+git submodule sync --recursive
+git submodule update --init --recursive
+```
+
+This includes nested submodules inside other submodules.
+
+It is automatically used by:
+
+```text
+linux_generate.sh
+    ↓
+linux_build.sh
+    ↓
+linux_install.sh
+```
+
+It can also be executed directly:
+
+```bash
+./scripts/linux_git_submodules_init.sh
+```
+
+---
 
 ### `linux_setup.sh`
 
@@ -48,9 +90,15 @@ It can also be executed directly:
 
 ### `linux_generate.sh`
 
-Configures and generates the CMake build system using `CMakePresets.json`.
+Initializes Git submodules and configures/generates the CMake build system using `CMakePresets.json`.
 
-This is the lowest-level build script.
+Conceptually:
+
+```text
+linux_git_submodules_init.sh
+            ↓
+         Generate
+```
 
 Examples:
 
@@ -77,9 +125,11 @@ Sources `linux_generate.sh` and adds the build stage.
 Conceptually:
 
 ```text
-linux_generate.sh
-        ↓
-      build
+linux_git_submodules_init.sh
+            ↓
+         Generate
+            ↓
+          Build
 ```
 
 Therefore:
@@ -91,7 +141,7 @@ Therefore:
 performs:
 
 ```text
-Generate → Build
+Initialize Submodules → Generate → Build
 ```
 
 Examples:
@@ -119,11 +169,13 @@ Sources `linux_build.sh` and adds the installation stage.
 Conceptually:
 
 ```text
-linux_generate.sh
-        ↓
-linux_build.sh
-        ↓
-     install
+linux_git_submodules_init.sh
+            ↓
+         Generate
+            ↓
+          Build
+            ↓
+         Install
 ```
 
 Therefore:
@@ -135,7 +187,7 @@ Therefore:
 performs:
 
 ```text
-Generate → Build → Install
+Initialize Submodules → Generate → Build → Install
 ```
 
 Installation is intended for Release builds.
@@ -169,24 +221,27 @@ build/
 
 Runs the complete Linux CI pipeline.
 
-It uses `linux_setup.sh` to install build dependencies and then validates every Linux compiler/configuration combination defined by the project.
+It first uses `linux_setup.sh` to install the required Linux build dependencies.
+
+Each build then goes through `linux_generate.sh`, which automatically initializes and updates Git submodules before CMake generation.
 
 ```text
 linux_ci.sh
 │
-├── Setup Linux dependencies
+├── Linux Setup
+│   └── Install system/build dependencies
 │
 ├── Clang Debug
-│   └── Generate → Build
+│   └── Submodules → Generate → Build
 │
 ├── Clang Release
-│   └── Generate → Build → Install
+│   └── Submodules → Generate → Build → Install
 │
 ├── GCC Debug
-│   └── Generate → Build
+│   └── Submodules → Generate → Build
 │
 └── GCC Release
-    └── Generate → Build → Install
+    └── Submodules → Generate → Build → Install
 ```
 
 Run locally with:
@@ -218,13 +273,19 @@ The Linux configurations are:
 
 ## Typical usage
 
+Initialize/update Git submodules only:
+
+```bash
+./scripts/linux_git_submodules_init.sh
+```
+
 For development:
 
 ```bash
 ./scripts/linux_build.sh --config debug
 ```
 
-For a clean Release installation:
+For a Release installation:
 
 ```bash
 ./scripts/linux_install.sh
@@ -245,9 +306,28 @@ To validate all supported Linux configurations:
 ## Summary
 
 ```text
-linux_generate.sh = Generate
-linux_build.sh    = Generate + Build
-linux_install.sh  = Generate + Build + Install
-linux_ci.sh       = Setup + all Linux Debug/Release builds
-linux_setup.sh    = System dependencies
+linux_git_submodules_init.sh = Initialize/update Git submodules
+linux_setup.sh               = Install Linux system dependencies
+linux_generate.sh            = Submodules + Generate
+linux_build.sh               = Submodules + Generate + Build
+linux_install.sh             = Submodules + Generate + Build + Install
+linux_ci.sh                  = Setup + all Linux Debug/Release builds
+```
+
+The dependency chain is:
+
+```text
+linux_git_submodules_init.sh
+            ↓
+linux_generate.sh
+            ↓
+linux_build.sh
+            ↓
+linux_install.sh
+
+linux_setup.sh ───────────────┐
+                             ▼
+                        linux_ci.sh
+                             │
+                             └── invokes build/install pipelines
 ```
