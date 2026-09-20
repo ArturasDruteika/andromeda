@@ -11,7 +11,7 @@
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/linux_clang_debug",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "debug",
+                "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_C_COMPILER": "clang",
                 "CMAKE_CXX_COMPILER": "clang++",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/debug",
@@ -29,12 +29,10 @@
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/linux_clang_release",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "release",
+                "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_C_COMPILER": "clang",
                 "CMAKE_CXX_COMPILER": "clang++",
-                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/release",
-                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build/release",
-                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/build/release"
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/linux_clang_install"
             },
             "condition": {
                 "type": "equals",
@@ -45,9 +43,9 @@
         {
             "name": "debug-linux-gcc",
             "generator": "Unix Makefiles",
-            "binaryDir": "${sourceDir}/build/linux-gcc-debug",
+            "binaryDir": "${sourceDir}/build/linux_gcc_debug",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "debug",
+                "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/debug",
@@ -63,14 +61,12 @@
         {
             "name": "release-linux-gcc",
             "generator": "Unix Makefiles",
-            "binaryDir": "${sourceDir}/build/linux-gcc-release",
+            "binaryDir": "${sourceDir}/build/linux_gcc_release",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "release",
+                "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/release",
-                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build/release",
-                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/build/release"
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/build/linux_gcc_install"
             },
             "condition": {
                 "type": "equals",
@@ -81,9 +77,9 @@
         {
             "name": "debug-windows",
             "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/",
+            "binaryDir": "${sourceDir}/build/windows_debug",
             "cacheVariables": {
-                "CMAKE_CONFIGURATION_TYPES": "debug",
+                "CMAKE_CONFIGURATION_TYPES": "Debug",
                 "CMAKE_GENERATOR_PLATFORM": "x64",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build",
@@ -98,9 +94,9 @@
         {
             "name": "release-windows",
             "generator": "Visual Studio 17 2022",
-            "binaryDir": "${sourceDir}/build/",
+            "binaryDir": "${sourceDir}/build/windows_release",
             "cacheVariables": {
-                "CMAKE_CONFIGURATION_TYPES": "release",
+                "CMAKE_CONFIGURATION_TYPES": "Release",
                 "CMAKE_GENERATOR_PLATFORM": "x64",
                 "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build",
                 "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build",
@@ -153,7 +149,7 @@
         {
             "name": "build-debug-windows",
             "configurePreset": "debug-windows",
-            "configuration": "debug",
+            "configuration": "Debug",
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",
@@ -163,7 +159,7 @@
         {
             "name": "build-release-windows",
             "configurePreset": "release-windows",
-            "configuration": "release",
+            "configuration": "Release",
             "condition": {
                 "type": "equals",
                 "lhs": "${hostSystemName}",

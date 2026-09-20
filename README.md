@@ -20,35 +20,84 @@ Andromeda/
 ```
 
 ## Setup & Building
-1. Clone the repository and initialize submodules:
+
+1. Clone the repository:
     ```sh
-    git clone --recursive https://github.com/ArturasDruteika/andromeda.git
-    # or, if already cloned:
-    git submodule update --init --recursive
-    ```
-2. Install build dependencies (Linux example):
-    ```sh
-    ./scripts/setup-linux.sh
-    ```
-3. Build the project:
-    ```sh
-    ./scripts/build-linux.sh
-    ```
-4. Run the app (Solar System Simulation)
-    ```sh
-    cd build/release/bin
-    ./solar_system_simulation
+    git clone https://github.com/ArturasDruteika/andromeda.git
+    cd andromeda
     ```
 
-## Running examples
-After building, you can run the example binaries from the build output directory. For example:
-```sh
-./build/release/bin/example
+2. Install the required Linux build dependencies:
+    ```sh
+    ./scripts/linux_setup.sh
+    ```
+
+3. Build the project:
+    ```sh
+    # Clang Release (default)
+    ./scripts/linux_build.sh
+
+    # Clang Debug
+    ./scripts/linux_build.sh --config debug
+
+    # GCC Release
+    ./scripts/linux_build.sh --compiler gcc
+
+    # GCC Debug
+    ./scripts/linux_build.sh --compiler gcc --config debug
+    ```
+
+    Git submodules are initialized and updated automatically as part of the
+    build process.
+
+4. Create a Release installation:
+    ```sh
+    # Clang Release
+    ./scripts/linux_install.sh
+
+    # GCC Release
+    ./scripts/linux_install.sh --compiler gcc
+    ```
+
+    Release installations are created in:
+    ```text
+    build/
+    ├── linux_clang_install/
+    │   ├── bin/
+    │   └── lib/
+    │
+    └── linux_gcc_install/
+        ├── bin/
+        └── lib/
+    ```
+
+For more information about the Linux build scripts and available options, see
+[`scripts/linux_build_scripts.md`](scripts/linux_build_scripts.md).
+
+## Running Examples
+
+For development, examples can be run directly from the corresponding build
+directory after running `linux_build.sh`.
+
+For Release builds, the recommended runtime layout is produced by
+`linux_install.sh`. Installed executables can be found under:
+
+```text
+build/linux_clang_install/bin/
 ```
-or (depending on your build type and configuration):
-```sh
-./build/linux-clang-release/release/bin/example
+
+or, when building with GCC:
+
+```text
+build/linux_gcc_install/bin/
 ```
+
+For example:
+
+```sh
+./build/linux_clang_install/bin/solar_system_simulation
+```
+
 All code examples can be found inside the `cpp/examples` directory.
 
 ## Running on VS Code (Linux)

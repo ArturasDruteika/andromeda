@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.24)
 
 project(graphics_context)
 
-set(CMAKE_BUILD_PARALLEL_LEVEL)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -47,7 +46,7 @@ target_link_libraries(${PROJECT_NAME}
         precompiled_headers
         api
         window
-        Glad
+        glad
         glfw
         OpenGL::GL
         spdlog::spdlog
@@ -55,7 +54,7 @@ target_link_libraries(${PROJECT_NAME}
 
 add_dependencies(${PROJECT_NAME} 
 	glfw
-    Glad
+    glad
     window
 )
 

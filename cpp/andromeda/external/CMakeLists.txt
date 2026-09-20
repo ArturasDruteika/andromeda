@@ -4,7 +4,7 @@ project(andromeda_external)
 
 add_subdirectory(glfw)
 add_subdirectory(glm)
-add_subdirectory(Glad)
+add_subdirectory(glad)
 add_subdirectory(imgui)
 set(SPDLOG_BUILD_PIC ON CACHE BOOL "" FORCE)
 add_subdirectory(spdlog)

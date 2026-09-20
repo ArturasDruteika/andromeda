@@ -1,36 +1,47 @@
 name: CI
 
 on:
-  push:
-  pull_request:
+    push:
+    pull_request:
 
 jobs:
-  build-linux:
-    name: Build (Ubuntu)
-    runs-on: ubuntu-latest
+    build-linux:
+        name: Build (Ubuntu)
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  submodules: recursive
 
-      - name: Ensure submodules are up to date
-        run: |
-          git submodule sync --recursive
-          git submodule update --init --recursive
+            - name: Build
+              shell: bash
+              run: |
+                  set -euo pipefail
 
-      - name: Build (scripts)
-        shell: bash
-        run: |
-          set -euo pipefail
-          chmod +x ./scripts/build-linux.sh ./scripts/ci-linux.sh
-          ./scripts/ci-linux.sh
+                  chmod +x \
+                      ./scripts/linux_setup.sh \
+                      ./scripts/linux_git_submodules_init.sh \
+                      ./scripts/linux_generate.sh \
+                      ./scripts/linux_build.sh \
+                      ./scripts/linux_install.sh \
+                      ./scripts/linux_ci.sh
 
-      - name: Upload install artifact
-        if: ${{ env.ACT != 'true' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: andromeda-ubuntu-release
-          path: build/INSTALL/
-          if-no-files-found: error
+                  ./scripts/linux_ci.sh
+
+            - name: Upload Clang Release
+              if: ${{ env.ACT != 'true' }}
+              uses: actions/upload-artifact@v4
+              with:
+                  name: andromeda-linux-clang-release
+                  path: build/linux_clang_install/
+                  if-no-files-found: error
+
+            - name: Upload GCC Release
+              if: ${{ env.ACT != 'true' }}
+              uses: actions/upload-artifact@v4
+              with:
+                  name: andromeda-linux-gcc-release
+                  path: build/linux_gcc_install/
+                  if-no-files-found: error
