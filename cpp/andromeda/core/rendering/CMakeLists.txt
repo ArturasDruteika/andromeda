@@ -181,12 +181,10 @@ foreach(FILE_NAME IN LISTS SHADER_FILES)
     list(APPEND SHADER_SOURCE_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/shader_program_sources/${FILE_NAME}")
 endforeach()
 
-# Determine output directory based on platform
-if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    set(SHADER_OUTPUT_DIR "${CMAKE_ASSETS_OUTPUT_DIRECTORY}/$<CONFIG>/shader_program_sources")
-else()
-    set(SHADER_OUTPUT_DIR "${CMAKE_ASSETS_OUTPUT_DIRECTORY}/shader_program_sources")
-endif()
+# Shaders live next to bin/ in the install res directory
+set(SHADER_OUTPUT_DIR
+    "${CMAKE_ASSETS_OUTPUT_DIRECTORY}/shader_program_sources"
+)
 
 # Create output directory
 add_custom_command(
