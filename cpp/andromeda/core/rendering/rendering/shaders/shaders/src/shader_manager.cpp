@@ -53,39 +53,39 @@ namespace andromeda::rendering
         std::vector<ShaderDefinition> shaders = {
             {
                 ShaderOpenGLTypes::RenderableObjects,
-                "shader_program_sources/vertex.glsl",
-                "shader_program_sources/fragment.glsl"
+                "../res/shader_program_sources/vertex.glsl",
+                "../res/shader_program_sources/fragment.glsl"
             },
             {
                 ShaderOpenGLTypes::Grid,
-                "shader_program_sources/vertex_grid.glsl",
-                "shader_program_sources/fragment_grid.glsl"
+                "../res/shader_program_sources/vertex_grid.glsl",
+                "../res/shader_program_sources/fragment_grid.glsl"
             },
             {
                 ShaderOpenGLTypes::RenderableObjectsLuminous,
-                "shader_program_sources/vertex.glsl",
-                "shader_program_sources/fragment_luminous_objects.glsl"
+                "../res/shader_program_sources/vertex.glsl",
+                "../res/shader_program_sources/fragment_luminous_objects.glsl"
             },
             {
                 ShaderOpenGLTypes::RenderableObjectsNonLuminous,
-                "shader_program_sources/vertex_illumination.glsl",
-                "shader_program_sources/fragment_non_luminous_objects.glsl"
+                "../res/shader_program_sources/vertex_illumination.glsl",
+                "../res/shader_program_sources/fragment_non_luminous_objects.glsl"
             },
             {
                 ShaderOpenGLTypes::ShadowMap,
-                "shader_program_sources/vertex_depth_only.glsl",
-                "shader_program_sources/fragment_depth_only.glsl"
+                "../res/shader_program_sources/vertex_depth_only.glsl",
+                "../res/shader_program_sources/fragment_depth_only.glsl"
             },
             {
                 ShaderOpenGLTypes::PointShadowCubeMap,
-                "shader_program_sources/vertex_point_shadow.glsl",
-                "shader_program_sources/fragment_point_shadow.glsl",
-                "shader_program_sources/geometry_point_shadow.glsl"
+                "../res/shader_program_sources/vertex_point_shadow.glsl",
+                "../res/shader_program_sources/fragment_point_shadow.glsl",
+                "../res/shader_program_sources/geometry_point_shadow.glsl"
             },
             {
                 ShaderOpenGLTypes::Text,
-                "shader_program_sources/vertex_text.glsl",
-                "shader_program_sources/fragment.glsl",
+                "../res/shader_program_sources/vertex_text.glsl",
+                "../res/shader_program_sources/fragment.glsl",
             }
         };
 
