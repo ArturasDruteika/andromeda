@@ -12,10 +12,8 @@ target_compile_definitions(${PROJECT_NAME}
         ANDROMEDA_API_USE_DLL
 )
 
-# Ensure engine is linked
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        # precompiled_headers
         math
         api
         space
@@ -25,7 +23,6 @@ target_link_libraries(${PROJECT_NAME}
         spdlog::spdlog
 )
 
-# Ensure Example waits for engine to build
 add_dependencies(${PROJECT_NAME}
     math
     space
@@ -34,16 +31,49 @@ add_dependencies(${PROJECT_NAME}
     application
 )
 
-# Set working directory only for Visual Studio
 if(MSVC)
-    file(TO_CMAKE_PATH $<TARGET_FILE_DIR:${PROJECT_NAME}>// exe_dir)
+    file(TO_CMAKE_PATH "$<TARGET_FILE_DIR:${PROJECT_NAME}>/" exe_dir)
+
     set_target_properties(${PROJECT_NAME}
         PROPERTIES
-            VS_DEBUGGER_WORKING_DIRECTORY ${exe_dir}
+            VS_DEBUGGER_WORKING_DIRECTORY "${exe_dir}"
     )
 else()
     set_target_properties(${PROJECT_NAME}
-    PROPERTIES
-        VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/$<CONFIG>/bin"
+        PROPERTIES
+            VS_DEBUGGER_WORKING_DIRECTORY
+                "${CMAKE_BINARY_DIR}/$<LOWER_CASE:$<CONFIG>>/bin"
     )
 endif()
+
+# ---------------------------------------------------------------------------
+# Install
+# ---------------------------------------------------------------------------
+
+set(EXAMPLE_INSTALL_DIR "${PROJECT_NAME}")
+
+# Executable
+install(
+    PROGRAMS "$<TARGET_FILE:${PROJECT_NAME}>"
+    DESTINATION "${EXAMPLE_INSTALL_DIR}/bin"
+    COMPONENT runtime
+)
+
+# Shared libraries
+install(
+    DIRECTORY "${CMAKE_BINARY_DIR}/$<LOWER_CASE:$<CONFIG>>/lib/"
+    DESTINATION "${EXAMPLE_INSTALL_DIR}/lib"
+    COMPONENT runtime
+    FILES_MATCHING
+        PATTERN "*.so"
+        PATTERN "*.so.*"
+        PATTERN "*.dll"
+        PATTERN "*.dylib"
+)
+
+# Resources
+install(
+    DIRECTORY "${CMAKE_BINARY_DIR}/$<LOWER_CASE:$<CONFIG>>/res/"
+    DESTINATION "${EXAMPLE_INSTALL_DIR}/res"
+    COMPONENT runtime
+)
