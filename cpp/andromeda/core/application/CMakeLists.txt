@@ -7,17 +7,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions(-DAPPLICATION_EXPORT)
 
-
-# SPDLog
-
-
-# ==== applicationGLFW ====
 set(APPLICATION_HEADERS
-    application/include/application.hpp
+    include/application.hpp
 )
 
 set(APPLICATION_SOURCES
-    application/src/application.cpp
+    src/application.cpp
 )
 
 add_library(${PROJECT_NAME} 
@@ -53,7 +48,7 @@ target_link_libraries(${PROJECT_NAME}
 # Organize files into Solution Explorer folders
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX 
         "application" 
     FILES

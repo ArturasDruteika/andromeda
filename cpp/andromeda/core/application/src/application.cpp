@@ -1,5 +1,5 @@
 #include "../include/application.hpp"
-#include "engine/engine/include/engine.hpp"
+#include "engine/engine.hpp"
 
 #include "spdlog/spdlog.h"
 
