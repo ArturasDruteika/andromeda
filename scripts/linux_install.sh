@@ -8,8 +8,10 @@ source "${SCRIPT_DIR}/linux_build.sh"
 
 install()
 {
-    log "Installing runtime to ${INSTALL_DIR}..."
+    log "Installing runtime packages to ${INSTALL_DIR}..."
 
+    # Remove the previous complete installation so stale files from
+    # old examples/builds cannot survive.
     rm -rf "${INSTALL_DIR}"
 
     cmake --install "${BUILD_DIR}" \
@@ -19,6 +21,36 @@ install()
         echo "Error: Install directory was not created: ${INSTALL_DIR}" >&2
         exit 1
     fi
+
+    # Verify that the expected example packages were installed.
+    local examples=(
+        "solar_system_simulation"
+        "sphere_cubes"
+    )
+
+    local example
+
+    for example in "${examples[@]}"; do
+        if [[ ! -d "${INSTALL_DIR}/${example}" ]]; then
+            echo "Error: Example was not installed: ${example}" >&2
+            exit 1
+        fi
+
+        if [[ ! -d "${INSTALL_DIR}/${example}/bin" ]]; then
+            echo "Error: Missing bin directory for: ${example}" >&2
+            exit 1
+        fi
+
+        if [[ ! -d "${INSTALL_DIR}/${example}/lib" ]]; then
+            echo "Error: Missing lib directory for: ${example}" >&2
+            exit 1
+        fi
+
+        if [[ ! -d "${INSTALL_DIR}/${example}/res" ]]; then
+            echo "Error: Missing res directory for: ${example}" >&2
+            exit 1
+        fi
+    done
 
     log "Installation complete."
 }
