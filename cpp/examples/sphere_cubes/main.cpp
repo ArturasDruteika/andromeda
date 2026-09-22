@@ -169,14 +169,14 @@ int main(void)
     // Load materials once and reuse
     andromeda::space::MaterialLibrary material_library(
         std::filesystem::path(
-            "material_properties/material_properties.json"
+            "../res/material_properties/material_properties.json"
         )
     );
 
     if (material_library.get_size() == 0)
     {
         spdlog::warn(
-            "No materials loaded from assets/materials.json; spheres will fall back to having no materials."
+            "No materials loaded from res/materials.json; spheres will fall back to having no materials."
         );
     }
 
