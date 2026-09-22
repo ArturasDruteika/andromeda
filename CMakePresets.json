@@ -2,7 +2,7 @@
     "version": 3,
     "cmakeMinimumRequired": {
         "major": 3,
-        "minor": 20,
+        "minor": 24,
         "patch": 0
     },
     "configurePresets": [
@@ -13,10 +13,7 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_C_COMPILER": "clang",
-                "CMAKE_CXX_COMPILER": "clang++",
-                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/debug",
-                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build/debug",
-                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/build/debug"
+                "CMAKE_CXX_COMPILER": "clang++"
             },
             "condition": {
                 "type": "equals",
@@ -47,10 +44,7 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_C_COMPILER": "gcc",
-                "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/build/debug",
-                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/build/debug",
-                "CMAKE_ARCHIVE_OUTPUT_DIRECTORY": "${sourceDir}/build/debug"
+                "CMAKE_CXX_COMPILER": "g++"
             },
             "condition": {
                 "type": "equals",
