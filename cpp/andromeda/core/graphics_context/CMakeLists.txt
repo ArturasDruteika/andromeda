@@ -15,11 +15,11 @@ endif ()
 
 # ==== graphics_context ====
 set(GRAPHICS_CONTEXT_HEADERS
-    graphics_context/include/graphics_context_glfw.hpp
+    include/graphics_context/graphics_context_glfw.hpp
 )
 
 set(GRAPHICS_CONTEXT_SOURCES
-    graphics_context/src/graphics_context_glfw.cpp
+    src/graphics_context_glfw.cpp
 )
 
 add_library(${PROJECT_NAME} 
@@ -37,7 +37,7 @@ target_include_directories(${PROJECT_NAME}
         ..//glfw//include//
         ..//glfw//
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 # Link GLFW and OpenGL to the executable
@@ -62,7 +62,7 @@ add_dependencies(${PROJECT_NAME}
 # Organize files into Solution Explorer folders
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/graphics_context
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "graphics_context"
     FILES

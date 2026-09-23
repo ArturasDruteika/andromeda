@@ -1,5 +1,5 @@
 #include "glad/gl.h"
-#include "../include/graphics_context_glfw.hpp"
+#include "graphics_context/graphics_context_glfw.hpp"
 #include "window/window_glfw/include/window_glfw.hpp"
 #include "spdlog/spdlog.h"
 
