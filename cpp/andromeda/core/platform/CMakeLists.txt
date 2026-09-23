@@ -12,31 +12,27 @@ find_package(OpenGL REQUIRED)
 
 # SPDLog
 
-# ==== macro_exports ====
-set(MACRO_EXPORTS_HEADERS
-    macro_exports/include/macro_exports.hpp
-)
 
 # ==== platform ====
 set(PLATFORM_HEADERS
-    platform/include/platform.hpp
+    include/platform/platform.hpp
+    include/platform/macro_exports.hpp
 )
 
 set(PLATFORM_SOURCES
-    platform/src/platform.cpp
+    src/platform.cpp
 )
 
 # ==== Target ====
 add_library(${PROJECT_NAME}
     SHARED
-        ${MACRO_EXPORTS_HEADERS}
         ${PLATFORM_HEADERS}
         ${PLATFORM_SOURCES}
 )
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_compile_definitions(${PROJECT_NAME} 
@@ -99,7 +95,7 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/platform
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "platform"
     FILES

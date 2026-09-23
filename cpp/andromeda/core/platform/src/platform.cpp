@@ -1,4 +1,4 @@
-#include "../include/platform.hpp"
+#include "platform/platform.hpp"
 #include "graphics_context/graphics_context_glfw.hpp"
 #include "window/window_glfw/include/window_glfw.hpp"
 #include "window/events/include/event_dispatcher.hpp"

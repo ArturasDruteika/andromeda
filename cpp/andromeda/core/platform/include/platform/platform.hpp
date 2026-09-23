@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../../macro_exports/include/macro_exports.hpp"
+#include "macro_exports.hpp"
 #include "pch.hpp"
 #include "andromeda/components/graphics_backend.hpp"
 #include "andromeda/graphics_context/i_graphics_context.hpp"
