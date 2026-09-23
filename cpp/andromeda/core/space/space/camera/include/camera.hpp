@@ -6,7 +6,7 @@
 #include "perspective_control.hpp"
 
 #include "andromeda/space/camera/i_camera.hpp"
-#include "math/constants/include/constants.hpp"
+#include "math/constants/constants.hpp"
 
 
 namespace andromeda::space

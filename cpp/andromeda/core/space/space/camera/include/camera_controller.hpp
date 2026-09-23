@@ -3,7 +3,7 @@
 
 #include "camera_view.hpp"
 #include "../../macro_exports/include/macro_exports.hpp"
-#include "math/linear_algebra/include/quaternions.hpp"
+#include "math/linear_algebra/quaternions.hpp"
 #include "andromeda/space/camera/i_camera_controller.hpp"
 
 

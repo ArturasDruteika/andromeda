@@ -1,7 +1,7 @@
 #include "../include/perspective_control.hpp"
-#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
-#include "math/linear_algebra/include/linear_algebra_operations.hpp"
-#include "math/trigonometry/include/trigonometry.hpp"
+#include "math/linear_algebra/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/linear_algebra_operations.hpp"
+#include "math/trigonometry/trigonometry.hpp"
 
 
 namespace andromeda::space

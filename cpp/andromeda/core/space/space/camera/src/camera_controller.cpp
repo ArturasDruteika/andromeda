@@ -1,5 +1,5 @@
 #include "../include/camera_controller.hpp"
-#include "math/linear_algebra/include/linear_algebra_operations.hpp"
+#include "math/linear_algebra/linear_algebra_operations.hpp"
 #include "spdlog/spdlog.h"
 
 

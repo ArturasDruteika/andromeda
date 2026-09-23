@@ -1,5 +1,5 @@
 #include "../include/sphere.hpp"
-#include "math/constants/include/constants.hpp"
+#include "math/constants/constants.hpp"
 #include "pch.hpp"
 #include "spdlog/spdlog.h"
 

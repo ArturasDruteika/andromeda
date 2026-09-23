@@ -6,7 +6,7 @@
 #include "../../macro_exports/include/macro_exports.hpp"
 #include "andromeda/space/colors/colors.hpp"
 #include "andromeda/space/objects/i_sphere.hpp"
-#include "math/linear_algebra/include/linear_algebra_data_types.hpp"
+#include "math/linear_algebra/linear_algebra_data_types.hpp"
 
 
 namespace andromeda::space
