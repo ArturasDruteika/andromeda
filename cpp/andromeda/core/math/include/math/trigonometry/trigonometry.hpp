@@ -4,7 +4,7 @@
 #pragma once
 
 
-#include "../../macro_exports/include/macro_exports.hpp"
+#include "../macro_exports/macro_exports.hpp"
 
 
 namespace andromeda::math

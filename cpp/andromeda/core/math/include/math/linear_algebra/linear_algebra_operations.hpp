@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "../../macro_exports/include/macro_exports.hpp"
-#include "../include/linear_algebra_data_types.hpp"
+#include "linear_algebra_data_types.hpp"
+#include "../macro_exports/macro_exports.hpp"
 
 
 namespace andromeda::math

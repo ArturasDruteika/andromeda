@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../../linear_algebra/include/linear_algebra_data_types.hpp"
+#include "../linear_algebra/linear_algebra_data_types.hpp"
 
 #include <limits>
 
