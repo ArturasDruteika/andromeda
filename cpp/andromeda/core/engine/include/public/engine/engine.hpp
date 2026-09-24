@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "macro_exports.hpp"
+#include "../private/macro_exports.hpp"
 #include "andromeda/components/graphics_backend.hpp"
 #include "andromeda/engine/i_engine.hpp"
 

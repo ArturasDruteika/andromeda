@@ -7,13 +7,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions(-DENGINECORE_EXPORT)
 
-# SPDLog
-
-
 # ==== engine ====
-set(ENGINE_HEADERS
-    include/engine/engine.hpp
-    include/engine/macro_exports.hpp
+set(PUBLIC_HEADERS
+    include/public/engine/engine.hpp
+)
+
+set(PRIVATE_HEADER
+    include/private/macro_exports.hpp
 )
 
 set(ENGINE_SOURCES
@@ -23,13 +23,16 @@ set(ENGINE_SOURCES
 # ==== Target ====
 add_library(${PROJECT_NAME}
     SHARED
-        ${ENGINE_HEADERS}
+        ${PUBLIC_HEADERS}
+        ${PRIVATE_HEADER}
         ${ENGINE_SOURCES}
 )
 
-target_include_directories(${PROJECT_NAME} 
+target_include_directories(${PROJECT_NAME}
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/private/
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/public/
 )
 
 target_compile_definitions(${PROJECT_NAME}
