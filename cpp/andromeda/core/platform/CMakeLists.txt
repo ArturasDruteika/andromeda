@@ -10,13 +10,13 @@ add_definitions(-DPLATFORM_EXPORT)
 # OpenGL
 find_package(OpenGL REQUIRED)
 
-# SPDLog
-
-
 # ==== platform ====
-set(PLATFORM_HEADERS
-    include/platform/platform.hpp
-    include/platform/macro_exports.hpp
+set(PLATFORM_PRIVATE_HEADERS
+    include/private/macro_exports.hpp
+)
+
+set(PLATFORM_PUBLIC_HEADERS
+    include/public/platform/platform.hpp
 )
 
 set(PLATFORM_SOURCES
@@ -26,13 +26,16 @@ set(PLATFORM_SOURCES
 # ==== Target ====
 add_library(${PROJECT_NAME}
     SHARED
-        ${PLATFORM_HEADERS}
+        ${PLATFORM_PRIVATE_HEADERS}
+        ${PLATFORM_PUBLIC_HEADERS}
         ${PLATFORM_SOURCES}
 )
 
 target_include_directories(${PROJECT_NAME} 
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/private/
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/public/
 )
 
 target_compile_definitions(${PROJECT_NAME} 
@@ -84,15 +87,6 @@ elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
 endif()
 
 # ==== IDE Organization ====
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/macro_exports
-    PREFIX
-        "macro_exports"
-    FILES
-        ${MACRO_EXPORTS_HEADERS}
-)
-
 source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/
