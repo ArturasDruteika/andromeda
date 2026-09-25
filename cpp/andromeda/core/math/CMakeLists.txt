@@ -9,13 +9,16 @@ add_definitions(-DMATH_EXPORT)
 
 
 # ==== Files ====
-set(MATH_HEADERS
-    include/math/constants/constants.hpp
-    include/math/linear_algebra/linear_algebra_data_types.hpp
-    include/math/linear_algebra/linear_algebra_operations.hpp
-    include/math/linear_algebra/quaternions.hpp
-    include/math/macro_exports/macro_exports.hpp
-    include/math/trigonometry/trigonometry.hpp
+set(MATH_HEADERS_PRIVATE
+    include/private/macro_exports/macro_exports.hpp
+)
+
+set(MATH_HEADERS_PUBLIC
+    include/public/math/constants/constants.hpp
+    include/public/math/linear_algebra/linear_algebra_data_types.hpp
+    include/public/math/linear_algebra/linear_algebra_operations.hpp
+    include/public/math/linear_algebra/quaternions.hpp
+    include/public/math/trigonometry/trigonometry.hpp
 )
 
 set(MATH_SOURCES
@@ -28,13 +31,16 @@ set(MATH_SOURCES
 # ==== Target ====
 add_library(${PROJECT_NAME}
     SHARED
-        ${MATH_HEADERS}
+        ${MATH_HEADERS_PRIVATE}
+        ${MATH_HEADERS_PUBLIC}
         ${MATH_SOURCES}
 )
 
 target_include_directories(${PROJECT_NAME} 
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/private/
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/public/
 )
 
 # ==== Link Libraries ====
@@ -49,7 +55,7 @@ target_link_libraries(${PROJECT_NAME}
 # ==== IDE Organization ====
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/math/
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "math"
     FILES
@@ -58,7 +64,7 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "linear_algebra"
     FILES
