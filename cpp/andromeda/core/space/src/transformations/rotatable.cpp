@@ -1,5 +1,5 @@
 #include "andromeda/space/transformations/rotatable.hpp"
-#include "math/linear_algebra/quaternions.hpp"
+#include "andromeda/math/linear_algebra/quaternions.hpp"
 
 
 namespace andromeda

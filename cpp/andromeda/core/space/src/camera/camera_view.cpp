@@ -1,5 +1,5 @@
 #include "andromeda/space/camera/camera_view.hpp"
-#include "math/linear_algebra/linear_algebra_operations.hpp"
+#include "andromeda/math/linear_algebra/linear_algebra_operations.hpp"
 
 #include "spdlog/spdlog.h"
 

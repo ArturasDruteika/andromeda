@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "math/linear_algebra/linear_algebra_data_types.hpp"
-#include "math/linear_algebra/quaternions.hpp"
+#include "andromeda/math/linear_algebra/linear_algebra_data_types.hpp"
+#include "andromeda/math/linear_algebra/quaternions.hpp"
 
 
 namespace andromeda
