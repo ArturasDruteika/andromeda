@@ -4,7 +4,7 @@
 #include "../light/directional_light.hpp"
 #include "../light/point_light.hpp"
 #include "../objects/light_object.hpp"
-#include "andromeda/space/macro_exports/macro_exports.hpp"
+#include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/scene/i_scene_lighting.hpp"
 
 

@@ -4,7 +4,7 @@
 #include "rotatable.hpp"
 #include "scalable.hpp"
 #include "translatable.hpp"
-#include "andromeda/space/macro_exports/macro_exports.hpp"
+#include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/transformations/i_transformable.hpp"
 
 

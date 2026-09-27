@@ -3,7 +3,7 @@
 
 #include "../objects/geometric_object.hpp"
 #include "../objects/light_object.hpp"
-#include "andromeda/space/macro_exports/macro_exports.hpp"
+#include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/scene/i_scene_objects.hpp"
 #include "andromeda/space/transformations/i_transformable.hpp"
 #include <map>

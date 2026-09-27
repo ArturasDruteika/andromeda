@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "andromeda/space/macro_exports/macro_exports.hpp"
+#include "andromeda/space/macro_export/macro_export.hpp"
 #include "../objects/light_object.hpp"
 #include "../transformations/rotatable.hpp"
 #include "light.hpp"

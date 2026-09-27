@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "andromeda/space/macro_exports/macro_exports.hpp"
+#include "andromeda/space/macro_export/macro_export.hpp"
 #include "../scene_graph/scene_node.hpp"
 #include "scene_lighting.hpp"
 #include "scene_objects.hpp"

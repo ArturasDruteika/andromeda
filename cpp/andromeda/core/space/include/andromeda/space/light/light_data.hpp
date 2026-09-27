@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "andromeda/space/macro_exports/macro_exports.hpp"
+#include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/light/light_types.hpp"
 #include "math/linear_algebra/linear_algebra_data_types.hpp"
 

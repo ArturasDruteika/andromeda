@@ -5,10 +5,9 @@ project(space)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DSPACE_EXPORT)
 
 # ==== Camera ====
-set(CAMERA_HEADERS_PUBLIC
+set(CAMERA_HEADERS
     include/andromeda/space/camera/perspective_control.hpp
     include/andromeda/space/camera/camera_view.hpp
     include/andromeda/space/camera/camera_controller.hpp
@@ -22,10 +21,12 @@ set(CAMERA_SOURCES
     src/camera/camera.cpp
 )
 
+
 # ==== Coordinates ====
 set(COORDINATES_HEADERS
     include/andromeda/space/coordinates/points.hpp
 )
+
 
 # ==== Light ====
 set(LIGHT_HEADERS
@@ -44,10 +45,6 @@ set(LIGHT_SOURCES
     src/light/light_data.cpp
 )
 
-# ==== Macro Exports ====
-set(MACRO_EXPORTS_HEADERS
-    include/andromeda/space/macro_exports/macro_exports.hpp
-)
 
 # ==== Materials ====
 set(MATERIALS_HEADERS
@@ -60,6 +57,7 @@ set(MATERIALS_SOURCES
     src/materials/materials.cpp
     src/materials/materials_library.cpp
 )
+
 
 # ==== Objects ====
 set(OBJECTS_HEADERS
@@ -86,6 +84,7 @@ set(OBJECTS_SOURCES
     src/objects/surface_object.cpp
 )
 
+
 # ==== Scene ====
 set(SCENE_HEADERS
     include/andromeda/space/scene/camera_handler.hpp
@@ -96,15 +95,6 @@ set(SCENE_HEADERS
     include/andromeda/space/scene/scene_objects.hpp
     include/andromeda/space/scene/scene_state.hpp
     include/andromeda/space/scene/scene_update_hooks.hpp
-)
-
-# ==== UpdateHooks ====
-set(UPDATE_HOOKS_HEADERS
-    include/andromeda/space/update_hooks/update_hooks.hpp
-)
-
-set(UPDATE_HOOKS_SOURCES
-    src/update_hooks/update_hooks.cpp
 )
 
 set(SCENE_SOURCES
@@ -118,7 +108,18 @@ set(SCENE_SOURCES
     src/scene/scene_update_hooks.cpp
 )
 
-# ==== SceneGraph ====
+
+# ==== Update Hooks ====
+set(UPDATE_HOOKS_HEADERS
+    include/andromeda/space/update_hooks/update_hooks.hpp
+)
+
+set(UPDATE_HOOKS_SOURCES
+    src/update_hooks/update_hooks.cpp
+)
+
+
+# ==== Scene Graph ====
 set(SCENE_GRAPH_HEADERS
     include/andromeda/space/scene_graph/scene_component.hpp
     include/andromeda/space/scene_graph/scene_node.hpp
@@ -132,6 +133,7 @@ set(SCENE_GRAPH_SOURCES
     src/scene_graph/object_component.cpp
     src/scene_graph/light_component.cpp
 )
+
 
 # ==== Transformations ====
 set(TRANSFORMATIONS_HEADERS
@@ -149,6 +151,7 @@ set(TRANSFORMATIONS_SOURCES
     src/transformations/translatable.cpp
 )
 
+
 # ==== Target ====
 add_library(${PROJECT_NAME}
     SHARED
@@ -157,7 +160,6 @@ add_library(${PROJECT_NAME}
         ${COORDINATES_HEADERS}
         ${LIGHT_HEADERS}
         ${LIGHT_SOURCES}
-        ${MACRO_EXPORTS_HEADERS}
         ${MATERIALS_HEADERS}
         ${MATERIALS_SOURCES}
         ${OBJECTS_HEADERS}
@@ -172,9 +174,22 @@ add_library(${PROJECT_NAME}
         ${TRANSFORMATIONS_SOURCES}
 )
 
-target_include_directories(${PROJECT_NAME} 
+
+# ==== Export Header ====
+include(GenerateExportHeader)
+
+generate_export_header(${PROJECT_NAME}
+    BASE_NAME SPACE
+    EXPORT_MACRO_NAME SPACE_API
+    EXPORT_FILE_NAME
+        "${CMAKE_CURRENT_SOURCE_DIR}/include/andromeda/space/macro_export/macro_export.hpp"
+)
+
+
+# ==== Include Directories ====
+target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 # ==== Link Libraries ====
@@ -187,6 +202,7 @@ target_link_libraries(${PROJECT_NAME}
         spdlog::spdlog
 )
 
+
 # ==== Dependencies ====
 add_dependencies(${PROJECT_NAME}
     math
@@ -194,22 +210,32 @@ add_dependencies(${PROJECT_NAME}
 )
 
 
-## Material properties
-set(MATERIAL_JSON_FILENAME "material_properties.json")
+# ==== Material Properties ====
+set(MATERIAL_JSON_FILENAME
+    "material_properties.json"
+)
+
 set(MATERIAL_JSON_SOURCE
     "${CMAKE_CURRENT_SOURCE_DIR}/material_properties/${MATERIAL_JSON_FILENAME}"
 )
 
-if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    set(MATERIAL_JSON_OUTPUT_DIR "${CMAKE_ASSETS_OUTPUT_DIRECTORY}/$<CONFIG>/material_properties")
+if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    set(MATERIAL_JSON_OUTPUT_DIR
+        "${CMAKE_ASSETS_OUTPUT_DIRECTORY}/$<CONFIG>/material_properties"
+    )
 else()
-    set(MATERIAL_JSON_OUTPUT_DIR "${CMAKE_ASSETS_OUTPUT_DIRECTORY}/material_properties")
+    set(MATERIAL_JSON_OUTPUT_DIR
+        "${CMAKE_ASSETS_OUTPUT_DIRECTORY}/material_properties"
+    )
 endif()
 
-set(MATERIAL_JSON_OUTPUT "${MATERIAL_JSON_OUTPUT_DIR}/${MATERIAL_JSON_FILENAME}")
+set(MATERIAL_JSON_OUTPUT
+    "${MATERIAL_JSON_OUTPUT_DIR}/${MATERIAL_JSON_FILENAME}"
+)
 
 add_custom_command(
-    TARGET ${PROJECT_NAME} POST_BUILD
+    TARGET ${PROJECT_NAME}
+    POST_BUILD
 
     COMMAND ${CMAKE_COMMAND} -E make_directory
         "${MATERIAL_JSON_OUTPUT_DIR}"
@@ -218,13 +244,14 @@ add_custom_command(
         "${MATERIAL_JSON_SOURCE}"
         "${MATERIAL_JSON_OUTPUT}"
 
-    COMMENT "Copying ${MATERIAL_JSON_FILENAME} to ${MATERIAL_JSON_OUTPUT_DIR}"
+    COMMENT
+        "Copying ${MATERIAL_JSON_FILENAME} to ${MATERIAL_JSON_OUTPUT_DIR}"
 )
 
 
 # ==== IDE Organization ====
 source_group(
-    TREE 
+    TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "camera"
@@ -256,15 +283,6 @@ source_group(
     TREE
         ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
-        "macro_exports"
-    FILES
-        ${MACRO_EXPORTS_HEADERS}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/
-    PREFIX
         "materials"
     FILES
         ${MATERIALS_HEADERS}
@@ -289,6 +307,16 @@ source_group(
     FILES
         ${SCENE_HEADERS}
         ${SCENE_SOURCES}
+)
+
+source_group(
+    TREE
+        ${CMAKE_CURRENT_SOURCE_DIR}/
+    PREFIX
+        "update_hooks"
+    FILES
+        ${UPDATE_HOOKS_HEADERS}
+        ${UPDATE_HOOKS_SOURCES}
 )
 
 source_group(

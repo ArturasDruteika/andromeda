@@ -8,7 +8,7 @@
 #include "scene_state.hpp"
 #include "scene_node_manager.hpp"
 #include "scene_update_hooks.hpp"
-#include "andromeda/space/macro_exports/macro_exports.hpp"
+#include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/scene/i_scene.hpp"
 #include "pch.hpp"
 

@@ -3,7 +3,7 @@
 
 #include "object.hpp"
 #include "../transformations/rotatable.hpp"
-#include "andromeda/space/macro_exports/macro_exports.hpp"
+#include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/objects/i_camera_object.hpp"
 
 
