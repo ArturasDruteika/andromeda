@@ -1,4 +1,4 @@
-#include "space/scene_graph/object_component.hpp"
+#include "andromeda/space/scene_graph/object_component.hpp"
 
 
 namespace andromeda::space

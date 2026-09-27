@@ -1,4 +1,4 @@
-#include "space/camera/camera_view.hpp"
+#include "andromeda/space/camera/camera_view.hpp"
 #include "math/linear_algebra/linear_algebra_operations.hpp"
 
 #include "spdlog/spdlog.h"

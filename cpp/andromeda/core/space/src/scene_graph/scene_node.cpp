@@ -1,4 +1,4 @@
-#include "space/scene_graph/scene_node.hpp"
+#include "andromeda/space/scene_graph/scene_node.hpp"
 #include "andromeda/space/scene_graph/i_scene_component.hpp"
 
 #include "spdlog/spdlog.h"

@@ -1,4 +1,4 @@
-#include "space/objects/camera_object.hpp"
+#include "andromeda/space/objects/camera_object.hpp"
 
 
 namespace andromeda::space

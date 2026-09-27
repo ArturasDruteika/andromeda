@@ -1,4 +1,4 @@
-#include "space/objects/cube.hpp"
+#include "andromeda/space/objects/cube.hpp"
 #include "spdlog/spdlog.h"
 
 

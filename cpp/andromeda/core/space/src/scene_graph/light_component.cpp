@@ -1,4 +1,4 @@
-#include "space/scene_graph/light_component.hpp"
+#include "andromeda/space/scene_graph/light_component.hpp"
 
 
 namespace andromeda::space

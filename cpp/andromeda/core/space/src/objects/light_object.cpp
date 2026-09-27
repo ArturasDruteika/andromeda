@@ -1,4 +1,4 @@
-#include "space/objects/light_object.hpp"
+#include "andromeda/space/objects/light_object.hpp"
 
 
 namespace andromeda::space

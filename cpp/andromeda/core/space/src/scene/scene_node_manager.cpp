@@ -1,7 +1,7 @@
-#include "space/scene/scene_node_manager.hpp"
-#include "space/transformations/transformable.hpp"
-#include "space/scene_graph/object_component.hpp"
-#include "space/scene_graph/light_component.hpp"
+#include "andromeda/space/scene/scene_node_manager.hpp"
+#include "andromeda/space/transformations/transformable.hpp"
+#include "andromeda/space/scene_graph/object_component.hpp"
+#include "andromeda/space/scene_graph/light_component.hpp"
 
 
 namespace andromeda::space

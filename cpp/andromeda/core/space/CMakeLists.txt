@@ -7,13 +7,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions(-DSPACE_EXPORT)
 
-
 # ==== Camera ====
 set(CAMERA_HEADERS_PUBLIC
-    include/public/space/camera/perspective_control.hpp
-    include/public/space/camera/camera_view.hpp
-    include/public/space/camera/camera_controller.hpp
-    include/public/space/camera/camera.hpp
+    include/andromeda/space/camera/perspective_control.hpp
+    include/andromeda/space/camera/camera_view.hpp
+    include/andromeda/space/camera/camera_controller.hpp
+    include/andromeda/space/camera/camera.hpp
 )
 
 set(CAMERA_SOURCES
@@ -25,16 +24,16 @@ set(CAMERA_SOURCES
 
 # ==== Coordinates ====
 set(COORDINATES_HEADERS
-    include/public/space/coordinates/points.hpp
+    include/andromeda/space/coordinates/points.hpp
 )
 
 # ==== Light ====
 set(LIGHT_HEADERS
-    include/public/space/light/light.hpp
-    include/public/space/light/directional_light.hpp
-    include/public/space/light/point_light.hpp
-    include/public/space/light/spot_light.hpp
-    include/public/space/light/light_data.hpp
+    include/andromeda/space/light/light.hpp
+    include/andromeda/space/light/directional_light.hpp
+    include/andromeda/space/light/point_light.hpp
+    include/andromeda/space/light/spot_light.hpp
+    include/andromeda/space/light/light_data.hpp
 )
 
 set(LIGHT_SOURCES
@@ -47,14 +46,14 @@ set(LIGHT_SOURCES
 
 # ==== Macro Exports ====
 set(MACRO_EXPORTS_HEADERS
-    include/private/macro_exports/macro_exports.hpp
+    include/andromeda/space/macro_exports/macro_exports.hpp
 )
 
 # ==== Materials ====
 set(MATERIALS_HEADERS
-    include/public/space/materials/materials.hpp
-    include/public/space/materials/materials_library.hpp
-    include/public/space/materials/material_types.hpp
+    include/andromeda/space/materials/materials.hpp
+    include/andromeda/space/materials/materials_library.hpp
+    include/andromeda/space/materials/material_types.hpp
 )
 
 set(MATERIALS_SOURCES
@@ -64,15 +63,15 @@ set(MATERIALS_SOURCES
 
 # ==== Objects ====
 set(OBJECTS_HEADERS
-    include/public/space/objects/camera_object.hpp
-    include/public/space/objects/cube.hpp
-    include/public/space/objects/geometric_object.hpp
-    include/public/space/objects/light_object.hpp
-    include/public/space/objects/mesh.hpp
-    include/public/space/objects/object.hpp
-    include/public/space/objects/skyroom.hpp
-    include/public/space/objects/sphere.hpp
-    include/public/space/objects/surface_object.hpp
+    include/andromeda/space/objects/camera_object.hpp
+    include/andromeda/space/objects/cube.hpp
+    include/andromeda/space/objects/geometric_object.hpp
+    include/andromeda/space/objects/light_object.hpp
+    include/andromeda/space/objects/mesh.hpp
+    include/andromeda/space/objects/object.hpp
+    include/andromeda/space/objects/skyroom.hpp
+    include/andromeda/space/objects/sphere.hpp
+    include/andromeda/space/objects/surface_object.hpp
 )
 
 set(OBJECTS_SOURCES
@@ -89,19 +88,19 @@ set(OBJECTS_SOURCES
 
 # ==== Scene ====
 set(SCENE_HEADERS
-    include/public/space/scene/camera_handler.hpp
-    include/public/space/scene/scene.hpp
-    include/public/space/scene/scene_environment.hpp
-    include/public/space/scene/scene_lighting.hpp
-    include/public/space/scene/scene_node_manager.hpp
-    include/public/space/scene/scene_objects.hpp
-    include/public/space/scene/scene_state.hpp
-    include/public/space/scene/scene_update_hooks.hpp
+    include/andromeda/space/scene/camera_handler.hpp
+    include/andromeda/space/scene/scene.hpp
+    include/andromeda/space/scene/scene_environment.hpp
+    include/andromeda/space/scene/scene_lighting.hpp
+    include/andromeda/space/scene/scene_node_manager.hpp
+    include/andromeda/space/scene/scene_objects.hpp
+    include/andromeda/space/scene/scene_state.hpp
+    include/andromeda/space/scene/scene_update_hooks.hpp
 )
 
 # ==== UpdateHooks ====
 set(UPDATE_HOOKS_HEADERS
-    include/private/update_hooks/update_hooks.hpp
+    include/andromeda/space/update_hooks/update_hooks.hpp
 )
 
 set(UPDATE_HOOKS_SOURCES
@@ -121,10 +120,10 @@ set(SCENE_SOURCES
 
 # ==== SceneGraph ====
 set(SCENE_GRAPH_HEADERS
-    include/public/space/scene_graph/scene_component.hpp
-    include/public/space/scene_graph/scene_node.hpp
-    include/public/space/scene_graph/object_component.hpp
-    include/public/space/scene_graph/light_component.hpp
+    include/andromeda/space/scene_graph/scene_component.hpp
+    include/andromeda/space/scene_graph/scene_node.hpp
+    include/andromeda/space/scene_graph/object_component.hpp
+    include/andromeda/space/scene_graph/light_component.hpp
 )
 
 set(SCENE_GRAPH_SOURCES
@@ -136,11 +135,11 @@ set(SCENE_GRAPH_SOURCES
 
 # ==== Transformations ====
 set(TRANSFORMATIONS_HEADERS
-    include/public/space/transformations/rotatable.hpp
-    include/public/space/transformations/scalable.hpp
-    include/public/space/transformations/transformable.hpp
-    include/public/space/transformations/transformation_types.hpp
-    include/public/space/transformations/translatable.hpp
+    include/andromeda/space/transformations/rotatable.hpp
+    include/andromeda/space/transformations/scalable.hpp
+    include/andromeda/space/transformations/transformable.hpp
+    include/andromeda/space/transformations/transformation_types.hpp
+    include/andromeda/space/transformations/translatable.hpp
 )
 
 set(TRANSFORMATIONS_SOURCES
@@ -174,10 +173,8 @@ add_library(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} 
-    PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/private/
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/public/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
 )
 
 # ==== Link Libraries ====

@@ -1,4 +1,4 @@
-#include "space/camera/camera.hpp"
+#include "andromeda/space/camera/camera.hpp"
 
 
 constexpr andromeda::math::Vec3 DEFAULT_CAMERA_POSITION = { 10.0f, 10.0f , 10.0f };

@@ -1,5 +1,5 @@
-#include "space/scene/camera_handler.hpp"
-#include "space/camera/camera.hpp"
+#include "andromeda/space/scene/camera_handler.hpp"
+#include "andromeda/space/camera/camera.hpp"
 
 
 namespace andromeda::space

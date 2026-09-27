@@ -1,4 +1,4 @@
-#include "space/scene/scene_update_hooks.hpp"
+#include "andromeda/space/scene/scene_update_hooks.hpp"
 
 
 namespace andromeda::space

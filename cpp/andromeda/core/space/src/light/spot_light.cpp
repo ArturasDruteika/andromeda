@@ -1,4 +1,4 @@
-#include "space/light/spot_light.hpp"
+#include "andromeda/space/light/spot_light.hpp"
 
 
 namespace andromeda::space
