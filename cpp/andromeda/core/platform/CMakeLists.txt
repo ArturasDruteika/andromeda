@@ -5,18 +5,12 @@ project(platform)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DPLATFORM_EXPORT)
-
 # OpenGL
 find_package(OpenGL REQUIRED)
 
 # ==== platform ====
-set(PLATFORM_PRIVATE_HEADERS
-    include/private/macro_exports.hpp
-)
-
 set(PLATFORM_PUBLIC_HEADERS
-    include/public/platform/platform.hpp
+    include/andromeda/platform/platform.hpp
 )
 
 set(PLATFORM_SOURCES
@@ -31,11 +25,25 @@ add_library(${PROJECT_NAME}
         ${PLATFORM_SOURCES}
 )
 
-target_include_directories(${PROJECT_NAME} 
-    PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/private/
+# ==== Export Header ====
+include(GenerateExportHeader)
+
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export"
+)
+
+generate_export_header(${PROJECT_NAME}
+    BASE_NAME PLATFORM
+    EXPORT_MACRO_NAME PLATFORM_API
+    EXPORT_FILE_NAME
+        "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export/macro_export.hpp"
+)
+
+# ==== Include Directories ====
+target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/public/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_BINARY_DIR}/include/
 )
 
 target_compile_definitions(${PROJECT_NAME} 
