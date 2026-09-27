@@ -15,7 +15,7 @@ endif ()
 
 # ==== graphics_context ====
 set(GRAPHICS_CONTEXT_HEADERS
-    include/graphics_context/graphics_context_glfw.hpp
+    include/andromeda/graphics_context/graphics_context_glfw.hpp
 )
 
 set(GRAPHICS_CONTEXT_SOURCES
@@ -33,9 +33,6 @@ add_library(${PROJECT_NAME}
 set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(${PROJECT_NAME} 
-    PRIVATE
-        ..//glfw//include//
-        ..//glfw//
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
