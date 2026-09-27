@@ -1,7 +1,7 @@
 #include "../include/text_renderer_open_gl.hpp"
 
 #define STB_EASY_FONT_IMPLEMENTATION
-#include "utils/stb/include/stb_easy_font.h"
+#include "andromeda/utils/stb/stb_easy_font.h"
 #include "pch.hpp"
 
 #include "spdlog/spdlog.h"
