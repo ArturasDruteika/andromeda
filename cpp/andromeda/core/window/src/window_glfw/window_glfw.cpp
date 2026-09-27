@@ -1,8 +1,9 @@
 #include "pch.hpp"
-#include "../include/window_glfw.hpp"
-#include "../../events/include/frame_buffer_events.hpp"
-#include "../../events/include/key_events.hpp"
-#include "../../events/include/mouse_events.hpp"
+#include "andromeda/window/window_glfw/window_glfw.hpp"
+#include "andromeda/window/events/frame_buffer_events.hpp"
+#include "andromeda/window/events/key_events.hpp"
+#include "andromeda/window/events/mouse_events.hpp"
+
 #include "spdlog/spdlog.h"
 
 

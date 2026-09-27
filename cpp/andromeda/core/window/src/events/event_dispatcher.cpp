@@ -1,4 +1,4 @@
-#include "../include/event_dispatcher.hpp"
+#include "andromeda/window/events/event_dispatcher.hpp"
 
 
 namespace andromeda::window
