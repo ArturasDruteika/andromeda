@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_definitions(-DAPPLICATION_EXPORT)
 
 set(APPLICATION_HEADERS
-    include/application.hpp
+    include/andromeda/application/application.hpp
 )
 
 set(APPLICATION_SOURCES
@@ -25,7 +25,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
 )
 
 target_compile_definitions(${PROJECT_NAME}

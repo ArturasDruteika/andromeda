@@ -1,4 +1,4 @@
-#include "../include/application.hpp"
+#include "andromeda/application/application.hpp"
 #include "andromeda/engine/engine.hpp"
 
 #include "spdlog/spdlog.h"
