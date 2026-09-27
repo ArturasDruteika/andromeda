@@ -178,18 +178,22 @@ add_library(${PROJECT_NAME}
 # ==== Export Header ====
 include(GenerateExportHeader)
 
-generate_export_header(${PROJECT_NAME}
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/space/macro_export"
+)
+
+generate_export_header(space
     BASE_NAME SPACE
     EXPORT_MACRO_NAME SPACE_API
     EXPORT_FILE_NAME
-        "${CMAKE_CURRENT_SOURCE_DIR}/include/andromeda/space/macro_export/macro_export.hpp"
+        "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/space/macro_export/macro_export.hpp"
 )
 
-
 # ==== Include Directories ====
-target_include_directories(${PROJECT_NAME}
+target_include_directories(space
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_BINARY_DIR}/include
 )
 
 # ==== Link Libraries ====
