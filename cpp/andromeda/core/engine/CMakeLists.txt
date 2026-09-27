@@ -5,15 +5,9 @@ project(engine)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DENGINECORE_EXPORT)
-
 # ==== engine ====
-set(PUBLIC_HEADERS
-    include/public/engine/engine.hpp
-)
-
-set(PRIVATE_HEADER
-    include/private/macro_exports.hpp
+set(ENGINE_HEADERS
+    include/andromeda/engine/engine.hpp
 )
 
 set(ENGINE_SOURCES
@@ -23,16 +17,29 @@ set(ENGINE_SOURCES
 # ==== Target ====
 add_library(${PROJECT_NAME}
     SHARED
-        ${PUBLIC_HEADERS}
-        ${PRIVATE_HEADER}
+        ${ENGINE_HEADERS}
         ${ENGINE_SOURCES}
 )
 
+# ==== Export Header ====
+include(GenerateExportHeader)
+
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export"
+)
+
+generate_export_header(${PROJECT_NAME}
+    BASE_NAME ENGINE
+    EXPORT_MACRO_NAME ENGINE_API
+    EXPORT_FILE_NAME
+        "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export/macro_export.hpp"
+)
+
+# ==== Include Directories ====
 target_include_directories(${PROJECT_NAME}
-    PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/private/
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/public/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_BINARY_DIR}/include/
 )
 
 target_compile_definitions(${PROJECT_NAME}

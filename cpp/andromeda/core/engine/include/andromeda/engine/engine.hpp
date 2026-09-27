@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../private/macro_exports.hpp"
+#include "andromeda/engine/macro_export/macro_export.hpp"
 #include "andromeda/components/graphics_backend.hpp"
 #include "andromeda/engine/i_engine.hpp"
 
@@ -14,7 +14,7 @@ namespace andromeda::engine
     ///
     /// Manages the renderer, processes application and input events, and
     /// coordinates interactions between the renderer and the active scene.
-    class ENGINECORE_API Engine
+    class ENGINE_API Engine
         : public IEngine
     {
     public:
