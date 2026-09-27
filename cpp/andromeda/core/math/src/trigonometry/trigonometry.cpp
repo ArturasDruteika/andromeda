@@ -1,5 +1,5 @@
-#include "math/trigonometry/trigonometry.hpp"
-#include "math/constants/constants.hpp"
+#include "andromeda/math/trigonometry/trigonometry.hpp"
+#include "andromeda/math/constants/constants.hpp"
 
 
 namespace andromeda::math

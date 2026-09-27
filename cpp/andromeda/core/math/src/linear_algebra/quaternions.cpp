@@ -1,4 +1,4 @@
-#include "math/linear_algebra/quaternions.hpp"
+#include "andromeda/math/linear_algebra/quaternions.hpp"
 
 #define GLM_ENABLE_EXPERIMENTAL
 

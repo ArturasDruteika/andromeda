@@ -5,20 +5,13 @@ project(math)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DMATH_EXPORT)
-
-
 # ==== Files ====
-set(MATH_HEADERS_PRIVATE
-    include/private/macro_exports/macro_exports.hpp
-)
-
-set(MATH_HEADERS_PUBLIC
-    include/public/math/constants/constants.hpp
-    include/public/math/linear_algebra/linear_algebra_data_types.hpp
-    include/public/math/linear_algebra/linear_algebra_operations.hpp
-    include/public/math/linear_algebra/quaternions.hpp
-    include/public/math/trigonometry/trigonometry.hpp
+set(MATH_HEADERS
+    include/andromeda/math/constants/constants.hpp
+    include/andromeda/math/linear_algebra/linear_algebra_data_types.hpp
+    include/andromeda/math/linear_algebra/linear_algebra_operations.hpp
+    include/andromeda/math/linear_algebra/quaternions.hpp
+    include/andromeda/math/trigonometry/trigonometry.hpp
 )
 
 set(MATH_SOURCES
@@ -31,16 +24,29 @@ set(MATH_SOURCES
 # ==== Target ====
 add_library(${PROJECT_NAME}
     SHARED
-        ${MATH_HEADERS_PRIVATE}
-        ${MATH_HEADERS_PUBLIC}
+        ${MATH_HEADERS}
         ${MATH_SOURCES}
 )
 
-target_include_directories(${PROJECT_NAME} 
-    PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/private/
+# ==== Export Header ====
+include(GenerateExportHeader)
+
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export"
+)
+
+generate_export_header(${PROJECT_NAME}
+    BASE_NAME MATH
+    EXPORT_MACRO_NAME MATH_API
+    EXPORT_FILE_NAME
+        "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export/macro_export.hpp"
+)
+
+# ==== Include Directories ====
+target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/public/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_BINARY_DIR}/include/
 )
 
 # ==== Link Libraries ====
@@ -60,14 +66,4 @@ source_group(
         "math"
     FILES
         ${MATH_HEADERS}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/
-    PREFIX
-        "linear_algebra"
-    FILES
-        ${LINEAR_ALGEBRA_HEADERS}
-        ${LINEAR_ALGEBRA_SOURCES}
 )

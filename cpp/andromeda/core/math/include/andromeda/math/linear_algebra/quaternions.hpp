@@ -2,7 +2,7 @@
 
 
 #include "linear_algebra_data_types.hpp"
-#include "../../../private/macro_exports/macro_exports.hpp"
+#include "andromeda/math/macro_export/macro_export.hpp"
 
 
 namespace andromeda::math
