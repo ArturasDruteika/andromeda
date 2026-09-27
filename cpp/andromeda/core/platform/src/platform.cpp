@@ -1,8 +1,8 @@
 #include "andromeda/platform/platform.hpp"
 #include "andromeda/graphics_context/graphics_context_glfw.hpp"
-#include "window/window_glfw/include/window_glfw.hpp"
-#include "window/events/include/event_dispatcher.hpp"
-#include "window/events/include/frame_buffer_events.hpp"
+#include "andromeda/window/window_glfw/window_glfw.hpp"
+#include "andromeda/window/events/event_dispatcher.hpp"
+#include "andromeda/window/events/frame_buffer_events.hpp"
 
 #include "spdlog/spdlog.h"
 

@@ -1,6 +1,7 @@
 #include "glad/gl.h"
 #include "andromeda/graphics_context/graphics_context_glfw.hpp"
-#include "window/window_glfw/include/window_glfw.hpp"
+#include "andromeda/window/window_glfw/window_glfw.hpp"
+
 #include "spdlog/spdlog.h"
 
 namespace andromeda::graphics_context
