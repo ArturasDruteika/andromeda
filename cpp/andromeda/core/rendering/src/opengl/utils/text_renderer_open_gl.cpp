@@ -1,4 +1,4 @@
-#include "../include/text_renderer_open_gl.hpp"
+#include "opengl/utils/text_renderer_open_gl.hpp"
 
 #define STB_EASY_FONT_IMPLEMENTATION
 #include "andromeda/utils/stb/stb_easy_font.h"

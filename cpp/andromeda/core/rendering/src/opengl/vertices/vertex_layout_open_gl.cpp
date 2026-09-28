@@ -1,6 +1,6 @@
-#include "../include/vertex_layout_open_gl.hpp"
-#include "../../../vertices/include/vertex_format.hpp"
-#include "../../../vertices/include/vertex_location_policy.hpp"
+#include "opengl/vertices/vertex_layout_open_gl.hpp"
+#include "vertices/vertex_format.hpp"
+#include "vertices/vertex_location_policy.hpp"
 
 #include "glad/gl.h"
 

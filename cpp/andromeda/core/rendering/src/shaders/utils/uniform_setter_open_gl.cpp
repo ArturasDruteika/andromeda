@@ -1,4 +1,5 @@
-#include "../include/uniform_setter_open_gl.hpp"
+#include "shaders/utils/uniform_setter_open_gl.hpp"
+
 #include "glad/gl.h"
 #include <glm/gtc/type_ptr.hpp>
 #include "spdlog/spdlog.h"

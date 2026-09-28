@@ -1,10 +1,10 @@
 #pragma once
 
 
-#include "../../abstracts/include/shader_program_open_gl.hpp"
-#include "../../abstracts/include/shader_source_manager_open_gl.hpp"
-#include "../../support/include/uniform_setter_open_gl.hpp"
-#include "../../interfaces/include/i_shader.hpp"
+#include "../abstracts/shader_program_open_gl.hpp"
+#include "../abstracts/shader_source_manager_open_gl.hpp"
+#include "../utils/uniform_setter_open_gl.hpp"
+#include "../interfaces/i_shader.hpp"
 
 
 namespace andromeda::rendering

@@ -1,6 +1,6 @@
-#include "../include/shader_source_manager_open_gl.hpp"
-
+#include "shaders/abstracts/shader_source_manager_open_gl.hpp"
 #include "andromeda/utils/file_operations/file_operations.hpp"
+
 #include "spdlog/spdlog.h"
 
 

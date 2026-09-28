@@ -1,4 +1,4 @@
-#include "../include/illumination_control.hpp"
+#include "andromeda/rendering/abstracts/illumination_control.hpp"
 
 
 namespace andromeda::rendering

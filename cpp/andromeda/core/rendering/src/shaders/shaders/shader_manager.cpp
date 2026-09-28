@@ -1,4 +1,4 @@
-#include "../include/shader_manager.hpp"
+#include "shaders/shaders/shader_manager.hpp"
 #include "andromeda/utils/file_operations/file_operations.hpp"
 #include "spdlog/spdlog.h"
 

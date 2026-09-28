@@ -3,8 +3,8 @@
 
 #include "frame_buffer_open_gl.hpp"
 #include "face_culling_control_open_gl.hpp"
-#include "../../../shaders/shaders/include/shader_manager.hpp"
-#include "../../support/include/mesh_cache_open_gl.hpp"
+#include "../../shaders/shaders/shader_manager.hpp"
+#include "../utils/mesh_cache_open_gl.hpp"
 #include "andromeda/space/light/i_directional_light.hpp"
 #include "andromeda/space/light/i_point_light.hpp"
 #include "andromeda/space/objects/i_geometric_object.hpp"

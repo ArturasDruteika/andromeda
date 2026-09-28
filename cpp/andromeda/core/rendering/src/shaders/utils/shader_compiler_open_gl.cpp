@@ -1,4 +1,4 @@
-#include "../include/shader_compiler_open_gl.hpp"
+#include "shaders/utils/shader_compiler_open_gl.hpp"
 #include "glad/gl.h"
 #include "spdlog/spdlog.h"
 

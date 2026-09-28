@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../../../vertices/include/vertex_layouts.hpp"
+#include "../../vertices/vertex_layouts.hpp"
 #include "pch.hpp"
 #include "andromeda/space/objects/i_mesh.hpp"
 

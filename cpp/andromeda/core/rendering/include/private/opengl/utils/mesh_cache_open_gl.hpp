@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../../geometry/include/gpu_mesh_open_gl.hpp"
+#include "../geometry/gpu_mesh_open_gl.hpp"
 #include "andromeda/space/objects/i_geometric_object.hpp"
 #include "pch.hpp"
 

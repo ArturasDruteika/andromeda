@@ -1,4 +1,4 @@
-#include "../include/vertex_format.hpp"
+#include "vertices/vertex_format.hpp"
 
 
 namespace andromeda::rendering

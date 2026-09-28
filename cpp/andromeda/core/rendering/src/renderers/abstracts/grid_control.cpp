@@ -1,4 +1,4 @@
-#include "../include/grid_control.hpp"
+#include "andromeda/rendering/abstracts/grid_control.hpp"
 
 
 namespace andromeda::rendering

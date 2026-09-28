@@ -1,4 +1,4 @@
-#include "../include/vertex_location_policy.hpp"
+#include "vertices/vertex_location_policy.hpp"
 
 
 namespace andromeda::rendering

@@ -2,7 +2,7 @@
 
 
 #include "pch.hpp"
-#include "../../support/include/shader_types.hpp"
+#include "../utils/shader_types.hpp"
 
 
 namespace andromeda::rendering

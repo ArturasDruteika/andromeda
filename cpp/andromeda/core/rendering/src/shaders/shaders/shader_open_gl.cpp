@@ -1,4 +1,4 @@
-#include "../include/shader_open_gl.hpp"
+#include "shaders/shaders/shader_open_gl.hpp"
 
 
 namespace andromeda::rendering

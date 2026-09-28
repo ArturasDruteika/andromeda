@@ -1,7 +1,7 @@
-#include "../include/shadow_renderer_open_gl.hpp"
-#include "../../../shaders/shaders/include/shader_open_gl.hpp"
-#include "../../../shaders/support/include/shader_open_gl_types.hpp"
-#include "../../../utils/include/math_utils.hpp"
+#include "opengl/utils/shadow_renderer_open_gl.hpp"
+#include "shaders/shaders/shader_open_gl.hpp"
+#include "shaders/utils/shader_open_gl_types.hpp"
+#include "utils/math_utils.hpp"
 #include "andromeda/space/objects/i_light_object.hpp"
 
 #include "glad/gl.h"

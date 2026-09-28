@@ -1,4 +1,4 @@
-#include "../include/i_shader.hpp"
+#include "shaders/interfaces/i_shader.hpp"
 
 
 namespace andromeda::rendering
