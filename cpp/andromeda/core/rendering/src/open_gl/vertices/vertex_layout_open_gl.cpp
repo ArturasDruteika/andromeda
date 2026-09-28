@@ -1,4 +1,4 @@
-#include "opengl/vertices/vertex_layout_open_gl.hpp"
+#include "open_gl/vertices/vertex_layout_open_gl.hpp"
 #include "vertices/vertex_format.hpp"
 #include "vertices/vertex_location_policy.hpp"
 

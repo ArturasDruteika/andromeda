@@ -1,5 +1,5 @@
-#include "opengl/geometry/gpu_mesh_open_gl.hpp"
-#include "opengl/vertices/vertex_layout_open_gl.hpp"
+#include "open_gl/geometry/gpu_mesh_open_gl.hpp"
+#include "open_gl/vertices/vertex_layout_open_gl.hpp"
 #include "glad/gl.h"
 
 

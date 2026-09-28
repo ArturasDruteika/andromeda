@@ -1,4 +1,4 @@
-#include "opengl/utils/shadow_renderer_open_gl.hpp"
+#include "open_gl/utils/shadow_renderer_open_gl.hpp"
 #include "shaders/shaders/shader_open_gl.hpp"
 #include "shaders/utils/shader_open_gl_types.hpp"
 #include "utils/math_utils.hpp"

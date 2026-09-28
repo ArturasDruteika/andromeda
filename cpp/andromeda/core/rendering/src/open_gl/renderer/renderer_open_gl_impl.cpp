@@ -1,5 +1,5 @@
-#include "opengl/renderer/renderer_open_gl_impl.hpp"
-#include "opengl/utils/shadow_renderer_open_gl.hpp"
+#include "open_gl/renderer/renderer_open_gl_impl.hpp"
+#include "open_gl/utils/shadow_renderer_open_gl.hpp"
 #include "utils/math_utils.hpp"
 #include "shaders/shaders/shader_open_gl.hpp"
 #include "shaders/utils/shader_open_gl_types.hpp"

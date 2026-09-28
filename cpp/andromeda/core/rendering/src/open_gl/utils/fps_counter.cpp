@@ -1,4 +1,4 @@
-#include "opengl/utils/fps_counter.hpp"
+#include "open_gl/utils/fps_counter.hpp"
 
 
 namespace andromeda::rendering

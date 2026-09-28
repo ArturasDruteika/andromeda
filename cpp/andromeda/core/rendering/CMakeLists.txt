@@ -17,27 +17,27 @@ endif ()
 
 # ==== OpenGL Backend (platform specific) ====
 set(OPENGL_HEADERS
-    include/private/opengl/geometry/gpu_mesh_open_gl.hpp
-    include/private/opengl/renderer/renderer_open_gl_impl.hpp
-    include/private/opengl/utils/face_culling_control_open_gl.hpp
-    include/private/opengl/utils/frame_buffer_open_gl.hpp
-    include/private/opengl/utils/fps_counter.hpp
-    include/private/opengl/utils/mesh_cache_open_gl.hpp
-    include/private/opengl/utils/shadow_renderer_open_gl.hpp
-    include/private/opengl/utils/text_renderer_open_gl.hpp
-    include/private/opengl/vertices/vertex_layout_open_gl.hpp
+    include/private/open_gl/geometry/gpu_mesh_open_gl.hpp
+    include/private/open_gl/renderer/renderer_open_gl_impl.hpp
+    include/private/open_gl/utils/face_culling_control_open_gl.hpp
+    include/private/open_gl/utils/frame_buffer_open_gl.hpp
+    include/private/open_gl/utils/fps_counter.hpp
+    include/private/open_gl/utils/mesh_cache_open_gl.hpp
+    include/private/open_gl/utils/shadow_renderer_open_gl.hpp
+    include/private/open_gl/utils/text_renderer_open_gl.hpp
+    include/private/open_gl/vertices/vertex_layout_open_gl.hpp
 )
 
 set(OPENGL_SOURCES
-    src/opengl/geometry/gpu_mesh_open_gl.cpp
-    src/opengl/renderer/renderer_open_gl_impl.cpp
-    src/opengl/utils/face_culling_control_open_gl.cpp
-    src/opengl/utils/frame_buffer_open_gl.cpp
-    src/opengl/utils/fps_counter.cpp
-    src/opengl/utils/mesh_cache_open_gl.cpp
-    src/opengl/utils/shadow_renderer_open_gl.cpp
-    src/opengl/utils/text_renderer_open_gl.cpp
-    src/opengl/vertices/vertex_layout_open_gl.cpp
+    src/open_gl/geometry/gpu_mesh_open_gl.cpp
+    src/open_gl/renderer/renderer_open_gl_impl.cpp
+    src/open_gl/utils/face_culling_control_open_gl.cpp
+    src/open_gl/utils/frame_buffer_open_gl.cpp
+    src/open_gl/utils/fps_counter.cpp
+    src/open_gl/utils/mesh_cache_open_gl.cpp
+    src/open_gl/utils/shadow_renderer_open_gl.cpp
+    src/open_gl/utils/text_renderer_open_gl.cpp
+    src/open_gl/vertices/vertex_layout_open_gl.cpp
 )
 
 
