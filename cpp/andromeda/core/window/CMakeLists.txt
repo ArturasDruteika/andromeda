@@ -62,7 +62,7 @@ target_include_directories(${PROJECT_NAME}
 # Link GLFW and OpenGL to the executable
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
-        precompiled_headers
+        andromeda::precompiled_headers
         andromeda::utils
         glfw
         OpenGL::GL

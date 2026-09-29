@@ -52,7 +52,7 @@ target_compile_definitions(${PROJECT_NAME}
 # Link GLFW and OpenGL to the executable
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
-        precompiled_headers
+        andromeda::precompiled_headers
         spdlog::spdlog
     PUBLIC
         andromeda::engine

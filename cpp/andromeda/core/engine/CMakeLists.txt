@@ -57,7 +57,7 @@ target_link_libraries(${PROJECT_NAME}
         rendering
         spdlog::spdlog
     PUBLIC
-        precompiled_headers
+        andromeda::precompiled_headers
         andromeda::math
         andromeda::api::engine
 

@@ -158,7 +158,7 @@ target_include_directories(${PROJECT_NAME}
 # Link libraries - api is INTERFACE, so this just pulls in its usage requirements
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        precompiled_headers
+        andromeda::precompiled_headers
         andromeda::utils
         glad
         spdlog::spdlog

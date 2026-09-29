@@ -63,7 +63,7 @@ endif ()
 # Link libraries (alphabetical)
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        precompiled_headers
+        andromeda::precompiled_headers
         glfw
         OpenGL::GL
         andromeda::graphics_context
