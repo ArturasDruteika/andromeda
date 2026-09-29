@@ -1,6 +1,5 @@
 #include "andromeda/space/objects/sphere.hpp"
 #include "andromeda/math/constants/constants.hpp"
-#include "pch.hpp"
 #include "spdlog/spdlog.h"
 
 

@@ -3,7 +3,6 @@
 
 #include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/objects/i_object.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::space

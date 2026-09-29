@@ -6,7 +6,6 @@
 #include "andromeda/space/objects/i_light_object.hpp"
 #include "andromeda/space/objects/i_surface_object.hpp"
 #include "andromeda/space/materials/i_material.hpp"
-#include "pch.hpp"
 
 #include "glad/gl.h"
 #include "glm/glm.hpp"

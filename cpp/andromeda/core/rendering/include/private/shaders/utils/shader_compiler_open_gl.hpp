@@ -1,9 +1,6 @@
 #pragma once
 
 
-#include "pch.hpp"
-
-
 namespace andromeda::rendering
 {
 	/// @brief Compiles and links OpenGL shader programs.

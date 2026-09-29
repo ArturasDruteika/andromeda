@@ -14,7 +14,6 @@
 #include "andromeda/rendering/abstracts/illumination_control.hpp"
 #include "andromeda/rendering/abstracts/size_control.hpp"
 #include "andromeda/space/transformations/i_transformable.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::rendering

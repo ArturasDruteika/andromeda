@@ -6,7 +6,6 @@
 #include "andromeda/engine/i_engine.hpp"
 #include "andromeda/platform/i_platform.hpp"
 #include "andromeda/space/scene/i_scene.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::application

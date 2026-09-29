@@ -3,7 +3,7 @@
 
 #include "andromeda/window/events/i_event.hpp"
 #include "andromeda/window/window/i_window.hpp"
-#include "pch.hpp"
+
 #include "GLFW/glfw3.h"
 
 

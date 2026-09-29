@@ -9,7 +9,6 @@
 #include "andromeda/space/light/i_point_light.hpp"
 #include "andromeda/space/objects/i_geometric_object.hpp"
 #include "andromeda/space/transformations/i_transformable.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::rendering

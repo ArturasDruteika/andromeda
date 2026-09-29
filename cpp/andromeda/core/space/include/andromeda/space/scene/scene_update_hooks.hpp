@@ -3,7 +3,6 @@
 
 #include "andromeda/space/update_hooks/update_hooks.hpp"
 #include "andromeda/space/scene/i_scene_update_hooks.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::space

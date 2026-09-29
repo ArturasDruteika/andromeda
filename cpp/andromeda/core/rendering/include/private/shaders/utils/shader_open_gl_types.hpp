@@ -1,9 +1,6 @@
 #pragma once
 
 
-#include "pch.hpp"
-
-
 namespace andromeda::rendering
 {
 	/// @brief Identifies the built-in OpenGL shader programs.

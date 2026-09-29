@@ -3,7 +3,6 @@
 
 #include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/scene_graph/i_scene_node.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::space

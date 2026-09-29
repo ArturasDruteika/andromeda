@@ -1,4 +1,3 @@
-#include "pch.hpp"
 #include "andromeda/window/window_glfw/window_glfw.hpp"
 #include "andromeda/window/events/frame_buffer_events.hpp"
 #include "andromeda/window/events/key_events.hpp"

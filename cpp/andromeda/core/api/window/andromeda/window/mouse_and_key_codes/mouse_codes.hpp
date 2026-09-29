@@ -1,9 +1,6 @@
 #pragma once
 
 
-#include "pch.hpp"
-
-
 namespace andromeda
 {
     /// @brief Type used to represent mouse button codes.

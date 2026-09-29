@@ -3,7 +3,6 @@
 
 #include "shader_open_gl.hpp"
 #include "../utils/shader_open_gl_types.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::rendering

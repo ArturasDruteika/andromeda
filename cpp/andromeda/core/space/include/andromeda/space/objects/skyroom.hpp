@@ -7,7 +7,6 @@
 #include "andromeda/math/linear_algebra/linear_algebra_data_types.hpp"
 #include "andromeda/space/objects/i_skyroom.hpp"
 #include "andromeda/space/colors/colors.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::space

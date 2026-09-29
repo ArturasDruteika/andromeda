@@ -2,7 +2,6 @@
 
 
 #include "andromeda/platform/macro_export/macro_export.hpp"
-#include "pch.hpp"
 #include "andromeda/components/graphics_backend.hpp"
 #include "andromeda/graphics_context/i_graphics_context.hpp"
 #include "andromeda/platform/i_platform.hpp"

@@ -2,7 +2,6 @@
 
 
 #include "vertex_format.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::rendering

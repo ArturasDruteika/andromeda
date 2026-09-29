@@ -5,7 +5,6 @@
 #include "andromeda/window/events/event_type.hpp"
 #include "andromeda/window/mouse_and_key_codes/key_codes.hpp"
 #include "andromeda/window/events/i_key_events.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::window

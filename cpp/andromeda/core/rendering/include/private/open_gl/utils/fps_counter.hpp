@@ -1,9 +1,6 @@
 #pragma once
 
 
-#include "pch.hpp"
-
-
 namespace andromeda::rendering
 {
     /// @brief Tracks frame timing and frames per second.

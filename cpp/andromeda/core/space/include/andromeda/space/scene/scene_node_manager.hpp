@@ -6,9 +6,6 @@
 #include "scene_lighting.hpp"
 #include "scene_objects.hpp"
 #include "andromeda/space/scene/i_scene_node_manager.hpp"
-#include "pch.hpp"
-
-#include <memory>
 
 
 namespace andromeda::space

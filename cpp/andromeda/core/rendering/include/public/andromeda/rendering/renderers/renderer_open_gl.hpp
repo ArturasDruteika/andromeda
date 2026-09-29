@@ -4,7 +4,6 @@
 #include "andromeda/rendering/macro_export/macro_export.hpp"
 #include "andromeda/renderer/i_renderer.hpp"
 #include "andromeda/space/scene/i_scene.hpp"
-#include "pch.hpp"
 
 
 namespace andromeda::rendering

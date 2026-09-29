@@ -2,7 +2,6 @@
 
 #define STB_EASY_FONT_IMPLEMENTATION
 #include "andromeda/utils/stb/stb_easy_font.h"
-#include "pch.hpp"
 
 #include "spdlog/spdlog.h"
 #include "glad/gl.h"

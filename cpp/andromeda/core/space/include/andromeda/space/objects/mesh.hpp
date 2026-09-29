@@ -2,7 +2,6 @@
 
 
 #include "andromeda/space/macro_export/macro_export.hpp"
-#include "pch.hpp"
 #include "andromeda/space/vertices/vertex.hpp"
 #include "andromeda/space/objects/i_mesh.hpp"
 
