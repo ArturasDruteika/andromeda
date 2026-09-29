@@ -25,6 +25,10 @@ add_library(${PROJECT_NAME}
         ${PLATFORM_SOURCES}
 )
 
+add_library(andromeda::platform
+    ALIAS ${PROJECT_NAME}
+)
+
 # ==== Export Header ====
 include(GenerateExportHeader)
 
@@ -62,21 +66,20 @@ target_link_libraries(${PROJECT_NAME}
         precompiled_headers
         glfw
         OpenGL::GL
-        graphics_context
-        glad
-        window
+        andromeda::graphics_context
+        andromeda::window
         andromeda::api::macro_exports_api
         andromeda::api::platform
+        glad
         imgui
         spdlog::spdlog
 )
 
 # Explicit build ordering (alphabetical)
 add_dependencies(${PROJECT_NAME}
-    graphics_context
+    andromeda::graphics_context
+    andromeda::window
     glad
-    utils
-    window
     glfw
     imgui
 )

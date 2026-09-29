@@ -128,6 +128,10 @@ add_library(${PROJECT_NAME}
         ${OPENGL_SOURCES}
 )
 
+add_library(andromeda::rendering
+    ALIAS ${PROJECT_NAME}
+)
+
 # ==== Export Header ====
 include(GenerateExportHeader)
 
@@ -155,20 +159,20 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
         precompiled_headers
-        utils
+        andromeda::utils
         glad
         spdlog::spdlog
         glm::glm
     PUBLIC
-        math
+        andromeda::math
         andromeda::api::components
         andromeda::api::graphics_context
         andromeda::api::renderer
 )
 
 add_dependencies(${PROJECT_NAME}
-    utils
-    math
+    andromeda::utils
+    andromeda::math
     glad
 )
 

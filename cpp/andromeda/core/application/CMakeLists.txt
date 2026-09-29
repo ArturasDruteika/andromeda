@@ -19,6 +19,10 @@ add_library(${PROJECT_NAME}
         ${APPLICATION_SOURCES}
 )
 
+add_library(andromeda::application
+    ALIAS ${PROJECT_NAME}
+)
+
 # ==== Export Header ====
 include(GenerateExportHeader)
 
@@ -51,11 +55,17 @@ target_link_libraries(${PROJECT_NAME}
         precompiled_headers
         spdlog::spdlog
     PUBLIC
-        engine
-        platform
+        andromeda::engine
+        andromeda::platform
         andromeda::api::macro_exports_api
         andromeda::api::platform
         andromeda::api::application
+)
+
+# Explicit build ordering (alphabetical)
+add_dependencies(${PROJECT_NAME}
+    andromeda::engine
+    andromeda::platform
 )
 
 

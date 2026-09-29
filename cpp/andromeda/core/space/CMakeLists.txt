@@ -174,6 +174,10 @@ add_library(${PROJECT_NAME}
         ${TRANSFORMATIONS_SOURCES}
 )
 
+add_library(andromeda::space
+    ALIAS ${PROJECT_NAME}
+)
+
 
 # ==== Export Header ====
 include(GenerateExportHeader)
@@ -201,16 +205,16 @@ target_link_libraries(${PROJECT_NAME}
     PRIVATE
         precompiled_headers
         andromeda::api::space
-        math
-        utils
+        andromeda::math
+        andromeda::utils
         spdlog::spdlog
 )
 
 
 # ==== Dependencies ====
 add_dependencies(${PROJECT_NAME}
-    math
-    utils
+    andromeda::math
+    andromeda::utils
 )
 
 

@@ -28,6 +28,10 @@ add_library(${PROJECT_NAME}
         ${MATH_SOURCES}
 )
 
+add_library(andromeda::math
+    ALIAS ${PROJECT_NAME}
+)
+
 # ==== Export Header ====
 include(GenerateExportHeader)
 

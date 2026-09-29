@@ -28,6 +28,10 @@ add_library(${PROJECT_NAME}
         ${GRAPHICS_CONTEXT_SOURCES}
 )
 
+add_library(andromeda::graphics_context
+    ALIAS ${PROJECT_NAME}
+)
+
 # SPDLog
 
 set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
@@ -42,7 +46,7 @@ target_link_libraries(${PROJECT_NAME}
     PRIVATE
         precompiled_headers
         andromeda::api::graphics_context
-        window
+        andromeda::window
         glad
         glfw
         OpenGL::GL
@@ -52,7 +56,7 @@ target_link_libraries(${PROJECT_NAME}
 add_dependencies(${PROJECT_NAME} 
 	glfw
     glad
-    window
+    andromeda::window
 )
 
 

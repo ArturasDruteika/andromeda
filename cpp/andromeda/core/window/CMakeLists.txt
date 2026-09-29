@@ -48,6 +48,10 @@ add_library(${PROJECT_NAME}
         ${WINDOW_GLFW_SOURCES}
 )
 
+add_library(andromeda::window
+    ALIAS ${PROJECT_NAME}
+)
+
 set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(${PROJECT_NAME} 
@@ -59,7 +63,7 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
         precompiled_headers
-        utils
+        andromeda::utils
         glfw
         OpenGL::GL
         spdlog::spdlog
@@ -68,7 +72,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 add_dependencies(${PROJECT_NAME} 
-    utils
+    andromeda::utils
     glfw
 )
 
