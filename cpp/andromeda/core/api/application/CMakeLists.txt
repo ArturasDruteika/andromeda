@@ -35,15 +35,13 @@ target_include_directories(api_application
 
 # ==== Dependencies ====
 
-# Add only API targets required directly by i_application.hpp.
-#
-# Example:
-#
-# target_link_libraries(api_application
-#     INTERFACE
-#         andromeda::api::engine
-#         andromeda::api::space
-# )
+target_link_libraries(api_application
+    INTERFACE
+        andromeda::api::components
+        andromeda::api::macro_exports_api
+        andromeda::api::renderer
+        andromeda::api::space
+)
 
 # ==== IDE Organization ====
 

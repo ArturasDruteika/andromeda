@@ -37,6 +37,7 @@ target_include_directories(api_platform
 
 target_link_libraries(api_platform
     INTERFACE
+        andromeda::api::macro_exports_api
         andromeda::api::components
         andromeda::api::graphics_context
         andromeda::api::window

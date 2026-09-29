@@ -68,7 +68,6 @@ target_link_libraries(${PROJECT_NAME}
         OpenGL::GL
         andromeda::graphics_context
         andromeda::window
-        andromeda::api::macro_exports_api
         andromeda::api::platform
         glad
         imgui

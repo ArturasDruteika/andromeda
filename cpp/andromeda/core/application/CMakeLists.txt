@@ -57,7 +57,6 @@ target_link_libraries(${PROJECT_NAME}
     PUBLIC
         andromeda::engine
         andromeda::platform
-        andromeda::api::macro_exports_api
         andromeda::api::platform
         andromeda::api::application
 )

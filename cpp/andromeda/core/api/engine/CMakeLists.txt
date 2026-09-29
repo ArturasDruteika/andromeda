@@ -37,6 +37,7 @@ target_include_directories(api_engine
 
 target_link_libraries(api_engine
     INTERFACE
+        andromeda::api::macro_exports_api
         andromeda::api::components
         andromeda::api::renderer
         andromeda::api::space
