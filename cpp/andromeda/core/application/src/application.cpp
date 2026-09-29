@@ -1,5 +1,6 @@
 #include "andromeda/application/application.hpp"
 #include "andromeda/engine/engine.hpp"
+#include "andromeda/application/macro_export/macro_export.hpp"
 
 #include "spdlog/spdlog.h"
 

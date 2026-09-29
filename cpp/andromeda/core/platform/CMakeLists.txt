@@ -65,7 +65,8 @@ target_link_libraries(${PROJECT_NAME}
         graphics_context
         glad
         window
-        api
+        andromeda::api::macro_exports_api
+        andromeda::api::platform
         imgui
         spdlog::spdlog
 )

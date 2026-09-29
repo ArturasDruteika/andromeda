@@ -161,7 +161,9 @@ target_link_libraries(${PROJECT_NAME}
         glm::glm
     PUBLIC
         math
-        api
+        andromeda::api::components
+        andromeda::api::graphics_context
+        andromeda::api::renderer
 )
 
 add_dependencies(${PROJECT_NAME}

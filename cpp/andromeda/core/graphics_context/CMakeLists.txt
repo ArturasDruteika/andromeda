@@ -41,7 +41,7 @@ target_include_directories(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
         precompiled_headers
-        api
+        andromeda::api::graphics_context
         window
         glad
         glfw

@@ -55,7 +55,8 @@ target_link_libraries(${PROJECT_NAME}
     PUBLIC
         precompiled_headers
         math
-        api
+        andromeda::api::macro_exports_api
+        andromeda::api::engine
 
 )
 

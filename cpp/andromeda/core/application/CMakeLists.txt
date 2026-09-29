@@ -5,8 +5,6 @@ project(application)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DAPPLICATION_EXPORT)
-
 set(APPLICATION_HEADERS
     include/andromeda/application/application.hpp
 )
@@ -21,11 +19,25 @@ add_library(${PROJECT_NAME}
         ${APPLICATION_SOURCES}
 )
 
-set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+# ==== Export Header ====
+include(GenerateExportHeader)
 
-target_include_directories(${PROJECT_NAME} 
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export"
+)
+
+generate_export_header(${PROJECT_NAME}
+    BASE_NAME APPLICATION
+    EXPORT_MACRO_NAME APPLICATION_API
+    EXPORT_FILE_NAME
+        "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export/macro_export.hpp"
+)
+
+# ==== Include Directories ====
+target_include_directories(${PROJECT_NAME}
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_BINARY_DIR}/include/
 )
 
 target_compile_definitions(${PROJECT_NAME}
@@ -41,7 +53,9 @@ target_link_libraries(${PROJECT_NAME}
     PUBLIC
         engine
         platform
-        api
+        andromeda::api::macro_exports_api
+        andromeda::api::platform
+        andromeda::api::application
 )
 
 

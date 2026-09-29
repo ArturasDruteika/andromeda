@@ -64,7 +64,7 @@ target_link_libraries(${PROJECT_NAME}
         OpenGL::GL
         spdlog::spdlog
     PUBLIC
-        api
+        andromeda::api::window
 )
 
 add_dependencies(${PROJECT_NAME} 

@@ -3,27 +3,27 @@ cmake_minimum_required(VERSION 3.24)
 project(api LANGUAGES CXX)
 
 # ==============================================================================
-# Macro Exports
+# Macro Exports API
 # ==============================================================================
 
-add_library(api_macro_exports INTERFACE)
+add_library(api_macro_exports_api INTERFACE)
 
-add_library(andromeda::api::macro_exports
-    ALIAS api_macro_exports
+add_library(andromeda::api::macro_exports_api
+    ALIAS api_macro_exports_api
 )
 
-target_sources(api_macro_exports
+target_sources(api_macro_exports_api
     INTERFACE
         FILE_SET HEADERS
         BASE_DIRS
-            ${CMAKE_CURRENT_SOURCE_DIR}/macro_exports
+            ${CMAKE_CURRENT_SOURCE_DIR}/macro_exports_api
         FILES
-            ${CMAKE_CURRENT_SOURCE_DIR}/macro_exports/macro_exports.hpp
+            ${CMAKE_CURRENT_SOURCE_DIR}/macro_exports_api/macro_exports.hpp
 )
 
-target_include_directories(api_macro_exports
+target_include_directories(api_macro_exports_api
     INTERFACE
-        ${CMAKE_CURRENT_SOURCE_DIR}/macro_exports
+        ${CMAKE_CURRENT_SOURCE_DIR}/macro_exports_api
 )
 
 # ==============================================================================
@@ -66,7 +66,7 @@ target_link_libraries(${PROJECT_NAME}
         andromeda::api::components
         andromeda::api::engine
         andromeda::api::graphics_context
-        andromeda::api::macro_exports
+        andromeda::api::macro_exports_api
         andromeda::api::platform
         andromeda::api::renderer
         andromeda::api::space
