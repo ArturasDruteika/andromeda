@@ -5,6 +5,9 @@
 
 #include "spdlog/spdlog.h"
 
+#include <exception>
+#include <string>
+
 
 namespace andromeda::window
 {

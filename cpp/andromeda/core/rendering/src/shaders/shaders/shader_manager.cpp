@@ -2,6 +2,11 @@
 #include "andromeda/utils/file_operations/file_operations.hpp"
 #include "spdlog/spdlog.h"
 
+#include <filesystem>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
 
 namespace andromeda::rendering
 {

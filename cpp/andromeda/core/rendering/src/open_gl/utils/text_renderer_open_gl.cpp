@@ -6,6 +6,10 @@
 #include "spdlog/spdlog.h"
 #include "glad/gl.h"
 
+#include <cstddef>
+#include <string>
+#include <vector>
+
 
 namespace andromeda::rendering
 {

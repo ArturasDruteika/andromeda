@@ -4,6 +4,10 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "spdlog/spdlog.h"
 
+#include <cstddef>
+#include <string>
+#include <vector>
+
 
 namespace andromeda::rendering
 {

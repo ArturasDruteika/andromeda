@@ -6,6 +6,9 @@
 
 #include "GLFW/glfw3.h"
 
+#include <functional>
+#include <string>
+
 
 /// @brief Default application window width in pixels.
 constexpr int DEFAULT_WINDOW_WIDTH = 640;

@@ -1,5 +1,7 @@
 #include "andromeda/window/events/mouse_events.hpp"
+
 #include <sstream>
+#include <string>
 
 
 namespace andromeda::window

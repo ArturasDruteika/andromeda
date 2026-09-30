@@ -6,6 +6,8 @@
 #include "andromeda/window/mouse_and_key_codes/mouse_codes.hpp"
 #include "andromeda/window/events/i_mouse_events.hpp"
 
+#include <string>
+
 
 namespace andromeda::window
 {

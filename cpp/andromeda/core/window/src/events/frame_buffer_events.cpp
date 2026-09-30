@@ -1,5 +1,7 @@
 #include "andromeda/window/events/frame_buffer_events.hpp"
+
 #include <sstream>
+#include <string>
 
 
 namespace andromeda::window

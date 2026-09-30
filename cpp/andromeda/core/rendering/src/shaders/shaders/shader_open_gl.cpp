@@ -1,5 +1,9 @@
 #include "shaders/shaders/shader_open_gl.hpp"
 
+#include <filesystem>
+#include <string>
+#include <vector>
+
 
 namespace andromeda::rendering
 {

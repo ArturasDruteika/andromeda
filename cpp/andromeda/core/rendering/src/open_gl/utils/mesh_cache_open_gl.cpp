@@ -1,6 +1,10 @@
 #include "open_gl/utils/mesh_cache_open_gl.hpp"
 #include "vertices/vertex_layouts.hpp"
 
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+
 
 namespace andromeda::rendering
 {

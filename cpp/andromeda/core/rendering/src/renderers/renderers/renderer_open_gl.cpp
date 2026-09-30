@@ -1,6 +1,8 @@
 #include "andromeda/rendering/renderers/renderer_open_gl.hpp"
 #include "open_gl/renderer/renderer_open_gl_impl.hpp"
 
+#include <memory>
+
 
 namespace andromeda::rendering
 {

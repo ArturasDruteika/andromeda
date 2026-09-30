@@ -3,6 +3,11 @@
 
 #include "spdlog/spdlog.h"
 
+#include <filesystem>
+#include <stdexcept>
+#include <string>
+#include <system_error>
+
 
 namespace andromeda::rendering
 {

@@ -1,5 +1,6 @@
 #include "open_gl/utils/fps_counter.hpp"
 
+#include <chrono>
 
 namespace andromeda::rendering
 {
