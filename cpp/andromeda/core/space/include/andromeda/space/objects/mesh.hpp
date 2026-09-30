@@ -5,6 +5,8 @@
 #include "andromeda/space/vertices/vertex.hpp"
 #include "andromeda/space/objects/i_mesh.hpp"
 
+#include <vector>
+
 
 namespace andromeda::space
 {

@@ -3,6 +3,13 @@
 
 #include "spdlog/spdlog.h"
 
+#include <cstddef>
+#include <memory>
+#include <utility>
+#include <functional>
+#include <vector>
+#include <stdexcept>  
+
 
 namespace andromeda::space
 {

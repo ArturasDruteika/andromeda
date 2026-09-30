@@ -5,6 +5,11 @@
 #include "../materials/material_types.hpp"
 #include "andromeda/space/macro_export/macro_export.hpp"
 
+#include <cstddef>
+#include <filesystem>
+#include <unordered_map>
+#include <vector>
+
 
 namespace andromeda::space
 {

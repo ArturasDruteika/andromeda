@@ -1,5 +1,7 @@
 #include "andromeda/space/scene/scene_update_hooks.hpp"
 
+#include <utility>
+
 
 namespace andromeda::space
 {

@@ -7,6 +7,8 @@
 #include "scene_objects.hpp"
 #include "andromeda/space/scene/i_scene_node_manager.hpp"
 
+#include <memory>
+
 
 namespace andromeda::space
 {

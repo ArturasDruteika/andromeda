@@ -1,6 +1,8 @@
 #include "andromeda/space/materials/materials.hpp"
 #include "spdlog/spdlog.h"
 
+#include <string>
+
 
 namespace andromeda::space
 {

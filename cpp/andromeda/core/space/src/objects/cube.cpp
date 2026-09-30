@@ -1,6 +1,9 @@
 #include "andromeda/space/objects/cube.hpp"
 #include "spdlog/spdlog.h"
 
+#include <array>
+#include <vector>
+
 
 namespace andromeda::space
 {

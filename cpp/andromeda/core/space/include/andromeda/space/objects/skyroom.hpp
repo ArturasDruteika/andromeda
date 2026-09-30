@@ -8,6 +8,9 @@
 #include "andromeda/space/objects/i_skyroom.hpp"
 #include "andromeda/space/colors/colors.hpp"
 
+#include <array>
+#include <vector>
+
 
 namespace andromeda::space
 {

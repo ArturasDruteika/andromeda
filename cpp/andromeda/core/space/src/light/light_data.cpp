@@ -108,6 +108,7 @@ namespace andromeda::space
     {
         if (intensity < 0.0f)
             spdlog::error("Intensity must be non-negative");
+
         m_intensity = intensity;
     }
 
@@ -115,6 +116,7 @@ namespace andromeda::space
     {
         if (range <= 0.0f)
             spdlog::error("Range must be positive");
+
         m_range = range;
     }
 
@@ -122,8 +124,10 @@ namespace andromeda::space
     {
         if (inner_cutoff < 0.0f || inner_cutoff > 1.0f)
             spdlog::error("Inner cutoff must be in [0, 1]");
+
         if (inner_cutoff > m_outer_cutoff)
             spdlog::error("Inner cutoff cannot exceed outer cutoff");
+
         m_inner_cutoff = inner_cutoff;
     }
 
@@ -131,8 +135,10 @@ namespace andromeda::space
     {
         if (outer_cutoff < 0.0f || outer_cutoff > 1.0f)
             spdlog::error("Outer cutoff must be in [0, 1]");
+
         if (outer_cutoff < m_inner_cutoff)
             spdlog::error("Outer cutoff cannot be less than inner cutoff");
+
         m_outer_cutoff = outer_cutoff;
     }
 
@@ -140,6 +146,7 @@ namespace andromeda::space
     {
         if (constant < 0.0f)
             spdlog::error("Attenuation constant must be non-negative");
+
         m_attenuation_constant = constant;
     }
 
@@ -147,11 +154,10 @@ namespace andromeda::space
     {
         if (linear < 0 || linear > 1)
         {
-            spdlog::error(
-                "Attenuation linear components must be between 0.0 and 1.0"
-            );
+            spdlog::error("Attenuation linear components must be between 0.0 and 1.0");
             return;
         }
+
         m_attenuation_linear = linear;
     }
 
@@ -159,11 +165,10 @@ namespace andromeda::space
     {
         if (quadratic < 0 || quadratic > 1)
         {
-            spdlog::error(
-                "Attenuation quadratic components must be between 0.0 and 1.0"
-            );
+            spdlog::error("Attenuation quadratic components must be between 0.0 and 1.0");
             return;
         }
+
         m_attenuation_quadratic = quadratic;
     }
 
@@ -195,11 +200,13 @@ namespace andromeda::space
     void LightData::set_direction(const math::Vec3& direction)
     {
         float len_2 = math::LinAlgOps::dot_prod(direction, direction);
+
         if (len_2 < 1e-6f)
         {
             spdlog::error("Direction vector must be non-zero");
             return;
         }
+
         m_direction = math::LinAlgOps::normalize(direction);
     }
 }

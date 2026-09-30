@@ -3,6 +3,10 @@
 #include "andromeda/space/scene_graph/object_component.hpp"
 #include "andromeda/space/scene_graph/light_component.hpp"
 
+#include <memory>
+#include <utility>
+#include <unordered_map>
+
 
 namespace andromeda::space
 {

@@ -7,6 +7,8 @@
 #include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/scene/i_scene_lighting.hpp"
 
+#include <unordered_map>
+
 
 namespace andromeda::space
 {

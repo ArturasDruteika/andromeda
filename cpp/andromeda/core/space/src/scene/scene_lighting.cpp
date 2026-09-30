@@ -1,5 +1,7 @@
 #include "andromeda/space/scene/scene_lighting.hpp"
 
+#include <unordered_map>
+
 
 namespace andromeda::space
 {

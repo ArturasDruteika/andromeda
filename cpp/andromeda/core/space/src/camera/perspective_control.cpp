@@ -60,54 +60,46 @@ namespace andromeda::space
 
 	void PerspectiveControl::set_field_of_view_degrees(
 		float fov_deg,
-		bool update_projection
+		bool update
 	)
 	{
 		m_fov_deg = fov_deg;
 
-		if (update_projection)
-		{
-			this->update_projection();
-		}
+		if (update)
+			update_projection();
 	}
 
 	void PerspectiveControl::set_near_plane(
 		float near_plane,
-		bool update_projection
+		bool update
 	)
 	{
 		m_near_plane = near_plane;
 
-		if (update_projection)
-		{
-			this->update_projection();
-		}
+		if (update)
+			update_projection();
 	}
 
 	void PerspectiveControl::set_far_plane(
 		float far_plane,
-		bool update_projection
+		bool update
 	)
 	{
 		m_far_plane = far_plane;
 
-		if (update_projection)
-		{
-			this->update_projection();
-		}
+		if (update)
+			update_projection();
 	}
 
 	void PerspectiveControl::set_aspect(
 		float aspect,
-		bool update_projection
+		bool update
 	)
 	{
 		m_aspect = aspect;
 
-		if (update_projection)
-		{
-			this->update_projection();
-		}
+		if (update)
+			update_projection();
 	}
 
 	void PerspectiveControl::update_projection()

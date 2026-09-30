@@ -1,5 +1,7 @@
 #include "andromeda/space/scene/scene_state.hpp"
 
+#include <unordered_map>
+
 
 namespace andromeda::space
 {

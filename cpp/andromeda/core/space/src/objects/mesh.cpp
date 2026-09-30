@@ -1,5 +1,7 @@
 #include "andromeda/space/objects/mesh.hpp"
 
+#include <vector>
+
 
 namespace andromeda::space
 {

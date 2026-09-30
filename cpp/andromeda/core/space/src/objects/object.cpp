@@ -1,5 +1,8 @@
 #include "andromeda/space/objects/object.hpp"
 
+#include <atomic>
+#include <string>
+
 
 namespace andromeda::space
 {

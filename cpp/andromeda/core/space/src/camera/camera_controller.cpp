@@ -2,6 +2,8 @@
 #include "andromeda/math/linear_algebra/linear_algebra_operations.hpp"
 #include "spdlog/spdlog.h"
 
+#include <cmath>
+
 
 namespace andromeda::space
 {
@@ -27,16 +29,14 @@ namespace andromeda::space
 				math::Vec3(0.0f, 1.0f, 0.0f)
 			);
 
-			math::Quaternion q_yaw =
-				math::QuaternionOps::angle_axis(-yaw, up);
+			math::Quaternion q_yaw = math::QuaternionOps::angle_axis(-yaw, up);
 
 			m_orientation = math::QuaternionOps::multiply(
 				q_yaw,
 				m_orientation
 			);
 
-			m_orientation =
-				math::QuaternionOps::normalize(m_orientation);
+			m_orientation = math::QuaternionOps::normalize(m_orientation);
 		}
 
 		if (pitch != 0.0f)
@@ -47,16 +47,14 @@ namespace andromeda::space
 				math::Vec3(1.0f, 0.0f, 0.0f)
 			);
 
-			math::Quaternion q_pitch =
-				math::QuaternionOps::angle_axis(-pitch, right);
+			math::Quaternion q_pitch = math::QuaternionOps::angle_axis(-pitch, right);
 
 			m_orientation = math::QuaternionOps::multiply(
 				q_pitch,
 				m_orientation
 			);
 
-			m_orientation =
-				math::QuaternionOps::normalize(m_orientation);
+			m_orientation = math::QuaternionOps::normalize(m_orientation);
 		}
 
 		if (roll != 0.0f)
@@ -67,16 +65,14 @@ namespace andromeda::space
 				math::Vec3(0.0f, 0.0f, -1.0f)
 			);
 
-			math::Quaternion q_roll =
-				math::QuaternionOps::angle_axis(roll, forward);
+			math::Quaternion q_roll = math::QuaternionOps::angle_axis(roll, forward);
 
 			m_orientation = math::QuaternionOps::multiply(
 				q_roll,
 				m_orientation
 			);
 
-			m_orientation =
-				math::QuaternionOps::normalize(m_orientation);
+			m_orientation = math::QuaternionOps::normalize(m_orientation);
 		}
 
 		update_direction();

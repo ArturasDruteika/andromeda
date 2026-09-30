@@ -67,41 +67,41 @@ namespace andromeda::space
 		/// @brief Sets the vertical field of view.
 		///
 		/// @param fov_deg Field of view in degrees.
-		/// @param update_projection `true` to immediately update the projection
+		/// @param update `true` to immediately update the projection
 		/// matrix.
 		void set_field_of_view_degrees(
 			float fov_deg,
-			bool update_projection = true
+			bool update = true
 		) override;
 
 		/// @brief Sets the near clipping plane distance.
 		///
 		/// @param near_plane Near clipping plane distance.
-		/// @param update_projection `true` to immediately update the projection
+		/// @param update `true` to immediately update the projection
 		/// matrix.
 		void set_near_plane(
 			float near_plane,
-			bool update_projection = true
+			bool update = true
 		) override;
 
 		/// @brief Sets the far clipping plane distance.
 		///
 		/// @param far_plane Far clipping plane distance.
-		/// @param update_projection `true` to immediately update the projection
+		/// @param update `true` to immediately update the projection
 		/// matrix.
 		void set_far_plane(
 			float far_plane,
-			bool update_projection = true
+			bool update = true
 		) override;
 
 		/// @brief Sets the viewport aspect ratio.
 		///
 		/// @param aspect Aspect ratio.
-		/// @param update_projection `true` to immediately update the projection
+		/// @param update `true` to immediately update the projection
 		/// matrix.
 		void set_aspect(
 			float aspect,
-			bool update_projection = true
+			bool update = true
 		) override;
 
 		/// @brief Recomputes the perspective projection matrix.

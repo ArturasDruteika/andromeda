@@ -4,6 +4,9 @@
 #include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/scene/i_scene_update_hooks.hpp"
 
+#include <cstdint>
+#include <vector>
+
 
 namespace andromeda::space
 {

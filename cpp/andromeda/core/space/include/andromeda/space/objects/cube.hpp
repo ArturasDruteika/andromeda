@@ -8,6 +8,9 @@
 #include "andromeda/space/colors/colors.hpp"
 #include "andromeda/space/objects/i_cube.hpp"
 
+#include <array>
+#include <vector>
+
 
 namespace andromeda::space
 {

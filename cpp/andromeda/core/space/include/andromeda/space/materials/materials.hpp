@@ -5,6 +5,8 @@
 #include "andromeda/space/materials/i_material.hpp"
 #include "andromeda/math/linear_algebra/linear_algebra_data_types.hpp"
 
+#include <string>
+
 
 namespace andromeda::space
 {

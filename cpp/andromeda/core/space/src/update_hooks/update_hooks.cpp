@@ -1,5 +1,10 @@
 #include "andromeda/space/update_hooks/update_hooks.hpp"
 
+#include <algorithm>
+#include <cstdint>
+#include <utility>
+#include <vector>
+
 
 namespace andromeda::space
 {

@@ -4,6 +4,9 @@
 #include "andromeda/space/macro_export/macro_export.hpp"
 #include "andromeda/space/objects/i_object.hpp"
 
+#include <atomic>
+#include <string>
+
 
 namespace andromeda::space
 {

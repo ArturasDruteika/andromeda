@@ -2,6 +2,10 @@
 #include "andromeda/math/constants/constants.hpp"
 #include "spdlog/spdlog.h"
 
+#include <cmath>
+#include <cstddef>
+#include <vector>
+
 
 namespace andromeda::space
 {
