@@ -3,6 +3,8 @@
 
 #include "vertex_format.hpp"
 
+#include <cstdint>
+
 
 namespace andromeda::rendering
 {

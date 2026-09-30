@@ -10,6 +10,9 @@
 
 #include "spdlog/spdlog.h"
 
+#include <exception>
+#include <memory>
+
 
 namespace andromeda::engine
 {

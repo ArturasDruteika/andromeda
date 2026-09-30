@@ -4,6 +4,10 @@
 #include "../../vertices/vertex_layouts.hpp"
 #include "andromeda/space/objects/i_mesh.hpp"
 
+#include <cstddef>
+#include <cstdint>
+#include <vector>
+
 
 namespace andromeda::rendering
 {

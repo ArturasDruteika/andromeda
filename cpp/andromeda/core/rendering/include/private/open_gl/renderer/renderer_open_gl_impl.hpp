@@ -15,6 +15,10 @@
 #include "andromeda/rendering/abstracts/size_control.hpp"
 #include "andromeda/space/transformations/i_transformable.hpp"
 
+#include <chrono>
+#include <memory>
+#include <unordered_map>
+
 
 namespace andromeda::rendering
 {
@@ -189,7 +193,7 @@ namespace andromeda::rendering
         MeshCacheOpenGL m_mesh_cache;
 
         /// @brief Shader manager used by the renderer.
-        ShaderManager* m_p_shader_manager;
+        std::unique_ptr<ShaderManager> m_p_shader_manager;
 
         /// @brief Default vertex layout used by rendered meshes.
         VertexLayout m_default_vertex_layout;

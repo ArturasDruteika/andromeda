@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <stddef.h>
+#include <cstddef>
 
 
 namespace andromeda::rendering
@@ -25,9 +25,9 @@ namespace andromeda::rendering
         bool normalized = false;
 
         /// @brief Byte stride between consecutive vertex attributes.
-        size_t stride = 0;
+        std::size_t stride = 0;
 
         /// @brief Byte offset of the attribute within the vertex structure.
-        size_t offset = 0;
+        std::size_t offset = 0;
     };
 }

@@ -5,6 +5,8 @@
 #include "andromeda/renderer/i_renderer.hpp"
 #include "andromeda/space/scene/i_scene.hpp"
 
+#include <memory>
+
 
 namespace andromeda::rendering
 {

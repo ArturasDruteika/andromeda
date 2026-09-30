@@ -5,6 +5,8 @@
 #include "andromeda/components/graphics_backend.hpp"
 #include "andromeda/engine/i_engine.hpp"
 
+#include <memory>
+
 
 namespace andromeda::engine
 {

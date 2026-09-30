@@ -6,6 +6,10 @@
 
 #include "spdlog/spdlog.h"
 
+#include <exception>
+#include <memory>
+#include <string>
+
 
 namespace andromeda::platform
 {

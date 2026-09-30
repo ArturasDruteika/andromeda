@@ -6,6 +6,9 @@
 #include "../utils/uniform_setter_open_gl.hpp"
 #include "../interfaces/i_shader.hpp"
 
+#include <filesystem>
+#include <string>
+
 
 namespace andromeda::rendering
 {

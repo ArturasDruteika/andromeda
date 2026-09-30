@@ -7,6 +7,9 @@
 #include "andromeda/platform/i_platform.hpp"
 #include "andromeda/space/scene/i_scene.hpp"
 
+#include <memory>
+#include <string>
+
 
 namespace andromeda::application
 {

@@ -7,6 +7,9 @@
 #include "andromeda/platform/i_platform.hpp"
 #include "andromeda/window/window/i_window.hpp"
 
+#include <memory>
+#include <string>
+
 
 namespace andromeda::platform
 {

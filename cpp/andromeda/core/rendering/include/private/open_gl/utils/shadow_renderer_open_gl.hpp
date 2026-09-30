@@ -10,6 +10,8 @@
 #include "andromeda/space/objects/i_geometric_object.hpp"
 #include "andromeda/space/transformations/i_transformable.hpp"
 
+#include <unordered_map>
+
 
 namespace andromeda::rendering
 {

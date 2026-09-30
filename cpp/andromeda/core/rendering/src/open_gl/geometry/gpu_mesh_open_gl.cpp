@@ -2,6 +2,10 @@
 #include "open_gl/vertices/vertex_layout_open_gl.hpp"
 #include "glad/gl.h"
 
+#include <cstddef>
+#include <cstdint>
+#include <vector>
+
 
 namespace andromeda::rendering
 {
@@ -57,7 +61,7 @@ namespace andromeda::rendering
 
     void GpuMeshOpenGL::create(
         const void* vertex_data,
-        size_t vertex_data_size_bytes,
+        std::size_t vertex_data_size_bytes,
         const std::vector<uint32_t>& indices,
         const andromeda::rendering::VertexLayout& layout
     )

@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include <string>
+
+
 namespace andromeda::rendering
 {
 	/// @brief Compiles and links OpenGL shader programs.

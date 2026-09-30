@@ -1,5 +1,7 @@
 #include "andromeda/math/linear_algebra/linear_algebra_operations.hpp"
 
+#include <cmath>
+
 
 namespace andromeda::math
 {

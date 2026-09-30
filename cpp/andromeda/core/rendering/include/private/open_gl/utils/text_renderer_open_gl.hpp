@@ -3,6 +3,8 @@
 
 #include "glad/gl.h"
 
+#include <string>
+
 
 namespace andromeda::rendering
 {

@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include <filesystem>
+
+
 namespace andromeda::rendering
 {
 	/// @brief Identifies the built-in OpenGL shader programs.

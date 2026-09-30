@@ -4,6 +4,10 @@
 #include "shader_open_gl.hpp"
 #include "../utils/shader_open_gl_types.hpp"
 
+#include <filesystem>
+#include <string>
+#include <unordered_map>
+
 
 namespace andromeda::rendering
 {

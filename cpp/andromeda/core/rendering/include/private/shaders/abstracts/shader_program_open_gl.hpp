@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include <string>
+
+
 namespace andromeda::rendering
 {
 	/// @brief Base class for OpenGL shader programs.

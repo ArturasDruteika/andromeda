@@ -4,6 +4,9 @@
 
 #include "spdlog/spdlog.h"
 
+#include <string>
+
+
 namespace andromeda::graphics_context
 {
     GraphicsContextGLFW::GraphicsContextGLFW()

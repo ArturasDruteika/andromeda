@@ -1,6 +1,9 @@
 #pragma once
 
 
+#include <chrono>
+
+
 namespace andromeda::rendering
 {
     /// @brief Tracks frame timing and frames per second.
@@ -42,8 +45,8 @@ namespace andromeda::rendering
         float get_delta_seconds() const;
 
     private:
-        /// @brief Time point of the previous frame.
-        std::chrono::steady_clock::time_point m_last_time;
+        /// @brief Indicates whether the next frame is the first recorded frame.
+        bool m_first_frame;
 
         /// @brief Elapsed time between the current and previous frame.
         float m_delta_seconds;
@@ -54,7 +57,7 @@ namespace andromeda::rendering
         /// @brief Smoothed frames per second.
         float m_smoothed_fps;
 
-        /// @brief Indicates whether the next frame is the first recorded frame.
-        bool m_first_frame;
+        /// @brief Time point of the previous frame.
+        std::chrono::steady_clock::time_point m_last_time;
     };
 }

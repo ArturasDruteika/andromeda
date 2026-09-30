@@ -3,6 +3,9 @@
 
 #include "../utils/shader_types.hpp"
 
+#include <filesystem>
+#include <string>
+
 
 namespace andromeda::rendering
 {
