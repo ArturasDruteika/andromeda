@@ -16,22 +16,22 @@ target_compile_definitions(${PROJECT_NAME}
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
         # precompiled_headers
-        math
-        api
-        space
-        platform
-        engine
-        application
+        andromeda::math
+        andromeda::api
+        andromeda::space
+        andromeda::platform
+        andromeda::engine
+        andromeda::application
         spdlog::spdlog
 )
 
 # Ensure Example waits for engine to build
 add_dependencies(${PROJECT_NAME}
-    math
-    space
-    platform
-    engine
-    application
+    andromeda::math
+    andromeda::space
+    andromeda::platform
+    andromeda::engine
+    andromeda::application
 )
 
 # Set working directory only for Visual Studio

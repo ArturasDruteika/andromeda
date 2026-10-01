@@ -15,11 +15,11 @@ endif ()
 
 # ==== graphics_context ====
 set(GRAPHICS_CONTEXT_HEADERS
-    graphics_context/include/graphics_context_glfw.hpp
+    include/andromeda/graphics_context/graphics_context_glfw.hpp
 )
 
 set(GRAPHICS_CONTEXT_SOURCES
-    graphics_context/src/graphics_context_glfw.cpp
+    src/graphics_context_glfw.cpp
 )
 
 add_library(${PROJECT_NAME} 
@@ -28,24 +28,25 @@ add_library(${PROJECT_NAME}
         ${GRAPHICS_CONTEXT_SOURCES}
 )
 
+add_library(andromeda::graphics_context
+    ALIAS ${PROJECT_NAME}
+)
+
 # SPDLog
 
 set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(${PROJECT_NAME} 
-    PRIVATE
-        ..//glfw//include//
-        ..//glfw//
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 # Link GLFW and OpenGL to the executable
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
-        precompiled_headers
-        api
-        window
+        andromeda::precompiled_headers
+        andromeda::api::graphics_context
+        andromeda::window
         glad
         glfw
         OpenGL::GL
@@ -55,14 +56,14 @@ target_link_libraries(${PROJECT_NAME}
 add_dependencies(${PROJECT_NAME} 
 	glfw
     glad
-    window
+    andromeda::window
 )
 
 
 # Organize files into Solution Explorer folders
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/graphics_context
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "graphics_context"
     FILES

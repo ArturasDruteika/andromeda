@@ -15,106 +15,104 @@ if (APPLE)
     target_compile_definitions(${EXEC_NAME} PRIVATE GL_SILENCE_DEPRECATION)
 endif ()
 
-
-# ==== Macro Exports ====
-set(MACRO_EXPORTS_HEADERS
-    rendering/macro_exports/include/macro_exports.hpp
-)
-
-# ==== OpenGL backend (platform specific) ====
+# ==== OpenGL Backend (platform specific) ====
 set(OPENGL_HEADERS
-    rendering/open_gl/geometry/include/gpu_mesh_open_gl.hpp
-    rendering/open_gl/renderer/include/renderer_open_gl_impl.hpp
-    rendering/open_gl/support/include/face_culling_control_open_gl.hpp
-    rendering/open_gl/support/include/frame_buffer_open_gl.hpp
-    rendering/open_gl/support/include/fps_counter.hpp
-    rendering/open_gl/support/include/mesh_cache_open_gl.hpp
-    rendering/open_gl/support/include/shadow_renderer_open_gl.hpp
-    rendering/open_gl/support/include/text_renderer_open_gl.hpp
-    rendering/open_gl/vertices/include/vertex_layout_open_gl.hpp
+    include/private/open_gl/geometry/gpu_mesh_open_gl.hpp
+    include/private/open_gl/renderer/renderer_open_gl_impl.hpp
+    include/private/open_gl/utils/face_culling_control_open_gl.hpp
+    include/private/open_gl/utils/frame_buffer_open_gl.hpp
+    include/private/open_gl/utils/fps_counter.hpp
+    include/private/open_gl/utils/mesh_cache_open_gl.hpp
+    include/private/open_gl/utils/shadow_renderer_open_gl.hpp
+    include/private/open_gl/utils/text_renderer_open_gl.hpp
+    include/private/open_gl/vertices/vertex_layout_open_gl.hpp
 )
 
 set(OPENGL_SOURCES
-    rendering/open_gl/geometry/src/gpu_mesh_open_gl.cpp
-    rendering/open_gl/renderer/src/renderer_open_gl_impl.cpp
-    rendering/open_gl/support/src/face_culling_control_open_gl.cpp
-    rendering/open_gl/support/src/frame_buffer_open_gl.cpp
-    rendering/open_gl/support/src/fps_counter.cpp
-    rendering/open_gl/support/src/mesh_cache_open_gl.cpp
-    rendering/open_gl/support/src/shadow_renderer_open_gl.cpp
-    rendering/open_gl/support/src/text_renderer_open_gl.cpp
-    rendering/open_gl/vertices/src/vertex_layout_open_gl.cpp
+    src/open_gl/geometry/gpu_mesh_open_gl.cpp
+    src/open_gl/renderer/renderer_open_gl_impl.cpp
+    src/open_gl/utils/face_culling_control_open_gl.cpp
+    src/open_gl/utils/frame_buffer_open_gl.cpp
+    src/open_gl/utils/fps_counter.cpp
+    src/open_gl/utils/mesh_cache_open_gl.cpp
+    src/open_gl/utils/shadow_renderer_open_gl.cpp
+    src/open_gl/utils/text_renderer_open_gl.cpp
+    src/open_gl/vertices/vertex_layout_open_gl.cpp
 )
+
 
 # ==== Ray Tracing ====
 set(RAY_TRACING_HEADERS
-    rendering/ray_tracing/include/ray.hpp
+    include/private/ray_tracing/ray.hpp
 )
+
 
 # ==== Renderers ====
 set(RENDERERS_HEADERS
-    rendering/renderers/abstracts/include/grid_control.hpp
-    rendering/renderers/abstracts/include/illumination_control.hpp
-    rendering/renderers/abstracts/include/size_control.hpp
-    rendering/renderers/renderers/include/renderer_open_gl.hpp
+    include/public/andromeda/rendering/abstracts/grid_control.hpp
+    include/public/andromeda/rendering/abstracts/illumination_control.hpp
+    include/public/andromeda/rendering/abstracts/size_control.hpp
+    include/public/andromeda/rendering/renderers/renderer_open_gl.hpp
 )
 
 set(RENDERERS_SOURCES
-    rendering/renderers/abstracts/src/grid_control.cpp
-    rendering/renderers/abstracts/src/illumination_control.cpp
-    rendering/renderers/abstracts/src/size_control.cpp
-    rendering/renderers/renderers/src/renderer_open_gl.cpp
+    src/renderers/abstracts/grid_control.cpp
+    src/renderers/abstracts/illumination_control.cpp
+    src/renderers/abstracts/size_control.cpp
+    src/renderers/renderers/renderer_open_gl.cpp
 )
+
 
 # ==== Shaders ====
 set(SHADERS_HEADERS
-    rendering/shaders/abstracts/include/shader_program_open_gl.hpp
-    rendering/shaders/abstracts/include/shader_source_manager_open_gl.hpp
-    rendering/shaders/interfaces/include/i_shader.hpp
-    rendering/shaders/shaders/include/shader_manager.hpp
-    rendering/shaders/shaders/include/shader_open_gl.hpp
-    rendering/shaders/support/include/shader_compiler_open_gl.hpp
-    rendering/shaders/support/include/shader_open_gl_types.hpp
-    rendering/shaders/support/include/shader_types.hpp
-    rendering/shaders/support/include/uniform_setter_open_gl.hpp
+    include/private/shaders/abstracts/shader_program_open_gl.hpp
+    include/private/shaders/abstracts/shader_source_manager_open_gl.hpp
+    include/private/shaders/interfaces/i_shader.hpp
+    include/private/shaders/shaders/shader_manager.hpp
+    include/private/shaders/shaders/shader_open_gl.hpp
+    include/private/shaders/utils/shader_compiler_open_gl.hpp
+    include/private/shaders/utils/shader_open_gl_types.hpp
+    include/private/shaders/utils/shader_types.hpp
+    include/private/shaders/utils/uniform_setter_open_gl.hpp
 )
 
 set(SHADERS_SOURCES
-    rendering/shaders/abstracts/src/shader_program_open_gl.cpp
-    rendering/shaders/abstracts/src/shader_source_manager_open_gl.cpp
-    rendering/shaders/interfaces/src/i_shader.cpp
-    rendering/shaders/shaders/src/shader_manager.cpp
-    rendering/shaders/shaders/src/shader_open_gl.cpp
-    rendering/shaders/support/src/shader_compiler_open_gl.cpp
-    rendering/shaders/support/src/uniform_setter_open_gl.cpp
+    src/shaders/abstracts/shader_program_open_gl.cpp
+    src/shaders/abstracts/shader_source_manager_open_gl.cpp
+    src/shaders/interfaces/i_shader.cpp
+    src/shaders/shaders/shader_manager.cpp
+    src/shaders/shaders/shader_open_gl.cpp
+    src/shaders/utils/shader_compiler_open_gl.cpp
+    src/shaders/utils/uniform_setter_open_gl.cpp
 )
+
 
 # ==== Utilities ====
 set(UTILS_HEADERS
-    rendering/utils/include/math_utils.hpp
+    include/private/utils/math_utils.hpp
 )
 
 set(UTILS_SOURCES
-    rendering/utils/src/math_utils.cpp
+    src/utils/math_utils.cpp
 )
+
 
 # ==== Vertices (API agnostic) ====
 set(VERTEX_HEADERS
-    rendering/vertices/include/vertex_format.hpp
-    rendering/vertices/include/vertex_attributes.hpp
-    rendering/vertices/include/vertex_layouts.hpp
-    rendering/vertices/include/vertex_location_policy.hpp
+    include/private/vertices/vertex_format.hpp
+    include/private/vertices/vertex_attributes.hpp
+    include/private/vertices/vertex_layouts.hpp
+    include/private/vertices/vertex_location_policy.hpp
 )
 
 set(VERTEX_SOURCES
-    rendering/vertices/src/vertex_format.cpp
-    rendering/vertices/src/vertex_layouts.cpp
-    rendering/vertices/src/vertex_location_policy.cpp
+    src/vertices/vertex_format.cpp
+    src/vertices/vertex_layouts.cpp
+    src/vertices/vertex_location_policy.cpp
 )
 
 add_library(${PROJECT_NAME}
     SHARED
-        ${MACRO_EXPORTS_HEADERS}
         ${RAYTRACING_HEADERS}
         ${RENDERERS_HEADERS}
         ${RENDERERS_SOURCES}
@@ -130,27 +128,51 @@ add_library(${PROJECT_NAME}
         ${OPENGL_SOURCES}
 )
 
+add_library(andromeda::rendering
+    ALIAS ${PROJECT_NAME}
+)
+
+# ==== Export Header ====
+include(GenerateExportHeader)
+
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export"
+)
+
+generate_export_header(${PROJECT_NAME}
+    BASE_NAME RENDERING
+    EXPORT_MACRO_NAME RENDERING_API
+    EXPORT_FILE_NAME
+        "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export/macro_export.hpp"
+)
+
+# ==== Include Directories ====
 target_include_directories(${PROJECT_NAME}
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/private/
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/public/
+        ${CMAKE_CURRENT_BINARY_DIR}/include/
 )
 
 # Link libraries - api is INTERFACE, so this just pulls in its usage requirements
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        precompiled_headers
-        utils
+        andromeda::precompiled_headers
+        andromeda::utils
         glad
         spdlog::spdlog
         glm::glm
     PUBLIC
-        math
-        api
+        andromeda::math
+        andromeda::api::components
+        andromeda::api::graphics_context
+        andromeda::api::renderer
 )
 
 add_dependencies(${PROJECT_NAME}
-    utils
-    math
+    andromeda::utils
+    andromeda::math
     glad
 )
 
@@ -202,82 +224,3 @@ foreach(SHADER_PATH IN LISTS SHADER_SOURCE_PATHS)
         COMMAND ${CMAKE_COMMAND} -E copy_if_different "${SHADER_PATH}" "${SHADER_OUTPUT_DIR}/${FILE_NAME}"
     )
 endforeach()
-
-# Organize files into Solution Explorer folders
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/macro_exports
-    PREFIX
-        "macro_exports"
-    FILES
-        ${MACRO_EXPORTS_HEADERS}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/ray_tracing
-    PREFIX
-        "ray_tracing"
-    FILES
-        ${RAY_TRACING_HEADERS}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/renderers
-    PREFIX
-        "renderers"
-    FILES
-        ${RENDERERS_HEADERS}
-        ${RENDERERS_SOURCES}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/scene
-    PREFIX
-        "scene"
-    FILES
-        ${SCENE_HEADERS}
-        ${SCENE_SOURCES}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/shaders
-    PREFIX
-        "shaders"
-    FILES
-        ${SHADERS_HEADERS}
-        ${SHADERS_SOURCES}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/utils
-    PREFIX
-        "utils"
-    FILES
-        ${UTILS_HEADERS}
-        ${UTILS_SOURCES}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/vertices
-    PREFIX
-        "vertices"
-    FILES
-        ${VERTEX_HEADERS}
-        ${VERTEX_SOURCES}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/open_gl
-    PREFIX
-        "open_gl"
-    FILES
-        ${OPENGL_HEADERS}
-        ${OPENGL_SOURCES}
-)

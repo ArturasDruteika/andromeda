@@ -5,38 +5,45 @@ project(engine)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DENGINECORE_EXPORT)
-
-# SPDLog
-
-
 # ==== engine ====
 set(ENGINE_HEADERS
-    engine/engine/include/engine.hpp
+    include/andromeda/engine/engine.hpp
 )
 
 set(ENGINE_SOURCES
-    engine/engine/src/engine.cpp
-)
-
-# ==== Macro Exports ====
-set(MACRO_EXPORTS_HEADERS
-    engine/macro_exports/include/macro_exports.hpp
+    src/engine.cpp
 )
 
 # ==== Target ====
 add_library(${PROJECT_NAME}
     SHARED
-        ${APPLICATION_HEADERS}
-        ${APPLICATION_SOURCES}
         ${ENGINE_HEADERS}
         ${ENGINE_SOURCES}
-        ${MACRO_EXPORTS_HEADERS}
 )
 
-target_include_directories(${PROJECT_NAME} 
+add_library(andromeda::engine
+    ALIAS ${PROJECT_NAME}
+)
+
+# ==== Export Header ====
+include(GenerateExportHeader)
+
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export"
+)
+
+generate_export_header(${PROJECT_NAME}
+    BASE_NAME ENGINE
+    EXPORT_MACRO_NAME ENGINE_API
+    EXPORT_FILE_NAME
+        "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export/macro_export.hpp"
+)
+
+# ==== Include Directories ====
+target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_BINARY_DIR}/include/
 )
 
 target_compile_definitions(${PROJECT_NAME}
@@ -50,18 +57,18 @@ target_link_libraries(${PROJECT_NAME}
         rendering
         spdlog::spdlog
     PUBLIC
-        precompiled_headers
-        math
-        api
+        andromeda::precompiled_headers
+        andromeda::math
+        andromeda::api::engine
 
 )
 
 # Explicit build ordering (alphabetical)
 add_dependencies(${PROJECT_NAME}
-    math
-    rendering
-    utils
-    window
+    andromeda::math
+    andromeda::rendering
+    andromeda::utils
+    andromeda::window
 )
 
 
@@ -93,7 +100,7 @@ endif()
 # ==== IDE Organization ====
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/engine
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "engine"
     FILES
@@ -103,7 +110,7 @@ source_group(
 
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/macro_exports
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "macro_exports"
     FILES

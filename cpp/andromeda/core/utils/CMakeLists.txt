@@ -8,21 +8,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ==== FileOperations ====
 set(FILE_OPERATIONS_HEADERS
-    utils/file_operations/include/file_operations.hpp
+    include/andromeda/utils/file_operations/file_operations.hpp
 )
 
 set(FILE_OPERATIONS_SOURCES
-    utils/file_operations/src/file_operations.cpp
+    src/file_operations/file_operations.cpp
 )
 
 # ==== nlohmann ====
 set(NLOHMANN_HEADERS
-    utils/nlohmann_json/include/json.hpp
+    include/andromeda/utils/nlohmann_json/json.hpp
 )
 
 # ==== stb ====
 set(STB_HEADERS
-    utils/stb/include/stb_easy_font.h
+    include/andromeda/utils/stb/stb_easy_font.h
 )
 
 
@@ -35,9 +35,13 @@ add_library(${PROJECT_NAME}
         ${STB_HEADERS}
 )
 
+add_library(andromeda::utils
+    ALIAS ${PROJECT_NAME}
+)
+
 target_include_directories(${PROJECT_NAME} 
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
 )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
@@ -45,35 +49,17 @@ set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 # Link spdlog
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        precompiled_headers
+        andromeda::precompiled_headers
         spdlog::spdlog
 )
 
 
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/file_operations
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "file_operations"
     FILES
         ${FILE_OPERATIONS_HEADERS}
         ${FILE_OPERATIONS_SOURCES}
-)
-
-source_group(
-    TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/nlohmann_json
-    PREFIX
-        "nlohmann_json"
-    FILES
-        ${NLOHMANN_HEADERS}
-)
-
-source_group(
-    TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/stb
-    PREFIX
-        "stb"
-    FILES
-        ${STB_HEADERS}
 )

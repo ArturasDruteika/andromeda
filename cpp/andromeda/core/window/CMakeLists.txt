@@ -16,28 +16,28 @@ endif ()
 
 # ==== Events ====
 set(EVENTS_HEADERS
-    window/events/include/event_base.hpp
-    window/events/include/mouse_events.hpp
-    window/events/include/key_events.hpp
-    window/events/include/frame_buffer_events.hpp
-    window/events/include/event_dispatcher.hpp
+    include/andromeda/window/events/event_base.hpp
+    include/andromeda/window/events/mouse_events.hpp
+    include/andromeda/window/events/key_events.hpp
+    include/andromeda/window/events/frame_buffer_events.hpp
+    include/andromeda/window/events/event_dispatcher.hpp
 )
 
 set(EVENTS_SOURCES
-    window/events/src/event_base.cpp
-    window/events/src/mouse_events.cpp
-    window/events/src/frame_buffer_events.cpp
-    window/events/src/key_events.cpp
-    window/events/src/event_dispatcher.cpp
+    src/events/event_base.cpp
+    src/events/mouse_events.cpp
+    src/events/frame_buffer_events.cpp
+    src/events/key_events.cpp
+    src/events/event_dispatcher.cpp
 )
 
 # ==== WindowGLFW ====
 set(WINDOW_GLFW_HEADERS
-    window/window_glfw/include/window_glfw.hpp
+    include/andromeda/window/window_glfw/window_glfw.hpp
 )
 
 set(WINDOW_GLFW_SOURCES
-    window/window_glfw/src/window_glfw.cpp
+    src/window_glfw/window_glfw.cpp
 )
 
 add_library(${PROJECT_NAME} 
@@ -48,27 +48,31 @@ add_library(${PROJECT_NAME}
         ${WINDOW_GLFW_SOURCES}
 )
 
+add_library(andromeda::window
+    ALIAS ${PROJECT_NAME}
+)
+
 set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
 )
 
 # Link GLFW and OpenGL to the executable
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
-        precompiled_headers
-        utils
+        andromeda::precompiled_headers
+        andromeda::utils
         glfw
         OpenGL::GL
         spdlog::spdlog
     PUBLIC
-        api
+        andromeda::api::window
 )
 
 add_dependencies(${PROJECT_NAME} 
-    utils
+    andromeda::utils
     glfw
 )
 
@@ -76,20 +80,10 @@ add_dependencies(${PROJECT_NAME}
 # Organize files into Solution Explorer folders
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/events 
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX 
         "events" 
     FILES
         ${EVENTS_HEADERS}
         ${EVENTS_SOURCES}
-)
-
-source_group(
-    TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}/window_glfw 
-    PREFIX 
-        "window_glfw" 
-    FILES
-        ${WINDOW_GLFW_HEADERS}
-        ${WINDOW_GLFW_SOURCES}
 )

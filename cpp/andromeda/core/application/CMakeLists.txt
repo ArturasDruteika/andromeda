@@ -5,19 +5,12 @@ project(application)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DAPPLICATION_EXPORT)
-
-
-# SPDLog
-
-
-# ==== applicationGLFW ====
 set(APPLICATION_HEADERS
-    application/include/application.hpp
+    include/andromeda/application/application.hpp
 )
 
 set(APPLICATION_SOURCES
-    application/src/application.cpp
+    src/application.cpp
 )
 
 add_library(${PROJECT_NAME} 
@@ -26,11 +19,29 @@ add_library(${PROJECT_NAME}
         ${APPLICATION_SOURCES}
 )
 
-set_target_properties(${PROJECT_NAME} PROPERTIES POSITION_INDEPENDENT_CODE ON)
+add_library(andromeda::application
+    ALIAS ${PROJECT_NAME}
+)
 
-target_include_directories(${PROJECT_NAME} 
+# ==== Export Header ====
+include(GenerateExportHeader)
+
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export"
+)
+
+generate_export_header(${PROJECT_NAME}
+    BASE_NAME APPLICATION
+    EXPORT_MACRO_NAME APPLICATION_API
+    EXPORT_FILE_NAME
+        "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export/macro_export.hpp"
+)
+
+# ==== Include Directories ====
+target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_BINARY_DIR}/include/
 )
 
 target_compile_definitions(${PROJECT_NAME}
@@ -41,19 +52,26 @@ target_compile_definitions(${PROJECT_NAME}
 # Link GLFW and OpenGL to the executable
 target_link_libraries(${PROJECT_NAME} 
     PRIVATE
-        precompiled_headers
+        andromeda::precompiled_headers
         spdlog::spdlog
     PUBLIC
-        engine
-        platform
-        api
+        andromeda::engine
+        andromeda::platform
+        andromeda::api::platform
+        andromeda::api::application
+)
+
+# Explicit build ordering (alphabetical)
+add_dependencies(${PROJECT_NAME}
+    andromeda::engine
+    andromeda::platform
 )
 
 
 # Organize files into Solution Explorer folders
 source_group(
     TREE 
-        ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_NAME}
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX 
         "application" 
     FILES

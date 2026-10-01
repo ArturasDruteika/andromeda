@@ -5,38 +5,49 @@ project(platform)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_definitions(-DPLATFORM_EXPORT)
-
 # OpenGL
 find_package(OpenGL REQUIRED)
 
-# SPDLog
-
-# ==== macro_exports ====
-set(MACRO_EXPORTS_HEADERS
-    macro_exports/include/macro_exports.hpp
-)
-
 # ==== platform ====
-set(PLATFORM_HEADERS
-    platform/include/platform.hpp
+set(PLATFORM_PUBLIC_HEADERS
+    include/andromeda/platform/platform.hpp
 )
 
 set(PLATFORM_SOURCES
-    platform/src/platform.cpp
+    src/platform.cpp
 )
 
 # ==== Target ====
 add_library(${PROJECT_NAME}
     SHARED
-        ${MACRO_EXPORTS_HEADERS}
-        ${PLATFORM_HEADERS}
+        ${PLATFORM_PRIVATE_HEADERS}
+        ${PLATFORM_PUBLIC_HEADERS}
         ${PLATFORM_SOURCES}
 )
 
-target_include_directories(${PROJECT_NAME} 
+add_library(andromeda::platform
+    ALIAS ${PROJECT_NAME}
+)
+
+# ==== Export Header ====
+include(GenerateExportHeader)
+
+file(MAKE_DIRECTORY
+    "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export"
+)
+
+generate_export_header(${PROJECT_NAME}
+    BASE_NAME PLATFORM
+    EXPORT_MACRO_NAME PLATFORM_API
+    EXPORT_FILE_NAME
+        "${CMAKE_CURRENT_BINARY_DIR}/include/andromeda/${PROJECT_NAME}/macro_export/macro_export.hpp"
+)
+
+# ==== Include Directories ====
+target_include_directories(${PROJECT_NAME}
     PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/
+        ${CMAKE_CURRENT_BINARY_DIR}/include/
 )
 
 target_compile_definitions(${PROJECT_NAME} 
@@ -52,23 +63,22 @@ endif ()
 # Link libraries (alphabetical)
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-        precompiled_headers
+        andromeda::precompiled_headers
         glfw
         OpenGL::GL
-        graphics_context
+        andromeda::graphics_context
+        andromeda::window
+        andromeda::api::platform
         glad
-        window
-        api
         imgui
         spdlog::spdlog
 )
 
 # Explicit build ordering (alphabetical)
 add_dependencies(${PROJECT_NAME}
-    graphics_context
+    andromeda::graphics_context
+    andromeda::window
     glad
-    utils
-    window
     glfw
     imgui
 )
@@ -90,16 +100,7 @@ endif()
 # ==== IDE Organization ====
 source_group(
     TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/macro_exports
-    PREFIX
-        "macro_exports"
-    FILES
-        ${MACRO_EXPORTS_HEADERS}
-)
-
-source_group(
-    TREE
-        ${CMAKE_CURRENT_SOURCE_DIR}/platform
+        ${CMAKE_CURRENT_SOURCE_DIR}/
     PREFIX
         "platform"
     FILES
