@@ -94,6 +94,11 @@ float PointShadowVisibilitySingle(vec3 fragPosWS, vec3 normalWS, vec3 lightPosWS
     vec3  toFrag      = fragPosWS - lightPosWS;           // light -> frag
     float currentDist = length(toFrag);
 
+    // The cube map holds no occluder information past the far plane
+    // (cleared depth 1.0 == farPlane), so treat those fragments as lit.
+    if (farPlane <= 0.0 || currentDist >= farPlane)
+        return 1.0;
+
     // Normal-dependent bias (tune numbers as needed)
     vec3  L    = normalize(-toFrag);
     float ndl  = max(dot(normalize(normalWS), L), 0.0);
@@ -155,7 +160,7 @@ vec3 ShadeBlinnPhong(
 
     // Blinn–Phong specular with flat normal (seam-free)
     float shin = clamp(u_material_shininess, 1.0, 128.0);
-    float specStrength = 0.9;
+    float specStrength = 0.0;
     if (NdotL > 0.0)
     {
         vec3 h = normalize(l + v);
