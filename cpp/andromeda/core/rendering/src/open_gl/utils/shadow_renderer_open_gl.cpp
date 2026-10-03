@@ -15,6 +15,18 @@
 
 namespace andromeda::rendering
 {
+    namespace
+    {
+        // Must match the uniform array sizes in fragment_non_luminous_objects.glsl
+        constexpr std::size_t MAX_DIRECTIONAL_LIGHTS = 8;
+        constexpr std::size_t MAX_POINT_LIGHTS = 16;
+    }
+
+    bool ShadowRendererOpenGL::is_luminous(const IGeometricObject& object)
+    {
+        return object.is_luminous() || dynamic_cast<const ILightObject*>(&object) != nullptr;
+    }
+
     void ShadowRendererOpenGL::render_directional_shadow_map(
         const std::unordered_map<int, IGeometricObject*>& objects,
         const std::unordered_map<int, ITransformable*>& object_transforms,
@@ -46,6 +58,12 @@ namespace andromeda::rendering
         for (const auto& [id, obj] : objects)
         {
             if (!obj)
+            {
+                continue;
+            }
+
+            // Luminous objects (e.g. a sphere visualizing a light) must not occlude light
+            if (id < 0 || is_luminous(*obj))
             {
                 continue;
             }
@@ -146,7 +164,9 @@ namespace andromeda::rendering
                 continue;
             }
 
-            if (dynamic_cast<const ILightObject*>(obj))
+            // Luminous objects (e.g. a sphere surrounding the light) must not occlude it,
+            // otherwise the whole scene ends up inside their shadow
+            if (id < 0 || is_luminous(*obj))
             {
                 continue;
             }
@@ -220,6 +240,9 @@ namespace andromeda::rendering
 
         for (const auto& [id, light] : directional_lights)
         {
+            if (!light || directions.size() >= MAX_DIRECTIONAL_LIGHTS)
+                continue;
+
             directions.push_back(MathUtils::to_glm(light->get_direction()));
             ambient.push_back(glm::vec3(0.9f));
             diffuse.push_back(MathUtils::to_glm(light->get_diffuse()));
@@ -243,6 +266,9 @@ namespace andromeda::rendering
 
         for (const auto& [id, point_light] : point_lights)
         {
+            if (!point_light || positions.size() >= MAX_POINT_LIGHTS)
+                continue;
+
             positions.push_back(MathUtils::to_glm(point_light->get_position()));
             ambient.push_back(MathUtils::to_glm(point_light->get_ambient()));
             diffuse.push_back(MathUtils::to_glm(point_light->get_diffuse()));

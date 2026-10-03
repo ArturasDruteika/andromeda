@@ -23,6 +23,15 @@ namespace andromeda::rendering
     class ShadowRendererOpenGL
     {
     public:
+        /// @brief Checks whether an object is luminous (self-emissive).
+        ///
+        /// Luminous objects (light objects or objects flagged as luminous) are
+        /// drawn unlit with their own color and never cast shadows.
+        ///
+        /// @param object Object to check.
+        /// @return True if the object is luminous, false otherwise.
+        static bool is_luminous(const IGeometricObject& object);
+
         /// @brief Renders a directional-light shadow map.
         ///
         /// @param objects Geometric objects indexed by object ID.

@@ -75,18 +75,17 @@ namespace andromeda::rendering
             return;
         }
 
-        if (m_is_illumination_mode)
+        // Created regardless of the initial mode, since illumination mode can be
+        // switched on after initialization (set_illumination_mode)
+        if (!m_directional_shadow_fbo.init(
+            m_directional_shadow_resolution,
+            m_directional_shadow_resolution,
+            FrameBufferType::Depth
+        ))
         {
-            if (!m_directional_shadow_fbo.init(
-                m_directional_shadow_resolution,
-                m_directional_shadow_resolution,
-                FrameBufferType::Depth
-            ))
-            {
-                spdlog::error("Failed to create shadow framebuffer");
-                de_init();
-                return;
-            }
+            spdlog::error("Failed to create shadow framebuffer");
+            de_init();
+            return;
         }
 
         if (!m_point_shadow_fbo.init(
@@ -174,17 +173,15 @@ namespace andromeda::rendering
         const int DIR_UNIT = 5;
         const int POINT_UNIT = 6;
 
-        if (has_dir)
-        {
-            glActiveTexture(GL_TEXTURE0 + DIR_UNIT);
-            glBindTexture(GL_TEXTURE_2D, m_directional_shadow_fbo.get_depth_texture());
-        }
+        // Both samplers are always bound to distinct units: two samplers of
+        // different types on the same unit make the draw call fail
+        glActiveTexture(GL_TEXTURE0 + DIR_UNIT);
+        glBindTexture(GL_TEXTURE_2D, m_directional_shadow_fbo.get_depth_texture());
 
-        if (has_point)
-        {
-            glActiveTexture(GL_TEXTURE0 + POINT_UNIT);
-            glBindTexture(GL_TEXTURE_CUBE_MAP, m_point_shadow_fbo.get_depth_cube_texture());
-        }
+        glActiveTexture(GL_TEXTURE0 + POINT_UNIT);
+        glBindTexture(GL_TEXTURE_CUBE_MAP, m_point_shadow_fbo.get_depth_cube_texture());
+
+        glActiveTexture(GL_TEXTURE0);
 
         ShaderOpenGL* shader =
             m_p_shader_manager->get_shader(ShaderOpenGLTypes::RenderableObjectsNonLuminous);
@@ -213,26 +210,22 @@ namespace andromeda::rendering
             MathUtils::to_glm(r_camera.get_position())
         );
 
+        shader->set_uniform("u_dir_shadow_map", DIR_UNIT);
+        shader->set_uniform("u_point_shadow_cube", POINT_UNIT);
+
         if (has_dir)
-        {
-            shader->set_uniform("u_dir_shadow_map", DIR_UNIT);
             shader->set_uniform("u_light_space_matrix", m_shadow_map_light_space);
 
-            ShadowRendererOpenGL::populate_directional_light_uniforms(
-                *shader,
-                scene.get_directional_lights()
-            );
-        }
+        // Called even when a light type is absent so the light count is reset to 0
+        ShadowRendererOpenGL::populate_directional_light_uniforms(
+            *shader,
+            scene.get_directional_lights()
+        );
 
-        if (has_point)
-        {
-            shader->set_uniform("u_point_shadow_cube", POINT_UNIT);
-
-            ShadowRendererOpenGL::populate_point_light_uniforms(
-                *shader,
-                scene.get_point_lights()
-            );
-        }
+        ShadowRendererOpenGL::populate_point_light_uniforms(
+            *shader,
+            scene.get_point_lights()
+        );
 
         render_each_non_luminous_object(
             *shader,
@@ -258,6 +251,7 @@ namespace andromeda::rendering
             return;
         }
 
+        m_face_culling_control_open_gl.enable_face_culling(GL_BACK, GL_CCW);
         lum_shader->bind();
 
         lum_shader->set_uniform(
@@ -275,7 +269,7 @@ namespace andromeda::rendering
             if (!obj)
                 continue;
 
-            if (!dynamic_cast<ILightObject*>(obj))
+            if (id < 0 || !ShadowRendererOpenGL::is_luminous(*obj))
                 continue;
 
             std::unordered_map<int, ITransformable*>::const_iterator transform_it =
@@ -569,7 +563,7 @@ namespace andromeda::rendering
             if (!obj)
                 continue;
 
-            if (id < 0 || dynamic_cast<ILightObject*>(obj))
+            if (id < 0 || ShadowRendererOpenGL::is_luminous(*obj))
                 continue;
 
             ISurfaceObject* surface_obj = dynamic_cast<ISurfaceObject*>(obj);
