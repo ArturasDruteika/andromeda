@@ -22,6 +22,11 @@ namespace andromeda::space
 		return m_color;
 	}
 
+	bool GeometricObject::is_luminous() const
+	{
+		return m_is_luminous;
+	}
+
 	void GeometricObject::set_mesh(const Mesh& mesh)
 	{
 		m_mesh = mesh;
@@ -30,5 +35,10 @@ namespace andromeda::space
 	void GeometricObject::set_color(const Color& color)
 	{
 		m_color = color;
+	}
+
+	void GeometricObject::set_luminous(bool luminous)
+	{
+		m_is_luminous = luminous;
 	}
 }

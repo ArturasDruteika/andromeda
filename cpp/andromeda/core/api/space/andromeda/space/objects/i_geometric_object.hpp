@@ -32,11 +32,25 @@ namespace andromeda
         /// @return Reference to the object's color.
         virtual const Color& get_color() const = 0;
 
+        /// @brief Checks whether the object is luminous (self-emissive).
+        ///
+        /// Luminous objects are rendered with their own color, unaffected by
+        /// scene lighting, and do not cast shadows. Useful for visualizing
+        /// light sources such as a sun or a light bulb.
+        ///
+        /// @return True if the object is luminous, false otherwise.
+        virtual bool is_luminous() const = 0;
+
         // Setters
 
         /// @brief Sets the object's display color.
         ///
         /// @param color New color of the object.
         virtual void set_color(const Color& color) = 0;
+
+        /// @brief Sets whether the object is luminous (self-emissive).
+        ///
+        /// @param luminous True to render the object as luminous.
+        virtual void set_luminous(bool luminous) = 0;
     };
 }

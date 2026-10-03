@@ -42,6 +42,11 @@ namespace andromeda::space
 		/// @return Object color.
 		const Color& get_color() const override;
 
+		/// @brief Checks whether the object is luminous (self-emissive).
+		///
+		/// @return True if the object is luminous, false otherwise.
+		bool is_luminous() const override;
+
 		// Setters
 
 		/// @brief Sets the object's mesh.
@@ -54,11 +59,19 @@ namespace andromeda::space
 		/// @param color New object color.
 		void set_color(const Color& color) override;
 
+		/// @brief Sets whether the object is luminous (self-emissive).
+		///
+		/// @param luminous True to render the object as luminous.
+		void set_luminous(bool luminous) override;
+
 	protected:
 		/// @brief Display color of the object.
 		Color m_color;
 
 		/// @brief Mesh describing the object's geometry.
 		Mesh m_mesh;
+
+		/// @brief Whether the object is luminous (self-emissive).
+		bool m_is_luminous = false;
 	};
 }
