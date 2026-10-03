@@ -37,6 +37,7 @@ namespace andromeda::space
 	void Scene::update(float delta_time)
 	{
 		run_update_callbacks(delta_time);
+		sync_light_transforms();
 	}
 
 }

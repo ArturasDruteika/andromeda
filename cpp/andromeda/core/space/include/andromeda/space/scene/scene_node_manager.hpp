@@ -6,8 +6,12 @@
 #include "scene_lighting.hpp"
 #include "scene_objects.hpp"
 #include "andromeda/space/scene/i_scene_node_manager.hpp"
+#include "andromeda/space/light/i_point_light.hpp"
+#include "andromeda/space/transformations/i_transformable.hpp"
 
 #include <memory>
+#include <unordered_map>
+#include <utility>
 
 
 namespace andromeda::space
@@ -50,6 +54,12 @@ namespace andromeda::space
 		/// @param id Identifier of the object to remove.
 		void remove_object(int id) override;
 
+		/// @brief Synchronizes positional lights with their scene node transforms.
+		///
+		/// Point lights attached through a LightComponent take their position
+		/// from the owning node, so moving the node moves the light.
+		void sync_light_transforms();
+
 	protected:
 		/// @brief Registers a scene node.
 		///
@@ -64,5 +74,8 @@ namespace andromeda::space
 	private:
 		/// @brief Root node of the scene graph.
 		std::unique_ptr<SceneNode> m_root_node;
+
+		/// @brief Point lights paired with the transform of their owning node.
+		std::unordered_map<int, std::pair<IPointLight*, const ITransformable*>> m_point_light_transforms;
 	};
 }

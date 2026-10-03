@@ -66,6 +66,27 @@ namespace andromeda::space
 		SceneObjects::remove_object(id);
 	}
 
+	void SceneNodeManager::sync_light_transforms()
+	{
+		for (const auto& [id, binding] : m_point_light_transforms)
+		{
+			// Skip lights that were removed from the scene since registration
+			if (m_point_lights.find(id) == m_point_lights.end())
+			{
+				continue;
+			}
+
+			IPointLight* point_light = binding.first;
+			const ITransformable* transform = binding.second;
+			if (!point_light || !transform)
+			{
+				continue;
+			}
+
+			point_light->set_position(transform->get_position());
+		}
+	}
+
 	void SceneNodeManager::register_node(SceneNode& node)
 	{
 		node.for_each_component(
@@ -80,13 +101,21 @@ namespace andromeda::space
 						return;
 					}
 
-					const ILightObject* light_object = light_component->get_light_object();
+					ILightObject* light_object = light_component->get_light_object();
 					if (!light_object)
 					{
 						return;
 					}
 
 					add_light_object(light_component->get_id(), light_object);
+
+					IPointLight* point_light = dynamic_cast<IPointLight*>(light_object);
+					if (point_light)
+					{
+						m_point_light_transforms[light_component->get_id()] =
+							std::make_pair(point_light, &node.get_transform());
+						point_light->set_position(node.get_transform().get_position());
+					}
 					return;
 				}
 

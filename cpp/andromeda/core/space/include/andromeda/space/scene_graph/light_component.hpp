@@ -10,7 +10,8 @@ namespace andromeda::space
     /// @brief Scene component that associates a light object with a scene node.
     ///
     /// Stores a reference to a light object together with its identifier so it
-    /// can be registered and managed as part of the scene graph.
+    /// can be registered and managed as part of the scene graph. Positional
+    /// lights (e.g. point lights) follow the transform of the owning node.
     class SPACE_API LightComponent
         : public SceneComponent
     {
