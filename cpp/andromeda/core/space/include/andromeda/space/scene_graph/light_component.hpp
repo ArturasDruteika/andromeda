@@ -19,7 +19,7 @@ namespace andromeda::space
         ///
         /// @param id Identifier of the light object.
         /// @param light_object Pointer to the associated light object.
-        LightComponent(int id, const ILightObject* light_object);
+        LightComponent(int id, ILightObject* light_object);
 
         /// @brief Destroys the light component.
         ~LightComponent() override;
@@ -32,13 +32,13 @@ namespace andromeda::space
         /// @brief Retrieves the associated light object.
         ///
         /// @return Pointer to the associated light object.
-        const ILightObject* get_light_object() const;
+        ILightObject* get_light_object() const;
 
     private:
         /// @brief Identifier of the associated light object.
         int m_id;
 
         /// @brief Pointer to the associated light object.
-        const ILightObject* m_light_object;
+        ILightObject* m_light_object;
     };
 }
