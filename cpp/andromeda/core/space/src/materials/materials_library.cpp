@@ -43,6 +43,35 @@ namespace andromeda::space
 			if (name == "white rubber")   return MaterialType::WhiteRubber;
 			if (name == "yellow rubber")  return MaterialType::YellowRubber;
 
+			if (name == "mercury")        return MaterialType::Mercury;
+			if (name == "venus")          return MaterialType::Venus;
+			if (name == "earth")          return MaterialType::Earth;
+			if (name == "mars")           return MaterialType::Mars;
+			if (name == "jupiter")        return MaterialType::Jupiter;
+			if (name == "saturn")         return MaterialType::Saturn;
+			if (name == "uranus")         return MaterialType::Uranus;
+			if (name == "neptune")        return MaterialType::Neptune;
+
+			if (name == "moon")           return MaterialType::Moon;
+			if (name == "phobos")         return MaterialType::Phobos;
+			if (name == "deimos")         return MaterialType::Deimos;
+			if (name == "io")             return MaterialType::Io;
+			if (name == "europa")         return MaterialType::Europa;
+			if (name == "ganymede")       return MaterialType::Ganymede;
+			if (name == "callisto")       return MaterialType::Callisto;
+			if (name == "titan")          return MaterialType::Titan;
+			if (name == "enceladus")      return MaterialType::Enceladus;
+			if (name == "rhea")           return MaterialType::Rhea;
+			if (name == "iapetus")        return MaterialType::Iapetus;
+			if (name == "miranda")        return MaterialType::Miranda;
+			if (name == "ariel")          return MaterialType::Ariel;
+			if (name == "umbriel")        return MaterialType::Umbriel;
+			if (name == "titania")        return MaterialType::Titania;
+			if (name == "oberon")         return MaterialType::Oberon;
+			if (name == "triton")         return MaterialType::Triton;
+			if (name == "nereid")         return MaterialType::Nereid;
+			if (name == "proteus")        return MaterialType::Proteus;
+
 			throw std::runtime_error("Unknown material name: " + name);
 		}
 	}

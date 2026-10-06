@@ -4,7 +4,7 @@
 namespace andromeda::space
 {
     /// @brief Enumerates the built-in material presets supported by the engine.
-    enum class MaterialType 
+    enum class MaterialType
     {
         None,
 
@@ -32,6 +32,35 @@ namespace andromeda::space
         RedRubber,
         WhiteRubber,
         YellowRubber,
+
+        Mercury,
+        Venus,
+        Earth,
+        Mars,
+        Jupiter,
+        Saturn,
+        Uranus,
+        Neptune,
+
+        Moon,
+        Phobos,
+        Deimos,
+        Io,
+        Europa,
+        Ganymede,
+        Callisto,
+        Titan,
+        Enceladus,
+        Rhea,
+        Iapetus,
+        Miranda,
+        Ariel,
+        Umbriel,
+        Titania,
+        Oberon,
+        Triton,
+        Nereid,
+        Proteus,
 
         Count  // always keep last; useful for iteration/arrays
     };
