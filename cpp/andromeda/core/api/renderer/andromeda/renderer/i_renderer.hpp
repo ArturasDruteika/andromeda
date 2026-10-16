@@ -46,7 +46,9 @@ namespace andromeda
         /// @param width Initial render target width in pixels.
         /// @param height Initial render target height in pixels.
         /// @param illumination_mode Initial illumination mode.
-        virtual void init(int width, int height, bool illumination_mode = false) = 0;
+        virtual void init(int width, 
+                          int height, bool 
+                          illumination_mode = false) = 0;
 
         /// @brief Shuts down the renderer.
         ///

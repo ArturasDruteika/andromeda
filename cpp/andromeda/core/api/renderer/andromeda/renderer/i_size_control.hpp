@@ -29,6 +29,7 @@ namespace andromeda
         ///
         /// @param width New width in pixels.
         /// @param height New height in pixels.
-        virtual void resize(int width, int height) = 0;
+        virtual void resize(int width, 
+                            int height) = 0;
     };
 }
