@@ -16,22 +16,32 @@ namespace andromeda::math
     {
         inline glm::quat to_glm(const Quaternion& q)
         {
-            return glm::quat(q.w, q.x, q.y, q.z);
+            return glm::quat(q.w,
+                             q.x,
+                             q.y,
+                             q.z);
         }
 
         inline Quaternion from_glm(const glm::quat& gq)
         {
-            return Quaternion(gq.w, gq.x, gq.y, gq.z);
+            return Quaternion(gq.w,
+                              gq.x,
+                              gq.y,
+                              gq.z);
         }
 
         inline glm::vec3 to_glm(const Vec3& v)
         {
-            return glm::vec3(v.data[0], v.data[1], v.data[2]);
+            return glm::vec3(v.data[0],
+                             v.data[1],
+                             v.data[2]);
         }
 
         inline Vec3 from_glm(const glm::vec3& gv)
         {
-            return Vec3(gv.x, gv.y, gv.z);
+            return Vec3(gv.x,
+                        gv.y,
+                        gv.z);
         }
 
         inline glm::mat4 to_glm(const Mat4& m)
@@ -66,10 +76,12 @@ namespace andromeda::math
         return Quaternion::identity();
     }
 
-    Quaternion QuaternionOps::from_axis_angle(const Vec3& axis, float angle_radians)
+    Quaternion QuaternionOps::from_axis_angle(const Vec3& axis,
+                                              float angle_radians)
     {
         glm::vec3 g_axis = to_glm(axis);
-        glm::quat gq = glm::angleAxis(angle_radians, glm::normalize(g_axis));
+        glm::quat gq = glm::angleAxis(angle_radians,
+                                      glm::normalize(g_axis));
         return from_glm(gq);
     }
 
@@ -83,7 +95,8 @@ namespace andromeda::math
         return q.w * q.w + q.x * q.x + q.y * q.y + q.z * q.z;
     }
 
-    Quaternion QuaternionOps::normalize(const Quaternion& q, float epsilon)
+    Quaternion QuaternionOps::normalize(const Quaternion& q,
+                                        float epsilon)
     {
         glm::quat g = to_glm(q);
         float len_sq = glm::dot(g, g);
@@ -99,10 +112,14 @@ namespace andromeda::math
 
     Quaternion QuaternionOps::conjugate(const Quaternion& q)
     {
-        return Quaternion(q.w, -q.x, -q.y, -q.z);
+        return Quaternion(q.w,
+                          -q.x,
+                          -q.y,
+                          -q.z);
     }
 
-    Quaternion QuaternionOps::inverse(const Quaternion& q, float epsilon)
+    Quaternion QuaternionOps::inverse(const Quaternion& q,
+                                      float epsilon)
     {
         glm::quat g = to_glm(q);
         float len_sq = glm::dot(g, g);
@@ -116,7 +133,8 @@ namespace andromeda::math
         return from_glm(g);
     }
 
-    Quaternion QuaternionOps::multiply(const Quaternion& a, const Quaternion& b)
+    Quaternion QuaternionOps::multiply(const Quaternion& a,
+                                       const Quaternion& b)
     {
         glm::quat ga = to_glm(a);
         glm::quat gb = to_glm(b);
@@ -124,56 +142,58 @@ namespace andromeda::math
         return from_glm(gr);
     }
 
-    Quaternion QuaternionOps::add(const Quaternion& a, const Quaternion& b)
+    Quaternion QuaternionOps::add(const Quaternion& a,
+                                  const Quaternion& b)
     {
         return Quaternion(a.w + b.w,
-            a.x + b.x,
-            a.y + b.y,
-            a.z + b.z);
+                          a.x + b.x,
+                          a.y + b.y,
+                          a.z + b.z);
     }
 
-    Quaternion QuaternionOps::sub(const Quaternion& a, const Quaternion& b)
+    Quaternion QuaternionOps::sub(const Quaternion& a,
+                                  const Quaternion& b)
     {
         return Quaternion(a.w - b.w,
-            a.x - b.x,
-            a.y - b.y,
-            a.z - b.z);
+                          a.x - b.x,
+                          a.y - b.y,
+                          a.z - b.z);
     }
 
-    float QuaternionOps::dot(const Quaternion& a, const Quaternion& b)
+    float QuaternionOps::dot(const Quaternion& a,
+                             const Quaternion& b)
     {
         return a.w * b.w +
-            a.x * b.x +
-            a.y * b.y +
-            a.z * b.z;
+               a.x * b.x +
+               a.y * b.y +
+               a.z * b.z;
     }
 
-    Quaternion QuaternionOps::slerp(const Quaternion& a, const Quaternion& b, float t, float epsilon)
+    Quaternion QuaternionOps::slerp(const Quaternion& a,
+                                    const Quaternion& b,
+                                    float t,
+                                    float epsilon)
     {
         if (t <= 0.0f)
-        {
             return a;
-        }
+            
         if (t >= 1.0f)
-        {
             return b;
-        }
 
         glm::quat ga = to_glm(a);
         glm::quat gb = to_glm(b);
-
         glm::quat g_res = glm::slerp(ga, gb, t);
 
         float len_sq = glm::dot(g_res, g_res);
+
         if (len_sq <= epsilon * epsilon)
-        {
             g_res = glm::normalize(g_res);
-        }
 
         return from_glm(g_res);
     }
 
-    Vec3 QuaternionOps::rotate_vector(const Quaternion& q, const Vec3& v)
+    Vec3 QuaternionOps::rotate_vector(const Quaternion& q,
+                                      const Vec3& v)
     {
         glm::quat gq = to_glm(q);
         glm::vec3 gv = to_glm(v);
@@ -181,20 +201,27 @@ namespace andromeda::math
         return from_glm(gv_rot);
     }
 
-    Quaternion QuaternionOps::angle_axis(float angle_radians, const Vec3& axis)
+    Quaternion QuaternionOps::angle_axis(float angle_radians,
+                                         const Vec3& axis)
     {
-        return from_axis_angle(axis, angle_radians);
+        return from_axis_angle(axis,
+                               angle_radians);
     }
 
-    Vec3 QuaternionOps::rotate(const Quaternion& q, const Vec3& v)
+    Vec3 QuaternionOps::rotate(const Quaternion& q,
+                               const Vec3& v)
     {
         return rotate_vector(q, v);
     }
 
-    Quaternion QuaternionOps::from_euler_xyz(float x_radians, float y_radians, float z_radians)
+    Quaternion QuaternionOps::from_euler_xyz(float x_radians,
+                                             float y_radians,
+                                             float z_radians)
     {
         // Build rotation matrix from Euler XYZ, then convert to quaternion.
-        glm::mat4 r = glm::eulerAngleXYZ(x_radians, y_radians, z_radians);
+        glm::mat4 r = glm::eulerAngleXYZ(x_radians,
+                                         y_radians,
+                                         z_radians);
         glm::quat q = glm::quat_cast(r);
         return from_glm(q);
     }

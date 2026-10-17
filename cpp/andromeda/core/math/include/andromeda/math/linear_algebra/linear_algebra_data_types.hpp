@@ -14,29 +14,34 @@ namespace andromeda::math
 
         /// @brief Constructs a zero vector.
         constexpr Vec2()
-            : data{ 0.0f, 0.0f }
+            : data{ 0.0f,
+                    0.0f }
         {
         }
 
         /// @brief Constructs the vec2 with all vector components set to the same value.
         /// @param value Value assigned to each element.
         constexpr Vec2(float value)
-            : data{ value, value }
+            : data{ value,
+                    value }
         {
         }
 
         /// @brief Constructs the vec2 from individual components.
         /// @param x X component.
         /// @param y Y component.
-        constexpr Vec2(float x, float y)
-            : data{ x, y }
+        constexpr Vec2(float x,
+                       float y)
+            : data{ x,
+                    y }
         {
         }
 
         /// @brief Copy constructor.
         /// @param other Vec2 to copy.
         constexpr Vec2(const Vec2& other)
-            : data{ other.data[0], other.data[1] }
+            : data{ other.data[0],
+                    other.data[1] }
         {
         }
 
@@ -80,7 +85,8 @@ namespace andromeda::math
         /// @param lhs Left-hand vec2.
         /// @param rhs Right-hand vec2.
         /// @return Sum of the two vec2 values.
-        friend Vec2 operator+(Vec2 lhs, const Vec2& rhs)
+        friend Vec2 operator+(Vec2 lhs,
+                              const Vec2& rhs)
         {
             return lhs += rhs;
         }
@@ -89,7 +95,8 @@ namespace andromeda::math
         /// @param lhs Left-hand vec2.
         /// @param rhs Right-hand vec2.
         /// @return Difference between the two vec2 values.
-        friend Vec2 operator-(Vec2 lhs, const Vec2& rhs)
+        friend Vec2 operator-(Vec2 lhs,
+                              const Vec2& rhs)
         {
             return lhs -= rhs;
         }
@@ -126,14 +133,18 @@ namespace andromeda::math
 
         /// @brief Constructs a zero vector.
         constexpr Vec3()
-            : data{ 0.0f, 0.0f, 0.0f }
+            : data{ 0.0f,
+                    0.0f,
+                    0.0f }
         {
         }
 
         /// @brief Constructs the vec3 with all vector components set to the same value.
         /// @param value Value assigned to each element.
         constexpr Vec3(float value)
-            : data{ value, value, value }
+            : data{ value,
+                    value,
+                    value }
         {
         }
 
@@ -141,15 +152,21 @@ namespace andromeda::math
         /// @param x X component.
         /// @param y Y component.
         /// @param z Z component.
-        constexpr Vec3(float x, float y, float z)
-            : data{ x, y, z }
+        constexpr Vec3(float x,
+                       float y,
+                       float z)
+            : data{ x,
+                    y,
+                    z }
         {
         }
 
         /// @brief Copy constructor.
         /// @param other Vec3 to copy.
         constexpr Vec3(const Vec3& other)
-            : data{ other.data[0], other.data[1], other.data[2] }
+            : data{ other.data[0],
+                    other.data[1],
+                    other.data[2] }
         {
         }
 
@@ -161,7 +178,7 @@ namespace andromeda::math
             return data[index];
         }
 
-                /// @brief Provides read-only access to an element.
+        /// @brief Provides read-only access to an element.
         /// @param index Zero-based element index.
         /// @return Constant reference to the requested element.
         constexpr const float& operator[](int index) const
@@ -195,7 +212,8 @@ namespace andromeda::math
         /// @param lhs Left-hand vec3.
         /// @param rhs Right-hand vec3.
         /// @return Sum of the two vec3 values.
-        friend Vec3 operator+(Vec3 lhs, const Vec3& rhs)
+        friend Vec3 operator+(Vec3 lhs,
+                              const Vec3& rhs)
         {
             return lhs += rhs;
         }
@@ -204,7 +222,8 @@ namespace andromeda::math
         /// @param lhs Left-hand vec3.
         /// @param rhs Right-hand vec3.
         /// @return Difference between the two vec3 values.
-        friend Vec3 operator-(Vec3 lhs, const Vec3& rhs)
+        friend Vec3 operator-(Vec3 lhs,
+                              const Vec3& rhs)
         {
             return lhs -= rhs;
         }
@@ -215,8 +234,8 @@ namespace andromeda::math
         bool operator==(const Vec3& other) const
         {
             return data[0] == other.data[0] &&
-                data[1] == other.data[1] &&
-                data[2] == other.data[2];
+                   data[1] == other.data[1] &&
+                   data[2] == other.data[2];
         }
 
         /// @brief Compares two vec3 values for inequality.
@@ -243,14 +262,20 @@ namespace andromeda::math
 
         /// @brief Constructs a zero vector.
         constexpr Vec4()
-            : data{ 0.0f, 0.0f, 0.0f, 0.0f }
+            : data{ 0.0f,
+                    0.0f,
+                    0.0f,
+                    0.0f }
         {
         }
 
         /// @brief Constructs the vec4 with all vector components set to the same value.
         /// @param value Value assigned to each element.
         constexpr Vec4(float value)
-            : data{ value, value, value, value }
+            : data{ value,
+                    value,
+                    value,
+                    value }
         {
         }
 
@@ -259,15 +284,24 @@ namespace andromeda::math
         /// @param y Y component.
         /// @param z Z component.
         /// @param w W component.
-        constexpr Vec4(float x, float y, float z, float w)
-            : data{ x, y, z, w }
+        constexpr Vec4(float x,
+                       float y,
+                       float z,
+                       float w)
+            : data{ x,
+                    y,
+                    z,
+                    w }
         {
         }
 
         /// @brief Copy constructor.
         /// @param other Vec4 to copy.
         constexpr Vec4(const Vec4& other)
-            : data{ other.data[0], other.data[1], other.data[2], other.data[3] }
+            : data{ other.data[0],
+                    other.data[1],
+                    other.data[2],
+                    other.data[3] }
         {
         }
 
@@ -315,7 +349,8 @@ namespace andromeda::math
         /// @param lhs Left-hand vec4.
         /// @param rhs Right-hand vec4.
         /// @return Sum of the two vec4 values.
-        friend Vec4 operator+(Vec4 lhs, const Vec4& rhs)
+        friend Vec4 operator+(Vec4 lhs,
+                              const Vec4& rhs)
         {
             return lhs += rhs;
         }
@@ -325,7 +360,8 @@ namespace andromeda::math
         /// @param rhs Right-hand vec4.
 
         /// @return Difference between the two vec4 values.
-        friend Vec4 operator-(Vec4 lhs, const Vec4& rhs)
+        friend Vec4 operator-(Vec4 lhs,
+                              const Vec4& rhs)
         {
             return lhs -= rhs;
         }
@@ -336,9 +372,9 @@ namespace andromeda::math
         bool operator==(const Vec4& other) const
         {
             return data[0] == other.data[0] &&
-                data[1] == other.data[1] &&
-                data[2] == other.data[2] &&
-                data[3] == other.data[3];
+                   data[1] == other.data[1] &&
+                   data[2] == other.data[2] &&
+                   data[3] == other.data[3];
         }
 
         /// @brief Compares two vec4 values for inequality.
@@ -365,32 +401,34 @@ namespace andromeda::math
 
         /// @brief Constructs an identity matrix.
         constexpr Mat2()
-            : data{
-                Vec2(1.0f, 0.0f),
-                Vec2(0.0f, 1.0f)
-            }
+            : data{ Vec2(1.0f, 0.0f),
+                    Vec2(0.0f, 1.0f) }
         {
         }
 
         /// @brief Constructs the mat2 with all matrix elements set to the same value.
         /// @param value Value assigned to each element.
         constexpr Mat2(float value)
-            : data{ Vec2(value), Vec2(value) }
+            : data{ Vec2(value),
+                    Vec2(value) }
         {
         }
 
         /// @brief Constructs the mat2 from row vectors.
         /// @param row0 Matrix row.
         /// @param row1 Matrix row.
-        constexpr Mat2(const Vec2& row0, const Vec2& row1)
-            : data{ row0, row1 }
+        constexpr Mat2(const Vec2& row0,
+                       const Vec2& row1)
+            : data{ row0,
+                    row1 }
         {
         }
 
         /// @brief Copy constructor.
         /// @param other Mat2 to copy.
         constexpr Mat2(const Mat2& other)
-            : data{ other.data[0], other.data[1] }
+            : data{ other.data[0],
+                    other.data[1] }
         {
         }
 
@@ -442,18 +480,18 @@ namespace andromeda::math
 
         /// @brief Constructs an identity matrix.
         constexpr Mat3()
-            : data{
-                Vec3(1.0f, 0.0f, 0.0f),
-                Vec3(0.0f, 1.0f, 0.0f),
-                Vec3(0.0f, 0.0f, 1.0f)
-            }
+            : data{ Vec3(1.0f, 0.0f, 0.0f),
+                    Vec3(0.0f, 1.0f, 0.0f),
+                    Vec3(0.0f, 0.0f, 1.0f) }
         {
         }
 
         /// @brief Constructs the mat3 with all matrix elements set to the same value.
         /// @param value Value assigned to each element.
         constexpr Mat3(float value)
-            : data{ Vec3(value), Vec3(value), Vec3(value) }
+            : data{ Vec3(value),
+                    Vec3(value),
+                    Vec3(value) }
         {
         }
 
@@ -461,15 +499,21 @@ namespace andromeda::math
         /// @param row0 Matrix row.
         /// @param row1 Matrix row.
         /// @param row2 Matrix row.
-        constexpr Mat3(const Vec3& row0, const Vec3& row1, const Vec3& row2)
-            : data{ row0, row1, row2 }
+        constexpr Mat3(const Vec3& row0,
+                       const Vec3& row1,
+                       const Vec3& row2)
+            : data{ row0,
+                    row1,
+                    row2 }
         {
         }
 
         /// @brief Copy constructor.
         /// @param other Mat3 to copy.
         constexpr Mat3(const Mat3& other)
-            : data{ other.data[0], other.data[1], other.data[2] }
+            : data{ other.data[0],
+                    other.data[1],
+                    other.data[2] }
         {
         }
 
@@ -495,8 +539,8 @@ namespace andromeda::math
         bool operator==(const Mat3& other) const
         {
             return data[0] == other.data[0] &&
-                data[1] == other.data[1] &&
-                data[2] == other.data[2];
+                   data[1] == other.data[1] &&
+                   data[2] == other.data[2];
         }
 
         /// @brief Compares two mat3 values for inequality.
@@ -523,19 +567,20 @@ namespace andromeda::math
 
         /// @brief Constructs an identity matrix.
         constexpr Mat4()
-            : data{
-                Vec4(1.0f, 0.0f, 0.0f, 0.0f),
-                Vec4(0.0f, 1.0f, 0.0f, 0.0f),
-                Vec4(0.0f, 0.0f, 1.0f, 0.0f),
-                Vec4(0.0f, 0.0f, 0.0f, 1.0f)
-            }
+            : data{ Vec4(1.0f, 0.0f, 0.0f, 0.0f),
+                    Vec4(0.0f, 1.0f, 0.0f, 0.0f),
+                    Vec4(0.0f, 0.0f, 1.0f, 0.0f),
+                    Vec4(0.0f, 0.0f, 0.0f, 1.0f) }
         {
         }
 
         /// @brief Constructs the mat4 with all matrix elements set to the same value.
         /// @param value Value assigned to each element.
         constexpr Mat4(float value)
-            : data{ Vec4(value), Vec4(value), Vec4(value), Vec4(value) }
+            : data{ Vec4(value),
+                    Vec4(value),
+                    Vec4(value),
+                    Vec4(value) }
         {
         }
 
@@ -544,15 +589,24 @@ namespace andromeda::math
         /// @param row1 Matrix row.
         /// @param row2 Matrix row.
         /// @param row3 Matrix row.
-        constexpr Mat4(const Vec4& row0, const Vec4& row1, const Vec4& row2, const Vec4& row3)
-            : data{ row0, row1, row2, row3 }
+        constexpr Mat4(const Vec4& row0,
+                       const Vec4& row1,
+                       const Vec4& row2,
+                       const Vec4& row3)
+            : data{ row0,
+                    row1,
+                    row2,
+                    row3 }
         {
         }
 
         /// @brief Copy constructor.
         /// @param other Mat4 to copy.
         constexpr Mat4(const Mat4& other)
-            : data{ other.data[0], other.data[1], other.data[2], other.data[3] }
+            : data{ other.data[0],
+                    other.data[1],
+                    other.data[2],
+                    other.data[3] }
         {
         }
 
@@ -578,9 +632,9 @@ namespace andromeda::math
         bool operator==(const Mat4& other) const
         {
             return data[0] == other.data[0] &&
-                data[1] == other.data[1] &&
-                data[2] == other.data[2] &&
-                data[3] == other.data[3];
+                   data[1] == other.data[1] &&
+                   data[2] == other.data[2] &&
+                   data[3] == other.data[3];
         }
 
         /// @brief Compares two mat4 values for inequality.
@@ -607,34 +661,44 @@ namespace andromeda::math
     /// @param v Vec2 to multiply.
     /// @param s Scalar multiplier.
     /// @return Scaled vec2.
-    inline Vec2 operator*(const Vec2& v, float s)
+    inline Vec2 operator*(const Vec2& v,
+                          float s)
     {
-        return Vec2(v[0] * s, v[1] * s);
+        return Vec2(v[0] * s,
+                    v[1] * s);
     }
 
     /// @brief Multiplies a vec3 by a scalar.
     /// @param v Vec3 to multiply.
     /// @param s Scalar multiplier.
     /// @return Scaled vec3.
-    inline Vec3 operator*(const Vec3& v, float s)
+    inline Vec3 operator*(const Vec3& v,
+                          float s)
     {
-        return Vec3(v[0] * s, v[1] * s, v[2] * s);
+        return Vec3(v[0] * s,
+                    v[1] * s,
+                    v[2] * s);
     }
 
     /// @brief Multiplies a vec4 by a scalar.
     /// @param v Vec4 to multiply.
     /// @param s Scalar multiplier.
     /// @return Scaled vec4.
-    inline Vec4 operator*(const Vec4& v, float s)
+    inline Vec4 operator*(const Vec4& v,
+                          float s)
     {
-        return Vec4(v[0] * s, v[1] * s, v[2] * s, v[3] * s);
+        return Vec4(v[0] * s,
+                    v[1] * s,
+                    v[2] * s,
+                    v[3] * s);
     }
 
     /// @brief Multiplies a scalar by a vector.
     /// @param s Scalar multiplier.
     /// @param v Vec2 to multiply.
     /// @return Scaled vec2.
-    inline Vec2 operator*(float s, const Vec2& v)
+    inline Vec2 operator*(float s,
+                          const Vec2& v)
     {
         return v * s;
     }
@@ -643,7 +707,8 @@ namespace andromeda::math
     /// @param s Scalar multiplier.
     /// @param v Vec3 to multiply.
     /// @return Scaled vec3.
-    inline Vec3 operator*(float s, const Vec3& v)
+    inline Vec3 operator*(float s,
+                          const Vec3& v)
     {
         return v * s;
     }
@@ -652,7 +717,8 @@ namespace andromeda::math
     /// @param s Scalar multiplier.
     /// @param v Vec4 to multiply.
     /// @return Scaled vec4.
-    inline Vec4 operator*(float s, const Vec4& v)
+    inline Vec4 operator*(float s,
+                          const Vec4& v)
     {
         return v * s;
     }
@@ -665,39 +731,36 @@ namespace andromeda::math
     /// @param m Mat2 operand.
     /// @param v Vec2 operand.
     /// @return Transformed vec2.
-    inline Vec2 operator*(const Mat2& m, const Vec2& v)
+    inline Vec2 operator*(const Mat2& m,
+                          const Vec2& v)
     {
-        return Vec2(
-            m[0][0] * v[0] + m[0][1] * v[1],
-            m[1][0] * v[0] + m[1][1] * v[1]
-        );
+        return Vec2(m[0][0] * v[0] + m[0][1] * v[1],
+                    m[1][0] * v[0] + m[1][1] * v[1]);
     }
 
     /// @brief Multiplies a mat3 by a vec3.
     /// @param m Mat3 operand.
     /// @param v Vec3 operand.
     /// @return Transformed vec3.
-    inline Vec3 operator*(const Mat3& m, const Vec3& v)
+    inline Vec3 operator*(const Mat3& m,
+                          const Vec3& v)
     {
-        return Vec3(
-            m[0][0] * v[0] + m[0][1] * v[1] + m[0][2] * v[2],
-            m[1][0] * v[0] + m[1][1] * v[1] + m[1][2] * v[2],
-            m[2][0] * v[0] + m[2][1] * v[1] + m[2][2] * v[2]
-        );
+        return Vec3(m[0][0] * v[0] + m[0][1] * v[1] + m[0][2] * v[2],
+                    m[1][0] * v[0] + m[1][1] * v[1] + m[1][2] * v[2],
+                    m[2][0] * v[0] + m[2][1] * v[1] + m[2][2] * v[2]);
     }
 
     /// @brief Multiplies a mat4 by a vec4.
     /// @param m Mat4 operand.
     /// @param v Vec4 operand.
     /// @return Transformed vec4.
-    inline Vec4 operator*(const Mat4& m, const Vec4& v)
+    inline Vec4 operator*(const Mat4& m,
+                          const Vec4& v)
     {
-        return Vec4(
-            m[0][0] * v[0] + m[0][1] * v[1] + m[0][2] * v[2] + m[0][3] * v[3],
-            m[1][0] * v[0] + m[1][1] * v[1] + m[1][2] * v[2] + m[1][3] * v[3],
-            m[2][0] * v[0] + m[2][1] * v[1] + m[2][2] * v[2] + m[2][3] * v[3],
-            m[3][0] * v[0] + m[3][1] * v[1] + m[3][2] * v[2] + m[3][3] * v[3]
-        );
+        return Vec4(m[0][0] * v[0] + m[0][1] * v[1] + m[0][2] * v[2] + m[0][3] * v[3],
+                    m[1][0] * v[0] + m[1][1] * v[1] + m[1][2] * v[2] + m[1][3] * v[3],
+                    m[2][0] * v[0] + m[2][1] * v[1] + m[2][2] * v[2] + m[2][3] * v[3],
+                    m[3][0] * v[0] + m[3][1] * v[1] + m[3][2] * v[2] + m[3][3] * v[3]);
     }
 
     // ============================================================
@@ -708,7 +771,8 @@ namespace andromeda::math
     /// @param a Left-hand mat2.
     /// @param b Right-hand mat2.
     /// @return Product of the two mat2 values.
-    inline Mat2 operator*(const Mat2& a, const Mat2& b)
+    inline Mat2 operator*(const Mat2& a,
+                          const Mat2& b)
     {
         Mat2 result;
 
@@ -731,7 +795,8 @@ namespace andromeda::math
     /// @param a Left-hand mat3.
     /// @param b Right-hand mat3.
     /// @return Product of the two mat3 values.
-    inline Mat3 operator*(const Mat3& a, const Mat3& b)
+    inline Mat3 operator*(const Mat3& a,
+                          const Mat3& b)
     {
         Mat3 result;
 
@@ -755,7 +820,8 @@ namespace andromeda::math
     /// @param a Left-hand mat4.
     /// @param b Right-hand mat4.
     /// @return Product of the two mat4 values.
-    inline Mat4 operator*(const Mat4& a, const Mat4& b)
+    inline Mat4 operator*(const Mat4& a,
+                          const Mat4& b)
     {
         Mat4 result;
 
@@ -784,7 +850,8 @@ namespace andromeda::math
     /// @param a Mat2 to modify.
     /// @param b Mat2 multiplier.
     /// @return Reference to the modified mat2.
-    inline Mat2& operator*=(Mat2& a, const Mat2& b)
+    inline Mat2& operator*=(Mat2& a,
+                            const Mat2& b)
     {
         a = a * b;
         return a;
@@ -794,7 +861,8 @@ namespace andromeda::math
     /// @param a Mat3 to modify.
     /// @param b Mat3 multiplier.
     /// @return Reference to the modified mat3.
-    inline Mat3& operator*=(Mat3& a, const Mat3& b)
+    inline Mat3& operator*=(Mat3& a,
+                            const Mat3& b)
     {
         a = a * b;
         return a;
@@ -804,7 +872,8 @@ namespace andromeda::math
     /// @param a Mat4 to modify.
     /// @param b Mat4 multiplier.
     /// @return Reference to the modified mat4.
-    inline Mat4& operator*=(Mat4& a, const Mat4& b)
+    inline Mat4& operator*=(Mat4& a,
+                            const Mat4& b)
     {
         a = a * b;
         return a;
