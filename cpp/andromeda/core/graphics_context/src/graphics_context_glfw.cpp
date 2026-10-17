@@ -28,14 +28,14 @@ namespace andromeda::graphics_context
         window::WindowGLFW* p_window_glfw = dynamic_cast<window::WindowGLFW*>(&window);
         if (p_window_glfw == nullptr)
         {
-            spdlog::error("GraphicsContextGLFW::init - Invalid window type (expected WindowGLFW).");
+            spdlog::error("Failed to initialize graphics context: incompatible window type.");
             return false;
         }
 
         m_p_glfw_window = static_cast<GLFWwindow*>(p_window_glfw->get_native_handle());
         if (!m_p_glfw_window)
         {
-            spdlog::error("GraphicsContextGLFW::init - GLFWwindow* is null.");
+            spdlog::error("Failed to initialize graphics context: native window handle is null.");
             return false;
         }
 
@@ -44,7 +44,7 @@ namespace andromeda::graphics_context
 
         if (glfwGetCurrentContext() == nullptr)
         {
-            spdlog::error("GraphicsContextGLFW::init - Failed to make OpenGL context current.");
+            spdlog::error("Failed to initialize graphics context: unable to activate OpenGL context.");
             return false;
         }
 
@@ -54,7 +54,7 @@ namespace andromeda::graphics_context
 
         if (!load_glad())
         {
-            spdlog::error("GraphicsContextGLFW::init - load_glad() failed.");
+            spdlog::error("Failed to initialize graphics context: unable to load OpenGL functions.");
             return false;
         }
 
@@ -66,7 +66,7 @@ namespace andromeda::graphics_context
     {
         if (!m_initialized || !m_p_glfw_window)
         {
-            spdlog::warn("GraphicsContextGLFW::make_current called but context is not initialized.");
+            spdlog::warn("Cannot activate graphics context: context is not initialized.");
             return;
         }
 
@@ -74,7 +74,7 @@ namespace andromeda::graphics_context
 
         if (glfwGetCurrentContext() == nullptr)
         {
-            spdlog::error("GraphicsContextGLFW::make_current - Failed to make OpenGL context current.");
+            spdlog::error("Failed to activate OpenGL context.");
         }
     }
 
@@ -82,7 +82,7 @@ namespace andromeda::graphics_context
     {
         if (!m_initialized || !m_p_glfw_window)
         {
-            spdlog::warn("GraphicsContextGLFW::present called but context is not initialized.");
+            spdlog::warn("Cannot present frame: graphics context is not initialized.");
             return;
         }
 
@@ -105,7 +105,7 @@ namespace andromeda::graphics_context
         int glad_version = gladLoadGL(glfwGetProcAddress);
         if (glad_version == 0)
         {
-            spdlog::error("GraphicsContextGLFW::load_glad - Failed to initialize GLAD (gladLoadGL returned 0).");
+            spdlog::error("Failed to load OpenGL functions: graphics function loader initialization failed.");
             return false;
         }
 
@@ -122,7 +122,7 @@ namespace andromeda::graphics_context
         }
         else
         {
-            spdlog::warn("OpenGL version string is null (glGetString(GL_VERSION) failed).");
+            spdlog::warn("Unable to retrieve OpenGL version information.");
         }
 
         return true;
