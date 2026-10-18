@@ -10,10 +10,9 @@ namespace andromeda::utils
 	std::string FileOperations::load_file_as_string(const std::string& file_path)
 	{
 		std::ifstream file(file_path);
+
 		if (!file.is_open())
-		{
 			throw std::runtime_error("Failed to open file: " + file_path);
-		}
 
 		std::stringstream shader_stream;
 		shader_stream << file.rdbuf();
@@ -23,10 +22,9 @@ namespace andromeda::utils
 	std::string FileOperations::load_file_as_string(const std::filesystem::path& file_path)
 	{
 		std::ifstream file(file_path);
+		
 		if (!file.is_open())
-		{
 			throw std::runtime_error("Failed to open file: " + file_path.string());
-		}
 
 		std::stringstream shader_stream;
 		shader_stream << file.rdbuf();
