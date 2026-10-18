@@ -34,7 +34,9 @@ namespace andromeda::platform
         return m_graphics_backend;
     }
 
-    bool Platform::init(int width, int height, const std::string& title)
+    bool Platform::init(int width, 
+                        int height, 
+                        const std::string& title)
     {
         if (m_initialized)
         {
@@ -42,10 +44,8 @@ namespace andromeda::platform
             return true;
         }
 
-        spdlog::info(
-            "Platform::init() starting for backend {}",
-            graphics_backend_string(m_graphics_backend)
-        );
+        spdlog::info("Platform::init() starting for backend {}",
+                     graphics_backend_string(m_graphics_backend));
 
         // GLFW init is shared for now (OpenGL / Vulkan both need it in your current setup)
         if (!glfwInit())
@@ -57,6 +57,7 @@ namespace andromeda::platform
         try
         {
             create_window(width, height, title);
+
             if (!m_p_window)
             {
                 spdlog::error("Platform::init() failed: window creation returned nullptr.");
@@ -65,6 +66,7 @@ namespace andromeda::platform
             }
 
             create_graphics_context();
+
             if (!m_p_graphics_context)
             {
                 spdlog::error("Platform::init() failed: graphics context creation returned nullptr.");
@@ -120,23 +122,16 @@ namespace andromeda::platform
     void Platform::shutdown()
     {
         if (!m_initialized)
-        {
             return;
-        }
 
         spdlog::info("Platform::shutdown() starting.");
 
         // Destroy window and context; GLFWWindow internally destroys GLFWwindow.
         if (m_p_graphics_context)
-        {
-            // no explicit de_init on context for now; RAII via destructor
             m_p_graphics_context.reset();
-        }
 
         if (m_p_window)
-        {
             m_p_window.reset();
-        }
 
         glfwTerminate();
 
@@ -147,50 +142,44 @@ namespace andromeda::platform
     IGraphicsContext* Platform::get_graphics_context() const
     {
         if (!m_p_graphics_context)
-        {
             spdlog::warn("Platform::get_graphics_context() called but graphics context is nullptr.");
-        }
+
         return m_p_graphics_context.get();
     }
 
     IWindow* Platform::get_window() const
     {
         if (!m_p_window)
-        {
             spdlog::warn("Platform::get_window() called but window is nullptr.");
-        }
+
         return m_p_window.get();
     }
 
     void Platform::create_window(int width, int height, const std::string& title)
     {
-        spdlog::info(
-            "Platform::create_window() for backend {}",
-            graphics_backend_string(m_graphics_backend)
-        );
+        spdlog::info("Platform::create_window() for backend {}",
+                     graphics_backend_string(m_graphics_backend));
 
         try
         {
             switch (m_graphics_backend)
             {
-            case GraphicsBackend::OpenGL:
-            case GraphicsBackend::Vulkan:
-                // For now both use GLFWWindow
-                m_p_window = std::make_unique<window::WindowGLFW>(width, height, title, true);
-                if (!m_p_window)
-                {
-                    spdlog::error("Platform::create_window() - WindowGLFW creation returned nullptr.");
-                }
-                break;
+                case GraphicsBackend::OpenGL:
+                case GraphicsBackend::Vulkan:
+                    // For now both use GLFWWindow
+                    m_p_window = std::make_unique<window::WindowGLFW>(width, height, title, true);
 
-            case GraphicsBackend::None:
-            default:
-                spdlog::error(
-                    "Platform::create_window(): Unsupported graphics backend {}.",
-                    graphics_backend_string(m_graphics_backend)
-                );
-                m_p_window.reset();
-                break;
+                    if (!m_p_window)
+                        spdlog::error("Platform::create_window() - WindowGLFW creation returned nullptr.");
+
+                    break;
+
+                case GraphicsBackend::None:
+                default:
+                    spdlog::error("Platform::create_window(): Unsupported graphics backend {}.",
+                                  graphics_backend_string(m_graphics_backend));
+                    m_p_window.reset();
+                    break;
             }
         }
         catch (const std::exception& ex)
@@ -207,33 +196,29 @@ namespace andromeda::platform
 
     void Platform::create_graphics_context()
     {
-        spdlog::info(
-            "Platform::create_graphics_context() for backend {}",
-            graphics_backend_string(m_graphics_backend)
-        );
+        spdlog::info("Platform::create_graphics_context() for backend {}",
+                     graphics_backend_string(m_graphics_backend));
 
         try
         {
             switch (m_graphics_backend)
             {
-            case GraphicsBackend::OpenGL:
-                m_p_graphics_context = std::make_unique<graphics_context::GraphicsContextGLFW>();
-                spdlog::info("Platform::create_graphics_context() created OpenGL (GLFW) graphics context.");
-                break;
+                case GraphicsBackend::OpenGL:
+                    m_p_graphics_context = std::make_unique<graphics_context::GraphicsContextGLFW>();
+                    spdlog::info("Platform::create_graphics_context() created OpenGL (GLFW) graphics context.");
+                    break;
 
-            case GraphicsBackend::Vulkan:
-                spdlog::warn("Platform::create_graphics_context(): Vulkan backend not implemented yet.");
-                m_p_graphics_context.reset();
-                break;
+                case GraphicsBackend::Vulkan:
+                    spdlog::warn("Platform::create_graphics_context(): Vulkan backend not implemented yet.");
+                    m_p_graphics_context.reset();
+                    break;
 
-            case GraphicsBackend::None:
-            default:
-                spdlog::error(
-                    "Platform::create_graphics_context(): Unsupported graphics backend {}.",
-                    graphics_backend_string(m_graphics_backend)
-                );
-                m_p_graphics_context.reset();
-                break;
+                case GraphicsBackend::None:
+                default:
+                    spdlog::error("Platform::create_graphics_context(): Unsupported graphics backend {}.",
+                                  graphics_backend_string(m_graphics_backend));
+                    m_p_graphics_context.reset();
+                    break;
             }
         }
         catch (const std::exception& ex)
@@ -253,10 +238,8 @@ namespace andromeda
 {
     std::unique_ptr<IPlatform> create_platform(const GraphicsBackend& graphics_backend)
     {
-        spdlog::info(
-            "create_platform() called with backend {}",
-            graphics_backend_string(graphics_backend)
-        );
+        spdlog::info("create_platform() called with backend {}",
+                     graphics_backend_string(graphics_backend));
 
         try
         {
