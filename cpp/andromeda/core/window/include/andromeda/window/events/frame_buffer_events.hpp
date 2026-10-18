@@ -22,7 +22,8 @@ namespace andromeda::window
         ///
         /// @param width New window width in pixels.
         /// @param height New window height in pixels.
-        WindowResizeEvent(int width, int height);
+        WindowResizeEvent(int width, 
+                          int height);
 
         /// @brief Destroys the window resize event.
         ~WindowResizeEvent() override;
@@ -123,7 +124,8 @@ namespace andromeda::window
         ///
         /// @param width New framebuffer width in pixels.
         /// @param height New framebuffer height in pixels.
-        FramebufferResizeEvent(int width, int height);
+        FramebufferResizeEvent(int width, 
+                               int height);
 
         /// @brief Destroys the framebuffer resize event.
         ~FramebufferResizeEvent() override;

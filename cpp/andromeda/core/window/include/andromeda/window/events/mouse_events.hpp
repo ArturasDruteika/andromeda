@@ -23,7 +23,8 @@ namespace andromeda::window
         ///
         /// @param x Mouse cursor X-coordinate.
         /// @param y Mouse cursor Y-coordinate.
-        MouseMovedEvent(float x, float y);
+        MouseMovedEvent(float x, 
+                        float y);
 
         /// @brief Destroys the mouse movement event.
         ~MouseMovedEvent() override = default;
@@ -84,7 +85,8 @@ namespace andromeda::window
         ///
         /// @param x_offset Horizontal scroll offset.
         /// @param y_offset Vertical scroll offset.
-        MouseScrolledEvent(float x_offset, float y_offset);
+        MouseScrolledEvent(float x_offset, 
+                           float y_offset);
 
         /// @brief Destroys the mouse scroll event.
         ~MouseScrolledEvent() override = default;

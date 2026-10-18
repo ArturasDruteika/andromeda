@@ -37,12 +37,10 @@ namespace andromeda::window
 		/// @param title Initial window title.
 		/// @param init_window `true` to initialize the window immediately;
 		/// otherwise, `false`.
-		WindowGLFW(
-			int width = DEFAULT_WINDOW_WIDTH,
-			int height = DEFAULT_WINDOW_HEIGHT,
-			const std::string& title = "Andromeda Window",
-			bool init_window = true
-		);
+		WindowGLFW(int width = DEFAULT_WINDOW_WIDTH,
+				   int height = DEFAULT_WINDOW_HEIGHT,
+				   const std::string& title = "Andromeda Window",
+				   bool init_window = true);
 
 		/// @brief Destroys the GLFW window.
 		~WindowGLFW() override;
@@ -116,7 +114,9 @@ namespace andromeda::window
 		/// @param window GLFW window that generated the callback.
 		/// @param width New window width in pixels.
 		/// @param height New window height in pixels.
-		static void resize_window(GLFWwindow* window, int width, int height);
+		static void resize_window(GLFWwindow* window, 
+								  int width, 
+								  int height);
 
 		/// @brief Handles GLFW window close callbacks.
 		///
@@ -130,7 +130,11 @@ namespace andromeda::window
 		/// @param scancode Platform-specific key scancode.
 		/// @param action Key action.
 		/// @param mods Modifier key flags.
-		static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+		static void key_callback(GLFWwindow* window, 
+								 int key, 
+								 int scancode, 
+								 int action, 
+								 int mods);
 
 		/// @brief Handles GLFW mouse button callbacks.
 		///
@@ -138,21 +142,28 @@ namespace andromeda::window
 		/// @param button Mouse button code.
 		/// @param action Button action.
 		/// @param mods Modifier key flags.
-		static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+		static void mouse_button_callback(GLFWwindow* window, 
+										  int button, 
+										  int action, 
+										  int mods);
 
 		/// @brief Handles GLFW mouse scroll callbacks.
 		///
 		/// @param window GLFW window that generated the callback.
 		/// @param x_offset Horizontal scroll offset.
 		/// @param y_offset Vertical scroll offset.
-		static void mouse_scroll_callback(GLFWwindow* window, double x_offset, double y_offset);
+		static void mouse_scroll_callback(GLFWwindow* window, 
+										  double x_offset, 
+										  double y_offset);
 
 		/// @brief Handles GLFW mouse movement callbacks.
 		///
 		/// @param window GLFW window that generated the callback.
 		/// @param x_pos Cursor X-coordinate.
 		/// @param y_pos Cursor Y-coordinate.
-		static void mouse_move_callback(GLFWwindow* window, double x_pos, double y_pos);
+		static void mouse_move_callback(GLFWwindow* window, 
+										double x_pos, 
+										double y_pos);
 
 	private:
 		/// @brief Indicates whether the window has been initialized.

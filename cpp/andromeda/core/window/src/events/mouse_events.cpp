@@ -8,7 +8,8 @@ namespace andromeda::window
 {
     // MouseMovedEvent
 
-    MouseMovedEvent::MouseMovedEvent(float x, float y)
+    MouseMovedEvent::MouseMovedEvent(float x, 
+                                     float y)
         : m_x{ x }
         , m_y{ y }
     {
@@ -32,7 +33,7 @@ namespace andromeda::window
     int MouseMovedEvent::get_category_flags() const
     {
         return EventCategoryMouse |
-            EventCategoryInput;
+               EventCategoryInput;
     }
 
     std::string MouseMovedEvent::get_name() const
@@ -54,7 +55,8 @@ namespace andromeda::window
 
     // MouseScrolledEvent
 
-    MouseScrolledEvent::MouseScrolledEvent(float x_offset, float y_offset)
+    MouseScrolledEvent::MouseScrolledEvent(float x_offset, 
+                                           float y_offset)
         : m_x_offset{ x_offset }
         , m_y_offset{ y_offset }
     {
@@ -118,8 +120,8 @@ namespace andromeda::window
     int MouseButtonEvent::get_category_flags() const
     {
         return EventCategoryMouse |
-            EventCategoryInput |
-            EventCategoryMouseButton;
+               EventCategoryInput |
+               EventCategoryMouseButton;
     }
 
     // MouseButtonPressedEvent
