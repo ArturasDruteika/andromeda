@@ -27,7 +27,8 @@ namespace andromeda::space
 		return m_object_transforms;
 	}
 
-	void SceneObjects::add_object(int id, IGeometricObject* object)
+	void SceneObjects::add_object(int id, 
+								  IGeometricObject* object)
 	{
 		m_objects[id] = object;
 	}
@@ -35,10 +36,10 @@ namespace andromeda::space
 	void SceneObjects::remove_object(int id)
 	{
 		std::unordered_map<int, IGeometricObject*>::iterator it = m_objects.find(id);
+
 		if (it != m_objects.end())
-		{
 			m_objects.erase(it);
-		}
+		
 		m_object_transforms.erase(id);
 	}
 

@@ -3,7 +3,8 @@
 
 namespace andromeda::space
 {
-    ObjectComponent::ObjectComponent(int id, IGeometricObject* object)
+    ObjectComponent::ObjectComponent(int id, 
+                                     IGeometricObject* object)
         : m_id{ id }
         , m_object{ object }
     {

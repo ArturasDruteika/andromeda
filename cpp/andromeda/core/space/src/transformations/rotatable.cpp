@@ -8,7 +8,7 @@ namespace andromeda
         : m_state_changed{ false }
         , m_rotation{ 0.0f }
         , m_rotation_matrix{}
-        , m_orientation(math::Quaternion::identity())
+        , m_orientation{ math::Quaternion::identity() }
     {
         update_rotation_derived_data();
     }
@@ -43,7 +43,10 @@ namespace andromeda
     void Rotatable::set_rotation(const math::Vec3& rotation)
     {
         // rotation is Euler XYZ in radians
-        m_orientation = math::QuaternionOps::from_euler_xyz(rotation[0], rotation[1], rotation[2]);
+        m_orientation = math::QuaternionOps::from_euler_xyz(rotation[0],
+                                                            rotation[1],
+                                                            rotation[2]);
+
         m_orientation = math::QuaternionOps::normalize(m_orientation);
 
         update_rotation_derived_data();
@@ -53,8 +56,9 @@ namespace andromeda
     void Rotatable::rotate(const math::Vec3& rotation)
     {
         // rotation is Euler delta XYZ in radians
-        const math::Quaternion delta =
-            math::QuaternionOps::from_euler_xyz(rotation[0], rotation[1], rotation[2]);
+        const math::Quaternion delta = math::QuaternionOps::from_euler_xyz(rotation[0],
+                                                                           rotation[1],
+                                                                           rotation[2]);
 
         rotate(delta);
     }
@@ -62,7 +66,9 @@ namespace andromeda
     void Rotatable::rotate(const math::Quaternion& delta)
     {
         // Apply delta in local space: new = delta * current
-        m_orientation = math::QuaternionOps::multiply(delta, m_orientation);
+        m_orientation = math::QuaternionOps::multiply(delta,
+                                                      m_orientation);
+
         m_orientation = math::QuaternionOps::normalize(m_orientation);
 
         update_rotation_derived_data();
@@ -71,17 +77,20 @@ namespace andromeda
 
     void Rotatable::rotate_x(float angle)
     {
-        rotate(math::QuaternionOps::angle_axis(angle, math::Vec3(1.0f, 0.0f, 0.0f)));
+        rotate(math::QuaternionOps::angle_axis(angle,
+                                               math::Vec3(1.0f, 0.0f, 0.0f)));
     }
 
     void Rotatable::rotate_y(float angle)
     {
-        rotate(math::QuaternionOps::angle_axis(angle, math::Vec3(0.0f, 1.0f, 0.0f)));
+        rotate(math::QuaternionOps::angle_axis(angle,
+                                               math::Vec3(0.0f, 1.0f, 0.0f)));
     }
 
     void Rotatable::rotate_z(float angle)
     {
-        rotate(math::QuaternionOps::angle_axis(angle, math::Vec3(0.0f, 0.0f, 1.0f)));
+        rotate(math::QuaternionOps::angle_axis(angle,
+                                               math::Vec3(0.0f, 0.0f, 1.0f)));
     }
 
     void Rotatable::update_rotation_derived_data()

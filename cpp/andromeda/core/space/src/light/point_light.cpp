@@ -1,29 +1,26 @@
 #include "andromeda/space/light/point_light.hpp"
-#include "spdlog/spdlog.h"
+
+#include <stdexcept>
 
 
 namespace andromeda::space
 {
-    PointLight::PointLight(
-        const math::Vec3& position,
-        const math::Vec3& color,
-        float intensity,
-        const math::Vec3& ambient,
-        const math::Vec3& diffuse,
-        const math::Vec3& specular,
-        float attenuation_constant,
-        float attenuation_linear,
-        float attenuation_quadratic,
-        float shadow_near_plane,
-        float shadow_far_plane
-    )
-        : Light{
-            color,
-            intensity,
-            ambient,
-            diffuse,
-            specular
-        }
+    PointLight::PointLight(const math::Vec3& position,
+                           const math::Vec3& color,
+                           float intensity,
+                           const math::Vec3& ambient,
+                           const math::Vec3& diffuse,
+                           const math::Vec3& specular,
+                           float attenuation_constant,
+                           float attenuation_linear,
+                           float attenuation_quadratic,
+                           float shadow_near_plane,
+                           float shadow_far_plane)
+        : Light{ color,
+                 intensity,
+                 ambient,
+                 diffuse,
+                 specular }
         , LightObject{ LightType::Point }
         , m_attenuation_constant{ attenuation_constant }
         , m_attenuation_linear{ attenuation_linear }
@@ -68,37 +65,24 @@ namespace andromeda::space
 
     void PointLight::set_attenuation_constant(float attenuation_constant)
     {
-        if (attenuation_constant < 0.0f)
-        {
-            spdlog::error("Attenuation constant must be non-negative");
-            return;
-        }
+        if (!(attenuation_constant >= 0.0f))
+            throw std::invalid_argument("PointLight: Attenuation constant must be non-negative.");
 
         m_attenuation_constant = attenuation_constant;
     }
 
     void PointLight::set_attenuation_linear(float attenuation_linear)
     {
-        if (attenuation_linear < 0.0f || attenuation_linear > 1.0f)
-        {
-            spdlog::error(
-                "Attenuation linear component must be between 0.0 and 1.0"
-            );
-            return;
-        }
+        if (!(attenuation_linear >= 0.0f && attenuation_linear <= 1.0f))
+            throw std::invalid_argument("PointLight: Attenuation linear must be in [0, 1].");
 
         m_attenuation_linear = attenuation_linear;
     }
 
     void PointLight::set_attenuation_quadratic(float attenuation_quadratic)
     {
-        if (attenuation_quadratic < 0.0f || attenuation_quadratic > 1.0f)
-        {
-            spdlog::error(
-                "Attenuation quadratic component must be between 0.0 and 1.0"
-            );
-            return;
-        }
+        if (!(attenuation_quadratic >= 0.0f && attenuation_quadratic <= 1.0f))
+            throw std::invalid_argument("PointLight: Attenuation quadratic must be in [0, 1].");
 
         m_attenuation_quadratic = attenuation_quadratic;
     }

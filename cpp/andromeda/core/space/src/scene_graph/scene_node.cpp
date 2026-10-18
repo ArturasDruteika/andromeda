@@ -1,25 +1,21 @@
 #include "andromeda/space/scene_graph/scene_node.hpp"
 #include "andromeda/space/scene_graph/i_scene_component.hpp"
 
-#include "spdlog/spdlog.h"
-
 #include <cstddef>
-#include <memory>
-#include <utility>
 #include <functional>
+#include <memory>
+#include <stdexcept>
+#include <utility>
 #include <vector>
-#include <stdexcept>  
 
 
 namespace andromeda::space
 {
     SceneNode::SceneNode(std::unique_ptr<ITransformable> transform)
-        : m_transform(std::move(transform))
+        : m_transform{ std::move(transform) }
     {
         if (m_transform == nullptr)
-        {
-            spdlog::error("SceneNode requires a non-null transform.");
-        }
+            throw std::invalid_argument("SceneNode requires a non-null transform.");
     }
 
     SceneNode::~SceneNode()
@@ -28,21 +24,20 @@ namespace andromeda::space
         for (std::unique_ptr<ISceneComponent>& component : m_components)
         {
             if (component != nullptr)
-            {
                 component->on_detach();
-            }
         }
+
         m_components.clear();
 
         // Ensure children no longer reference this as a parent before they are destroyed.
         for (std::unique_ptr<ISceneNode>& child : m_children)
         {
             SceneNode* child_node = dynamic_cast<SceneNode*>(child.get());
+
             if (child_node != nullptr)
-            {
                 child_node->set_parent_internal(nullptr);
-            }
         }
+
         m_children.clear();
 
         m_parent = nullptr;
@@ -52,18 +47,16 @@ namespace andromeda::space
     ITransformable& SceneNode::get_transform()
     {
         if (m_transform == nullptr)
-        {
-            spdlog::error("SceneNode has no transform.");
-        }
+            throw std::runtime_error("SceneNode has no transform.");
+
         return *m_transform;
     }
 
     const ITransformable& SceneNode::get_transform() const
     {
         if (m_transform == nullptr)
-        {
-            spdlog::error("SceneNode has no transform.");
-        }
+            throw std::runtime_error("SceneNode has no transform.");
+
         return *m_transform;
     }
 
@@ -75,23 +68,20 @@ namespace andromeda::space
     void SceneNode::attach_child(std::unique_ptr<ISceneNode> child)
     {
         if (child == nullptr)
-        {
             return;
-        }
 
         if (child.get() == this)
-        {
-            spdlog::error("Cannot attach node to itself.");
-            return;
-        }
+            throw std::invalid_argument("Cannot attach node to itself.");
 
         // Best-effort support for "removing from old parent" while still taking unique_ptr:
         // If the child reports a parent, attempt to detach it from that parent and use the returned ownership.
         // IMPORTANT: This only works safely if the caller is not still double-owning the same node elsewhere.
         ISceneNode* old_parent = child->get_parent();
+
         if (old_parent != nullptr)
         {
             std::unique_ptr<ISceneNode> transferred = old_parent->detach_child(*child);
+
             if (transferred != nullptr)
             {
                 // Avoid double delete: release the passed-in unique_ptr and use the transferred ownership.
@@ -106,11 +96,9 @@ namespace andromeda::space
         }
 
         SceneNode* child_node = dynamic_cast<SceneNode*>(child.get());
+
         if (child_node == nullptr)
-        {
-            spdlog::error("AttachChild requires child to be a SceneNode instance.");
-            return;
-        }
+            throw std::invalid_argument("AttachChild requires child to be a SceneNode instance.");
 
         child_node->set_parent_internal(this);
         m_children.push_back(std::move(child));
@@ -123,13 +111,13 @@ namespace andromeda::space
             if (m_children[i].get() == &child)
             {
                 SceneNode* child_node = dynamic_cast<SceneNode*>(m_children[i].get());
+
                 if (child_node != nullptr)
-                {
                     child_node->set_parent_internal(nullptr);
-                }
 
                 std::unique_ptr<ISceneNode> out = std::move(m_children[i]);
                 m_children.erase(m_children.begin() + static_cast<long>(i));
+
                 return out;
             }
         }
@@ -156,12 +144,11 @@ namespace andromeda::space
     ISceneComponent& SceneNode::add_component(std::unique_ptr<ISceneComponent> component)
     {
         if (component == nullptr)
-        {
-            spdlog::error("AddComponent requires a non-null component.");
-        }
+            throw std::invalid_argument("AddComponent requires a non-null component.");
 
         component->on_attach(*this);
         m_components.push_back(std::move(component));
+
         return *m_components.back();
     }
 
@@ -173,6 +160,7 @@ namespace andromeda::space
             {
                 m_components[i]->on_detach();
                 m_components.erase(m_components.begin() + static_cast<long>(i));
+
                 return true;
             }
         }

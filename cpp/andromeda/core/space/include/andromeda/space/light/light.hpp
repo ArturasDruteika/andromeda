@@ -23,13 +23,11 @@ namespace andromeda::space
 		/// @param ambient Ambient lighting component.
 		/// @param diffuse Diffuse lighting component.
 		/// @param specular Specular lighting component.
-		Light(
-			const math::Vec3& color,
-			float intensity,
-			const math::Vec3& ambient,
-			const math::Vec3& diffuse,
-			const math::Vec3& specular
-		);
+		Light(const math::Vec3& color,
+			  float intensity,
+			  const math::Vec3& ambient,
+			  const math::Vec3& diffuse,
+			  const math::Vec3& specular);
 
 		/// @brief Destroys the light source.
 		~Light() override;

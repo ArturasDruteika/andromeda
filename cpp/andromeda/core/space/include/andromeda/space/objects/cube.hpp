@@ -41,7 +41,8 @@ namespace andromeda::space
         ///
         /// @param half_extent Half of the cube edge length.
         /// @param color Surface color of the cube.
-        Cube(float half_extent, const Color& color);
+        Cube(float half_extent, 
+             const Color& color);
 
         /// @brief Destroys the cube.
         ~Cube();
@@ -65,7 +66,8 @@ namespace andromeda::space
         ///
         /// @param half_extent Half of the cube edge length.
         /// @param color Surface color of the cube.
-        void construct_cube(float half_extent, const Color& color);
+        void construct_cube(float half_extent,
+                            const Color& color);
 
         /// @brief Builds the geometric description of all cube faces.
         ///
@@ -77,7 +79,8 @@ namespace andromeda::space
         ///
         /// @param vertices Vertex buffer.
         /// @param indices Index buffer.
-        static void reserve_cube_buffers(std::vector<Vertex>& vertices, std::vector<unsigned int>& indices);
+        static void reserve_cube_buffers(std::vector<Vertex>& vertices,
+                                         std::vector<unsigned int>& indices);
 
         /// @brief Appends a face to the cube mesh buffers.
         ///
@@ -86,13 +89,11 @@ namespace andromeda::space
         /// @param out_vertices Destination vertex buffer.
         /// @param out_indices Destination index buffer.
         /// @param index_offset Current index offset.
-        static void append_face(
-            const CubeFaceData& face,
-            const Color& color,
-            std::vector<Vertex>& out_vertices,
-            std::vector<unsigned int>& out_indices,
-            unsigned int& index_offset
-        );
+        static void append_face(const CubeFaceData& face,
+                                const Color& color,
+                                std::vector<Vertex>& out_vertices,
+                                std::vector<unsigned int>& out_indices,
+                                unsigned int& index_offset);
 
     private:
         /// @brief Half of the cube edge length.

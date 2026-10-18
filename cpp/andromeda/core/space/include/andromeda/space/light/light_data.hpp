@@ -30,21 +30,19 @@ namespace andromeda::space
         /// @param color Light color.
         /// @param direction Light direction.
         /// @param light_type Light source type.
-        LightData(
-            float intensity = 1.0f,
-            float range = 100.0f,
-            float inner_cutoff = 12.5f,
-            float outer_cutoff = 17.5f,
-            float attenuation_constant = 1.0f,
-            float attenuation_linear = 0.05f,
-            float attenuation_quadratic = 0.001f,
-            const math::Vec3& diffuse_intensity = math::Vec3{ 1.0f, 1.0f, 1.0f },
-            const math::Vec3& specular_intensity = math::Vec3{ 1.0f, 1.0f, 1.0f },
-            const math::Vec3& position = math::Vec3{ 0.0f, 0.0f, 0.0f },
-            const math::Vec3& color = math::Vec3{ 1.0f, 1.0f, 1.0f },
-            const math::Vec3& direction = math::Vec3{ 0.0f, -1.0f, 0.0f },
-            const LightType& light_type = LightType::None
-        );
+        LightData(float intensity = 1.0f,
+                  float range = 100.0f,
+                  float inner_cutoff = 12.5f,
+                  float outer_cutoff = 17.5f,
+                  float attenuation_constant = 1.0f,
+                  float attenuation_linear = 0.05f,
+                  float attenuation_quadratic = 0.001f,
+                  const math::Vec3& diffuse_intensity = math::Vec3{ 1.0f, 1.0f, 1.0f },
+                  const math::Vec3& specular_intensity = math::Vec3{ 1.0f, 1.0f, 1.0f },
+                  const math::Vec3& position = math::Vec3{ 0.0f, 0.0f, 0.0f },
+                  const math::Vec3& color = math::Vec3{ 1.0f, 1.0f, 1.0f },
+                  const math::Vec3& direction = math::Vec3{ 0.0f, -1.0f, 0.0f },
+                  const LightType& light_type = LightType::None);
 
         /// @brief Destroys the light data object.
         ~LightData();

@@ -43,7 +43,8 @@ namespace andromeda::space
 		///
 		/// @param id Object identifier.
 		/// @param object Pointer to the geometric object.
-		void add_object(int id, IGeometricObject* object) override;
+		void add_object(int id, 
+						IGeometricObject* object) override;
 
 		/// @brief Removes a geometric object from the scene.
 		///

@@ -3,7 +3,8 @@
 
 namespace andromeda::space
 {
-    LightComponent::LightComponent(int id, const ILightObject* light_object)
+    LightComponent::LightComponent(int id, 
+                                   const ILightObject* light_object)
         : m_id{ id }
         , m_light_object{ light_object }
     {

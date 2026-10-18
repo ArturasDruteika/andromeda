@@ -29,11 +29,9 @@ namespace andromeda::space
         /// @param position Initial camera position.
         /// @param yaw_radians Initial yaw angle in radians.
         /// @param pitch_radians Initial pitch angle in radians.
-        Camera(
-            const math::Vec3& position,
-            float yaw_radians = -math::PI_HALF,
-            float pitch_radians = 0.0f
-        );
+        Camera(const math::Vec3& position,
+               float yaw_radians = -math::PI_HALF,
+               float pitch_radians = 0.0f);
 
         /// @brief Destroys the camera.
         ~Camera() override;
