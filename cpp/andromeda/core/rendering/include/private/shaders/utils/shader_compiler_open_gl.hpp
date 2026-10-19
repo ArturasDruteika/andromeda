@@ -24,7 +24,8 @@ namespace andromeda::rendering
 		/// @param type OpenGL shader type (for example, vertex, fragment, or geometry).
 		/// @param source Shader source code.
 		/// @return Identifier of the compiled shader object.
-		unsigned int compile(unsigned int type, const std::string& source);
+		unsigned int compile(unsigned int type, 
+							 const std::string& source);
 
 		/// @brief Links compiled shaders into an OpenGL shader program.
 		///
@@ -32,11 +33,9 @@ namespace andromeda::rendering
 		/// @param fragment_shader Compiled fragment shader identifier.
 		/// @param geometry_shader Optional compiled geometry shader identifier.
 		/// @return Identifier of the linked shader program.
-		unsigned int link(
-			unsigned int vertex_shader,
-			unsigned int fragment_shader,
-			unsigned int geometry_shader = 0
-		);
+		unsigned int link(unsigned int vertex_shader,
+						  unsigned int fragment_shader,
+						  unsigned int geometry_shader = 0);
 
 	private:
 		/// @brief Checks whether shader compilation succeeded.
@@ -44,7 +43,8 @@ namespace andromeda::rendering
 		/// @param shader Compiled shader identifier.
 		/// @param type OpenGL shader type.
 		/// @return `true` if compilation succeeded; otherwise, `false`.
-		bool check_compile_errors(unsigned int shader, int type);
+		bool check_compile_errors(unsigned int shader, 
+								  int type);
 
 		/// @brief Checks whether shader program linking succeeded.
 		///

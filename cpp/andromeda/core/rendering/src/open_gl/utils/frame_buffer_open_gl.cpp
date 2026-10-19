@@ -19,7 +19,9 @@ namespace andromeda::rendering
     {
     }
 
-    FrameBufferOpenGL::FrameBufferOpenGL(int width, int height, FrameBufferType type)
+    FrameBufferOpenGL::FrameBufferOpenGL(int width,
+                                         int height,
+                                         FrameBufferType type)
         : m_fbo{ 0 }
         , m_color_tex{ 0 }
         , m_depth_rbo{ 0 }
@@ -31,7 +33,6 @@ namespace andromeda::rendering
     {
         init(width, height, type);
     }
-
 
     FrameBufferOpenGL::~FrameBufferOpenGL()
     {
@@ -70,7 +71,9 @@ namespace andromeda::rendering
         return *this;
     }
 
-    bool FrameBufferOpenGL::init(int width, int height, FrameBufferType type)
+    bool FrameBufferOpenGL::init(int width,
+                                 int height,
+                                 FrameBufferType type)
     {
         destroy();
 
@@ -87,7 +90,8 @@ namespace andromeda::rendering
         return build();
     }
 
-    void FrameBufferOpenGL::resize(int width, int height)
+    void FrameBufferOpenGL::resize(int width,
+                                   int height)
     {
         if (width == m_width && height == m_height)
             return;
@@ -152,21 +156,25 @@ namespace andromeda::rendering
             glDeleteTextures(1, &m_color_tex);
             m_color_tex = 0;
         }
+
         if (m_depth_tex)
         {
             glDeleteTextures(1, &m_depth_tex);
             m_depth_tex = 0;
         }
+
         if (m_depth_rbo)
         {
             glDeleteRenderbuffers(1, &m_depth_rbo);
             m_depth_rbo = 0;
         }
+
         if (m_fbo)
         {
             glDeleteFramebuffers(1, &m_fbo);
             m_fbo = 0;
         }
+
         if (m_depth_cube_tex)
         {
             glDeleteTextures(1, &m_depth_cube_tex);
@@ -180,10 +188,13 @@ namespace andromeda::rendering
         {
         case FrameBufferType::ColorDepth:
             return build_color_depth();
+
         case FrameBufferType::Depth:
             return build_depth();
+
         case FrameBufferType::DepthCube:
             return build_depth_cube();
+
         default:
             spdlog::error("FrameBufferOpenGL::build: unknown type");
             return false;
@@ -198,22 +209,46 @@ namespace andromeda::rendering
         // Create color texture
         glGenTextures(1, &m_color_tex);
         glBindTexture(GL_TEXTURE_2D, m_color_tex);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_width, m_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+
+        glTexImage2D(GL_TEXTURE_2D,
+                     0,
+                     GL_RGBA,
+                     m_width,
+                     m_height,
+                     0,
+                     GL_RGBA,
+                     GL_UNSIGNED_BYTE,
+                     nullptr);
+
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, m_color_tex, 0);
+
+        glFramebufferTexture2D(GL_FRAMEBUFFER,
+                               GL_COLOR_ATTACHMENT0,
+                               GL_TEXTURE_2D,
+                               m_color_tex,
+                               0);
 
         // Create depth renderbuffer
         glGenRenderbuffers(1, &m_depth_rbo);
         glBindRenderbuffer(GL_RENDERBUFFER, m_depth_rbo);
-        glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT24, m_width, m_height);
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, m_depth_rbo);
+
+        glRenderbufferStorage(GL_RENDERBUFFER,
+                              GL_DEPTH_COMPONENT24,
+                              m_width,
+                              m_height);
+
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER,
+                                  GL_DEPTH_ATTACHMENT,
+                                  GL_RENDERBUFFER,
+                                  m_depth_rbo);
 
         GLenum draw_buffers[1] = { GL_COLOR_ATTACHMENT0 };
         glDrawBuffers(1, draw_buffers);
 
         bool ok = check_status();
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
         return ok;
     }
 
@@ -224,7 +259,17 @@ namespace andromeda::rendering
 
         glGenTextures(1, &m_depth_tex);
         glBindTexture(GL_TEXTURE_2D, m_depth_tex);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT24, m_width, m_height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, nullptr);
+
+        glTexImage2D(GL_TEXTURE_2D,
+                     0,
+                     GL_DEPTH_COMPONENT24,
+                     m_width,
+                     m_height,
+                     0,
+                     GL_DEPTH_COMPONENT,
+                     GL_FLOAT,
+                     nullptr);
+
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
@@ -233,13 +278,18 @@ namespace andromeda::rendering
         float border_color[] = { 1, 1, 1, 1 };
         glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, border_color);
 
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depth_tex, 0);
+        glFramebufferTexture2D(GL_FRAMEBUFFER,
+                               GL_DEPTH_ATTACHMENT,
+                               GL_TEXTURE_2D,
+                               m_depth_tex,
+                               0);
 
         glDrawBuffer(GL_NONE);
         glReadBuffer(GL_NONE);
 
         bool ok = check_status();
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
         return ok;
     }
 
@@ -258,17 +308,16 @@ namespace andromeda::rendering
         // safer internal format/type pairing for depth
         for (int i = 0; i < 6; ++i)
         {
-            glTexImage2D(
-                GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
-                0,
-                GL_DEPTH_COMPONENT32F,     // <-- use 32F for GL_FLOAT
-                m_width,
-                m_height,
-                0,
-                GL_DEPTH_COMPONENT,
-                GL_FLOAT,
-                nullptr
-            );
+            glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i,
+                         0,
+                         GL_DEPTH_COMPONENT32F,     // <-- use 32F for GL_FLOAT
+                         m_width,
+                         m_height,
+                         0,
+                         GL_DEPTH_COMPONENT,
+                         GL_FLOAT,
+                         nullptr);
+
             // If you prefer 24-bit: internal=GL_DEPTH_COMPONENT24, type=GL_UNSIGNED_INT
         }
 
@@ -284,20 +333,25 @@ namespace andromeda::rendering
         glDrawBuffer(GL_NONE);
         glReadBuffer(GL_NONE);
 
-        bool ok = check_status();               // checks the currently bound FBO
+        // checks the currently bound FBO
+        bool ok = check_status();
+
         glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
         return ok;
     }
 
     bool FrameBufferOpenGL::check_status() const
     {
         GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+
         if (status != GL_FRAMEBUFFER_COMPLETE)
         {
             spdlog::error("Framebuffer not complete! Status: 0x{:X}", status);
             return false;
         }
+
         return true;
     }
 }

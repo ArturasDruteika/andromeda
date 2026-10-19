@@ -21,14 +21,11 @@ namespace andromeda::rendering
 		/// @param vertex_shader_filepath Path to the vertex shader source file.
 		/// @param fragment_shader_filepath Path to the fragment shader source file.
 		/// @param geometry_shader_filepath Optional path to the geometry shader source file.
-		/// @param load `true` to immediately load the shader sources; otherwise,
-		/// `false`.
-		ShaderSourceManagerOpenGL(
-			const std::filesystem::path& vertex_shader_filepath,
-			const std::filesystem::path& fragment_shader_filepath,
-			const std::filesystem::path& geometry_shader_filepath = {},
-			bool load = true
-		);
+		/// @param load `true` to immediately load the shader sources; otherwise, `false`.
+		ShaderSourceManagerOpenGL(const std::filesystem::path& vertex_shader_filepath,
+								  const std::filesystem::path& fragment_shader_filepath,
+								  const std::filesystem::path& geometry_shader_filepath = {},
+								  bool load = true);
 
 		/// @brief Destroys the shader source manager.
 		~ShaderSourceManagerOpenGL();
@@ -69,10 +66,8 @@ namespace andromeda::rendering
 		///
 		/// @param shader_type Type of shader to load.
 		/// @param filepath Path to the shader source file.
-		void load_shader_from_file(
-			const ShaderType& shader_type,
-			const std::filesystem::path& filepath
-		);
+		void load_shader_from_file(const ShaderType& shader_type,
+								   const std::filesystem::path& filepath);
 
 	protected:
 		/// @brief Path to the vertex shader source file.

@@ -7,12 +7,12 @@ namespace andromeda::rendering
     {
         switch (type)
         {
-        case ComponentType::Float32: return 4;
-        case ComponentType::Int32:   return 4;
-        case ComponentType::UInt32:  return 4;
-        case ComponentType::UInt16:  return 2;
-        case ComponentType::UInt8:   return 1;
-        default:                     return 0;
+            case ComponentType::Float32: return 4;
+            case ComponentType::Int32:   return 4;
+            case ComponentType::UInt32:  return 4;
+            case ComponentType::UInt16:  return 2;
+            case ComponentType::UInt8:   return 1;
+            default:                     return 0;
         }
     }
 
@@ -20,15 +20,15 @@ namespace andromeda::rendering
     {
         switch (type)
         {
-        case ComponentType::Int32:
-        case ComponentType::UInt32:
-        case ComponentType::UInt16:
-        case ComponentType::UInt8:
-            return true;
+            case ComponentType::Int32:
+            case ComponentType::UInt32:
+            case ComponentType::UInt16:
+            case ComponentType::UInt8:
+                return true;
 
-        case ComponentType::Float32:
-        default:
-            return false;
+            case ComponentType::Float32:
+            default:
+                return false;
         }
     }
 }

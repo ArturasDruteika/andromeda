@@ -38,7 +38,10 @@ namespace andromeda::rendering
         /// @param x Horizontal position.
         /// @param y Vertical position.
         /// @param scale Text scale factor.
-        void render_text(const std::string& text, float x, float y, float scale = 1.0f);
+        void render_text(const std::string& text,
+                         float x,
+                         float y,
+                         float scale = 1.0f);
 
         /// @brief Renders a debug quad.
         ///
@@ -46,7 +49,10 @@ namespace andromeda::rendering
         /// @param y Vertical position.
         /// @param w Quad width.
         /// @param h Quad height.
-        void render_debug_quad(float x, float y, float w, float h);
+        void render_debug_quad(float x,
+                               float y,
+                               float w,
+                               float h);
 
         /// @brief Checks whether the text renderer has been initialized.
         ///

@@ -56,10 +56,8 @@ namespace andromeda::rendering
         ///
         /// @param attributes Vertex attribute descriptions.
         /// @param input_rate Vertex input rate.
-        explicit VertexLayout(
-            const std::vector<VertexAttributeDesc>& attributes,
-            InputRate input_rate = InputRate::PerVertex
-        );
+        explicit VertexLayout(const std::vector<VertexAttributeDesc>& attributes,
+                              InputRate input_rate = InputRate::PerVertex);
 
         /// @brief Retrieves the vertex attribute descriptions.
         ///
