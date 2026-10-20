@@ -52,11 +52,9 @@ namespace andromeda::application
         /// @param height Initial window height in pixels.
         /// @param title Window title.
         /// @return `true` if initialization succeeded; otherwise, `false`.
-        bool init(
-            unsigned int width,
-            unsigned int height,
-            const std::string& title
-        ) override;
+        bool init(unsigned int width,
+                  unsigned int height,
+                  const std::string& title) override;
 
         /// @brief Shuts down the application.
         ///
@@ -75,24 +73,37 @@ namespace andromeda::application
 
     private:
         /// @brief Initializes the platform subsystem.
-        bool init_platform(
-            unsigned int width,
-            unsigned int height,
-            const std::string& title
-        );
+        ///
+        /// @param width Initial window width in pixels.
+        /// @param height Initial window height in pixels.
+        /// @param title Window title.
+        /// @return `true` if initialization succeeded; otherwise, `false`.
+        bool init_platform(unsigned int width,
+                           unsigned int height,
+                           const std::string& title);
 
         /// @brief Initializes the engine subsystem.
+        ///
+        /// @return `true` if initialization succeeded; otherwise, `false`.
         bool init_engine();
 
         /// @brief Initializes the renderer.
-        bool init_renderer(int width, int height);
+        ///
+        /// @param width Initial renderer width in pixels.
+        /// @param height Initial renderer height in pixels.
+        /// @return `true` if initialization succeeded; otherwise, `false`.
+        bool init_renderer(int width, 
+                           int height);
 
         /// @brief Performs complete application initialization.
-        bool init_internal(
-            unsigned int width,
-            unsigned int height,
-            const std::string& title
-        );
+        ///
+        /// @param width Initial window width in pixels.
+        /// @param height Initial window height in pixels.
+        /// @param title Window title.
+        /// @return `true` if initialization succeeded; otherwise, `false`.
+        bool init_internal(unsigned int width,
+                           unsigned int height,
+                           const std::string& title);
 
         /// @brief Connects platform and engine event handlers.
         void connect_events();

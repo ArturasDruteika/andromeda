@@ -36,78 +36,66 @@ namespace andromeda::rendering
 	glm::mat2 MathUtils::to_glm(const math::Mat2& mat)
 	{
 		glm::mat2 glm_mat;
+
 		for (int col = 0; col < 2; ++col)
-		{
 			for (int row = 0; row < 2; ++row)
-			{
 				glm_mat[col][row] = mat[row][col];
-			}
-		}
+
 		return glm_mat;
 	}
 
 	math::Mat2 MathUtils::from_glm(const glm::mat2& glm_mat)
 	{
 		math::Mat2 mat;
+
 		for (int col = 0; col < 2; ++col)
-		{
 			for (int row = 0; row < 2; ++row)
-			{
 				mat[row][col] = glm_mat[col][row];
-			}
-		}
+
 		return mat;
 	}
 
 	glm::mat3 MathUtils::to_glm(const math::Mat3& mat)
 	{
 		glm::mat3 glm_mat{};
+
 		for (int col = 0; col < 3; ++col)
-		{
 			for (int row = 0; row < 3; ++row)
-			{
 				glm_mat[col][row] = mat[row][col];
-			}
-		}
+
 		return glm_mat;
 	}
 
 	math::Mat3 MathUtils::from_glm(const glm::mat3& glm_mat)
 	{
 		math::Mat3 mat;
+
 		for (int col = 0; col < 3; ++col)
-		{
 			for (int row = 0; row < 3; ++row)
-			{
 				mat[row][col] = glm_mat[col][row];
-			}
-		}
+
 		return mat;
 	}
 
 	glm::mat4 MathUtils::to_glm(const math::Mat4& mat)
 	{
 		glm::mat4 glm_mat;
+
 		for (int col = 0; col < 4; ++col)
-		{
 			for (int row = 0; row < 4; ++row)
-			{
 				glm_mat[col][row] = mat[row][col];
-			}
-		}
+
 		return glm_mat;
 	}
 
 	math::Mat4 MathUtils::from_glm(const glm::mat4& glm_mat)
 	{
 		math::Mat4 mat;
+
 		for (int col = 0; col < 4; ++col)
-		{
 			for (int row = 0; row < 4; ++row)
-			{
 				mat[row][col] = glm_mat[col][row];
-			}
-		}
+
 		return mat;
 	}
 }

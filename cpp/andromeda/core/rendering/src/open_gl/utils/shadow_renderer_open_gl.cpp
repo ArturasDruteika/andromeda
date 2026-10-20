@@ -58,40 +58,32 @@ namespace andromeda::rendering
         for (const auto& [id, obj] : objects)
         {
             if (!obj)
-            {
                 continue;
-            }
 
             // Luminous objects (e.g. a sphere visualizing a light) must not occlude light
             if (id < 0 || is_luminous(*obj))
-            {
                 continue;
-            }
 
             std::unordered_map<int, ITransformable*>::const_iterator transform_it =
                 object_transforms.find(id);
+
             if (transform_it == object_transforms.end() || !transform_it->second)
-            {
                 continue;
-            }
 
             const GpuMeshOpenGL* mesh = mesh_cache.try_get(obj->get_id());
-            if (!mesh)
-            {
-                continue;
-            }
 
-            depth_shader->set_uniform(
-                "u_model",
-                MathUtils::to_glm(transform_it->second->get_model_matrix())
-            );
+            if (!mesh)
+                continue;
+
+            depth_shader->set_uniform("u_model",
+                                      MathUtils::to_glm(transform_it->second->get_model_matrix()));
+
             glBindVertexArray(mesh->get_vao());
-            glDrawElements(
-                GL_TRIANGLES,
-                static_cast<GLsizei>(mesh->get_index_count()),
-                GL_UNSIGNED_INT,
-                nullptr
-            );
+
+            glDrawElements(GL_TRIANGLES,
+                           static_cast<GLsizei>(mesh->get_index_count()),
+                           GL_UNSIGNED_INT,
+                           nullptr);
         }
 
         depth_shader->unbind();
@@ -101,18 +93,16 @@ namespace andromeda::rendering
         culling.disable_face_culling();
     }
 
-    void ShadowRendererOpenGL::render_point_shadow_cube(
-        const std::unordered_map<int, IGeometricObject*>& objects,
-        const std::unordered_map<int, ITransformable*>& object_transforms,
-        FrameBufferOpenGL& point_shadow_fbo,
-        int resolution,
-        const glm::vec3& light_pos,
-        float near_plane,
-        float far_plane,
-        ShaderManager& shader_manager,
-        MeshCacheOpenGL& mesh_cache,
-        FaceCullingControlOpenGL& culling
-    )
+    void ShadowRendererOpenGL::render_point_shadow_cube(const std::unordered_map<int, IGeometricObject*>& objects,
+                                                        const std::unordered_map<int, ITransformable*>& object_transforms,
+                                                        FrameBufferOpenGL& point_shadow_fbo,
+                                                        int resolution,
+                                                        const glm::vec3& light_pos,
+                                                        float near_plane,
+                                                        float far_plane,
+                                                        ShaderManager& shader_manager,
+                                                        MeshCacheOpenGL& mesh_cache,
+                                                        FaceCullingControlOpenGL& culling)
     {
         culling.enable_face_culling(GL_FRONT, GL_CCW);
 
@@ -129,29 +119,24 @@ namespace andromeda::rendering
 
         const glm::mat4 proj = glm::perspective(glm::radians(90.0f), 1.0f, near_plane, far_plane);
 
-        std::vector<glm::vec3> ups{
-            {0, -1, 0},
-            {0, -1, 0},
-            {0,  0, 1},
-            {0,  0,-1},
-            {0, -1, 0},
-            {0, -1, 0}
-        };
+        std::vector<glm::vec3> ups{{ 0, -1,  0 },
+                                   { 0, -1,  0 },
+                                   { 0,  0,  1 },
+                                   { 0,  0, -1 },
+                                   { 0, -1,  0 },
+                                   { 0, -1,  0 }};
 
-        std::vector<glm::vec3> targets{
-            light_pos + glm::vec3(1, 0, 0),
-            light_pos + glm::vec3(-1, 0, 0),
-            light_pos + glm::vec3(0, 1, 0),
-            light_pos + glm::vec3(0,-1, 0),
-            light_pos + glm::vec3(0, 0, 1),
-            light_pos + glm::vec3(0, 0,-1)
-        };
+        std::vector<glm::vec3> targets{light_pos + glm::vec3( 1,  0,  0),
+                                       light_pos + glm::vec3(-1,  0,  0),
+                                       light_pos + glm::vec3( 0,  1,  0),
+                                       light_pos + glm::vec3( 0, -1,  0),
+                                       light_pos + glm::vec3( 0,  0,  1),
+                                       light_pos + glm::vec3( 0,  0, -1)};
 
         std::vector<glm::mat4> matrices(6);
+
         for (std::size_t i = 0; i < matrices.size(); ++i)
-        {
             matrices[i] = proj * glm::lookAt(light_pos, targets[i], ups[i]);
-        }
 
         shader->set_uniform("u_shadow_matrices[0]", matrices);
         shader->set_uniform("u_light_pos", light_pos);
@@ -160,41 +145,33 @@ namespace andromeda::rendering
         for (const auto& [id, obj] : objects)
         {
             if (!obj)
-            {
                 continue;
-            }
 
             // Luminous objects (e.g. a sphere surrounding the light) must not occlude it,
             // otherwise the whole scene ends up inside their shadow
             if (id < 0 || is_luminous(*obj))
-            {
                 continue;
-            }
 
             std::unordered_map<int, ITransformable*>::const_iterator transform_it =
                 object_transforms.find(id);
+
             if (transform_it == object_transforms.end() || !transform_it->second)
-            {
                 continue;
-            }
 
             const GpuMeshOpenGL* mesh = mesh_cache.try_get(obj->get_id());
-            if (!mesh)
-            {
-                continue;
-            }
 
-            shader->set_uniform(
-                "u_model",
-                MathUtils::to_glm(transform_it->second->get_model_matrix())
-            );
+            if (!mesh)
+                continue;
+
+            shader->set_uniform("u_model",
+                                MathUtils::to_glm(transform_it->second->get_model_matrix()));
+
             glBindVertexArray(mesh->get_vao());
-            glDrawElements(
-                GL_TRIANGLES,
-                static_cast<GLsizei>(mesh->get_index_count()),
-                GL_UNSIGNED_INT,
-                nullptr
-            );
+
+            glDrawElements(GL_TRIANGLES,
+                           static_cast<GLsizei>(mesh->get_index_count()),
+                           GL_UNSIGNED_INT,
+                           nullptr);
         }
 
         shader->unbind();
@@ -202,10 +179,8 @@ namespace andromeda::rendering
         culling.disable_face_culling();
     }
 
-    glm::mat4 ShadowRendererOpenGL::compute_light_space_matrix(
-        const std::unordered_map<int, const IDirectionalLight*>& directional_lights,
-        const math::Vec3& scene_center
-    )
+    glm::mat4 ShadowRendererOpenGL::compute_light_space_matrix(const std::unordered_map<int, const IDirectionalLight*>& directional_lights,
+                                                               const math::Vec3& scene_center)
     {
         const IDirectionalLight* light = directional_lights.begin()->second;
 
@@ -216,22 +191,18 @@ namespace andromeda::rendering
 
         glm::mat4 view = glm::lookAt(light_pos, MathUtils::to_glm(scene_center), up);
 
-        glm::mat4 proj = glm::ortho(
-            -light->get_light_orthographic_half_size(),
-            light->get_light_orthographic_half_size(),
-            -light->get_light_orthographic_half_size(),
-            light->get_light_orthographic_half_size(),
-            light->get_light_near_plane(),
-            light->get_light_far_plane()
-        );
+        glm::mat4 proj = glm::ortho(-light->get_light_orthographic_half_size(),
+                                    light->get_light_orthographic_half_size(),
+                                   -light->get_light_orthographic_half_size(),
+                                    light->get_light_orthographic_half_size(),
+                                    light->get_light_near_plane(),
+                                    light->get_light_far_plane());
 
         return proj * view;
     }
 
-    void ShadowRendererOpenGL::populate_directional_light_uniforms(
-        ShaderOpenGL& shader,
-        const std::unordered_map<int, const IDirectionalLight*>& directional_lights
-    )
+    void ShadowRendererOpenGL::populate_directional_light_uniforms(ShaderOpenGL& shader,
+                                                                    const std::unordered_map<int, const IDirectionalLight*>& directional_lights)
     {
         std::vector<glm::vec3> directions;
         std::vector<glm::vec3> ambient;
@@ -256,10 +227,8 @@ namespace andromeda::rendering
         shader.set_uniform("u_dir_light_specular", specular);
     }
 
-    void ShadowRendererOpenGL::populate_point_light_uniforms(
-        ShaderOpenGL& shader,
-        const std::unordered_map<int, const IPointLight*>& point_lights
-    )
+    void ShadowRendererOpenGL::populate_point_light_uniforms(ShaderOpenGL& shader,
+                                                             const std::unordered_map<int, const IPointLight*>& point_lights)
     {
         std::vector<glm::vec3> positions, ambient, diffuse, specular;
         std::vector<float> intensity, constant, linear, quadratic, far_plane;

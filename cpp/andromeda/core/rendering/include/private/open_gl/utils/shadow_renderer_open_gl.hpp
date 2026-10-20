@@ -42,16 +42,14 @@ namespace andromeda::rendering
         /// @param shader_manager Shader manager used for rendering.
         /// @param mesh_cache Cache containing GPU mesh resources.
         /// @param culling Face-culling controller.
-        static void render_directional_shadow_map(
-            const std::unordered_map<int, IGeometricObject*>& objects,
-            const std::unordered_map<int, ITransformable*>& object_transforms,
-            FrameBufferOpenGL& shadow_fbo,
-            int resolution,
-            const glm::mat4& light_space_matrix,
-            ShaderManager& shader_manager,
-            MeshCacheOpenGL& mesh_cache,
-            FaceCullingControlOpenGL& culling
-        );
+        static void render_directional_shadow_map(const std::unordered_map<int, IGeometricObject*>& objects,
+                                                  const std::unordered_map<int, ITransformable*>& object_transforms,
+                                                  FrameBufferOpenGL& shadow_fbo,
+                                                  int resolution,
+                                                  const glm::mat4& light_space_matrix,
+                                                  ShaderManager& shader_manager,
+                                                  MeshCacheOpenGL& mesh_cache,
+                                                  FaceCullingControlOpenGL& culling);
 
         /// @brief Renders a point-light shadow cubemap.
         ///
@@ -65,18 +63,16 @@ namespace andromeda::rendering
         /// @param shader_manager Shader manager used for rendering.
         /// @param mesh_cache Cache containing GPU mesh resources.
         /// @param culling Face-culling controller.
-        static void render_point_shadow_cube(
-            const std::unordered_map<int, IGeometricObject*>& objects,
-            const std::unordered_map<int, ITransformable*>& object_transforms,
-            FrameBufferOpenGL& point_shadow_fbo,
-            int resolution,
-            const glm::vec3& light_pos,
-            float near_plane,
-            float far_plane,
-            ShaderManager& shader_manager,
-            MeshCacheOpenGL& mesh_cache,
-            FaceCullingControlOpenGL& culling
-        );
+        static void render_point_shadow_cube(const std::unordered_map<int, IGeometricObject*>& objects,
+                                             const std::unordered_map<int, ITransformable*>& object_transforms,
+                                             FrameBufferOpenGL& point_shadow_fbo,
+                                             int resolution,
+                                             const glm::vec3& light_pos,
+                                             float near_plane,
+                                             float far_plane,
+                                             ShaderManager& shader_manager,
+                                             MeshCacheOpenGL& mesh_cache,
+                                             FaceCullingControlOpenGL& culling);
 
         // TODO: consider making it void and calculating only when the scene state has changed.
 
@@ -85,27 +81,21 @@ namespace andromeda::rendering
         /// @param directional_lights Directional lights indexed by object ID.
         /// @param scene_center Center of the scene in world space.
         /// @return Light-space transformation matrix.
-        static glm::mat4 compute_light_space_matrix(
-            const std::unordered_map<int, const IDirectionalLight*>& directional_lights,
-            const math::Vec3& scene_center
-        );
+        static glm::mat4 compute_light_space_matrix(const std::unordered_map<int, const IDirectionalLight*>& directional_lights,
+                                                    const math::Vec3& scene_center);
 
         /// @brief Populates directional-light shader uniforms.
         ///
         /// @param shader Shader whose uniforms will be updated.
         /// @param directional_lights Directional lights indexed by object ID.
-        static void populate_directional_light_uniforms(
-            ShaderOpenGL& shader,
-            const std::unordered_map<int, const IDirectionalLight*>& directional_lights
-        );
+        static void populate_directional_light_uniforms(ShaderOpenGL& shader,
+                                                        const std::unordered_map<int, const IDirectionalLight*>& directional_lights);
 
         /// @brief Populates point-light shader uniforms.
         ///
         /// @param shader Shader whose uniforms will be updated.
         /// @param point_lights Point lights indexed by object ID.
-        static void populate_point_light_uniforms(
-            ShaderOpenGL& shader,
-            const std::unordered_map<int, const IPointLight*>& point_lights
-        );
+        static void populate_point_light_uniforms(ShaderOpenGL& shader,
+                                                  const std::unordered_map<int, const IPointLight*>& point_lights);
     };
 }

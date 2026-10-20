@@ -53,7 +53,9 @@ namespace andromeda::rendering
 		m_p_renderer_open_gl_impl->set_illumination_mode(mode);
 	}
 
-	void RendererOpenGL::init(int width, int height, bool illumination_mode)
+	void RendererOpenGL::init(int width, 
+							  int height, 
+							  bool illumination_mode)
 	{
 		m_p_renderer_open_gl_impl->init(width, height, illumination_mode);
 	}
@@ -68,7 +70,8 @@ namespace andromeda::rendering
 		m_p_renderer_open_gl_impl->render_frame(scene);
 	}
 
-	void RendererOpenGL::resize(int width, int height)
+	void RendererOpenGL::resize(int width, 
+								int height)
 	{
 		m_p_renderer_open_gl_impl->resize(width, height);
 	}

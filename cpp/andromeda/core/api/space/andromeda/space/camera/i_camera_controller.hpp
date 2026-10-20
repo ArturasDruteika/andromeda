@@ -27,7 +27,9 @@ namespace andromeda
         /// @param yaw Rotation around the vertical axis, in degrees.
         /// @param pitch Rotation around the lateral axis, in degrees.
         /// @param roll Rotation around the forward axis, in degrees.
-        virtual void rotate(float yaw, float pitch, float roll) = 0;
+        virtual void rotate(float yaw, 
+                            float pitch, 
+                            float roll) = 0;
 
         /// @brief Adjusts the camera zoom level.
         ///

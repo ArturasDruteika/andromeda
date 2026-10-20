@@ -27,11 +27,9 @@ namespace andromeda::rendering
 		/// @param vertex_code_file_path Path to the vertex shader source file.
 		/// @param fragment_code_file_path Path to the fragment shader source file.
 		/// @param geometry_shader_filepath Optional path to the geometry shader source file.
-		ShaderOpenGL(
-			const std::filesystem::path& vertex_code_file_path,
-			const std::filesystem::path& fragment_code_file_path,
-			const std::filesystem::path& geometry_shader_filepath = {}
-		);
+		ShaderOpenGL(const std::filesystem::path& vertex_code_file_path,
+					 const std::filesystem::path& fragment_code_file_path,
+					 const std::filesystem::path& geometry_shader_filepath = {});
 
 		/// @brief Destroys the shader.
 		~ShaderOpenGL() = default;
@@ -50,7 +48,13 @@ namespace andromeda::rendering
 		/// @param name Uniform name.
 		/// @param value Uniform value.
 		template<typename T>
-		void set_uniform(const std::string& name, const T& value) const;
+		void set_uniform(const std::string& name,
+						 const T& value) const
+		{
+			m_uniform_setter.set_uniform(get_program_id(),
+										 name,
+										 value);
+		}
 
 	private:
 		/// @brief Helper object used to update shader uniforms.

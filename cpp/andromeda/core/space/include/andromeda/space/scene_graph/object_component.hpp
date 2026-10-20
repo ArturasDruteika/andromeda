@@ -19,7 +19,8 @@ namespace andromeda::space
         ///
         /// @param id Identifier of the geometric object.
         /// @param object Pointer to the associated geometric object.
-        ObjectComponent(int id, IGeometricObject* object);
+        ObjectComponent(int id, 
+                        IGeometricObject* object);
 
         /// @brief Destroys the object component.
         ~ObjectComponent() override;

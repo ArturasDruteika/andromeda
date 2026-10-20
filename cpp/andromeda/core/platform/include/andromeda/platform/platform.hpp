@@ -47,7 +47,9 @@ namespace andromeda::platform
         /// @param height Initial window height in pixels.
         /// @param title Window title.
         /// @return `true` if initialization succeeded; otherwise, `false`.
-        bool init(int width, int height, const std::string& title) override;
+        bool init(int width, 
+                  int height, 
+                  const std::string& title) override;
 
         /// @brief Shuts down the platform.
         ///
@@ -70,7 +72,9 @@ namespace andromeda::platform
         /// @param width Window width in pixels.
         /// @param height Window height in pixels.
         /// @param title Window title.
-        void create_window(int width, int height, const std::string& title);
+        void create_window(int width, 
+                           int height, 
+                           const std::string& title);
 
         /// @brief Creates the graphics context.
         void create_graphics_context();

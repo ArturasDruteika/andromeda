@@ -22,10 +22,8 @@ namespace andromeda::rendering
 		return m_is_back_face_culling_enabled;
 	}
 
-	void FaceCullingControlOpenGL::enable_face_culling(
-		unsigned int face,
-		unsigned int winding
-	) const
+	void FaceCullingControlOpenGL::enable_face_culling(unsigned int face,
+													   unsigned int winding) const
 	{
 		glEnable(GL_CULL_FACE);
 		glCullFace(face);

@@ -38,11 +38,9 @@ namespace andromeda::rendering
 		/// @param vertex_code Vertex shader source code.
 		/// @param fragment_code Fragment shader source code.
 		/// @param geometry_code Optional geometry shader source code.
-		void create_shader_program(
-			const std::string& vertex_code,
-			const std::string& fragment_code,
-			const std::string& geometry_code = {}
-		);
+		void create_shader_program(const std::string& vertex_code,
+								   const std::string& fragment_code,
+								   const std::string& geometry_code = {});
 
 	protected:
 		/// @brief OpenGL shader program identifier.

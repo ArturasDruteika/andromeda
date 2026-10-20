@@ -35,10 +35,8 @@ namespace andromeda::rendering
 		///
 		/// @param objects Collection of scene objects indexed by object ID.
 		/// @param default_layout Vertex layout used when creating GPU meshes.
-		void sync(
-			const std::unordered_map<int, IGeometricObject*>& objects,
-			const VertexLayout& default_layout
-		);
+		void sync(const std::unordered_map<int, IGeometricObject*>& objects,
+				  const VertexLayout& default_layout);
 
 		/// @brief Retrieves a cached GPU mesh.
 		///

@@ -28,12 +28,13 @@ namespace andromeda::window
     int KeyEvent::get_category_flags() const
     {
         return EventCategoryKeyboard |
-            EventCategoryInput;
+               EventCategoryInput;
     }
 
     // KeyPressedEvent
 
-    KeyPressedEvent::KeyPressedEvent(KeyCode keycode, bool is_repeat)
+    KeyPressedEvent::KeyPressedEvent(KeyCode keycode, 
+                                     bool is_repeat)
         : KeyEvent{ keycode }
         , m_is_repeat{ is_repeat }
     {
@@ -59,8 +60,11 @@ namespace andromeda::window
     std::string KeyPressedEvent::to_string() const
     {
         std::stringstream ss;
-        ss << "KeyPressedEvent: " << static_cast<int>(m_key_code)
-            << " repeat=" << (m_is_repeat ? "true" : "false");
+        ss << "KeyPressedEvent: " << 
+            static_cast<int>(m_key_code) << 
+            " repeat=" << 
+            (m_is_repeat ? "true" : "false");
+
         return ss.str();
     }
 

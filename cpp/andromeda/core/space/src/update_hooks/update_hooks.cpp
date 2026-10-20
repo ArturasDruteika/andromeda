@@ -31,15 +31,15 @@ namespace andromeda::space
 
     void UpdateHooks::remove(Handle handle)
     {
-        auto it = std::remove_if(
-            m_entries.begin(),
-            m_entries.end(),
-            [&](const Entry& e)
-            {
-                return e.id == handle.id;
-            });
+        auto it = std::remove_if(m_entries.begin(),
+                                 m_entries.end(),
+                                 [&](const Entry& e)
+                                 {
+                                     return e.id == handle.id;
+                                 });
 
-        m_entries.erase(it, m_entries.end());
+        m_entries.erase(it,
+                        m_entries.end());
     }
 
     void UpdateHooks::clear()
@@ -54,24 +54,19 @@ namespace andromeda::space
         ids.reserve(m_entries.size());
 
         for (const auto& entry : m_entries)
-        {
             ids.push_back(entry.id);
-        }
 
         for (uint64_t id : ids)
         {
-            auto it = std::find_if(
-                m_entries.begin(),
-                m_entries.end(),
-                [id](const Entry& e)
-                {
-                    return e.id == id;
-                });
+            auto it = std::find_if(m_entries.begin(),
+                                   m_entries.end(),
+                                   [id](const Entry& e)
+                                   {
+                                       return e.id == id;
+                                   });
 
             if (it != m_entries.end() && it->fn)
-            {
                 it->fn(delta_time);
-            }
         }
     }
 }

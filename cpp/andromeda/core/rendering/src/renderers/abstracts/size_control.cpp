@@ -4,7 +4,8 @@
 
 namespace andromeda::rendering
 {
-	SizeControl::SizeControl(int width, int height)
+	SizeControl::SizeControl(int width, 
+							 int height)
 		: m_width{ width }
 		, m_height{ height }
 	{
@@ -22,11 +23,14 @@ namespace andromeda::rendering
 		return m_height;
 	}
 
-	void SizeControl::resize(int width, int height)
+	void SizeControl::resize(int width, 
+							 int height)
 	{
 		if (width <= 0 || height <= 0)
 		{
-			spdlog::error("Invalid dimensions for resizing: {}x{}", width, height);
+			spdlog::error("Invalid dimensions for resizing: {}x{}", 
+						  width, 
+						  height);
 			return;
 		}
 

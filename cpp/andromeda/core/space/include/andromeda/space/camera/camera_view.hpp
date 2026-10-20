@@ -20,10 +20,8 @@ namespace andromeda::space
 		///
 		/// @param position Initial camera position.
 		/// @param target_coords Initial point the camera looks at.
-		CameraView(
-			const math::Vec3& position,
-			const math::Vec3& target_coords = math::Vec3(0.0f, 0.0f, 0.0f)
-		);
+		CameraView(const math::Vec3& position,
+				   const math::Vec3& target_coords = math::Vec3(0.0f, 0.0f, 0.0f));
 
 		/// @brief Destroys the camera view.
 		~CameraView() override;

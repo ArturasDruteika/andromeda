@@ -72,30 +72,48 @@ namespace andromeda::engine
         void destroy_renderer();
 
         /// @brief Handles a mouse wheel scroll event.
+        ///
+        /// @param event Mouse wheel scroll event to handle.
         void handle_mouse_scrolled(IEvent& event);
 
         /// @brief Handles a mouse button press event.
+        ///
+        /// @param event Mouse button press event to handle.
         void handle_mouse_button_pressed(IEvent& event);
 
         /// @brief Handles a mouse button release event.
+        ///
+        /// @param event Mouse button release event to handle.
         void handle_mouse_button_released(IEvent& event);
 
         /// @brief Handles a key press event.
+        ///
+        /// @param event Key press event to handle.
         void handle_key_pressed(IEvent& event);
 
         /// @brief Handles a key release event.
+        ///
+        /// @param event Key release event to handle.
         void handle_key_released(IEvent& event);
 
         /// @brief Handles a mouse movement event.
+        ///
+        /// @param event Mouse movement event to handle.
         void handle_mouse_moved(IEvent& event);
 
         /// @brief Handles a window resize event.
+        ///
+        /// @param event Window resize event to handle.
         void handle_window_resize(IEvent& event);
 
         /// @brief Handles a window close event.
+        ///
+        /// @param event Window close event to handle.
         void handle_window_close(IEvent& event);
 
         /// @brief Handles a framebuffer resize event.
+        ///
+        /// @param event Framebuffer resize event to handle.
         void handle_framebuffer_resize(IEvent& event);
 
     private:

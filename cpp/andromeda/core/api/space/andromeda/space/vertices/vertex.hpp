@@ -31,7 +31,8 @@ namespace andromeda
         ///
         /// @param pos Vertex position.
         /// @param col Vertex color.
-        Vertex(const math::Vec3& pos, const Color& col)
+        Vertex(const math::Vec3& pos, 
+               const Color& col)
             : position{ pos }
             , color{ col }
             , normal{ 0.0f, 0.0f, 0.0f }
@@ -43,7 +44,9 @@ namespace andromeda
         /// @param pos Vertex position.
         /// @param col Vertex color.
         /// @param normal Vertex surface normal.
-        Vertex(const math::Vec3& pos, const Color& col, const math::Vec3& normal)
+        Vertex(const math::Vec3& pos, 
+               const Color& col, 
+               const math::Vec3& normal)
             : position{ pos }
             , color{ col }
             , normal{ normal }

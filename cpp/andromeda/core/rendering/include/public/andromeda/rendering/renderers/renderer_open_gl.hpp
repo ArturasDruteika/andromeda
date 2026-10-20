@@ -78,7 +78,8 @@ namespace andromeda::rendering
 		/// @param width Initial render target width in pixels.
 		/// @param height Initial render target height in pixels.
 		/// @param illumination_mode Initial illumination mode.
-		void init(int width, int height, bool illumination_mode = false) override;
+		void init(int width, int height, 
+				  bool illumination_mode = false) override;
 
 		/// @brief Deinitializes the renderer and releases its resources.
 		void de_init() override;
@@ -92,7 +93,8 @@ namespace andromeda::rendering
 		///
 		/// @param width New render target width in pixels.
 		/// @param height New render target height in pixels.
-		void resize(int width, int height) override;
+		void resize(int width, 
+					int height) override;
 
 	private:
 		/// @brief Internal renderer implementation.
