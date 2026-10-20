@@ -22,10 +22,8 @@ namespace andromeda::space
 		///
 		/// @param position Initial camera position.
 		/// @param target_coords Initial point the camera looks at.
-		CameraController(
-			const math::Vec3& position,
-			const math::Vec3& target_coords = math::Vec3(0.0f, 0.0f, 0.0f)
-		);
+		CameraController(const math::Vec3& position,
+						 const math::Vec3& target_coords = math::Vec3(0.0f, 0.0f, 0.0f));
 
 		/// @brief Destroys the camera controller.
 		~CameraController();
@@ -35,7 +33,9 @@ namespace andromeda::space
 		/// @param yaw Rotation around the vertical axis.
 		/// @param pitch Rotation around the lateral axis.
 		/// @param roll Rotation around the forward axis.
-		void rotate(float yaw, float pitch, float roll) override;
+		void rotate(float yaw, 
+					float pitch, 
+					float roll) override;
 
 		/// @brief Adjusts the camera distance from its target.
 		///

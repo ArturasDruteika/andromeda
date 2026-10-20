@@ -13,12 +13,12 @@ namespace andromeda::rendering
     {
         switch (type)
         {
-        case ComponentType::Float32: return GL_FLOAT;
-        case ComponentType::Int32:   return GL_INT;
-        case ComponentType::UInt32:  return GL_UNSIGNED_INT;
-        case ComponentType::UInt16:  return GL_UNSIGNED_SHORT;
-        case ComponentType::UInt8:   return GL_UNSIGNED_BYTE;
-        default:                     return GL_FLOAT;
+            case ComponentType::Float32: return GL_FLOAT;
+            case ComponentType::Int32:   return GL_INT;
+            case ComponentType::UInt32:  return GL_UNSIGNED_INT;
+            case ComponentType::UInt16:  return GL_UNSIGNED_SHORT;
+            case ComponentType::UInt8:   return GL_UNSIGNED_BYTE;
+            default:                     return GL_FLOAT;
         }
     }
 
@@ -35,37 +35,30 @@ namespace andromeda::rendering
         for (const VertexAttributeDesc& attribute : attributes)
         {
             const GLuint location = static_cast<GLuint>(VertexLocationPolicy::get_location(attribute.semantic));
-
             const void* offset_ptr = reinterpret_cast<const void*>(attribute.offset_bytes);
 
             glEnableVertexAttribArray(location);
 
             if (is_integer_type(attribute.component_type))
             {
-                glVertexAttribIPointer(
-                    location,
-                    static_cast<GLint>(attribute.component_count),
-                    to_gl_component_type(attribute.component_type),
-                    stride,
-                    offset_ptr
-                );
+                glVertexAttribIPointer(location,
+                                       static_cast<GLint>(attribute.component_count),
+                                       to_gl_component_type(attribute.component_type),
+                                       stride,
+                                       offset_ptr);
             }
             else
             {
-                glVertexAttribPointer(
-                    location,
-                    static_cast<GLint>(attribute.component_count),
-                    to_gl_component_type(attribute.component_type),
-                    attribute.normalized ? GL_TRUE : GL_FALSE,
-                    stride,
-                    offset_ptr
-                );
+                glVertexAttribPointer(location,
+                                      static_cast<GLint>(attribute.component_count),
+                                      to_gl_component_type(attribute.component_type),
+                                      attribute.normalized ? GL_TRUE : GL_FALSE,
+                                      stride,
+                                      offset_ptr);
             }
 
             if (layout.get_input_rate() == InputRate::PerInstance)
-            {
                 glVertexAttribDivisor(location, 1);
-            }
         }
     }
 }

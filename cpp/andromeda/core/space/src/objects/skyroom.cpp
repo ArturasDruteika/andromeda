@@ -1,7 +1,7 @@
 #include "andromeda/space/objects/skyroom.hpp"
-#include "spdlog/spdlog.h"
 
 #include <array>
+#include <stdexcept>
 #include <vector>
 
 
@@ -25,11 +25,8 @@ namespace andromeda::space
     {
         validate_skyroom_params(half_extent);
 
-        if (half_extent <= 0.0f)
-        {
-            spdlog::error("Skyroom half-extent must be greater than zero. Given half-extent: {}", half_extent);
-            return;
-        }
+        if (!(half_extent > 0.0f))
+            throw std::invalid_argument("Skyroom: Half-extent must be greater than zero.");
 
         m_half_extent = half_extent;
         construct_skyroom(m_half_extent, get_color());
@@ -43,44 +40,47 @@ namespace andromeda::space
 
     void Skyroom::construct_skyroom(float half_extent, const Color& color)
     {
-        if (half_extent <= 0.0f)
-        {
-            spdlog::error("Skyroom half-extent must be greater than zero. Given half-extent: {}", half_extent);
-            return;
-        }
+        if (!(half_extent > 0.0f))
+            throw std::invalid_argument("Skyroom: Half-extent must be greater than zero.");
 
         std::vector<Vertex> vertices;
         std::vector<unsigned int> indices;
-        reserve_skyroom_buffers(vertices, indices);
+        reserve_skyroom_buffers(vertices,
+                                indices);
 
-        std::array<SkyroomFaceData, 6> faces = build_skyroom_faces(half_extent);
+        std::array<SkyroomFaceData, N_SKYROOM_FACES> faces = build_skyroom_faces(half_extent);
 
         unsigned int index_offset = 0;
         for (const SkyroomFaceData& face : faces)
         {
-            append_face_inside(face, color, vertices, indices, index_offset);
+            append_face_inside(face,
+                               color,
+                               vertices,
+                               indices,
+                               index_offset);
         }
 
         Mesh mesh;
-        mesh.set_data(vertices, indices);
+        mesh.set_data(vertices,
+                      indices);
 
         set_mesh(mesh);
     }
 
-    std::array<SkyroomFaceData, 6> Skyroom::build_skyroom_faces(float half_extent)
+    std::array<SkyroomFaceData, N_SKYROOM_FACES> Skyroom::build_skyroom_faces(float half_extent)
     {
         // Inward normals (pointing toward center) and vertex order chosen for inside-facing triangles.
         // This is basically the cube, but normals flipped and winding appropriate for inside view.
 
-        return std::array<SkyroomFaceData, 6>
+        return std::array<SkyroomFaceData, N_SKYROOM_FACES>
         {
             SkyroomFaceData
             {
                 math::Vec3(0.0f, 0.0f, 1.0f), // inward for back (-Z)
                 {
                     math::Vec3(-half_extent, -half_extent, -half_extent),
-                    math::Vec3(half_extent, -half_extent, -half_extent),
-                    math::Vec3(half_extent,  half_extent, -half_extent),
+                    math::Vec3( half_extent, -half_extent, -half_extent),
+                    math::Vec3( half_extent,  half_extent, -half_extent),
                     math::Vec3(-half_extent,  half_extent, -half_extent)
                 }
             },
@@ -91,8 +91,8 @@ namespace andromeda::space
                 {
                     math::Vec3(-half_extent, -half_extent,  half_extent),
                     math::Vec3(-half_extent,  half_extent,  half_extent),
-                    math::Vec3(half_extent,  half_extent,  half_extent),
-                    math::Vec3(half_extent, -half_extent,  half_extent)
+                    math::Vec3( half_extent,  half_extent,  half_extent),
+                    math::Vec3( half_extent, -half_extent,  half_extent)
                 }
             },
 
@@ -124,8 +124,8 @@ namespace andromeda::space
                 {
                     math::Vec3(-half_extent, -half_extent, -half_extent),
                     math::Vec3(-half_extent, -half_extent,  half_extent),
-                    math::Vec3(half_extent, -half_extent,  half_extent),
-                    math::Vec3(half_extent, -half_extent, -half_extent)
+                    math::Vec3( half_extent, -half_extent,  half_extent),
+                    math::Vec3( half_extent, -half_extent, -half_extent)
                 }
             },
 
@@ -134,31 +134,32 @@ namespace andromeda::space
                 math::Vec3(0.0f, -1.0f, 0.0f), // inward for top (+Y)
                 {
                     math::Vec3(-half_extent,  half_extent, -half_extent),
-                    math::Vec3(half_extent,  half_extent, -half_extent),
-                    math::Vec3(half_extent,  half_extent,  half_extent),
+                    math::Vec3( half_extent,  half_extent, -half_extent),
+                    math::Vec3( half_extent,  half_extent,  half_extent),
                     math::Vec3(-half_extent,  half_extent,  half_extent)
                 }
             }
         };
     }
 
-    void Skyroom::reserve_skyroom_buffers(std::vector<Vertex>& vertices, std::vector<unsigned int>& indices)
+    void Skyroom::reserve_skyroom_buffers(std::vector<Vertex>& vertices,
+                                          std::vector<unsigned int>& indices)
     {
         vertices.reserve(24);
         indices.reserve(36);
     }
 
-    void Skyroom::append_face_inside(
-        const SkyroomFaceData& face,
-        const Color& color,
-        std::vector<Vertex>& out_vertices,
-        std::vector<unsigned int>& out_indices,
-        unsigned int& index_offset
-    )
+    void Skyroom::append_face_inside(const SkyroomFaceData& face,
+                                     const Color& color,
+                                     std::vector<Vertex>& out_vertices,
+                                     std::vector<unsigned int>& out_indices,
+                                     unsigned int& index_offset)
     {
         for (const math::Vec3& pos : face.vertices)
         {
-            out_vertices.emplace_back(pos, color, face.normal);
+            out_vertices.emplace_back(pos,
+                                      color,
+                                      face.normal);
         }
 
         // Same quad split as Cube. Winding is determined by vertex order in build_skyroom_faces.
@@ -170,6 +171,6 @@ namespace andromeda::space
         out_indices.push_back(index_offset + 3);
         out_indices.push_back(index_offset + 0);
 
-        index_offset += 4;
+        index_offset += N_CORNERS_PER_FACE;
     }
 }

@@ -36,10 +36,8 @@ namespace andromeda::engine
         , m_mouse_roll_sensitivity{ DEFAULT_MOUSE_ROLL_SENSITIVITY }
         , m_scroll_zoom_sensitivity{ DEFAULT_SCROLL_ZOOM_SENSITIVITY }
     {
-        spdlog::info(
-            "Engine constructed with graphics backend {}",
-            graphics_backend_string(m_graphics_backend)
-        );
+        spdlog::info("Engine constructed with graphics backend {}",
+                     graphics_backend_string(m_graphics_backend));
     }
 
     Engine::~Engine()
@@ -79,10 +77,9 @@ namespace andromeda::engine
     IRenderer* Engine::get_renderer() const
     {
         if (!m_renderer)
-        {
             spdlog::warn("Engine::get_renderer() called but renderer is nullptr.");
-        }
-        return m_renderer.get();
+
+            return m_renderer.get();
     }
 
     bool Engine::init()
@@ -93,14 +90,13 @@ namespace andromeda::engine
             return true;
         }
 
-        spdlog::info(
-            "Engine::init() starting for backend {}",
-            graphics_backend_string(m_graphics_backend)
-        );
+        spdlog::info("Engine::init() starting for backend {}",
+                     graphics_backend_string(m_graphics_backend));
 
         try
         {
             create_renderer();
+
             if (!m_renderer)
             {
                 spdlog::error("Engine::init() failed: renderer creation returned nullptr.");
@@ -110,6 +106,7 @@ namespace andromeda::engine
         catch (const std::exception& ex)
         {
             spdlog::error("Exception during Engine::init(): {}", ex.what());
+            
             try
             {
                 destroy_renderer();
@@ -175,14 +172,17 @@ namespace andromeda::engine
     {
         if (!p_scene)
         {
+            spdlog::error("Cannot access the active camera: no scene is set.");
             return nullptr;
         }
 
         // Assumption: IScene::get_active_camera() exists and returns an ICamera* (or something base).
         // If your actual API differs, adjust this part.
         ICamera* p_camera_base = p_scene->get_active_camera();
+
         if (!p_camera_base)
         {
+            spdlog::error("Cannot access the camera controller: no active camera is set.");
             return nullptr;
         }
 
@@ -251,39 +251,35 @@ namespace andromeda::engine
 
     void Engine::create_renderer()
     {
-        spdlog::info(
-            "Engine::create_renderer() for backend {}",
-            graphics_backend_string(m_graphics_backend)
-        );
+        spdlog::info("Engine::create_renderer() for backend {}",
+                     graphics_backend_string(m_graphics_backend));
 
         try
         {
             switch (m_graphics_backend)
             {
-            case GraphicsBackend::OpenGL:
-            {
-                m_renderer = std::make_unique<rendering::RendererOpenGL>();
-                spdlog::info("Engine::create_renderer() created OpenGL renderer.");
-                break;
-            }
+                case GraphicsBackend::OpenGL:
+                {
+                    m_renderer = std::make_unique<rendering::RendererOpenGL>();
+                    spdlog::info("Engine::create_renderer() created OpenGL renderer.");
+                    break;
+                }
 
-            case GraphicsBackend::Vulkan:
-            {
-                spdlog::warn("Engine::create_renderer(): Vulkan backend not implemented yet.");
-                m_renderer.reset();
-                break;
-            }
+                case GraphicsBackend::Vulkan:
+                {
+                    spdlog::warn("Engine::create_renderer(): Vulkan backend not implemented yet.");
+                    m_renderer.reset();
+                    break;
+                }
 
-            case GraphicsBackend::None:
-            default:
-            {
-                spdlog::error(
-                    "Engine::create_renderer(): Unknown graphics backend {}.",
-                    graphics_backend_string(m_graphics_backend)
-                );
-                m_renderer.reset();
-                break;
-            }
+                case GraphicsBackend::None:
+                default:
+                {
+                    spdlog::error("Engine::create_renderer(): Unknown graphics backend {}.",
+                                  graphics_backend_string(m_graphics_backend));
+                    m_renderer.reset();
+                    break;
+                }
             }
         }
         catch (const std::exception& ex)
@@ -328,14 +324,18 @@ namespace andromeda::engine
     void Engine::handle_mouse_scrolled(IEvent& event)
     {
         IMouseScrolledEvent* p_event = dynamic_cast<IMouseScrolledEvent*>(&event);
+
         if (!p_event)
         {
+            spdlog::error("Cannot process mouse scroll event: unexpected event type.");
             return;
         }
 
         ICameraController* p_camera = get_active_camera_controller_from_scene(m_p_scene);
+
         if (!p_camera)
         {
+            spdlog::error("Cannot process camera input: no active camera controller is available.");
             return;
         }
 
@@ -346,8 +346,10 @@ namespace andromeda::engine
     void Engine::handle_mouse_button_pressed(IEvent& event)
     {
         IMouseButtonPressedEvent* p_event = dynamic_cast<IMouseButtonPressedEvent*>(&event);
+
         if (!p_event)
         {
+            spdlog::error("Cannot process mouse button press event: unexpected event type.");
             return;
         }
 
@@ -361,8 +363,10 @@ namespace andromeda::engine
     void Engine::handle_mouse_button_released(IEvent& event)
     {
         IMouseButtonReleasedEvent* p_event = dynamic_cast<IMouseButtonReleasedEvent*>(&event);
+
         if (!p_event)
         {
+            spdlog::error("Cannot process mouse button release event: unexpected event type.");
             return;
         }
 
@@ -376,44 +380,50 @@ namespace andromeda::engine
     void Engine::handle_key_pressed(IEvent& event)
     {
         IKeyPressedEvent* p_event = dynamic_cast<IKeyPressedEvent*>(&event);
+
         if (!p_event)
         {
+            spdlog::error("Cannot process key press event: unexpected event type.");
             return;
         }
 
         const KeyCode key = p_event->get_key_code();
+
         if (key == LeftControl || key == RightControl)
-        {
             m_is_ctrl_down = true;
-        }
     }
 
     void Engine::handle_key_released(IEvent& event)
     {
         IKeyReleasedEvent* p_event = dynamic_cast<IKeyReleasedEvent*>(&event);
+
         if (!p_event)
         {
+            spdlog::error("Cannot process key release event: unexpected event type.");
             return;
         }
 
         const KeyCode key = p_event->get_key_code();
+
         if (key == LeftControl || key == RightControl)
-        {
             m_is_ctrl_down = false;
-        }
     }
 
     void Engine::handle_mouse_moved(IEvent& event)
     {
         IMouseMovedEvent* p_event = dynamic_cast<IMouseMovedEvent*>(&event);
+
         if (!p_event)
         {
+            spdlog::error("Cannot process mouse movement event: unexpected event type.");
             return;
         }
 
         ICameraController* p_camera = get_active_camera_controller_from_scene(m_p_scene);
+
         if (!p_camera)
         {
+            spdlog::error("Cannot process camera input: no active camera controller is available.");
             return;
         }
 
@@ -458,8 +468,10 @@ namespace andromeda::engine
     void Engine::handle_window_resize(IEvent& event)
     {
         IWindowResizeEvent* p_event = dynamic_cast<IWindowResizeEvent*>(&event);
+        
         if (!p_event)
         {
+            spdlog::error("Cannot process window resize event: unexpected event type.");
             return;
         }
 
@@ -476,16 +488,16 @@ namespace andromeda::engine
     void Engine::handle_framebuffer_resize(IEvent& event)
     {
         IFramebufferResizeEvent* p_event = dynamic_cast<IFramebufferResizeEvent*>(&event);
+
         if (!p_event)
         {
+            spdlog::error("Cannot process framebuffer resize event: unexpected event type.");
             return;
         }
 
         // Most correct place to resize GL viewport and projection aspects.
         if (m_renderer)
-        {
             m_renderer->resize(p_event->get_width(), p_event->get_height());
-        }
 
         // Optional: if your camera projection is owned by the scene active camera,
         // you can update aspect here too (depends on your API).
@@ -494,8 +506,10 @@ namespace andromeda::engine
     void Engine::handle_window_close(IEvent& event)
     {
         IWindowCloseEvent* p_event = dynamic_cast<IWindowCloseEvent*>(&event);
+
         if (!p_event)
         {
+            spdlog::error("Cannot process window close event: unexpected event type.");
             return;
         }
 
@@ -510,10 +524,8 @@ namespace andromeda
 {
     std::unique_ptr<IEngine> create_engine(const GraphicsBackend& graphics_backend)
     {
-        spdlog::info(
-            "create_engine() called with backend {}",
-            graphics_backend_string(graphics_backend)
-        );
+        spdlog::info("create_engine() called with backend {}",
+                     graphics_backend_string(graphics_backend) );
 
         try
         {

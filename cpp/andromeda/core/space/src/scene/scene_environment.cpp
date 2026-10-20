@@ -26,9 +26,7 @@ namespace andromeda::space
 		m_ambient_strength = ambient_strength;
 	}
 
-	void SceneEnvironment::set_background_color(
-		const math::Vec4& background_color
-	)
+	void SceneEnvironment::set_background_color(const math::Vec4& background_color)
 	{
 		m_background_color = background_color;
 	}

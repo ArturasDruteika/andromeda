@@ -29,9 +29,8 @@ namespace andromeda::space
 		return m_vertices;
 	}
 
-	void Mesh::set_data(
-		const std::vector<Vertex>& vertices,
-		const std::vector<unsigned int>& indices)
+	void Mesh::set_data(const std::vector<Vertex>& vertices,
+						const std::vector<unsigned int>& indices)
 	{
 		m_vertices = vertices;
 		m_indices = indices;

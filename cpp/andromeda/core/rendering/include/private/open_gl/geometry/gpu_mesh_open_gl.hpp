@@ -49,18 +49,17 @@ namespace andromeda::rendering
         /// @param vertex_data_size_bytes Size of the vertex data in bytes.
         /// @param indices Index buffer.
         /// @param layout Vertex buffer layout.
-        void create(
-            const void* vertex_data,
-            size_t vertex_data_size_bytes,
-            const std::vector<uint32_t>& indices,
-            const andromeda::rendering::VertexLayout& layout
-        );
+        void create(const void* vertex_data,
+                    size_t vertex_data_size_bytes,
+                    const std::vector<uint32_t>& indices,
+                    const andromeda::rendering::VertexLayout& layout);
 
         /// @brief Creates GPU resources from a mesh.
         ///
         /// @param mesh Source mesh.
         /// @param layout Vertex buffer layout.
-        void create(const IMesh& mesh, const VertexLayout& layout);
+        void create(const IMesh& mesh,
+                    const VertexLayout& layout);
 
         /// @brief Releases all GPU resources owned by the mesh.
         void destroy();

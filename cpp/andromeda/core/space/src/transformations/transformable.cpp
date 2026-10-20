@@ -20,11 +20,10 @@ namespace andromeda
 
 	bool Transformable::state_changed() const
 	{
-		bool state_changed =
-			m_state_changed
-			|| Rotatable::state_changed()
-			|| Scalable::state_changed()
-			|| Translatable::state_changed();
+		bool state_changed = m_state_changed || 
+							 Rotatable::state_changed() || 
+							 Scalable::state_changed() || 
+							 Translatable::state_changed();
 
 		return state_changed;
 	}
@@ -55,10 +54,9 @@ namespace andromeda
 	{
 		// Rebuild model matrix from current component matrices.
 		// Order matches your existing get_model_matrix(): T * R * S
-		m_model_matrix =
-			Translatable::get_translation_matrix()
-			* Rotatable::get_rotation_matrix()
-			* Scalable::get_scale_matrix();
+		m_model_matrix = Translatable::get_translation_matrix() * 
+						 Rotatable::get_rotation_matrix() * 
+						 Scalable::get_scale_matrix();
 	}
 
 	void Transformable::reset_state()

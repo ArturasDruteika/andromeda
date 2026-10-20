@@ -36,7 +36,9 @@ namespace andromeda::application
         return m_p_renderer;
     }
 
-    bool Application::init(unsigned int width, unsigned int height, const std::string& title)
+    bool Application::init(unsigned int width,
+                           unsigned int height, 
+                           const std::string& title)
     {
         return init_internal(width, height, title);
     }
@@ -119,9 +121,12 @@ namespace andromeda::application
         return 0;
     }
 
-    bool Application::init_platform(unsigned int width, unsigned int height, const std::string& title)
+    bool Application::init_platform(unsigned int width, 
+                                    unsigned int height, 
+                                    const std::string& title)
     {
         m_p_platform = create_platform(m_graphics_backend);
+
         if (!m_p_platform)
         {
             spdlog::error("create_platform() returned nullptr.");
@@ -140,6 +145,7 @@ namespace andromeda::application
     bool Application::init_engine()
     {
         m_p_engine = create_engine(m_graphics_backend);
+
         if (!m_p_engine)
         {
             spdlog::error("create_engine() returned nullptr.");
@@ -155,14 +161,17 @@ namespace andromeda::application
         return true;
     }
 
-    bool Application::init_renderer(int width, int height)
+    bool Application::init_renderer(int width, 
+                                    int height)
     {
         // You had: pRenderer->init(width, height, false);
         m_p_renderer->init(width, height, false);
         return true;
     }
 
-    bool Application::init_internal(unsigned int width, unsigned int height, const std::string &title)
+    bool Application::init_internal(unsigned int width, 
+                                    unsigned int height, 
+                                    const std::string &title)
     {
         if (m_initialized)
         {
@@ -202,6 +211,7 @@ namespace andromeda::application
             de_init();
             return false;
         }
+
         m_initialized = true;
         return true;
     }
@@ -239,10 +249,8 @@ namespace andromeda
 {
     std::unique_ptr<IApplication> create_app(const GraphicsBackend& graphics_backend)
     {
-        spdlog::info(
-            "CreateApplication() called with backend {}",
-            graphics_backend_string(graphics_backend)
-        );
+        spdlog::info("CreateApplication() called with backend {}",
+                     graphics_backend_string(graphics_backend));
 
         try
         {

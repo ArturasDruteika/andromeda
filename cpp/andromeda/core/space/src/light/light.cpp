@@ -3,13 +3,11 @@
 
 namespace andromeda::space
 {
-	Light::Light(
-		const math::Vec3& color,
-		float intensity,
-		const math::Vec3& ambient,
-		const math::Vec3& diffuse,
-		const math::Vec3& specular
-	)
+	Light::Light(const math::Vec3& color,
+				 float intensity,
+				 const math::Vec3& ambient,
+				 const math::Vec3& diffuse,
+				 const math::Vec3& specular)
 		: m_intensity{ intensity }
 		, m_color{ color }
 		, m_ambient{ ambient }

@@ -50,28 +50,32 @@ namespace andromeda
         /// @param fov_deg Field of view in degrees.
         /// @param update_projection If `true`, updates the projection matrix
         ///                          immediately.
-        virtual void set_field_of_view_degrees(float fov_deg, bool update_projection = true) = 0;
+        virtual void set_field_of_view_degrees(float fov_deg, 
+                                               bool update_projection = true) = 0;
 
         /// @brief Sets the near clipping plane distance.
         ///
         /// @param near_plane Near clipping plane distance.
         /// @param update_projection If `true`, updates the projection matrix
         ///                          immediately.
-        virtual void set_near_plane(float near_plane, bool update_projection = true) = 0;
+        virtual void set_near_plane(float near_plane, 
+                                    bool update_projection = true) = 0;
 
         /// @brief Sets the far clipping plane distance.
         ///
         /// @param far_plane Far clipping plane distance.
         /// @param update_projection If `true`, updates the projection matrix
         ///                          immediately.
-        virtual void set_far_plane(float far_plane, bool update_projection = true) = 0;
+        virtual void set_far_plane(float far_plane, 
+                                   bool update_projection = true) = 0;
 
         /// @brief Sets the viewport aspect ratio.
         ///
         /// @param aspect Width-to-height aspect ratio.
         /// @param update_projection If `true`, updates the projection matrix
         ///                          immediately.
-        virtual void set_aspect(float aspect, bool update_projection = true) = 0;
+        virtual void set_aspect(float aspect, 
+                                bool update_projection = true) = 0;
 
         // Update
 

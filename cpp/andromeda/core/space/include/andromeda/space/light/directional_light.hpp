@@ -34,17 +34,15 @@ namespace andromeda::space
 		/// @param orthographic_half_size Half-size of the orthographic shadow projection.
 		/// @param near_plane Near clipping plane for shadow rendering.
 		/// @param far_plane Far clipping plane for shadow rendering.
-		DirectionalLight(
-			const math::Vec3& direction,
-			const math::Vec3& color = math::Vec3{ 1.0f, 1.0f, 1.0f },
-			float intensity = 1.0f,
-			const math::Vec3& ambient = math::Vec3{ 0.1f, 0.1f, 0.1f },
-			const math::Vec3& diffuse = math::Vec3{ 0.4f, 0.4f, 0.4f },
-			const math::Vec3& specular = math::Vec3{ 0.4f, 0.4f, 0.4f },
-			float orthographic_half_size = 10.0f,
-			float near_plane = 1.0f,
-			float far_plane = 30.0f
-		);
+		DirectionalLight(const math::Vec3& direction,
+						 const math::Vec3& color = math::Vec3{ 1.0f, 1.0f, 1.0f },
+						 float intensity = 1.0f,
+						 const math::Vec3& ambient = math::Vec3{ 0.1f, 0.1f, 0.1f },
+						 const math::Vec3& diffuse = math::Vec3{ 0.4f, 0.4f, 0.4f },
+						 const math::Vec3& specular = math::Vec3{ 0.4f, 0.4f, 0.4f },
+						 float orthographic_half_size = 10.0f,
+						 float near_plane = 1.0f,
+						 float far_plane = 30.0f);
 
 		/// @brief Destroys the directional light.
 		~DirectionalLight() override;

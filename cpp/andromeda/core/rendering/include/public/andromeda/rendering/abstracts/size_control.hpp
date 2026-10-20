@@ -14,7 +14,8 @@ namespace andromeda::rendering
 		///
 		/// @param width Initial render width in pixels.
 		/// @param height Initial render height in pixels.
-		SizeControl(int width = 800, int height = 600);
+		SizeControl(int width = 800, 
+					int height = 600);
 
 		/// @brief Destroys the size controller.
 		~SizeControl();
@@ -35,7 +36,8 @@ namespace andromeda::rendering
 		///
 		/// @param width New render width in pixels.
 		/// @param height New render height in pixels.
-		void resize(int width, int height);
+		void resize(int width, 
+					int height);
 
 	protected:
 		/// @brief Current render width in pixels.

@@ -60,7 +60,9 @@ namespace andromeda::rendering
         /// @param width Initial render target width in pixels.
         /// @param height Initial render target height in pixels.
         /// @param illumination_mode Initial illumination mode.
-        void init(int width, int height, bool illumination_mode = false);
+        void init(int width,
+                  int height,
+                  bool illumination_mode = false);
 
         /// @brief Deinitializes the renderer and releases its resources.
         void de_init();
@@ -74,7 +76,8 @@ namespace andromeda::rendering
         ///
         /// @param width New render target width in pixels.
         /// @param height New render target height in pixels.
-        void resize(int width, int height);
+        void resize(int width,
+                    int height);
 
     private:
         /// @brief Renders all non-luminous objects using the combined lighting pass.
@@ -83,34 +86,28 @@ namespace andromeda::rendering
         /// @param r_camera Active camera.
         /// @param has_dir Indicates whether the scene contains directional lights.
         /// @param has_point Indicates whether the scene contains point lights.
-        void render_non_luminous_objects_combined(
-            const IScene& scene,
-            const ICamera& r_camera,
-            bool has_dir,
-            bool has_point
-        ) const;
+        void render_non_luminous_objects_combined(const IScene& scene,
+                                                  const ICamera& r_camera,
+                                                  bool has_dir,
+                                                  bool has_point) const;
 
         /// @brief Renders luminous objects.
         ///
         /// @param objects Scene objects indexed by object ID.
         /// @param object_transforms Object transforms indexed by object ID.
         /// @param r_camera Active camera.
-        void render_luminous_objects(
-            const std::unordered_map<int, IGeometricObject*>& objects,
-            const std::unordered_map<int, ITransformable*>& object_transforms,
-            const ICamera& r_camera
-        ) const;
+        void render_luminous_objects(const std::unordered_map<int, IGeometricObject*>& objects,
+                                     const std::unordered_map<int, ITransformable*>& object_transforms,
+                                     const ICamera& r_camera) const;
 
         /// @brief Renders scene objects.
         ///
         /// @param objects Scene objects indexed by object ID.
         /// @param object_transforms Object transforms indexed by object ID.
         /// @param r_camera Active camera.
-        void render_objects(
-            const std::unordered_map<int, IGeometricObject*>& objects,
-            const std::unordered_map<int, ITransformable*>& object_transforms,
-            const ICamera& r_camera
-        ) const;
+        void render_objects(const std::unordered_map<int, IGeometricObject*>& objects,
+                            const std::unordered_map<int, ITransformable*>& object_transforms,
+                            const ICamera& r_camera) const;
 
         /// @brief Renders the scene grid.
         ///
@@ -144,11 +141,9 @@ namespace andromeda::rendering
         /// @param shader Shader used for rendering.
         /// @param objects Scene objects indexed by object ID.
         /// @param object_transforms Object transforms indexed by object ID.
-        void render_each_non_luminous_object(
-            ShaderOpenGL& shader,
-            const std::unordered_map<int, IGeometricObject*>& objects,
-            const std::unordered_map<int, ITransformable*>& object_transforms
-        ) const;
+        void render_each_non_luminous_object(ShaderOpenGL& shader,
+                                             const std::unordered_map<int, IGeometricObject*>& objects,
+                                             const std::unordered_map<int, ITransformable*>& object_transforms) const;
 
         /// @brief Configures the point-light shadow depth texture.
         void configure_point_shadow_depth_texture();
@@ -157,7 +152,8 @@ namespace andromeda::rendering
         ///
         /// @param scene Scene to render.
         /// @param r_camera Active camera.
-        void render_luminous_mode(const IScene& scene, const ICamera& r_camera);
+        void render_luminous_mode(const IScene& scene,
+                                  const ICamera& r_camera);
 
         /// @brief Sets the renderer background color.
         ///

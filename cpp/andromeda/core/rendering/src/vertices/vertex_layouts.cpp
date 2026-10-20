@@ -10,10 +10,8 @@ namespace andromeda::rendering
     {
     }
 
-    VertexLayout::VertexLayout(
-        const std::vector<VertexAttributeDesc>& attributes,
-        InputRate input_rate
-    )
+    VertexLayout::VertexLayout(const std::vector<VertexAttributeDesc>& attributes,
+                               InputRate input_rate)
         : m_attributes{ attributes }
         , m_stride_bytes{ 0 }
         , m_input_rate{ input_rate }
@@ -43,9 +41,9 @@ namespace andromeda::rendering
         for (VertexAttributeDesc& attr : m_attributes)
         {
             attr.offset_bytes = offset;
-            offset +=
-                static_cast<std::size_t>(attr.component_count)
-                * component_type_size_bytes(attr.component_type);
+
+            offset += static_cast<std::size_t>(attr.component_count) * 
+                      component_type_size_bytes(attr.component_type);
         }
 
         m_stride_bytes = offset;

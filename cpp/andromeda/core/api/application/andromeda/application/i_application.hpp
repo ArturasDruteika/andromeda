@@ -36,7 +36,9 @@ namespace andromeda
         /// @param height Height of the application window in pixels.
         /// @param title Title displayed in the application window.
         /// @return `true` if initialization succeeded; otherwise, `false`.
-        virtual bool init(unsigned int width, unsigned int height, const std::string& title) = 0;
+        virtual bool init(unsigned int width, 
+                          unsigned int height, 
+                          const std::string& title) = 0;
 
         /// @brief Shuts down the application.
         ///

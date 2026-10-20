@@ -43,7 +43,8 @@ namespace andromeda::space
 		///
 		/// @param id Object identifier.
 		/// @param object Pointer to the geometric object.
-		virtual void add_object(int id, IGeometricObject* object) override;
+		virtual void add_object(int id, 
+								IGeometricObject* object) override;
 
 		/// @brief Removes a geometric object from the scene.
 		///
@@ -54,7 +55,8 @@ namespace andromeda::space
 		///
 		/// @param id Object identifier.
 		/// @param transform Pointer to the object's transform.
-		void set_object_transform(int id, ITransformable* transform);
+		void set_object_transform(int id, 
+								  ITransformable* transform);
 
 	protected:
 		/// @brief Collection of geometric objects indexed by object identifier.

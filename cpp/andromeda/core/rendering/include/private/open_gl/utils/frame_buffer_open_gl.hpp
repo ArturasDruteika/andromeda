@@ -38,7 +38,9 @@ namespace andromeda::rendering
         /// @param width Framebuffer width in pixels.
         /// @param height Framebuffer height in pixels.
         /// @param type Framebuffer configuration.
-        FrameBufferOpenGL(int width, int height, FrameBufferType type);
+        FrameBufferOpenGL(int width, 
+                          int height, 
+                          FrameBufferType type);
 
         /// @brief Destroys the framebuffer and its attachments.
         ~FrameBufferOpenGL();
@@ -54,13 +56,16 @@ namespace andromeda::rendering
         /// @param height Framebuffer height in pixels.
         /// @param type Framebuffer configuration.
         /// @return `true` if initialization succeeded; otherwise, `false`.
-        bool init(int width, int height, FrameBufferType type);
+        bool init(int width, 
+                  int height, 
+                  FrameBufferType type);
 
         /// @brief Resizes the framebuffer and recreates its attachments.
         ///
         /// @param width New framebuffer width in pixels.
         /// @param height New framebuffer height in pixels.
-        void resize(int width, int height);
+        void resize(int width, 
+                    int height);
 
         /// @brief Binds the framebuffer.
         void bind() const;

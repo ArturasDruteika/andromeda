@@ -32,7 +32,8 @@ namespace andromeda::rendering
 		///
 		/// @param face Face selection passed to the OpenGL culling configuration.
 		/// @param winding Front-face winding order passed to OpenGL.
-		void enable_face_culling(unsigned int face, unsigned int winding) const;
+		void enable_face_culling(unsigned int face, 
+								 unsigned int winding) const;
 
 		/// @brief Disables OpenGL face culling.
 		void disable_face_culling() const;

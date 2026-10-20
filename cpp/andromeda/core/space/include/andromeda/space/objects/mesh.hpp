@@ -52,10 +52,8 @@ namespace andromeda::space
 		///
 		/// @param vertices Vertex buffer.
 		/// @param indices Index buffer.
-		void set_data(
-			const std::vector<Vertex>& vertices,
-			const std::vector<unsigned int>& indices
-		);
+		void set_data(const std::vector<Vertex>& vertices,
+					  const std::vector<unsigned int>& indices);
 
 	protected:
 		/// @brief Mesh index buffer.

@@ -32,16 +32,12 @@ namespace andromeda::space
         // Only accept space::Camera instances.
         Camera* p_new_camera = dynamic_cast<Camera*>(camera);
         if (p_new_camera == nullptr)
-        {
             // Reject unknown ICamera implementations.
             // (Keep existing camera unchanged.)
             return;
-        }
 
         if (p_new_camera == m_p_camera)
-        {
             return;
-        }
 
         delete m_p_camera;
         m_p_camera = p_new_camera;

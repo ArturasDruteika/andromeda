@@ -33,19 +33,17 @@ namespace andromeda::space
 		/// @param attenuation_quadratic Quadratic attenuation coefficient.
 		/// @param shadow_near_plane Near clipping plane for shadow rendering.
 		/// @param shadow_far_plane Far clipping plane for shadow rendering.
-		PointLight(
-			const math::Vec3& position,
-			const math::Vec3& color = math::Vec3{ 1.0f, 1.0f, 1.0f },
-			float intensity = 1.0f,
-			const math::Vec3& ambient = math::Vec3{ 0.1f, 0.1f, 0.1f },
-			const math::Vec3& diffuse = math::Vec3{ 1.0f, 1.0f, 1.0f },
-			const math::Vec3& specular = math::Vec3{ 1.0f, 1.0f, 1.0f },
-			float attenuation_constant = 1.0f,
-			float attenuation_linear = 0.1f,
-			float attenuation_quadratic = 0.01f,
-			float shadow_near_plane = 0.1f,
-			float shadow_far_plane = 25.0f
-		);
+		PointLight(const math::Vec3& position,
+				   const math::Vec3& color = math::Vec3{ 1.0f, 1.0f, 1.0f },
+				   float intensity = 1.0f,
+				   const math::Vec3& ambient = math::Vec3{ 0.1f, 0.1f, 0.1f },
+				   const math::Vec3& diffuse = math::Vec3{ 1.0f, 1.0f, 1.0f },
+				   const math::Vec3& specular = math::Vec3{ 1.0f, 1.0f, 1.0f },
+				   float attenuation_constant = 1.0f,
+				   float attenuation_linear = 0.1f,
+				   float attenuation_quadratic = 0.01f,
+				   float shadow_near_plane = 0.1f,
+				   float shadow_far_plane = 25.0f);
 
 		/// @brief Destroys the point light.
 		~PointLight() override;

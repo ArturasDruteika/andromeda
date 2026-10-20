@@ -14,6 +14,14 @@
 
 namespace andromeda::space
 {
+    namespace
+    {
+        constexpr unsigned int N_SKYROOM_FACES = 6;
+        constexpr unsigned int N_CORNERS_PER_FACE = 4;
+        constexpr unsigned int N_TRIANGLES_PER_FACE = 2;
+        constexpr unsigned int N_INDICES_PER_TRIANGLE = 3;
+    }
+
     /// @brief Stores the geometry of a single skyroom face.
     ///
     /// Contains the face normal and the four corner vertices used to construct
@@ -24,7 +32,7 @@ namespace andromeda::space
         math::Vec3 normal;
 
         /// @brief Corner vertices of the face.
-        std::array<math::Vec3, 4> vertices;
+        std::array<math::Vec3, N_CORNERS_PER_FACE> vertices;
     };
 
     /// @brief Represents a skyroom enclosing the scene.
@@ -41,7 +49,8 @@ namespace andromeda::space
         ///
         /// @param half_extent Half of the skyroom edge length.
         /// @param color Surface color of the skyroom.
-        Skyroom(float half_extent, const Color& color);
+        Skyroom(float half_extent,
+                const Color& color);
 
         /// @brief Destroys the skyroom.
         ~Skyroom();
@@ -65,7 +74,8 @@ namespace andromeda::space
         ///
         /// @param half_extent Half of the skyroom edge length.
         /// @param color Surface color of the skyroom.
-        void construct_skyroom(float half_extent, const Color& color);
+        void construct_skyroom(float half_extent,
+                               const Color& color);
 
         /// @brief Validates skyroom construction parameters.
         ///
@@ -76,13 +86,14 @@ namespace andromeda::space
         ///
         /// @param half_extent Half of the skyroom edge length.
         /// @return Array containing all six skyroom faces.
-        static std::array<SkyroomFaceData, 6> build_skyroom_faces(float half_extent);
+        static std::array<SkyroomFaceData, N_SKYROOM_FACES> build_skyroom_faces(float half_extent);
 
         /// @brief Reserves memory for skyroom mesh buffers.
         ///
         /// @param vertices Vertex buffer.
         /// @param indices Index buffer.
-        static void reserve_skyroom_buffers(std::vector<Vertex>& vertices, std::vector<unsigned int>& indices);
+        static void reserve_skyroom_buffers(std::vector<Vertex>& vertices,
+                                            std::vector<unsigned int>& indices);
 
         /// @brief Appends an inward-facing face to the skyroom mesh.
         ///
@@ -91,13 +102,11 @@ namespace andromeda::space
         /// @param out_vertices Destination vertex buffer.
         /// @param out_indices Destination index buffer.
         /// @param index_offset Current index offset.
-        static void append_face_inside(
-            const SkyroomFaceData& face,
-            const Color& color,
-            std::vector<Vertex>& out_vertices,
-            std::vector<unsigned int>& out_indices,
-            unsigned int& index_offset
-        );
+        static void append_face_inside(const SkyroomFaceData& face,
+                                       const Color& color,
+                                       std::vector<Vertex>& out_vertices,
+                                       std::vector<unsigned int>& out_indices,
+                                       unsigned int& index_offset);
 
     private:
         /// @brief Half of the skyroom edge length.

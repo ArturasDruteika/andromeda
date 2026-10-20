@@ -13,13 +13,20 @@ namespace andromeda::Space
 		float y;
 
 		/// @brief Constructs a point at the origin.
-		Point2D() : x(0.0f), y(0.0f) {}
+		Point2D() 
+			: x(0.0f)
+			, y(0.0f) 
+		{}
 
 		/// @brief Constructs a point with the specified coordinates.
 		///
 		/// @param x X-coordinate.
 		/// @param y Y-coordinate.
-		Point2D(float x, float y) : x(x), y(y) {}
+		Point2D(float x, 
+				float y) 
+			: x(x)
+			, y(y) 
+		{}
 
 		/// @brief Compares two points for equality.
 		///
@@ -52,14 +59,24 @@ namespace andromeda::Space
 		float z;
 
 		/// @brief Constructs a point at the origin.
-		Point3D() : x(0.0f), y(0.0f), z(0.0f) {}
+		Point3D() 
+			: x(0.0f)
+			, y(0.0f)
+			, z(0.0f) 
+		{}
 
 		/// @brief Constructs a point with the specified coordinates.
 		///
 		/// @param x X-coordinate.
 		/// @param y Y-coordinate.
 		/// @param z Z-coordinate.
-		Point3D(float x, float y, float z) : x(x), y(y), z(z) {}
+		Point3D(float x, 
+				float y, 
+				float z) 
+			: x(x)
+			, y(y)
+			, z(z) 
+		{}
 
 		/// @brief Compares two points for equality.
 		///

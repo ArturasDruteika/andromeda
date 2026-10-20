@@ -47,7 +47,8 @@ namespace andromeda::space
         ///
         /// @param id Identifier of the light object.
         /// @param p_light_object Pointer to the light object.
-        void add_light_object(int id, const ILightObject* p_light_object);
+        void add_light_object(int id, 
+                              const ILightObject* p_light_object);
 
         /// @brief Removes a light object from the scene.
         ///

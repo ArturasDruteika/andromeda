@@ -11,11 +11,9 @@ namespace andromeda::space
     {
     }
 
-    Camera::Camera(
-        const math::Vec3& position,
-        float yaw_radians,
-        float pitch_radians
-    )
+    Camera::Camera(const math::Vec3& position,
+                   float yaw_radians,
+                   float pitch_radians)
         : PerspectiveControl(45.0f, 0.1f, 1000.0f, 1.0f)
         , CameraController(position)
     {
